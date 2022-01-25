@@ -1,9 +1,16 @@
-package ayathe.project.scheduleapp
+package ayathe.project.scheduleapp.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.databinding.ActivityMainBinding
 import ayathe.project.scheduleapp.fragments.HomeFragment
 import ayathe.project.scheduleapp.fragments.SecondFragment
@@ -12,26 +19,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
     private val homeFragment = HomeFragment()
     private val secondFragment = SecondFragment()
     private val thirdFragment = ThirdFragment()
 
+    private val mainActivityVm by viewModels<ViewModelMainActivity>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
+        var binding: ViewDataBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
         fragmentsReplacement(homeFragment)
 
-
-        bottom_nav.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home -> fragmentsReplacement(homeFragment)
-                R.id.home2 -> fragmentsReplacement(secondFragment)
-                R.id.home3 -> fragmentsReplacement(thirdFragment)
-            }
-            true
-        }
+        return inflater.inflate(R.layout.activity_main, container, false)
 
     }
 
