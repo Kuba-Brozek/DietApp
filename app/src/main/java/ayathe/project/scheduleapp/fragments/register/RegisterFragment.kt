@@ -39,7 +39,6 @@ class RegisterFragment : Fragment() {
         // Inflate the layout for this fragment
         return view
 
-
     }
 
     private fun onClickSignUp() {

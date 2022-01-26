@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         fragmentsReplacement(registerFragment)
 
-
         bottom_nav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> fragmentsReplacement(loginFragment)
@@ -40,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
     }
 
     private fun fragmentsReplacement(fragment: Fragment){
