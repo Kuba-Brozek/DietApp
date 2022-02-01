@@ -1,4 +1,4 @@
-package ayathe.project.scheduleapp.Home
+package ayathe.project.scheduleapp.home.homeactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
