@@ -1,4 +1,4 @@
-package ayathe.project.scheduleapp.fragments.register
+package ayathe.project.scheduleapp.registerlogin.register
 
 import androidx.lifecycle.ViewModel
 

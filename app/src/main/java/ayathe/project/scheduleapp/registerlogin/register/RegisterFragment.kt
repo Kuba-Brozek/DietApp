@@ -1,26 +1,15 @@
-package ayathe.project.scheduleapp.fragments.register
+package ayathe.project.scheduleapp.registerlogin.register
 
-import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import ayathe.project.scheduleapp.Home.HomeActivity
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.fragments.HomeFragment
-import ayathe.project.scheduleapp.fragments.login.ViewModelLogin
-import ayathe.project.scheduleapp.main.MainActivity
+import ayathe.project.scheduleapp.registerlogin.activityreglog.LogRegActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 
@@ -68,7 +57,7 @@ class RegisterFragment : Fragment() {
             password_confirmET.requestFocus()
             return
         }
-        (activity as MainActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
+        (activity as LogRegActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
     }
 
 }

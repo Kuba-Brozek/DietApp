@@ -1,4 +1,4 @@
-package ayathe.project.scheduleapp.main
+package ayathe.project.scheduleapp.registerlogin.activityreglog
 
 import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
@@ -8,15 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.fragments.HomeFragment
-import ayathe.project.scheduleapp.fragments.SecondFragment
-import ayathe.project.scheduleapp.fragments.ThirdFragment
-import ayathe.project.scheduleapp.fragments.register.RegisterFragment
-import ayathe.project.scheduleapp.fragments.login.LoginFragment
+import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
+import ayathe.project.scheduleapp.home.thirdfragment.ThirdFragment
+import ayathe.project.scheduleapp.home.homefragment.HomeFragment
+import ayathe.project.scheduleapp.registerlogin.register.RegisterFragment
+import ayathe.project.scheduleapp.registerlogin.login.LoginFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class LogRegActivity : AppCompatActivity() {
 
     private val homeFragment = HomeFragment()
     private val secondFragment = SecondFragment()

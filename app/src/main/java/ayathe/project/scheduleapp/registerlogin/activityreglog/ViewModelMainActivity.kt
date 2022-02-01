@@ -1,5 +1,4 @@
-package ayathe.project.scheduleapp.main
-import androidx.activity.viewModels
+package ayathe.project.scheduleapp.registerlogin.activityreglog
 import androidx.lifecycle.ViewModel
 
 class ViewModelMainActivity: ViewModel() {
