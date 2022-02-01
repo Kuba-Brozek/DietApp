@@ -20,9 +20,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class LogRegActivity : AppCompatActivity() {
 
-    private val homeFragment = HomeFragment()
-    private val secondFragment = SecondFragment()
-    private val thirdFragment = ThirdFragment()
     private val loginFragment = LoginFragment()
     private val registerFragment = RegisterFragment()
     private lateinit var mainActivityVm: ViewModelMainActivity
