@@ -11,9 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import ayathe.project.scheduleapp.Home.HomeActivity
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.fragments.HomeFragment
+import ayathe.project.scheduleapp.fragments.login.ViewModelLogin
 import ayathe.project.scheduleapp.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_register.view.*
 class RegisterFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    private val registerVM by viewModels<ViewModelRegister>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,4 +70,5 @@ class RegisterFragment : Fragment() {
         }
         (activity as MainActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
     }
+
 }

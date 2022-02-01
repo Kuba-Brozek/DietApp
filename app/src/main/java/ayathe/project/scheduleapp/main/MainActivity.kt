@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fragmentsReplacement(registerFragment)
-
+        auth = FirebaseAuth.getInstance()
         bottom_nav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> fragmentsReplacement(loginFragment)
@@ -48,21 +48,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun userCreation(email: String, password: String){
-        auth = FirebaseAuth.getInstance()
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     fragmentsReplacement(homeFragment)
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed. $password, $password",
                         Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
+    fun userSignIn(email: String, password: String){
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithEmail:success")
+                    fragmentsReplacement(homeFragment)
+                } else {
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+
 
 
 

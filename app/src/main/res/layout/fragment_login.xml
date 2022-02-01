@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et"
+        android:id="@+id/emailETL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.075" />
 
     <EditText
-        android:id="@+id/et2"
+        android:id="@+id/passwordETL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
