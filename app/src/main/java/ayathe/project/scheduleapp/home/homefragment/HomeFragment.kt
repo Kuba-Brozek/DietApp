@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -12,7 +13,8 @@ import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
-        private val db = Firebase.firestore
+    private val homeFrVM by viewModels<ViewModelHomeFragment>()
+    private val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
