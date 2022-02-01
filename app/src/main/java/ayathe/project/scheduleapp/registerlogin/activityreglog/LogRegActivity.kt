@@ -1,6 +1,7 @@
 package ayathe.project.scheduleapp.registerlogin.activityreglog
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
 import ayathe.project.scheduleapp.home.thirdfragment.ThirdFragment
 import ayathe.project.scheduleapp.home.homefragment.HomeFragment
@@ -30,9 +32,9 @@ class LogRegActivity : AppCompatActivity() {
         mainActivityVm = ViewModelProvider(this)[ViewModelMainActivity::class.java]
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fragmentsReplacement(registerFragment)
+        fragmentsReplacement(loginFragment)
         auth = FirebaseAuth.getInstance()
-        bottom_nav.setOnItemSelectedListener {
+        bottom_nav_reg_log.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> fragmentsReplacement(loginFragment)
                 R.id.home2 -> fragmentsReplacement(registerFragment)
@@ -43,7 +45,7 @@ class LogRegActivity : AppCompatActivity() {
 
     private fun fragmentsReplacement(fragment: Fragment){
         val fragmentContainer = supportFragmentManager.beginTransaction()
-        fragmentContainer.replace(R.id.container, fragment)
+        fragmentContainer.replace(R.id.container_reg_log, fragment)
         fragmentContainer.commit()
     }
 
@@ -52,7 +54,8 @@ class LogRegActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithEmail:success")
-                    fragmentsReplacement(homeFragment)
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed. $password, $password",
@@ -66,7 +69,8 @@ class LogRegActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithEmail:success")
-                    fragmentsReplacement(homeFragment)
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",

@@ -7,17 +7,17 @@
     tools:context=".registerlogin.activityreglog.LogRegActivity">
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/container_reg_log"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_reg_log"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
+        android:id="@+id/bottom_nav_reg_log"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,8 +28,8 @@
         app:layout_constraintVertical_bias="1.0"
         android:layout_alignParentBottom="true"
         app:menu="@menu/register_login_menu"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
