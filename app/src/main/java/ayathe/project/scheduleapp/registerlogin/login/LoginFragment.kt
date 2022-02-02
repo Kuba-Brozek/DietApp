@@ -42,7 +42,6 @@ class LoginFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val currentUser: FirebaseUser? = auth.currentUser
-        loginVM.updateUI(currentUser)
     }
 
     private fun onClickLogin(){
