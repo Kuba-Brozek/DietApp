@@ -31,21 +31,42 @@ class ThirdFragment : Fragment() {
         view.newpassET.visibility = View.GONE
         view.newpassConET.visibility = View.GONE
         view.btn_change_passwd.visibility = View.GONE
+        view.btn_hide_password.visibility = View.GONE
         view.btn_change_password_visibility.setOnClickListener {
             view.newpassET.visibility = View.VISIBLE
             view.newpassConET.visibility = View.VISIBLE
             view.btn_change_passwd.visibility = View.VISIBLE
+            view.btn_hide_password.visibility = View.VISIBLE
         }
         view.newemailET.visibility = View.GONE
         view.btn_change_email.visibility = View.GONE
+        view.btn_hide_email.visibility = View.GONE
         view.btn_change_email_visibility.setOnClickListener {
             view.newemailET.visibility = View.VISIBLE
             view.btn_change_email.visibility = View.VISIBLE
+            view.btn_hide_email.visibility = View.VISIBLE
         }
-
+        view.btn_hide_password.setOnClickListener {
+            view.newpassET.visibility = View.GONE
+            view.newpassConET.visibility = View.GONE
+            view.btn_change_passwd.visibility = View.GONE
+            view.btn_hide_password.visibility = View.GONE
+            view.btn_change_password_visibility.visibility = View.VISIBLE
+        }
+        view.btn_hide_email.setOnClickListener {
+            view.newemailET.visibility = View.GONE
+            view.btn_change_email.visibility = View.GONE
+            view.btn_hide_email.visibility = View.GONE
+            view.btn_change_email_visibility.visibility = View.VISIBLE
+        }
         view.btn_change_passwd.setOnClickListener{
             if(newpassET.text.toString() == newpassConET.text.toString() && newpassET.text.toString() != ""){
                 passwordChangeConfirmation()
+                view.newpassET.visibility = View.GONE
+                view.newpassConET.visibility = View.GONE
+                view.btn_change_passwd.visibility = View.GONE
+                view.btn_hide_password.visibility = View.GONE
+                view.btn_change_password_visibility.visibility = View.VISIBLE
             }
             else if(newpassET.text.toString() != newpassConET.text.toString()){
                 Toast.makeText(requireContext(), "Hasła nie są takie same!", Toast.LENGTH_SHORT).show()
@@ -54,6 +75,10 @@ class ThirdFragment : Fragment() {
         view.btn_change_email.setOnClickListener {
             if(newemailET.text.toString().isNotEmpty()){
                 emailChangeConfirmation()
+                view.newemailET.visibility = View.GONE
+                view.btn_change_email.visibility = View.GONE
+                view.btn_hide_email.visibility = View.GONE
+                view.btn_change_email_visibility.visibility = View.VISIBLE
             }
             else{
                 Toast.makeText(requireContext(), "Wprowadź nowy email.", Toast.LENGTH_SHORT).show()

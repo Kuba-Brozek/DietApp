@@ -13,6 +13,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="New password"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.943"
@@ -25,6 +26,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Confirm password!"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.936"
@@ -36,12 +38,13 @@
         android:id="@+id/btn_change_passwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="hasło dej no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197" />
+        app:layout_constraintVertical_bias="0.191" />
 
     <EditText
         android:id="@+id/newemailET"
@@ -59,33 +62,60 @@
         android:id="@+id/btn_change_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="email dej no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.387" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_change_password_visibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="poka haslo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.038" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_change_email_visibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="poka emaila"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.295" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_hide_password"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:drawableStart="@drawable/password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_hide_email"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:drawableStart="@drawable/password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
