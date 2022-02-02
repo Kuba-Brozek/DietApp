@@ -1,5 +1,6 @@
 package ayathe.project.scheduleapp.repository
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.Toast
 import ayathe.project.scheduleapp.data.User
@@ -17,10 +18,19 @@ class UserRepository {
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
-            Log.d(debug, "Udało się")
+            Log.d(debug, "Udało się.")
         }.addOnFailureListener {
-            Log.d(debug, "Nie udało się")
+            Log.d(debug, "Nie udało się.")
         }
+    }
+
+    fun changeEmail(email: String){
+        user!!.updateEmail(email)
+            .addOnSuccessListener { task ->
+                Log.d(debug, "User password updated.")
+            }.addOnFailureListener {
+                Log.d(debug, "Nie udało się.")
+            }
     }
 
 

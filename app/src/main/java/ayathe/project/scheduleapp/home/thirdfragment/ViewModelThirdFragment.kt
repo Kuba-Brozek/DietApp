@@ -9,4 +9,7 @@ class ViewModelThirdFragment: ViewModel() {
     fun changePassword(password: String){
         repo.changePassword(password)
     }
+    fun changeEmail(email: String){
+        repo.changeEmail(email)
+    }
 }
