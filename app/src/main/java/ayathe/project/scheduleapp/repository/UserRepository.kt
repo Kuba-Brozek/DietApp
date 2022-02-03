@@ -24,7 +24,7 @@ class UserRepository {
 
     fun changeEmail(email: String){
         user!!.updateEmail(email)
-            .addOnSuccessListener { task ->
+            .addOnSuccessListener {
                 Log.d(debug, "User password updated.")
             }.addOnFailureListener {
                 Log.d(debug, "Nie udało się.")
