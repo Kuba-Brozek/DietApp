@@ -35,7 +35,6 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val xd = null
         val view: View = inflater.inflate(R.layout.fragment_second, container, false)
         view.btn_calendar.setOnClickListener {
             val dpd = DatePickerDialog(requireContext(),
@@ -56,7 +55,10 @@ class SecondFragment : Fragment() {
             }
         }
         view.btn_submit_event.setOnClickListener {
-            val event = Event(view.event_name_ET.text.toString(), view.date_TV.text.toString(), view.event_description_ET.text.toString(),view.category_spinner.selectedItem.toString())
+            val event = Event(view.event_name_ET.text.toString(),
+                view.date_TV.text.toString(),
+                view.event_description_ET.text.toString(),
+                view.category_spinner.selectedItem.toString())
             secondVM.addEvent(event)
         }
         return view
