@@ -14,6 +14,9 @@ android {
         dataBinding true
         viewBinding = true
     }
+    dataBinding{
+        enabled = true
+    }
     defaultConfig {
         applicationId "ayathe.project.scheduleapp"
         minSdk 21
