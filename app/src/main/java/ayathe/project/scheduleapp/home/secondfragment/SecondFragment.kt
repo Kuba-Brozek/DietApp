@@ -61,6 +61,38 @@ class SecondFragment : Fragment() {
                 view.category_spinner.selectedItem.toString())
             secondVM.addEvent(event)
         }
+        view.event_name_ET.visibility = View.GONE
+        view.btn_calendar.visibility = View.GONE
+        view.date_TV.visibility = View.GONE
+        view.category_spinner.visibility = View.GONE
+        view.event_description_ET.visibility = View.GONE
+        view.background_event_adding.visibility = View.GONE
+        view.btn_submit_event.visibility = View.GONE
+        view.btn_no_add_event.visibility = View.GONE
+
+        view.btn_add_event.setOnClickListener {
+            view.btn_add_event.visibility = View.GONE
+            view.background_event_adding.visibility = View.VISIBLE
+            view.event_name_ET.visibility = View.VISIBLE
+            view.btn_calendar.visibility = View.VISIBLE
+            view.date_TV.visibility = View.VISIBLE
+            view.category_spinner.visibility = View.VISIBLE
+            view.event_description_ET.visibility = View.VISIBLE
+            view.btn_submit_event.visibility = View.VISIBLE
+            view.btn_no_add_event.visibility = View.VISIBLE
+        }
+        view.btn_no_add_event.setOnClickListener {
+            view.event_name_ET.visibility = View.GONE
+            view.btn_calendar.visibility = View.GONE
+            view.date_TV.visibility = View.GONE
+            view.background_event_adding.visibility = View.GONE
+            view.category_spinner.visibility = View.GONE
+            view.event_description_ET.visibility = View.GONE
+            view.btn_submit_event.visibility = View.GONE
+            view.btn_no_add_event.visibility = View.GONE
+            view.btn_add_event.visibility = View.VISIBLE
+        }
+
         return view
     }
 

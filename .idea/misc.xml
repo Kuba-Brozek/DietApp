@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/drawable/background_shape_event_add.xml" value="0.3828125" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/drawable/btn_bg.xml" value="0.3828125" />
+        <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/drawable/btn_value.xml" value="0.3828125" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/drawable/input_bg.xml" value="0.3828125" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/activity_home2.xml" value="0.20520833333333333" />
@@ -12,9 +14,10 @@
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_register.xml" value="0.33" />
-        <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_second.xml" value="0.33" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/fragment_third.xml" value="0.25" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/home_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/layout/list_item_event.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/menu/main_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/menu/nav_menu.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/kubab/Desktop/studia/PUM/JetPack/ScheduleApp/app/src/main/res/menu/register_login_menu.xml" value="0.20520833333333333" />

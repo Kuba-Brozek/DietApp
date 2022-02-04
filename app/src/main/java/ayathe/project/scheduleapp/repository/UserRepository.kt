@@ -16,18 +16,18 @@ class UserRepository {
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
-            Log.d(debug, "Udało się.")
+            Log.d(debug, "Password change success.")
         }.addOnFailureListener {
-            Log.d(debug, "Nie udało się.")
+            Log.d(debug, "Password change failure.")
         }
     }
 
     fun changeEmail(email: String){
         user!!.updateEmail(email)
             .addOnSuccessListener {
-                Log.d(debug, "User password updated.")
+                Log.d(debug, "Email change success.")
             }.addOnFailureListener {
-                Log.d(debug, "Nie udało się.")
+                Log.d(debug, "Email change failure.")
             }
     }
 
