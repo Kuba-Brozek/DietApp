@@ -5,6 +5,7 @@ import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.repository.UserRepository
 
@@ -17,5 +18,9 @@ class ViewModelSecondFragment: ViewModel() {
 
     fun addEvent(event: Event){
         repo.addEvent(event)
+    }
+
+    fun eventChangeListener(recyclerView: RecyclerView){
+        repo.eventChangeListener(recyclerView)
     }
 }

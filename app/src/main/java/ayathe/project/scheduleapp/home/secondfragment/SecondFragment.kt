@@ -1,7 +1,9 @@
 package ayathe.project.scheduleapp.home.secondfragment
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,15 +11,27 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.data.EventCV
+import com.google.firebase.firestore.*
+import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class SecondFragment : Fragment() {
 
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var eventArrayList: ArrayList<EventCV>
+    private lateinit var eventAdapter: EventAdapter
+    private lateinit var db: FirebaseFirestore
     private val secondVM by viewModels<ViewModelSecondFragment>()
     private val calendar = Calendar.getInstance()
     private val year = calendar.get(Calendar.YEAR)
@@ -27,8 +41,6 @@ class SecondFragment : Fragment() {
     private var choice: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -41,6 +53,12 @@ class SecondFragment : Fragment() {
                 { _, mYear, mMonth, mDay -> date_TV.text = "$mDay/${mMonth+1}/$mYear" }, year, month, day)
             dpd.show()
         }
+        recyclerView = view.findViewById(R.id.event_list_RV)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        recyclerView.setHasFixedSize(true)
+
+        secondVM.eventChangeListener(recyclerView)
+
         secondVM.spinner(view.category_spinner, requireContext(), categoryList)
         view.category_spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
@@ -95,6 +113,8 @@ class SecondFragment : Fragment() {
 
         return view
     }
+
+
 
 
 }
