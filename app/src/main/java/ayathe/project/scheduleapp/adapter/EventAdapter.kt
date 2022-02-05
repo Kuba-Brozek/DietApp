@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.data.EventCV
 
-class EventAdapter(private val eventList: ArrayList<EventCV>): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private val eventList: ArrayList<Event>): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
 
     override fun onCreateViewHolder(
@@ -21,9 +22,9 @@ class EventAdapter(private val eventList: ArrayList<EventCV>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: EventAdapter.EventViewHolder, position: Int) {
-        val event: EventCV = eventList[position]
+        val event: Event = eventList[position]
         holder.date.text = event.date
-        holder.desc.text = event.desc
+        holder.desc.text = event.description
     }
 
     override fun getItemCount(): Int {

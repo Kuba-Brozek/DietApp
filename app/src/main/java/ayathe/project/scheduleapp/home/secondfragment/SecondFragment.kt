@@ -21,6 +21,7 @@ import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
+import kotlinx.coroutines.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,8 +30,6 @@ class SecondFragment : Fragment() {
 
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var eventArrayList: ArrayList<EventCV>
-    private lateinit var eventAdapter: EventAdapter
     private lateinit var db: FirebaseFirestore
     private val secondVM by viewModels<ViewModelSecondFragment>()
     private val calendar = Calendar.getInstance()
@@ -114,7 +113,12 @@ class SecondFragment : Fragment() {
         return view
     }
 
-
+    private fun load(recyclerView: RecyclerView) = runBlocking {
+        launch {
+            delay(1500)
+            secondVM.eventChangeListener(recyclerView)
+        }
+    }
 
 
 }
