@@ -69,7 +69,6 @@ class SecondFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 choice = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(requireContext(), choice, Toast.LENGTH_SHORT).show()
             }
         }
         view.btn_submit_event.setOnClickListener {
@@ -77,7 +76,6 @@ class SecondFragment : Fragment() {
                 view.date_TV.text.toString(),
                 view.event_description_ET.text.toString(),
                 view.category_spinner.selectedItem.toString())
-            secondVM.addEvent(event)
         }
         view.event_name_ET.visibility = View.GONE
         view.btn_calendar.visibility = View.GONE
