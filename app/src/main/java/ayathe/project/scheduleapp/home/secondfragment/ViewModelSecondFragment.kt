@@ -20,7 +20,7 @@ class ViewModelSecondFragment: ViewModel() {
         repo.addEvent(event)
     }
 
-    fun eventChangeListener(recyclerView: RecyclerView){
-        repo.eventChangeListener(recyclerView)
+    fun eventChangeListener(arrayList: ArrayList<Event>){
+        repo.eventChangeListener(arrayList)
     }
 }

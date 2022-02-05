@@ -29,6 +29,8 @@ import kotlin.collections.ArrayList
 class SecondFragment : Fragment() {
 
 
+    private lateinit var eventArrayList: ArrayList<Event>
+    private lateinit var eventAdapter: EventAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: FirebaseFirestore
     private val secondVM by viewModels<ViewModelSecondFragment>()
@@ -55,8 +57,11 @@ class SecondFragment : Fragment() {
         recyclerView = view.findViewById(R.id.event_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.setHasFixedSize(true)
+        eventArrayList = arrayListOf()
+        eventAdapter = EventAdapter(eventArrayList)
+        recyclerView.adapter = eventAdapter
 
-        secondVM.eventChangeListener(recyclerView)
+        secondVM.eventChangeListener(eventArrayList)
 
         secondVM.spinner(view.category_spinner, requireContext(), categoryList)
         view.category_spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
@@ -111,13 +116,6 @@ class SecondFragment : Fragment() {
         }
 
         return view
-    }
-
-    private fun load(recyclerView: RecyclerView) = runBlocking {
-        launch {
-            delay(1500)
-            secondVM.eventChangeListener(recyclerView)
-        }
     }
 
 

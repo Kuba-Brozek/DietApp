@@ -21,8 +21,7 @@ class UserRepository {
     private val user = Firebase.auth.currentUser
     private val debug = "DEBUG"
     private val cloud = FirebaseFirestore.getInstance()
-    private lateinit var eventArrayList: ArrayList<Event>
-    private lateinit var eventAdapter: EventAdapter
+
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
@@ -56,11 +55,9 @@ class UserRepository {
             }
     }
 
-    fun eventChangeListener(recyclerView: RecyclerView){
+    fun eventChangeListener(eventArrayList: ArrayList<Event>){
 
-        eventArrayList = arrayListOf()
-        eventAdapter = EventAdapter(eventArrayList)
-        recyclerView.adapter = eventAdapter
+
         cloud.collection(auth.currentUser!!.uid).addSnapshotListener(object: EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null){
