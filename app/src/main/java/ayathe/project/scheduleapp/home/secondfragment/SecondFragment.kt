@@ -3,27 +3,25 @@ package ayathe.project.scheduleapp.home.secondfragment
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.data.Event
-import ayathe.project.scheduleapp.data.EventCV
-import com.google.firebase.firestore.*
-import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class SecondFragment : Fragment() {
@@ -40,10 +38,8 @@ class SecondFragment : Fragment() {
     private val day = calendar.get(Calendar.DAY_OF_MONTH)
     private var categoryList = mutableListOf("kategoria 1", "kategoria 2", "kategoria 3", "kategoria 4", "inne")
     private var choice: String? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

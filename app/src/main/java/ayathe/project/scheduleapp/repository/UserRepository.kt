@@ -2,19 +2,13 @@ package ayathe.project.scheduleapp.repository
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.data.Event
-import ayathe.project.scheduleapp.data.EventCV
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
-import org.w3c.dom.Document
 
 class UserRepository {
 
@@ -51,7 +45,7 @@ class UserRepository {
         )
         cloud.collection(auth.currentUser!!.uid).document(event.name.toString())
             .set(eventMap).addOnSuccessListener {
-                Log.d(debug, "Document added succesfully!")
+                Log.d(debug, "Document added successfully!")
             }.addOnFailureListener {
                 Log.d(debug, "Document wasn't added!")
             }
