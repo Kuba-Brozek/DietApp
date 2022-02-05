@@ -61,7 +61,7 @@ class SecondFragment : Fragment() {
         eventAdapter = EventAdapter(eventArrayList)
         recyclerView.adapter = eventAdapter
 
-        secondVM.eventChangeListener(eventArrayList)
+        secondVM.eventChangeListener(recyclerView)
 
         secondVM.spinner(view.category_spinner, requireContext(), categoryList)
         view.category_spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
@@ -116,6 +116,13 @@ class SecondFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun load(recyclerView: RecyclerView) = runBlocking {
+        launch {
+            delay(1500)
+            secondVM.eventChangeListener(recyclerView)
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package ayathe.project.scheduleapp.repository
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,8 @@ class UserRepository {
     private val user = Firebase.auth.currentUser
     private val debug = "DEBUG"
     private val cloud = FirebaseFirestore.getInstance()
-
+    private lateinit var eventArrayList: ArrayList<Event>
+    private lateinit var eventAdapter: EventAdapter
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
@@ -55,10 +57,13 @@ class UserRepository {
             }
     }
 
-    fun eventChangeListener(eventArrayList: ArrayList<Event>){
+    fun eventChangeListener(recyclerView: RecyclerView){
 
-
+        eventArrayList = arrayListOf()
+        eventAdapter = EventAdapter(eventArrayList)
+        recyclerView.adapter = eventAdapter
         cloud.collection(auth.currentUser!!.uid).addSnapshotListener(object: EventListener<QuerySnapshot> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null){
                     Log.e("Error loading Events.",
@@ -71,6 +76,7 @@ class UserRepository {
                         eventArrayList.add(dc.document.toObject(Event::class.java))
                     }
                 }
+                eventAdapter.notifyDataSetChanged()
             }
 
         })
