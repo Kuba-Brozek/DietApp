@@ -16,6 +16,7 @@ import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -81,36 +82,13 @@ class SecondFragment : Fragment(), OnEventClickListener {
                 view.category_spinner.selectedItem.toString())
             secondVM.addEvent(event)
         }
-        view.event_name_ET.visibility = View.GONE
-        view.btn_calendar.visibility = View.GONE
-        view.date_TV.visibility = View.GONE
-        view.category_spinner.visibility = View.GONE
-        view.event_description_ET.visibility = View.GONE
-        view.background_event_adding.visibility = View.GONE
-        view.btn_submit_event.visibility = View.GONE
-        view.btn_no_add_event.visibility = View.GONE
+        secondVM.hideAddWindow(view)
 
         view.btn_add_event.setOnClickListener {
-            view.btn_add_event.visibility = View.GONE
-            view.background_event_adding.visibility = View.VISIBLE
-            view.event_name_ET.visibility = View.VISIBLE
-            view.btn_calendar.visibility = View.VISIBLE
-            view.date_TV.visibility = View.VISIBLE
-            view.category_spinner.visibility = View.VISIBLE
-            view.event_description_ET.visibility = View.VISIBLE
-            view.btn_submit_event.visibility = View.VISIBLE
-            view.btn_no_add_event.visibility = View.VISIBLE
+            secondVM.showAddWindow(view)
         }
         view.btn_no_add_event.setOnClickListener {
-            view.event_name_ET.visibility = View.GONE
-            view.btn_calendar.visibility = View.GONE
-            view.date_TV.visibility = View.GONE
-            view.background_event_adding.visibility = View.GONE
-            view.category_spinner.visibility = View.GONE
-            view.event_description_ET.visibility = View.GONE
-            view.btn_submit_event.visibility = View.GONE
-            view.btn_no_add_event.visibility = View.GONE
-            view.btn_add_event.visibility = View.VISIBLE
+            secondVM.hideAddWindow(view)
         }
 
         return view
@@ -121,7 +99,9 @@ class SecondFragment : Fragment(), OnEventClickListener {
             .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
             .setPositiveButton("Delete Event!"){ _, _ ->
                 secondVM.deleteEvent(event.name.toString())
+                (activity as HomeActivity).fragmentsReplacement(SecondFragment())
             }.show()
         Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
+
     }
 }

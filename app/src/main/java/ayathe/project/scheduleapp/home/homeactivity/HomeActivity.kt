@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun fragmentsReplacement(fragment: Fragment){
+    fun fragmentsReplacement(fragment: Fragment){
         val fragmentContainer = supportFragmentManager.beginTransaction()
         fragmentContainer.replace(R.id.container_main, fragment)
         fragmentContainer.commit()
