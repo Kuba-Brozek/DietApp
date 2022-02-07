@@ -12,15 +12,16 @@ import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.databinding.ListItemEventBinding
 import com.bumptech.glide.Glide
 
-class EventAdapter(private val eventList: ArrayList<Event>): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(private val eventList: ArrayList<Event>, private val listener: OnEventClickListener): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventAdapter.EventViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_event, parent, false)
 
         return EventViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: EventAdapter.EventViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event: Event = eventList[position]
         holder.date.text = event.date
         holder.desc.text = event.name
@@ -51,10 +52,22 @@ class EventAdapter(private val eventList: ArrayList<Event>): RecyclerView.Adapte
         return eventList.size
     }
 
-    public class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+    inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val date: TextView = itemView.findViewById(R.id.date_CV)
         val desc: TextView = itemView.findViewById(R.id.name_TV)
+
+        init{
+            itemView.setOnLongClickListener{
+                listener.onEventLongClick(adapterPosition)
+                true
+            }
+        }
     }
 
+}
+
+interface OnEventClickListener {
+    fun onEventLongClick(position: Int)
 }

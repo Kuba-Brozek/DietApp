@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
+import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -24,7 +25,7 @@ import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment(), OnEventClickListener {
 
 
     private lateinit var eventArrayList: ArrayList<Event>
@@ -54,10 +55,10 @@ class SecondFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.setHasFixedSize(true)
         eventArrayList = arrayListOf()
-        eventAdapter = EventAdapter(eventArrayList)
+        eventAdapter = EventAdapter(eventArrayList, this)
         recyclerView.adapter = eventAdapter
 
-        secondVM.eventChangeListener(recyclerView)
+        secondVM.eventChangeListener(recyclerView, this)
 
         secondVM.spinner(view.category_spinner, requireContext(), categoryList)
         view.category_spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
@@ -113,11 +114,8 @@ class SecondFragment : Fragment() {
         return view
     }
 
-    private fun load(recyclerView: RecyclerView) = runBlocking {
-        launch {
-            delay(1500)
-            secondVM.eventChangeListener(recyclerView)
-        }
+    override fun onEventLongClick(position: Int) {
+        Toast.makeText(requireContext(), "ASDSADSAD", Toast.LENGTH_SHORT).show()
     }
 
 

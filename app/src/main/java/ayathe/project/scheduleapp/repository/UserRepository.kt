@@ -2,8 +2,10 @@ package ayathe.project.scheduleapp.repository
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.adapter.EventAdapter
+import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -51,10 +53,10 @@ class UserRepository {
             }
     }
 
-    fun eventChangeListener(recyclerView: RecyclerView){
+    fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener){
 
         eventArrayList = arrayListOf()
-        eventAdapter = EventAdapter(eventArrayList)
+        eventAdapter = EventAdapter(eventArrayList, listener)
         recyclerView.adapter = eventAdapter
         cloud.collection(auth.currentUser!!.uid).addSnapshotListener(object: EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")

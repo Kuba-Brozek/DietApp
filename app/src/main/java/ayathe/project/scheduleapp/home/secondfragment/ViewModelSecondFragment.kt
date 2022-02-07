@@ -6,10 +6,11 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.repository.UserRepository
 
-class ViewModelSecondFragment: ViewModel() {
+class ViewModelSecondFragment: ViewModel(), OnEventClickListener {
     private val repo = UserRepository()
 
     fun spinner(item: Spinner, context: Context, list: MutableList<String>){
@@ -20,7 +21,11 @@ class ViewModelSecondFragment: ViewModel() {
         repo.addEvent(event)
     }
 
-    fun eventChangeListener(recyclerView: RecyclerView){
-        repo.eventChangeListener(recyclerView)
+    fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener){
+        repo.eventChangeListener(recyclerView, listener)
+    }
+
+    override fun onEventLongClick(position: Int) {
+
     }
 }
