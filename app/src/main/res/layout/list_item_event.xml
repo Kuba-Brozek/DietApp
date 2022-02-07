@@ -7,10 +7,19 @@
     app:cardCornerRadius="8dp"
     android:layout_margin="10dp">
 
+    <ImageView
+        android:id="@+id/background_event"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:alpha="0.4"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:translationZ="2dp"
         android:layout_marginEnd="5dp"
         android:layout_marginVertical="5dp"
         android:orientation="vertical">

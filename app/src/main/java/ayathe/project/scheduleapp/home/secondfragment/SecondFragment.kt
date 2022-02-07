@@ -36,7 +36,7 @@ class SecondFragment : Fragment() {
     private val year = calendar.get(Calendar.YEAR)
     private val month = calendar.get(Calendar.MONTH)
     private val day = calendar.get(Calendar.DAY_OF_MONTH)
-    private var categoryList = mutableListOf("kategoria 1", "kategoria 2", "kategoria 3", "kategoria 4", "inne")
+    private var categoryList = mutableListOf("biznes", "edukacja", "sprawy domowe", "trening", "inne")
     private var choice: String? = null
 
     @SuppressLint("SetTextI18n")
@@ -76,6 +76,7 @@ class SecondFragment : Fragment() {
                 view.date_TV.text.toString(),
                 view.event_description_ET.text.toString(),
                 view.category_spinner.selectedItem.toString())
+            secondVM.addEvent(event)
         }
         view.event_name_ET.visibility = View.GONE
         view.btn_calendar.visibility = View.GONE
