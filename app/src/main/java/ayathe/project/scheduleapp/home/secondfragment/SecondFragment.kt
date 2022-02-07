@@ -16,9 +16,11 @@ import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
+import kotlinx.android.synthetic.main.fragment_third.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -114,9 +116,12 @@ class SecondFragment : Fragment(), OnEventClickListener {
         return view
     }
 
-    override fun onEventLongClick(position: Int) {
+    override fun onEventLongClick(event: Event, position: Int) {
+        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${event.name.toString()}")
+            .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
+            .setPositiveButton("Delete Event!"){ _, _ ->
+                secondVM.deleteEvent(event.name.toString())
+            }.show()
         Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
     }
-
-
 }

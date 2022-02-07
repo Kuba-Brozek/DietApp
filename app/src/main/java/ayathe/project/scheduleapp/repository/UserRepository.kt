@@ -9,6 +9,7 @@ import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
 
@@ -17,24 +18,25 @@ class UserRepository {
     private var auth = FirebaseAuth.getInstance()
     private val user = Firebase.auth.currentUser
     private val debug = "DEBUG"
+    private val doc = "DOC"
     private val cloud = FirebaseFirestore.getInstance()
     private lateinit var eventArrayList: ArrayList<Event>
     private lateinit var eventAdapter: EventAdapter
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
-            Log.d(debug, "Password change success.")
+            Log.i(doc, "Password change success.")
         }.addOnFailureListener {
-            Log.d(debug, "Password change failure.")
+            Log.e(doc, "Password change failure.")
         }
     }
 
     fun changeEmail(email: String){
         user!!.updateEmail(email)
             .addOnSuccessListener {
-                Log.d(debug, "Email change success.")
+                Log.i(debug, "Email change success.")
             }.addOnFailureListener {
-                Log.d(debug, "Email change failure.")
+                Log.e(debug, "Email change failure.")
             }
     }
 
@@ -47,9 +49,9 @@ class UserRepository {
         )
         cloud.collection(auth.currentUser!!.uid).document(event.name.toString())
             .set(eventMap).addOnSuccessListener {
-                Log.d(debug, "Document added successfully!")
+                Log.d(debug, "Event added successfully!")
             }.addOnFailureListener {
-                Log.d(debug, "Document wasn't added!")
+                Log.d(debug, "Event adding failure")
             }
     }
 
@@ -74,11 +76,18 @@ class UserRepository {
                 }
                 eventAdapter.notifyDataSetChanged()
             }
-
         })
     }
 
-
+    fun deleteItem(documentName: String){
+        cloud.collection(auth.currentUser!!.uid)
+            .document(documentName).delete()
+            .addOnSuccessListener {
+                Log.i(doc, "Event deleted succesfully")
+            }.addOnFailureListener {
+                Log.e(doc, "Error deleting event")
+            }
+    }
 
 
 }

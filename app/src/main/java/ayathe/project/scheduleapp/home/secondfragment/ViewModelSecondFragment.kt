@@ -10,7 +10,7 @@ import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.repository.UserRepository
 
-class ViewModelSecondFragment: ViewModel(), OnEventClickListener {
+class ViewModelSecondFragment: ViewModel() {
     private val repo = UserRepository()
 
     fun spinner(item: Spinner, context: Context, list: MutableList<String>){
@@ -25,7 +25,7 @@ class ViewModelSecondFragment: ViewModel(), OnEventClickListener {
         repo.eventChangeListener(recyclerView, listener)
     }
 
-    override fun onEventLongClick(position: Int) {
-
+    fun deleteEvent(documentName: String){
+        repo.deleteItem(documentName)
     }
 }
