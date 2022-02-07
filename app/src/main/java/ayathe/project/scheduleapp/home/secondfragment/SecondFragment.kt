@@ -115,7 +115,7 @@ class SecondFragment : Fragment(), OnEventClickListener {
     }
 
     override fun onEventLongClick(position: Int) {
-        Toast.makeText(requireContext(), "ASDSADSAD", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
     }
 
 
