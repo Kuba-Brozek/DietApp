@@ -61,6 +61,9 @@ class EventAdapter(private val eventList: ArrayList<Event>, private val listener
                 listener.onEventLongClick(eventList[absoluteAdapterPosition], absoluteAdapterPosition)
                 true
             }
+            itemView.setOnClickListener{
+                listener.onEventClick(eventList[absoluteAdapterPosition], absoluteAdapterPosition)
+            }
         }
     }
 
@@ -68,4 +71,5 @@ class EventAdapter(private val eventList: ArrayList<Event>, private val listener
 
 interface OnEventClickListener {
     fun onEventLongClick(event: Event, position: Int)
+    fun onEventClick(event: Event, position: Int)
 }

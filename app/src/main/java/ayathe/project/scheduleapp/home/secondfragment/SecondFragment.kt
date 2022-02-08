@@ -17,6 +17,7 @@ import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
+import ayathe.project.scheduleapp.home.secondfragment.eventinfo.EventInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -102,6 +103,9 @@ class SecondFragment : Fragment(), OnEventClickListener {
                 (activity as HomeActivity).fragmentsReplacement(SecondFragment())
             }.show()
         Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
+    }
 
+    override fun onEventClick(event: Event, position: Int) {
+        (activity as HomeActivity).fragmentsReplacement(EventInfo())
     }
 }

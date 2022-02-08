@@ -4,17 +4,17 @@
     <item
         android:id="@+id/one"
         android:icon="@drawable/one"
-        android:title="one!"
+        android:title="IDK"
     />
     <item
         android:id="@+id/two"
-        android:icon="@drawable/two"
-        android:title="two!"
+        android:icon="@drawable/events"
+        android:title="EVENTS"
         />
     <item
         android:id="@+id/three"
-        android:icon="@drawable/three"
-        android:title="three!"
+        android:icon="@drawable/user_info"
+        android:title="SETTINGS"
         />
 
 </menu>
