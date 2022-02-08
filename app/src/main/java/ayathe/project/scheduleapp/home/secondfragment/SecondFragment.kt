@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -106,6 +108,12 @@ class SecondFragment : Fragment(), OnEventClickListener {
     }
 
     override fun onEventClick(event: Event, position: Int) {
-        (activity as HomeActivity).fragmentsReplacement(EventInfo())
+        val result = event.name.toString()
+        val bundle = Bundle()
+        val eventInfo = EventInfo()
+        bundle.putString("EventInfo",result)
+        setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        eventInfo.arguments = bundle
+        (activity as HomeActivity).fragmentsReplacement(eventInfo)
     }
 }
