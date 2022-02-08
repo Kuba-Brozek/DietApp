@@ -31,11 +31,13 @@ class ThirdFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_third, container, false)
 
         thirdVM.hide(view)
+        thirdVM.showUserInfo(view)
         view.btn_change_password_visibility.setOnClickListener {
             thirdVM.showPasswordChange(view)
         }
         view.btn_change_email_visibility.setOnClickListener {
             thirdVM.showEmailChange(view)
+            thirdVM.showUserInfo(view)
         }
         view.btn_hide.setOnClickListener {
             thirdVM.hide(view)

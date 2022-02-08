@@ -12,6 +12,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_third.view.*
 
 class UserRepository {
 
@@ -87,6 +88,11 @@ class UserRepository {
             }.addOnFailureListener {
                 Log.e(doc, "Error deleting event")
             }
+    }
+
+    fun showUserInfo(view: View){
+        val email = auth.currentUser!!.email.toString()
+        view.email_displayTV.text = email
     }
 
 

@@ -68,4 +68,8 @@ class ViewModelThirdFragment: ViewModel() {
      view.btn_change_passwd.visibility = View.VISIBLE
     }
 
+    fun showUserInfo(view: View){
+        repo.showUserInfo(view)
+    }
+
 }
