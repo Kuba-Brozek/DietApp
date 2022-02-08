@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_third.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_third.view.*
 class ThirdFragment : Fragment() {
 
     private val thirdVM by viewModels<ViewModelThirdFragment>()
+    private var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,81 +30,39 @@ class ThirdFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_third, container, false)
 
-        view.newpassET.visibility = View.GONE
-        view.newpassConET.visibility = View.GONE
-        view.btn_change_passwd.visibility = View.GONE
-        view.btn_hide_password.visibility = View.GONE
+        thirdVM.hide(view)
         view.btn_change_password_visibility.setOnClickListener {
-            view.newpassET.visibility = View.VISIBLE
-            view.newpassConET.visibility = View.VISIBLE
-            view.btn_change_passwd.visibility = View.VISIBLE
-            view.btn_hide_password.visibility = View.VISIBLE
+            thirdVM.showPasswordChange(view)
         }
-        view.newemailET.visibility = View.GONE
-        view.btn_change_email.visibility = View.GONE
-        view.btn_hide_email.visibility = View.GONE
         view.btn_change_email_visibility.setOnClickListener {
-            view.newemailET.visibility = View.VISIBLE
-            view.btn_change_email.visibility = View.VISIBLE
-            view.btn_hide_email.visibility = View.VISIBLE
+            thirdVM.showEmailChange(view)
         }
-        view.btn_hide_password.setOnClickListener {
-            view.newpassET.visibility = View.GONE
-            view.newpassConET.visibility = View.GONE
-            view.btn_change_passwd.visibility = View.GONE
-            view.btn_hide_password.visibility = View.GONE
-            view.btn_change_password_visibility.visibility = View.VISIBLE
+        view.btn_hide.setOnClickListener {
+            thirdVM.hide(view)
         }
-        view.btn_hide_email.setOnClickListener {
-            view.newemailET.visibility = View.GONE
-            view.btn_change_email.visibility = View.GONE
-            view.btn_hide_email.visibility = View.GONE
-            view.btn_change_email_visibility.visibility = View.VISIBLE
-        }
+
         view.btn_change_passwd.setOnClickListener{
-            if(newpassET.text.toString() == newpassConET.text.toString() && newpassET.text.toString() != ""){
-                passwordChangeConfirmation()
-                view.newpassET.visibility = View.GONE
-                view.newpassConET.visibility = View.GONE
-                view.btn_change_passwd.visibility = View.GONE
-                view.btn_hide_password.visibility = View.GONE
-                view.btn_change_password_visibility.visibility = View.VISIBLE
+            if(newpassET.text.toString() == newpassConET.text.toString()
+                && newpassET.text.toString() != ""){
+                thirdVM.passwordChangeConfirmation(requireContext(), view)
+                Toast.makeText(requireContext(), "Udało się zmienić hasło!", Toast.LENGTH_LONG).show()
+                thirdVM.hide(view)
             }
             else if(newpassET.text.toString() != newpassConET.text.toString()){
                 Toast.makeText(requireContext(), "Hasła nie są takie same!", Toast.LENGTH_SHORT).show()
             }
         }
         view.btn_change_email.setOnClickListener {
-            if(newemailET.text.toString().isNotEmpty()){
-                emailChangeConfirmation()
-                view.newemailET.visibility = View.GONE
-                view.btn_change_email.visibility = View.GONE
-                view.btn_hide_email.visibility = View.GONE
-                view.btn_change_email_visibility.visibility = View.VISIBLE
-            }
-            else{
+            if(newemailET.text.toString().isNotEmpty() &&
+                newemailET.text.toString() == newemailconfirmET.text.toString()){
+                thirdVM.emailChangeConfirmation(requireContext() ,view)
+                Toast.makeText(requireContext(), "Udało się zmienić email!", Toast.LENGTH_LONG).show()
+                thirdVM.hide(view)
+            } else{
                 Toast.makeText(requireContext(), "Wprowadź nowy email.", Toast.LENGTH_SHORT).show()
             }
         }
-
         return view
-    }
-
-    private fun passwordChangeConfirmation(){
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to change your password?")
-                .setNegativeButton("I'll keep it that way"){ _, _ -> }
-                .setPositiveButton("Change my password!"){ _, _ ->
-                    thirdVM.changePassword(newpassET.text.toString())
-                }.show()
-
-    }
-
-    private fun emailChangeConfirmation(){
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to change your email?")
-            .setNegativeButton("I'll keep it that way"){ _, _ -> }
-            .setPositiveButton("Change my email!"){ _, _ ->
-                thirdVM.changeEmail(newemailET.text.toString())
-            }.show()
     }
 }
 

@@ -1,6 +1,7 @@
 package ayathe.project.scheduleapp.data
 
-data class User(val UserId: String? = null,
+data class User(
+    val UserId: String? = null,
     val username: String? = null,
-                val email: String? = null,
+    val email: String? = null,
     val image: String? = null)
