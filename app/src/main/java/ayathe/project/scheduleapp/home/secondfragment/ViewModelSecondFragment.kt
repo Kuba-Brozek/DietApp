@@ -55,4 +55,8 @@ class ViewModelSecondFragment: ViewModel() {
         view.btn_no_add_event.visibility = View.GONE
         view.btn_add_event.visibility = View.VISIBLE
     }
+
+    fun showEventInfo(view: View, context: Context, eventName: String){
+        repo.showEventInfo(view, context, eventName)
+    }
 }

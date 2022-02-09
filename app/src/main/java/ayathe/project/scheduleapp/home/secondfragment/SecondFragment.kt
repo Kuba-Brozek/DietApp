@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,10 +22,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
-import kotlinx.android.synthetic.main.fragment_third.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
@@ -108,11 +102,12 @@ class SecondFragment : Fragment(), OnEventClickListener {
     }
 
     override fun onEventClick(event: Event, position: Int) {
-        val result = event.name.toString()
+        val name = event.name.toString()
+        val category =event.category.toString()
         val bundle = Bundle()
         val eventInfo = EventInfo()
-        bundle.putString("EventInfo",result)
-        setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        bundle.putString("EventName",name)
+        bundle.putString("EventCategory",category)
         eventInfo.arguments = bundle
         (activity as HomeActivity).fragmentsReplacement(eventInfo)
     }

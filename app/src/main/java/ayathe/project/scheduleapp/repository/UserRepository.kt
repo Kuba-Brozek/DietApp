@@ -1,17 +1,21 @@
 package ayathe.project.scheduleapp.repository
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.core.Tag
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
 
 class UserRepository {
@@ -95,5 +99,41 @@ class UserRepository {
         view.email_displayTV.text = email
     }
 
+    fun showEventInfo(view: View, context: Context, eventName: String){
+        val docRef = cloud.collection(auth.currentUser!!.uid).document(eventName)
+
+        docRef.get().addOnSuccessListener { docSnapshot ->
+            val event = docSnapshot.toObject<Event>()
+            view.event_name.setText(event?.name.toString())
+            view.event_date.text = event?.date.toString()
+            view.event_description.setText(event?.description.toString())
+            try{
+                when {
+                    event?.category.toString() ==  "biznes" -> {
+                        Glide.with(context).load(R.drawable.business).into(view.findViewById(
+                            R.id.category_image))
+                    }
+                    event?.category.toString() == "edukacja" -> {
+                        Glide.with(context).load(R.drawable.education).into(view.findViewById(
+                            R.id.category_image))
+                    }
+                    event?.category.toString() == "sprawy domowe" -> {
+                        Glide.with(context).load(R.drawable.home).into(view.findViewById(
+                            R.id.category_image))
+                    }
+                    event?.category.toString() == "trening" -> {
+                        Glide.with(context).load(R.drawable.work_out).into(view.findViewById(
+                            R.id.category_image))
+                    }
+                    event?.category.toString() == "inne" -> {
+                        Glide.with(context).load(R.drawable.other).into(view.findViewById(
+                            R.id.category_image))
+                    }
+                }
+            }catch(e: Exception){
+                Log.e("error","failed to load image")
+            }
+        }
+    }
 
 }
