@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
 import ayathe.project.scheduleapp.home.secondfragment.ViewModelSecondFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_event_info.*
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
@@ -43,6 +45,15 @@ class EventInfo : Fragment() {
 
         view.btn_exit.setOnClickListener {
             (activity as HomeActivity).fragmentsReplacement(SecondFragment())
+        }
+
+        view.btn_delete.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${eventName.toString()}")
+                .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
+                .setPositiveButton("Delete Event!"){ _, _ ->
+                    secondVM.deleteEvent(eventName.toString())
+                    (activity as HomeActivity).fragmentsReplacement(SecondFragment())
+                }.show()
         }
 
         view.btn_save.setOnClickListener {
