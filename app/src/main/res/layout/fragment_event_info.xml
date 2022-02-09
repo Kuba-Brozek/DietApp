@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#878787"
     tools:context=".home.secondfragment.eventinfo.EventInfo">
+
 
     <ImageView
         android:id="@+id/category_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/background_shape_event_add"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="fitXY"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
-
+        app:layout_constraintVertical_bias="0.168" />
 
     <EditText
         android:id="@+id/event_description"
