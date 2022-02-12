@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.registerlogin.activityreglog.LogRegActivity
+import ayathe.project.scheduleapp.registerlogin.login.LoginFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
@@ -58,6 +60,7 @@ class RegisterFragment : Fragment() {
             return
         }
         (activity as LogRegActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
+        (activity as HomeActivity).fragmentsReplacement(LoginFragment())
     }
 
 }

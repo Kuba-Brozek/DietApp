@@ -55,6 +55,7 @@ class UserRepository {
         cloud.collection(auth.currentUser!!.uid).document(event.name.toString())
             .set(eventMap).addOnSuccessListener {
                 Log.d(debug, "Event added successfully!")
+
             }.addOnFailureListener {
                 Log.d(debug, "Event adding failure")
             }
