@@ -78,7 +78,7 @@ class SecondFragment : Fragment(), OnEventClickListener {
                 view.event_description_ET.text.toString(),
                 view.category_spinner.selectedItem.toString())
             secondVM.addEvent(event)
-            secondVM.showAddWindow(view)
+            secondVM.hideAddWindow(view)
         }
         secondVM.hideAddWindow(view)
 
