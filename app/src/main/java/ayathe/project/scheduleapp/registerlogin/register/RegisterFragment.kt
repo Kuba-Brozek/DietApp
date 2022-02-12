@@ -60,7 +60,6 @@ class RegisterFragment : Fragment() {
             return
         }
         (activity as LogRegActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
-        (activity as HomeActivity).fragmentsReplacement(LoginFragment())
     }
 
 }
