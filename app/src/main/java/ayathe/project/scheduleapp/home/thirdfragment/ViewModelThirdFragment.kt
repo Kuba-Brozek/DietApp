@@ -1,6 +1,7 @@
 package ayathe.project.scheduleapp.home.thirdfragment
 
 import android.content.Context
+import android.net.Uri
 import android.view.View
 import androidx.lifecycle.ViewModel
 import ayathe.project.scheduleapp.repository.UserRepository
@@ -70,6 +71,13 @@ class ViewModelThirdFragment: ViewModel() {
 
     fun showUserInfo(view: View){
         repo.showUserInfo(view)
+    }
+
+    fun loadProfileImage(context: Context, view: View){
+        repo.loadProfileImage(context, view)
+    }
+    fun uploadProfileImage(imageFileUri: Uri){
+        repo.uploadProfileImage(imageFileUri)
     }
 
 }

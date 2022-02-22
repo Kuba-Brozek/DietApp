@@ -13,7 +13,7 @@
         android:id="@+id/background_event_adding"
         android:layout_width="250dp"
         android:layout_height="350dp"
-        android:background="@drawable/background_shape_event_add"
+        android:background="@drawable/background_shape_image_view"
         android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

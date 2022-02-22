@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".home.thirdfragment.ThirdFragment">
 
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="120sp"
+        android:layout_height="120sp"
+        android:background="@drawable/background_shape_image_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.009" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_upload_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <TextView
         android:id="@+id/email_displayTV"
         android:layout_width="wrap_content"
@@ -13,10 +37,10 @@
         android:text="email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.185" />
 
     <EditText
         android:id="@+id/newpassConET"
@@ -89,7 +113,7 @@
         android:id="@+id/background_pass_email"
         android:layout_width="200dp"
         android:layout_height="300dp"
-        android:background="@drawable/background_shape_event_add"
+        android:background="@drawable/background_shape_image_view"
         android:translationZ="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,6 +2,7 @@ package ayathe.project.scheduleapp.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
 
@@ -27,6 +29,8 @@ class UserRepository {
     private val cloud = FirebaseFirestore.getInstance()
     private lateinit var eventArrayList: ArrayList<Event>
     private lateinit var eventAdapter: EventAdapter
+    private val fbStorage = Firebase.storage
+    private val storage = fbStorage.reference
 
     fun changePassword(password: String){
         user!!.updatePassword(password).addOnSuccessListener {
@@ -135,6 +139,28 @@ class UserRepository {
                 Log.e("error","failed to load image")
             }
         }
+    }
+
+    fun loadProfileImage(context: Context, view: View){
+        val imageName = "${auth.currentUser!!.uid}.png"
+        val uri = storage.child(imageName)
+        try {
+            uri.downloadUrl.addOnSuccessListener { Uri ->
+                val imageURL = Uri.toString()
+                Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
+            }
+        } catch (e: java.lang.Exception){
+           Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
+        }
+    }
+
+    fun uploadProfileImage(imageFileUri: Uri){
+        val uploadTask = storage.child(auth.currentUser!!.uid).putFile(imageFileUri)
+            .addOnSuccessListener {
+            Log.i("Upload Image Success", "Profile Image succesfully uploaded to Cloud Storage.")
+        }.addOnFailureListener{
+            Log.e("Upload Image Failure", "Profile Image upload Error.")
+            }
     }
 
 }
