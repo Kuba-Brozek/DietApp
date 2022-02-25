@@ -142,25 +142,36 @@ class UserRepository {
     }
 
     fun loadProfileImage(context: Context, view: View){
-        val imageName = "${auth.currentUser!!.uid}.png"
+        val imageName = auth.currentUser!!.email!!
         val uri = storage.child(imageName)
-        try {
-            uri.downloadUrl.addOnSuccessListener { Uri ->
-                val imageURL = Uri.toString()
-                Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
+        if (!uri.equals("0")){
+            try {
+                uri.downloadUrl.addOnSuccessListener { Uri ->
+                    val imageURL = Uri.toString()
+                    Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
+                }
+            } catch (e: java.lang.Exception){
+                Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
             }
-        } catch (e: java.lang.Exception){
-           Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
+        }
+        else{
+            Log.i("there is no", " sad")
         }
     }
 
     fun uploadProfileImage(imageFileUri: Uri){
-        val uploadTask = storage.child(auth.currentUser!!.uid).putFile(imageFileUri)
-            .addOnSuccessListener {
-            Log.i("Upload Image Success", "Profile Image succesfully uploaded to Cloud Storage.")
-        }.addOnFailureListener{
-            Log.e("Upload Image Failure", "Profile Image upload Error.")
-            }
+        if (storage.child(auth.currentUser!!.email!!) == null){
+            Log.i("there is no", " sad")
+        }
+        else {
+            val uploadTask = storage.child(auth.currentUser!!.email!!).putFile(imageFileUri)
+                .addOnSuccessListener {
+                    Log.i("Upload Image Success", "Profile Image succesfully uploaded to Cloud Storage.")
+                }.addOnFailureListener{
+                    Log.e("Upload Image Failure", "Profile Image upload Error.")
+                }
+
+        }
     }
 
 }

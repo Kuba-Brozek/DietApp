@@ -39,7 +39,7 @@ class ThirdFragment : Fragment() {
         thirdVM.loadProfileImage(requireContext(), view)
         thirdVM.hide(view)
         thirdVM.showUserInfo(view)
-        replaceImage(view)
+        thirdVM.loadProfileImage(requireContext(), view)
         view.btn_change_password_visibility.setOnClickListener {
             thirdVM.showPasswordChange(view)
         }
@@ -76,21 +76,25 @@ class ThirdFragment : Fragment() {
             (activity as HomeActivity).openGallery()
         }
         view.btn_upload_image.setOnClickListener {
-            val imgURI = view.btn_upload_image.tag as Uri
-            thirdVM.uploadProfileImage(imgURI)
+            replaceImage(view)
         }
         return view
     }
 
-    fun replaceImage(view: View){
+    private fun replaceImage(view: View){
         try {
             val args = this.arguments
             val imageStringUri = args?.get("ImageUri")
             val imageUri: Uri = Uri.parse(imageStringUri.toString())
             view.profile_image.setImageURI(imageUri)
+            thirdVM.uploadProfileImage(imageUri)
         }catch (e: Exception){
 
         }
+    }
+
+    private fun loadImage(imageUri: Uri){
+        thirdVM.uploadProfileImage(imageUri)
     }
 
 
