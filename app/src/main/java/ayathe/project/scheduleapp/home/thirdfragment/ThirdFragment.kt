@@ -13,29 +13,22 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_third.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
+import java.lang.Exception
 
 class ThirdFragment : Fragment() {
 
     private val thirdVM by viewModels<ViewModelThirdFragment>()
-    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_IMAGE_CAPTURE = 17
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val view: View = view!!
-        val checkPermission =
-            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val data: Intent? = result.data
-                    val uri: Uri = data?.data!!
-                    view.profile_image.setImageURI(uri)
-                    view.profile_image.tag = uri
-                }
-            }
+
     }
 
     override fun onCreateView(
@@ -46,6 +39,7 @@ class ThirdFragment : Fragment() {
         thirdVM.loadProfileImage(requireContext(), view)
         thirdVM.hide(view)
         thirdVM.showUserInfo(view)
+        replaceImage(view)
         view.btn_change_password_visibility.setOnClickListener {
             thirdVM.showPasswordChange(view)
         }
@@ -79,7 +73,7 @@ class ThirdFragment : Fragment() {
             }
         }
         view.profile_image.setOnClickListener {
-
+            (activity as HomeActivity).openGallery()
         }
         view.btn_upload_image.setOnClickListener {
             val imgURI = view.btn_upload_image.tag as Uri
@@ -88,18 +82,18 @@ class ThirdFragment : Fragment() {
         return view
     }
 
-    private fun openGallery(view: View) {
-        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                val uri: Uri = data?.data!!
-                view.profile_image.setImageURI(uri)
-                view.profile_image.tag = uri
-            }
+    fun replaceImage(view: View){
+        try {
+            val args = this.arguments
+            val imageStringUri = args?.get("ImageUri")
+            val imageUri: Uri = Uri.parse(imageStringUri.toString())
+            view.profile_image.setImageURI(imageUri)
+        }catch (e: Exception){
+
         }
-        val intent = Intent("android.intent.action.GET_CONTENT")
-        intent.type = "image/*"
-        resultLauncher.launch(intent)
     }
+
+
+
 }
 
