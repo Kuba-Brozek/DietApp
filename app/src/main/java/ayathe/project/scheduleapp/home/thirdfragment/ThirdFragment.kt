@@ -1,30 +1,22 @@
 package ayathe.project.scheduleapp.home.thirdfragment
 
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_third.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
-import java.lang.Exception
 
 class ThirdFragment : Fragment() {
 
     private val thirdVM by viewModels<ViewModelThirdFragment>()
-    private val REQUEST_IMAGE_CAPTURE = 17
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +26,7 @@ class ThirdFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_third, container, false)
         thirdVM.loadProfileImage(requireContext(), view)
         thirdVM.hide(view)
@@ -89,15 +81,8 @@ class ThirdFragment : Fragment() {
             view.profile_image.setImageURI(imageUri)
             thirdVM.uploadProfileImage(imageUri)
         }catch (e: Exception){
-
+            Log.e("Image Error", "Profile Image not found.")
         }
     }
-
-    private fun loadImage(imageUri: Uri){
-        thirdVM.uploadProfileImage(imageUri)
-    }
-
-
-
 }
 

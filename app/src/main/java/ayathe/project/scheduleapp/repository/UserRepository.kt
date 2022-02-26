@@ -144,7 +144,7 @@ class UserRepository {
     fun loadProfileImage(context: Context, view: View){
         val imageName = auth.currentUser!!.email!!
         val uri = storage.child(imageName)
-        if (!uri.equals("0")){
+        if (!uri.equals(null)){
             try {
                 uri.downloadUrl.addOnSuccessListener { Uri ->
                     val imageURL = Uri.toString()
@@ -155,13 +155,13 @@ class UserRepository {
             }
         }
         else{
-            Log.i("there is no", " sad")
+            Log.i("Image Error", "Current user doesn't have a profile picture.")
         }
     }
 
     fun uploadProfileImage(imageFileUri: Uri){
-        if (storage.child(auth.currentUser!!.email!!) == null){
-            Log.i("there is no", " sad")
+        if (storage.child(auth.currentUser!!.uid).equals(null)){
+            Log.i("Auth error", " Current user authentification ended with error.")
         }
         else {
             val uploadTask = storage.child(auth.currentUser!!.email!!).putFile(imageFileUri)

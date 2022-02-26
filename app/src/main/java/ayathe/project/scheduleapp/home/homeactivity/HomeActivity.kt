@@ -2,20 +2,15 @@ package ayathe.project.scheduleapp.home.homeactivity
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.home.homefragment.HomeFragment
 import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
-import ayathe.project.scheduleapp.home.secondfragment.eventinfo.EventInfo
 import ayathe.project.scheduleapp.home.thirdfragment.ThirdFragment
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_third.view.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeVM by viewModels<ViewModelHomeActivity>()
@@ -53,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            var uri = data?.data!!.toString()
+            val uri = data?.data!!.toString()
             val bundle = Bundle()
             val thirdFragment = ThirdFragment()
             bundle.putString("ImageUri",uri)
