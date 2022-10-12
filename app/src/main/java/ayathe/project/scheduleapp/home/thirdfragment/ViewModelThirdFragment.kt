@@ -3,6 +3,7 @@ package ayathe.project.scheduleapp.home.thirdfragment
 import android.content.Context
 import android.net.Uri
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import ayathe.project.scheduleapp.repository.UserRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -28,46 +29,15 @@ class ViewModelThirdFragment: ViewModel() {
             }.show()
     }
 
-    fun passwordChangeConfirmation(context: Context, view: View){
+    fun passwordChangeConfirmation(context: Context, view: View, password: String){
         MaterialAlertDialogBuilder(context).setTitle("Alert").setMessage("Are you sure you want to change your password?")
             .setNegativeButton("I'll keep it that way"){ _, _ -> }
             .setPositiveButton("Change my password!"){ _, _ ->
-                changePassword(view.newpassET.text.toString())
+                changePassword(password)
+                Toast.makeText(context, "Udało się zmienić hasło!", Toast.LENGTH_LONG).show()
             }.show()
     }
 
-    fun hide(view: View){
-     view.background_pass_email.visibility = View.GONE
-     view.btn_change_email.visibility = View.GONE
-     view.btn_change_passwd.visibility = View.GONE
-     view.newpassConET.visibility = View.GONE
-     view.newpassET.visibility = View.GONE
-     view.btn_hide.visibility = View.GONE
-     view.newemailET.visibility = View.GONE
-     view.newemailconfirmET.visibility = View.GONE
-     view.btn_change_password_visibility.visibility = View.VISIBLE
-     view.btn_change_email_visibility.visibility = View.VISIBLE
-    }
-
-    fun showEmailChange(view: View){
-        view.btn_change_email_visibility.visibility = View.GONE
-        view.btn_change_password_visibility.visibility = View.GONE
-        view.background_pass_email.visibility = View.VISIBLE
-        view.newemailET.visibility = View.VISIBLE
-        view.newemailconfirmET.visibility = View.VISIBLE
-        view.btn_hide.visibility = View.VISIBLE
-        view.btn_change_email.visibility = View.VISIBLE
-    }
-
-    fun showPasswordChange(view: View){
-     view.btn_change_email_visibility.visibility = View.GONE
-     view.btn_change_password_visibility.visibility = View.GONE
-     view.background_pass_email.visibility = View.VISIBLE
-     view.newpassConET.visibility = View.VISIBLE
-     view.newpassET.visibility = View.VISIBLE
-     view.btn_hide.visibility = View.VISIBLE
-     view.btn_change_passwd.visibility = View.VISIBLE
-    }
 
     fun showUserInfo(view: View){
         repo.showUserInfo(view)

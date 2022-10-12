@@ -29,26 +29,26 @@ class ThirdFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_third, container, false)
         thirdVM.loadProfileImage(requireContext(), view)
-        thirdVM.hide(view)
+        hide(view)
         thirdVM.showUserInfo(view)
         thirdVM.loadProfileImage(requireContext(), view)
         view.btn_change_password_visibility.setOnClickListener {
-            thirdVM.showPasswordChange(view)
+            showPasswordChange(view)
         }
         view.btn_change_email_visibility.setOnClickListener {
-            thirdVM.showEmailChange(view)
+            showEmailChange(view)
             thirdVM.showUserInfo(view)
         }
         view.btn_hide.setOnClickListener {
-            thirdVM.hide(view)
+            hide(view)
         }
 
         view.btn_change_passwd.setOnClickListener{
             if(newpassET.text.toString() == newpassConET.text.toString()
                 && newpassET.text.toString() != ""){
-                thirdVM.passwordChangeConfirmation(requireContext(), view)
-                Toast.makeText(requireContext(), "Udało się zmienić hasło!", Toast.LENGTH_LONG).show()
-                thirdVM.hide(view)
+                thirdVM.passwordChangeConfirmation(requireContext(), view, view.newpassET.text.toString())
+
+                hide(view)
             }
             else if(newpassET.text.toString() != newpassConET.text.toString()){
                 Toast.makeText(requireContext(), "Hasła nie są takie same!", Toast.LENGTH_SHORT).show()
@@ -59,7 +59,7 @@ class ThirdFragment : Fragment() {
                 newemailET.text.toString() == newemailconfirmET.text.toString()){
                 thirdVM.emailChangeConfirmation(requireContext() ,view)
                 Toast.makeText(requireContext(), "Udało się zmienić email!", Toast.LENGTH_LONG).show()
-                thirdVM.hide(view)
+                hide(view)
             } else{
                 Toast.makeText(requireContext(), "Wprowadź nowy email.", Toast.LENGTH_SHORT).show()
             }
@@ -83,6 +83,39 @@ class ThirdFragment : Fragment() {
         }catch (e: Exception){
             Log.e("Image Error", "Profile Image not found.")
         }
+    }
+
+    private fun hide(view: View){
+        view.background_pass_email?.visibility = View.GONE
+        view.btn_change_email?.visibility = View.GONE
+        view.btn_change_passwd?.visibility = View.GONE
+        view.newpassConET?.visibility = View.GONE
+        view.newpassET?.visibility = View.GONE
+        view.btn_hide?.visibility = View.GONE
+        view.newemailET?.visibility = View.GONE
+        view.newemailconfirmET?.visibility = View.GONE
+        view.btn_change_password_visibility?.visibility = View.VISIBLE
+        view.btn_change_email_visibility?.visibility = View.VISIBLE
+    }
+
+    private fun showEmailChange(view: View){
+        view.btn_change_email_visibility.visibility = View.GONE
+        view.btn_change_password_visibility.visibility = View.GONE
+        view.background_pass_email.visibility = View.VISIBLE
+        view.newemailET.visibility = View.VISIBLE
+        view.newemailconfirmET.visibility = View.VISIBLE
+        view.btn_hide.visibility = View.VISIBLE
+        view.btn_change_email.visibility = View.VISIBLE
+    }
+
+    private fun showPasswordChange(view: View){
+        view.btn_change_email_visibility.visibility = View.GONE
+        view.btn_change_password_visibility.visibility = View.GONE
+        view.background_pass_email.visibility = View.VISIBLE
+        view.newpassConET.visibility = View.VISIBLE
+        view.newpassET.visibility = View.VISIBLE
+        view.btn_hide.visibility = View.VISIBLE
+        view.btn_change_passwd.visibility = View.VISIBLE
     }
 }
 
