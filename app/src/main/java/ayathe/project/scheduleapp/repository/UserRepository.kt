@@ -19,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
+import kotlinx.coroutines.*
 
 class UserRepository {
 
@@ -141,21 +142,24 @@ class UserRepository {
         }
     }
 
+    @DelicateCoroutinesApi
     fun loadProfileImage(context: Context, view: View){
-        val imageName = auth.currentUser!!.email!!
-        val uri = storage.child(imageName)
-        if (!uri.equals(null)){
-            try {
-                uri.downloadUrl.addOnSuccessListener { Uri ->
-                    val imageURL = Uri.toString()
-                    Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
+        GlobalScope.launch(Dispatchers.Main) {
+            val imageName = auth.currentUser!!.email!!
+            val uri = storage.child(imageName)
+            if (!uri.equals(null)) {
+                try {
+                    uri.downloadUrl.addOnSuccessListener { Uri ->
+                        val imageURL = Uri.toString()
+                        Glide.with(context).load(imageURL)
+                            .into(view.findViewById(R.id.profile_image))
+                    }
+                } catch (e: java.lang.Exception) {
+                    Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
                 }
-            } catch (e: java.lang.Exception){
-                Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
+            } else {
+                Log.i("Image Error", "Current user doesn't have a profile picture.")
             }
-        }
-        else{
-            Log.i("Image Error", "Current user doesn't have a profile picture.")
         }
     }
 

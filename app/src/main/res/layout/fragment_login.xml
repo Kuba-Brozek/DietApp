@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@color/black"
     tools:context=".registerlogin.login.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="224dp"
-        android:textSize="22dp"
+        android:textSize="22sp"
         android:textColor="@color/white"
-        android:text="Login!"
+        android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +28,7 @@
         android:layout_marginEnd="50dp"
         android:background="@drawable/input_bg"
         android:hint="E-mail"
-        android:drawableLeft="@drawable/password"
+        android:drawableStart="@drawable/password"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:drawableLeft="@drawable/password"
+        android:drawableStart="@drawable/password"
         android:background="@drawable/input_bg"
         android:hint="Password"
         android:inputType="textPassword"
@@ -74,7 +73,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="112dp"
         android:background="@drawable/btn_bg"
-        android:text="Login!"
+        android:text="Log in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

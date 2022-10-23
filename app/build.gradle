@@ -43,38 +43,39 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    compileSdkVersion 33
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    //noinspection GradleDynamicVersion
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     androidTestImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'junit:junit:4.13.2'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     //circular progress bar
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
     //fragment
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.3")
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
@@ -86,6 +87,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     //Cloud Storage
     implementation 'com.google.firebase:firebase-storage-ktx'
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:1.9.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
