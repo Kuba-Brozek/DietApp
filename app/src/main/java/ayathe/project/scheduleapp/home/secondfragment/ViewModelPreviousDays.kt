@@ -13,7 +13,7 @@ import ayathe.project.scheduleapp.repository.UserRepository
 import kotlinx.android.synthetic.main.fragment_second.view.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
 
-class ViewModelSecondFragment: ViewModel() {
+class ViewModelPreviousDays: ViewModel() {
     private val repo = UserRepository()
 
     fun spinner(item: Spinner, context: Context, list: MutableList<String>){

@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.EventAdapter
@@ -19,7 +20,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.android.synthetic.main.fragment_third.view.*
-import kotlinx.coroutines.*
 
 class UserRepository {
 
@@ -33,19 +33,23 @@ class UserRepository {
     private val fbStorage = Firebase.storage
     private val storage = fbStorage.reference
 
-    fun changePassword(password: String){
+    fun changePassword(password: String, context: Context){
         user!!.updatePassword(password).addOnSuccessListener {
             Log.i(doc, "Password change success.")
+            Toast.makeText(context, "Udało się zmienić hasło", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Log.e(doc, "Password change failure.")
+            Toast.makeText(context, "Zmiana hasła niepomyślna", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun changeEmail(email: String){
+    fun changeEmail(email: String, context: Context){
         user!!.updateEmail(email)
             .addOnSuccessListener {
+                Toast.makeText(context, "Udało się zmienić email", Toast.LENGTH_SHORT).show()
                 Log.i(debug, "Email change success.")
             }.addOnFailureListener {
+                Toast.makeText(context, "Udało się zmienić email", Toast.LENGTH_SHORT).show()
                 Log.e(debug, "Email change failure.")
             }
     }
@@ -142,24 +146,21 @@ class UserRepository {
         }
     }
 
-    @DelicateCoroutinesApi
     fun loadProfileImage(context: Context, view: View){
-        GlobalScope.launch(Dispatchers.Main) {
-            val imageName = auth.currentUser!!.email!!
-            val uri = storage.child(imageName)
-            if (!uri.equals(null)) {
-                try {
-                    uri.downloadUrl.addOnSuccessListener { Uri ->
-                        val imageURL = Uri.toString()
-                        Glide.with(context).load(imageURL)
-                            .into(view.findViewById(R.id.profile_image))
-                    }
-                } catch (e: java.lang.Exception) {
-                    Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
+        val imageName = auth.currentUser!!.email!!
+        val uri = storage.child(imageName)
+        if (!uri.equals(null)){
+            try {
+                uri.downloadUrl.addOnSuccessListener { Uri ->
+                    val imageURL = Uri.toString()
+                    Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
                 }
-            } else {
-                Log.i("Image Error", "Current user doesn't have a profile picture.")
+            } catch (e: java.lang.Exception){
+                Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
             }
+        }
+        else{
+            Log.i("Image Error", "Current user doesn't have a profile picture.")
         }
     }
 

@@ -8,16 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.home.homefragment.HomeFragment
-import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
-import ayathe.project.scheduleapp.home.thirdfragment.ThirdFragment
+import ayathe.project.scheduleapp.home.secondfragment.PreviousDaysFragment
+import ayathe.project.scheduleapp.home.thirdfragment.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeVM by viewModels<ViewModelHomeActivity>()
     private val homeFragment = HomeFragment()
     private val REQUEST_IMAGE_CAPTURE = 17
-    private val secondFragment = SecondFragment()
-    private val thirdFragment = ThirdFragment()
+    private val secondFragment = PreviousDaysFragment()
+    private val thirdFragment = UserSettingsFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    internal fun fragmentsReplacement(fragment: Fragment){
+    fun fragmentsReplacement(fragment: Fragment){
         val fragmentContainer = supportFragmentManager.beginTransaction()
         fragmentContainer.replace(R.id.container_main, fragment)
         fragmentContainer.commit()
@@ -50,11 +50,12 @@ class HomeActivity : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK) {
             val uri = data?.data!!.toString()
             val bundle = Bundle()
-            val thirdFragment = ThirdFragment()
+            val thirdFragment = UserSettingsFragment()
             bundle.putString("ImageUri",uri)
             thirdFragment.arguments = bundle
             fragmentsReplacement(thirdFragment)
         }
     }
+
 
 }

@@ -17,7 +17,7 @@ import ayathe.project.scheduleapp.adapter.EventAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
-import ayathe.project.scheduleapp.home.secondfragment.eventinfo.EventInfo
+import ayathe.project.scheduleapp.home.secondfragment.eventinfo.PreviousDaysInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -25,14 +25,14 @@ import kotlinx.android.synthetic.main.fragment_second.view.*
 import java.util.*
 
 
-class SecondFragment : Fragment(), OnEventClickListener {
+class PreviousDaysFragment : Fragment(), OnEventClickListener {
 
 
     private lateinit var eventArrayList: ArrayList<Event>
     private lateinit var eventAdapter: EventAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: FirebaseFirestore
-    private val secondVM by viewModels<ViewModelSecondFragment>()
+    private val secondVM by viewModels<ViewModelPreviousDays>()
     private val calendar = Calendar.getInstance()
     private val year = calendar.get(Calendar.YEAR)
     private val month = calendar.get(Calendar.MONTH)
@@ -97,7 +97,7 @@ class SecondFragment : Fragment(), OnEventClickListener {
             .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
             .setPositiveButton("Delete Event!"){ _, _ ->
                 secondVM.deleteEvent(event.name.toString())
-                (activity as HomeActivity).fragmentsReplacement(SecondFragment())
+                (activity as HomeActivity).fragmentsReplacement(PreviousDaysFragment())
             }.show()
         Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
     }
@@ -106,7 +106,7 @@ class SecondFragment : Fragment(), OnEventClickListener {
         val name = event.name.toString()
         val category =event.category.toString()
         val bundle = Bundle()
-        val eventInfo = EventInfo()
+        val eventInfo = PreviousDaysInfo()
         bundle.putString("EventName",name)
         bundle.putString("EventCategory",category)
         eventInfo.arguments = bundle

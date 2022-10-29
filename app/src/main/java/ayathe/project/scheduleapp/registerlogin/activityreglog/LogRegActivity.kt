@@ -14,6 +14,8 @@ import ayathe.project.scheduleapp.registerlogin.login.LoginFragment
 import ayathe.project.scheduleapp.registerlogin.register.RegisterFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
 class LogRegActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class LogRegActivity : AppCompatActivity() {
     private val registerFragment = RegisterFragment()
     private lateinit var mainActivityVm: ViewModelMainActivity
     private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainActivityVm = ViewModelProvider(this)[ViewModelMainActivity::class.java]

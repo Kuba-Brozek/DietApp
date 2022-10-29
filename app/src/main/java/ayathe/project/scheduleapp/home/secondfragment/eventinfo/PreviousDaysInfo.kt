@@ -7,23 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
-import ayathe.project.scheduleapp.home.secondfragment.SecondFragment
-import ayathe.project.scheduleapp.home.secondfragment.ViewModelSecondFragment
+import ayathe.project.scheduleapp.home.secondfragment.PreviousDaysFragment
+import ayathe.project.scheduleapp.home.secondfragment.ViewModelPreviousDays
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_event_info.*
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
-import kotlinx.android.synthetic.main.fragment_second.view.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 
-class EventInfo : Fragment() {
-    private val secondVM by viewModels<ViewModelSecondFragment>()
+class PreviousDaysInfo : Fragment() {
+    private val secondVM by viewModels<ViewModelPreviousDays>()
     private val calendar = Calendar.getInstance()
     private val year = calendar.get(Calendar.YEAR)
     private val month = calendar.get(Calendar.MONTH)
@@ -44,7 +41,7 @@ class EventInfo : Fragment() {
         secondVM.showEventInfo(view, requireContext(), eventName.toString())
 
         view.btn_exit.setOnClickListener {
-            (activity as HomeActivity).fragmentsReplacement(SecondFragment())
+            (activity as HomeActivity).fragmentsReplacement(PreviousDaysFragment())
         }
 
         view.btn_delete.setOnClickListener {
@@ -52,7 +49,7 @@ class EventInfo : Fragment() {
                 .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
                 .setPositiveButton("Delete Event!"){ _, _ ->
                     secondVM.deleteEvent(eventName.toString())
-                    (activity as HomeActivity).fragmentsReplacement(SecondFragment())
+                    (activity as HomeActivity).fragmentsReplacement(PreviousDaysFragment())
                 }.show()
         }
 

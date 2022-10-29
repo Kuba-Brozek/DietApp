@@ -14,6 +14,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import android.animation.ValueAnimator
+import android.animation.ValueAnimator.AnimatorUpdateListener
+
+import android.widget.TextView
+
+
+
 
 class LoginFragment : Fragment() {
 
@@ -47,4 +54,6 @@ class LoginFragment : Fragment() {
     private fun onClickLogin(){
             (activity as LogRegActivity).userSignIn(emailETL.text.toString(), passwordETL.text.toString())
     }
+
+
 }
