@@ -13,9 +13,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.adapter.EventAdapter
+import ayathe.project.scheduleapp.adapter.DayAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
-import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.DTO.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.eventinfo.PreviousDaysInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -29,7 +29,7 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
 
 
     private lateinit var eventArrayList: ArrayList<Event>
-    private lateinit var eventAdapter: EventAdapter
+    private lateinit var dayAdapter: DayAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: FirebaseFirestore
     private val secondVM by viewModels<ViewModelPreviousDays>()
@@ -55,8 +55,8 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.setHasFixedSize(true)
         eventArrayList = arrayListOf()
-        eventAdapter = EventAdapter(eventArrayList, this)
-        recyclerView.adapter = eventAdapter
+        dayAdapter = DayAdapter(eventArrayList, this)
+        recyclerView.adapter = dayAdapter
 
         secondVM.eventChangeListener(recyclerView, this)
 

@@ -8,7 +8,7 @@ import android.widget.Spinner
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
-import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.DTO.Event
 import ayathe.project.scheduleapp.repository.UserRepository
 import kotlinx.android.synthetic.main.fragment_second.view.*
 

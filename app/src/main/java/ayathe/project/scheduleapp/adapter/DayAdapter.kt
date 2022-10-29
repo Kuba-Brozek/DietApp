@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.DTO.Event
 import com.bumptech.glide.Glide
 
-class EventAdapter(private val eventList: ArrayList<Event>, private val listener: OnEventClickListener): RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+typealias dr = R.drawable
+
+class DayAdapter(private val eventList: ArrayList<Event>, private val listener: OnEventClickListener): RecyclerView.Adapter<DayAdapter.EventViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -23,22 +25,23 @@ class EventAdapter(private val eventList: ArrayList<Event>, private val listener
         val event: Event = eventList[position]
         holder.date.text = event.date
         holder.desc.text = event.name
+        val itV = holder.itemView
         try{
             when {
                 event.category.toString() ==  "biznes" -> {
-                    Glide.with(holder.itemView).load(R.drawable.business).into(holder.itemView.findViewById(R.id.background_event))
+                    Glide.with(itV).load(dr.business).into(itV.findViewById(R.id.background_event))
                 }
                 event.category.toString() == "edukacja" -> {
-                    Glide.with(holder.itemView).load(R.drawable.education).into(holder.itemView.findViewById(R.id.background_event))
+                    Glide.with(itV).load(dr.education).into(itV.findViewById(R.id.background_event))
                 }
                 event.category.toString() == "sprawy domowe" -> {
-                    Glide.with(holder.itemView).load(R.drawable.home).into(holder.itemView.findViewById(R.id.background_event))
+                    Glide.with(itV).load(dr.home).into(itV.findViewById(R.id.background_event))
                 }
                 event.category.toString() == "trening" -> {
-                    Glide.with(holder.itemView).load(R.drawable.work_out).into(holder.itemView.findViewById(R.id.background_event))
+                    Glide.with(itV).load(dr.work_out).into(itV.findViewById(R.id.background_event))
                 }
                 event.category.toString() == "inne" -> {
-                    Glide.with(holder.itemView).load(R.drawable.other).into(holder.itemView.findViewById(R.id.background_event))
+                    Glide.with(itV).load(dr.other).into(itV.findViewById(R.id.background_event))
                 }
             }
         }catch(e: Exception){

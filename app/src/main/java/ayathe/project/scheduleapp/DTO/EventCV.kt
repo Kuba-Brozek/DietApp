@@ -1,4 +1,4 @@
-package ayathe.project.scheduleapp.data
+package ayathe.project.scheduleapp.DTO
 
 data class EventCV(
     var date: String? = null,

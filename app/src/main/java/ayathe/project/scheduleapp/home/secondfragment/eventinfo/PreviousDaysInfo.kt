@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.data.Event
+import ayathe.project.scheduleapp.DTO.Event
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.PreviousDaysFragment
 import ayathe.project.scheduleapp.home.secondfragment.ViewModelPreviousDays

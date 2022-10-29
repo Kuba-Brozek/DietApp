@@ -9,13 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ayathe.project.scheduleapp.R
+import ayathe.project.scheduleapp.DTO.User
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.registerlogin.login.LoginFragment
 import ayathe.project.scheduleapp.registerlogin.register.RegisterFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 class LogRegActivity : AppCompatActivity() {
 
@@ -49,11 +48,17 @@ class LogRegActivity : AppCompatActivity() {
     fun userCreation(email: String, password: String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
+
                 if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithEmail:success")
+
+                    Log.d(TAG, "User created succesfully")
+                    val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "")
+                    mainActivityVm.addUserToDatabase(user)
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
+
                 } else {
+
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed. $password, $password",
                         Toast.LENGTH_SHORT).show()

@@ -39,10 +39,10 @@
             android:text="Apply changes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.942"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023" />
+            app:layout_constraintVertical_bias="0.061" />
 
         <TextView
             android:id="@+id/email_displayTV"
@@ -51,10 +51,10 @@
             android:text="email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.042"
+            app:layout_constraintHorizontal_bias="0.374"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.186" />
+            app:layout_constraintVertical_bias="0.007" />
 
         <EditText
             android:id="@+id/newpassConET"
@@ -121,7 +121,7 @@
             app:layout_constraintHorizontal_bias="0.945"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.896" />
+            app:layout_constraintVertical_bias="0.802" />
 
         <TextView
             android:id="@+id/background_pass_email"
@@ -184,10 +184,26 @@
             android:text="Zmień email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintHorizontal_bias="0.946"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.976" />
+            app:layout_constraintVertical_bias="0.896" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_settings"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/main_menu"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/black"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
