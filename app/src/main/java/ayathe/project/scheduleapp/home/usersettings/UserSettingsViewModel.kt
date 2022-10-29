@@ -1,16 +1,16 @@
-package ayathe.project.scheduleapp.home.thirdfragment
+package ayathe.project.scheduleapp.home.usersettings
 
 import android.content.Context
 import android.net.Uri
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ayathe.project.scheduleapp.repository.UserRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import kotlinx.android.synthetic.main.fragment_third.*
-import kotlinx.android.synthetic.main.fragment_third.view.*
 import kotlinx.coroutines.*
 
 class UserSettingsViewModel: ViewModel() {
@@ -30,17 +30,17 @@ class UserSettingsViewModel: ViewModel() {
 
     }
 
-    fun emailChangeConfirmation(context: Context, view: View) = viewModelScope.launch {
+    fun emailChangeConfirmation(context: Context, textView: TextView) = viewModelScope.launch {
         MaterialAlertDialogBuilder(context).setTitle("Alert")
             .setMessage("Are you sure you want to change your email?")
             .setNegativeButton("I'll keep it that way") { _, _ -> }
             .setPositiveButton("Change my email!") { _, _ ->
-                changeEmail(view.newemailET.text.toString(), context)
+                changeEmail(textView.text.toString(), context)
             }.show()
     }
 
 
-    fun passwordChangeConfirmation(context: Context, view: View, password: String)= viewModelScope.launch{
+    fun passwordChangeConfirmation(context: Context, password: String)= viewModelScope.launch{
         MaterialAlertDialogBuilder(context).setTitle("Alert").setMessage("Are you sure you want to change your password?")
             .setNegativeButton("I'll keep it that way"){ _, _ -> }
             .setPositiveButton("Change my password!"){ _, _ ->
@@ -49,11 +49,11 @@ class UserSettingsViewModel: ViewModel() {
     }
 
 
-    fun showUserInfo(view: View){
-        repo.showUserInfo(view)
+    fun showUserInfo(): String{
+        return repo.showUserInfo()
     }
 
-    suspend fun loadProfileImage(context: Context, view: View){
+    suspend fun loadProfileImage(context: Context, view: ImageView){
         viewModelScope.launch {
             repo.loadProfileImage(context, view)
         }.join()

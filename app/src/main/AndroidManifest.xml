@@ -20,6 +20,10 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".home.usersettings.UserSettings"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".SplashScreen"
             android:exported="true" >
             <intent-filter>

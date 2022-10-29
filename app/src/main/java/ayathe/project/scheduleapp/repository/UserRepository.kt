@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
@@ -19,7 +20,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
-import kotlinx.android.synthetic.main.fragment_third.view.*
 
 class UserRepository {
 
@@ -104,9 +104,8 @@ class UserRepository {
             }
     }
 
-    fun showUserInfo(view: View){
-        val email = auth.currentUser!!.email.toString()
-        view.email_displayTV.text = email
+    fun showUserInfo(): String{
+        return auth.currentUser!!.email.toString()
     }
 
     fun showEventInfo(view: View, context: Context, eventName: String){
@@ -146,14 +145,14 @@ class UserRepository {
         }
     }
 
-    fun loadProfileImage(context: Context, view: View){
+    fun loadProfileImage(context: Context, view: ImageView){
         val imageName = auth.currentUser!!.email!!
         val uri = storage.child(imageName)
         if (!uri.equals(null)){
             try {
                 uri.downloadUrl.addOnSuccessListener { Uri ->
                     val imageURL = Uri.toString()
-                    Glide.with(context).load(imageURL).into(view.findViewById(R.id.profile_image))
+                    Glide.with(context).load(imageURL).into(view)
                 }
             } catch (e: java.lang.Exception){
                 Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
@@ -169,7 +168,7 @@ class UserRepository {
             Log.i("Auth error", " Current user authentification ended with error.")
         }
         else {
-            val uploadTask = storage.child(auth.currentUser!!.email!!).putFile(imageFileUri)
+            storage.child(auth.currentUser!!.email!!).putFile(imageFileUri)
                 .addOnSuccessListener {
                     Log.i("Upload Image Success", "Profile Image succesfully uploaded to Cloud Storage.")
                 }.addOnFailureListener{

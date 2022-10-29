@@ -11,7 +11,6 @@ import ayathe.project.scheduleapp.adapter.OnEventClickListener
 import ayathe.project.scheduleapp.data.Event
 import ayathe.project.scheduleapp.repository.UserRepository
 import kotlinx.android.synthetic.main.fragment_second.view.*
-import kotlinx.android.synthetic.main.fragment_third.view.*
 
 class ViewModelPreviousDays: ViewModel() {
     private val repo = UserRepository()
