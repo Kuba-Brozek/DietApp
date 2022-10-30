@@ -1,13 +1,17 @@
 package ayathe.project.scheduleapp.home.usersettings
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ayathe.project.scheduleapp.databinding.ActivityChangePersonalInfoBinding
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_change_personal_info.*
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -15,6 +19,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import okhttp3.internal.wait
+import kotlin.concurrent.fixedRateTimer
 
 class ChangePersonalInfoActivity : AppCompatActivity() {
 
@@ -47,12 +53,19 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 ActivityResultContracts
                 .GetContent()) {
                 profile_image_IV_CPI.setImageURI(it)
-                replaceImage(it)
+                Glide.with(this@ChangePersonalInfoActivity)
+                    .load(it).circleCrop().into(profile_image_IV_CPI)
                     val a = it
                     profile_image_BTN_CPI.setOnClickListener {
+                            loading_changes.visibility = View.VISIBLE
                         CoroutineScope(Dispatchers.Main).launch {
                         userSettingsVM.uploadProfileImage(a)
+                            Handler().postDelayed({
+                                loading_changes.visibility = View.GONE
+                            }, 2000)
+
                     }
+
                 }
             }
 
@@ -69,5 +82,10 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("Image Error", "Profile Image not found.")
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this@ChangePersonalInfoActivity, UserSettings::class.java)
+        startActivity(intent)
     }
 }

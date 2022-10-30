@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdk 32
+    compileSdk 33
     buildToolsVersion "30.0.3"
 
     buildFeatures {
@@ -19,7 +19,7 @@ android {
     defaultConfig {
         applicationId "ayathe.project.scheduleapp"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 

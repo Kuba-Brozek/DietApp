@@ -13,6 +13,7 @@ import ayathe.project.scheduleapp.DTO.User
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.registerlogin.login.LoginFragment
 import ayathe.project.scheduleapp.registerlogin.register.RegisterFragment
+import ayathe.project.scheduleapp.registerlogin.register.userDataInput.AfterRegistrationActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -54,7 +55,7 @@ class LogRegActivity : AppCompatActivity() {
                     Log.d(TAG, "User created succesfully")
                     val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "")
                     mainActivityVm.addUserToDatabase(user)
-                    val intent = Intent(this, HomeActivity::class.java)
+                    val intent = Intent(this, AfterRegistrationActivity::class.java)
                     startActivity(intent)
 
                 } else {

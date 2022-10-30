@@ -190,7 +190,8 @@ class UserRepository {
             try {
                 uri.downloadUrl.addOnSuccessListener { Uri ->
                     val imageURL = Uri.toString()
-                    Glide.with(context).load(imageURL).into(imageView)
+                    Glide.with(context).load(imageURL)
+                        .circleCrop().into(imageView)
                 }
             } catch (e: Exception) {
                 Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")

@@ -38,10 +38,9 @@ class HomeActivity : AppCompatActivity() {
         fragmentContainer.commit()
     }
 
-    fun openGallery() {
-        val intent = Intent("android.intent.action.GET_CONTENT")
-        intent.type = "image/*"
-        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+    override fun onBackPressed() {
+        finishAffinity()
+        finish()
     }
 
 

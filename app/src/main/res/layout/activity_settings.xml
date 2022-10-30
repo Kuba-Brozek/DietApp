@@ -8,18 +8,27 @@
         android:layout_height="match_parent"
         tools:context=".home.usersettings.UserSettings">
 
+
+        <ImageView
+            android:id="@+id/background_circle"
+            android:layout_width="114sp"
+            android:src="@drawable/round_button"
+            android:layout_height="114sp"
+            android:padding="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="100sp"
             android:layout_height="100sp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="7dp"
             android:src="@drawable/round_button"
             android:background="@drawable/background_shape_image_view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.009" />
+            />
 
 
         <androidx.appcompat.widget.AppCompatButton
