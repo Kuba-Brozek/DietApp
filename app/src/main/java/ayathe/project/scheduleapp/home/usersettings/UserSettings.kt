@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import android.view.ViewGroup
 import ayathe.project.scheduleapp.DTO.User
+import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -85,6 +86,10 @@ class UserSettings : AppCompatActivity() {
         fragmentContainer.commit()
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this@UserSettings, HomeActivity::class.java)
+        startActivity(intent)
+    }
 
 }
 
