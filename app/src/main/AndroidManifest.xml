@@ -13,23 +13,23 @@
         android:theme="@style/Theme.ScheduleApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".registerlogin.register.userDataInput.AfterRegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".home.homeactivity.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".registerlogin.activityreglog.LogRegActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".home.usersettings.UserSettings"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".home.usersettings.ChangePersonalInfoActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
