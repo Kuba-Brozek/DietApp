@@ -2,16 +2,15 @@ package ayathe.project.scheduleapp.home.usersettings
 
 import android.content.Context
 import android.net.Uri
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ayathe.project.scheduleapp.DTO.User
 import ayathe.project.scheduleapp.repository.UserRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.coroutines.*
+import okhttp3.internal.wait
 
 class UserSettingsViewModel: ViewModel() {
     private val repo = UserRepository()
@@ -27,7 +26,6 @@ class UserSettingsViewModel: ViewModel() {
         viewModelScope.launch {
             repo.changeEmail(email, context)
         }
-
     }
 
     fun emailChangeConfirmation(context: Context, textView: TextView) = viewModelScope.launch {
@@ -54,14 +52,22 @@ class UserSettingsViewModel: ViewModel() {
     }
 
     suspend fun loadProfileImage(context: Context, view: ImageView){
-        viewModelScope.launch {
-            repo.loadProfileImage(context, view)
-        }.join()
+        try {
+            viewModelScope.launch {
+                repo.loadProfileImage(context, view)
+            }.join()
+        } catch (ex: Exception){
+
+        }
     }
+
+    fun readUserData(myCallback: (User) -> Unit){
+        return repo.readUserData(myCallback)
+    }
+
     suspend fun uploadProfileImage(imageFileUri: Uri) {
         viewModelScope.launch {
             repo.uploadProfileImage(imageFileUri)
         }.join()
     }
-
 }

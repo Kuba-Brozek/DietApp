@@ -64,9 +64,9 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
         view.category_spinner.onItemSelectedListener = object : AdapterView.OnItemClickListener,
             AdapterView.OnItemSelectedListener {
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                TODO("Not yet implemented") }
+            }
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented") }
+            }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 choice = parent?.getItemAtPosition(position).toString()
