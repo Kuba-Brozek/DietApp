@@ -1,0 +1,4158 @@
+{
+"Nazwa": "Agrest",
+"Kcal": 41,
+"Weglowodany": 11,8,
+"Bialko": 0,8,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Ananas",
+"Kcal": 54,
+"Weglowodany": 13,6,
+"Bialko": 0,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Ananas, plastry w syropie",
+"Kcal": 84,
+"Weglowodany": 21,
+"Bialko": 0,4,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Ananasy, dżem niskosłodzony",
+"Kcal": 157,
+"Weglowodany": 38,6,
+"Bialko": 0,2,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Arbuz",
+"Kcal": 36,
+"Weglowodany": 8,4,
+"Bialko": 0,6,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Awokado",
+"Kcal": 160,
+"Weglowodany": 7,4,
+"Bialko": 2,
+"Tluszcz": 15,3
+},
+{
+"Nazwa": "Babka biszkoptowa",
+"Kcal": 340,
+"Weglowodany": 67,1,
+"Bialko": 8,2,
+"Tluszcz": 4,3
+},
+{
+"Nazwa": "Bagietki francuskie",
+"Kcal": 282,
+"Weglowodany": 60,1,
+"Bialko": 7,9,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Bakłażan",
+"Kcal": 21,
+"Weglowodany": 6,3,
+"Bialko": 1,1,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Baleron gotowany",
+"Kcal": 244,
+"Weglowodany": 0,9,
+"Bialko": 15,1,
+"Tluszcz": 20,2
+},
+{
+"Nazwa": "Banan",
+"Kcal": 95,
+"Weglowodany": 23,5,
+"Bialko": 1,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Baranina, łopatka",
+"Kcal": 284,
+"Weglowodany": 0,
+"Bialko": 15,6,
+"Tluszcz": 25
+},
+{
+"Nazwa": "Baranina, udziec",
+"Kcal": 232,
+"Weglowodany": 0,
+"Bialko": 18,
+"Tluszcz": 18
+},
+{
+"Nazwa": "Barszcz czerwony zabielany",
+"Kcal": 32,
+"Weglowodany": 3,3,
+"Bialko": 2,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Barszcz ukraiński",
+"Kcal": 54,
+"Weglowodany": 6,5,
+"Bialko": 2,1,
+"Tluszcz": 2,7
+},
+{
+"Nazwa": "Barszcz ukraiński mrożony",
+"Kcal": 28,
+"Weglowodany": 7,1,
+"Bialko": 1,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Barszcz z boćwiną",
+"Kcal": 29,
+"Weglowodany": 2,5,
+"Bialko": 1,5,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Baton Bounty",
+"Kcal": 448,
+"Weglowodany": 56,7,
+"Bialko": 4,2,
+"Tluszcz": 25,2
+},
+{
+"Nazwa": "Befsztyk bity wiejski",
+"Kcal": 258,
+"Weglowodany": 1,6,
+"Bialko": 19,4,
+"Tluszcz": 19,6
+},
+{
+"Nazwa": "Białko jaja kurzego",
+"Kcal": 49,
+"Weglowodany": 0,7,
+"Bialko": 10,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Bigos",
+"Kcal": 119,
+"Weglowodany": 3,9,
+"Bialko": 5,1,
+"Tluszcz": 9,9
+},
+{
+"Nazwa": "Bitki wieprzowe",
+"Kcal": 195,
+"Weglowodany": 2,6,
+"Bialko": 10,4,
+"Tluszcz": 16,1
+},
+{
+"Nazwa": "Bitki wieprzowe w jarzynach",
+"Kcal": 198,
+"Weglowodany": 4,3,
+"Bialko": 10,7,
+"Tluszcz": 16
+},
+{
+"Nazwa": "Bitki wołowe",
+"Kcal": 102,
+"Weglowodany": 2,4,
+"Bialko": 13,6,
+"Tluszcz": 4,3
+},
+{
+"Nazwa": "Bitki wołowe w jarzynach",
+"Kcal": 116,
+"Weglowodany": 6,6,
+"Bialko": 14,3,
+"Tluszcz": 4,4
+},
+{
+"Nazwa": "Bliny ziemniaczane",
+"Kcal": 257,
+"Weglowodany": 23,6,
+"Bialko": 5,6,
+"Tluszcz": 16,3
+},
+{
+"Nazwa": "Boćwina",
+"Kcal": 17,
+"Weglowodany": 5,5,
+"Bialko": 2,1,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Boeuf Strogonow",
+"Kcal": 220,
+"Weglowodany": 3,7,
+"Bialko": 19,5,
+"Tluszcz": 14,3
+},
+{
+"Nazwa": "Bób",
+"Kcal": 66,
+"Weglowodany": 14,
+"Bialko": 7,1,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Brokuły",
+"Kcal": 27,
+"Weglowodany": 5,2,
+"Bialko": 3,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Brokuły mrożone",
+"Kcal": 24,
+"Weglowodany": 4,7,
+"Bialko": 2,7,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Brukselka",
+"Kcal": 37,
+"Weglowodany": 8,7,
+"Bialko": 4,7,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Brukselka mrożona",
+"Kcal": 36,
+"Weglowodany": 8,4,
+"Bialko": 4,5,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Brukselka z wody",
+"Kcal": 110,
+"Weglowodany": 12,
+"Bialko": 4,2,
+"Tluszcz": 7,1
+},
+{
+"Nazwa": "Bryzol wołowy z polędwicy",
+"Kcal": 252,
+"Weglowodany": 1,4,
+"Bialko": 24,6,
+"Tluszcz": 16,6
+},
+{
+"Nazwa": "Brzoskwinia",
+"Kcal": 46,
+"Weglowodany": 11,9,
+"Bialko": 1,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Brzoskwinie w syropie",
+"Kcal": 73,
+"Weglowodany": 18,2,
+"Bialko": 0,4,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Brzoskwinie, dżem niskosłodzony",
+"Kcal": 155,
+"Weglowodany": 38,3,
+"Bialko": 0,5,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Buchty drożdżowe",
+"Kcal": 303,
+"Weglowodany": 45,6,
+"Bialko": 6,2,
+"Tluszcz": 11
+},
+{
+"Nazwa": "Budyń z mięsa i makaronu",
+"Kcal": 171,
+"Weglowodany": 23,1,
+"Bialko": 10,6,
+"Tluszcz": 4,4
+},
+{
+"Nazwa": "Bułka tarta",
+"Kcal": 347,
+"Weglowodany": 77,6,
+"Bialko": 9,7,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Bułki grahamki",
+"Kcal": 258,
+"Weglowodany": 56,9,
+"Bialko": 8,2,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Bułki kajzerki",
+"Kcal": 296,
+"Weglowodany": 59,4,
+"Bialko": 7,5,
+"Tluszcz": 3,6
+},
+{
+"Nazwa": "Bułki maślane",
+"Kcal": 326,
+"Weglowodany": 61,8,
+"Bialko": 7,7,
+"Tluszcz": 5,9
+},
+{
+"Nazwa": "Bułki pszenne zwykłe",
+"Kcal": 272,
+"Weglowodany": 58,5,
+"Bialko": 7,3,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Bułki wrocławskie",
+"Kcal": 293,
+"Weglowodany": 57,4,
+"Bialko": 7,2,
+"Tluszcz": 4,4
+},
+{
+"Nazwa": "Burak",
+"Kcal": 38,
+"Weglowodany": 9,5,
+"Bialko": 1,8,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Buraki mrożone, puree",
+"Kcal": 34,
+"Weglowodany": 8,6,
+"Bialko": 1,6,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Buraki z jabłkami",
+"Kcal": 69,
+"Weglowodany": 10,3,
+"Bialko": 1,5,
+"Tluszcz": 3,3
+},
+{
+"Nazwa": "Buraki zasmażane",
+"Kcal": 83,
+"Weglowodany": 8,7,
+"Bialko": 1,6,
+"Tluszcz": 5,5
+},
+{
+"Nazwa": "Buraki ze śmietaną",
+"Kcal": 68,
+"Weglowodany": 8,8,
+"Bialko": 1,8,
+"Tluszcz": 3,6
+},
+{
+"Nazwa": "Cebula",
+"Kcal": 30,
+"Weglowodany": 6,9,
+"Bialko": 1,4,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Chałki",
+"Kcal": 333,
+"Weglowodany": 61,6,
+"Bialko": 7,
+"Tluszcz": 7
+},
+{
+"Nazwa": "Chipsy bekonowe",
+"Kcal": 537,
+"Weglowodany": 52,2,
+"Bialko": 5,9,
+"Tluszcz": 38
+},
+{
+"Nazwa": "Chipsy paprykowe",
+"Kcal": 549,
+"Weglowodany": 50,4,
+"Bialko": 6,
+"Tluszcz": 40
+},
+{
+"Nazwa": "Chipsy solone",
+"Kcal": 552,
+"Weglowodany": 49,9,
+"Bialko": 5,6,
+"Tluszcz": 40,7
+},
+{
+"Nazwa": "Chleb baltonowski",
+"Kcal": 246,
+"Weglowodany": 55,9,
+"Bialko": 5,9,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Chleb chrupki",
+"Kcal": 353,
+"Weglowodany": 78,9,
+"Bialko": 8,7,
+"Tluszcz": 2,4
+},
+{
+"Nazwa": "Chleb Graham",
+"Kcal": 226,
+"Weglowodany": 49,4,
+"Bialko": 7,6,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Chleb mazowiecki",
+"Kcal": 248,
+"Weglowodany": 56,3,
+"Bialko": 6,3,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Chleb mieszany słonecznikowy",
+"Kcal": 246,
+"Weglowodany": 49,2,
+"Bialko": 6,4,
+"Tluszcz": 4,5
+},
+{
+"Nazwa": "Chleb mieszany sojowy",
+"Kcal": 231,
+"Weglowodany": 49,6,
+"Bialko": 6,8,
+"Tluszcz": 2,7
+},
+{
+"Nazwa": "Chleb praski",
+"Kcal": 244,
+"Weglowodany": 56,2,
+"Bialko": 5,7,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Chleb pszenny",
+"Kcal": 249,
+"Weglowodany": 56,
+"Bialko": 6,8,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Chleb staropolski",
+"Kcal": 219,
+"Weglowodany": 50,5,
+"Bialko": 5,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Chleb wiejski",
+"Kcal": 239,
+"Weglowodany": 55,1,
+"Bialko": 5,8,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Chleb zwykły",
+"Kcal": 245,
+"Weglowodany": 57,
+"Bialko": 5,4,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Chleb żytni jasny",
+"Kcal": 241,
+"Weglowodany": 57,1,
+"Bialko": 4,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Chleb żytni jasny mleczny",
+"Kcal": 253,
+"Weglowodany": 58,3,
+"Bialko": 4,8,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Chleb żytni pełnoziarnisty",
+"Kcal": 237,
+"Weglowodany": 53,9,
+"Bialko": 6,7,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Chleb żytni razowy",
+"Kcal": 223,
+"Weglowodany": 51,5,
+"Bialko": 5,6,
+"Tluszcz": 1,7
+},
+{
+"Nazwa": "Chleb żytni razowy na miodzie",
+"Kcal": 234,
+"Weglowodany": 54,2,
+"Bialko": 5,3,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Chleb żytni razowy z soją i słonecznikiem",
+"Kcal": 244,
+"Weglowodany": 50,5,
+"Bialko": 7,9,
+"Tluszcz": 3,7
+},
+{
+"Nazwa": "Chleb żytni wileński",
+"Kcal": 225,
+"Weglowodany": 52,3,
+"Bialko": 4,4,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Chrupki kukurydziane",
+"Kcal": 352,
+"Weglowodany": 78,9,
+"Bialko": 8,9,
+"Tluszcz": 3
+},
+{
+"Nazwa": "Chrzan",
+"Kcal": 67,
+"Weglowodany": 18,1,
+"Bialko": 4,5,
+"Tluszcz": 0,6
+},
+{
+"Nazwa": "Ciastka francuskie ze śliwkami",
+"Kcal": 432,
+"Weglowodany": 44,8,
+"Bialko": 5,
+"Tluszcz": 26,8
+},
+{
+"Nazwa": "Ciastka Karpatki",
+"Kcal": 449,
+"Weglowodany": 39,1,
+"Bialko": 4,7,
+"Tluszcz": 30,9
+},
+{
+"Nazwa": "Ciastka Napoleonki",
+"Kcal": 348,
+"Weglowodany": 43,6,
+"Bialko": 5,9,
+"Tluszcz": 17
+},
+{
+"Nazwa": "Ciastka tortowe z owocami",
+"Kcal": 276,
+"Weglowodany": 47,2,
+"Bialko": 3,2,
+"Tluszcz": 9
+},
+{
+"Nazwa": "Ciasto drożdżowe",
+"Kcal": 290,
+"Weglowodany": 47,7,
+"Bialko": 7,4,
+"Tluszcz": 8,2
+},
+{
+"Nazwa": "Ciasto kruche podstawowe",
+"Kcal": 429,
+"Weglowodany": 49,9,
+"Bialko": 5,2,
+"Tluszcz": 23,8
+},
+{
+"Nazwa": "Ciasto naleśnikowe bez piany",
+"Kcal": 174,
+"Weglowodany": 28,4,
+"Bialko": 5,9,
+"Tluszcz": 4,3
+},
+{
+"Nazwa": "Ciasto naleśnikowe biszkoptowe",
+"Kcal": 187,
+"Weglowodany": 25,5,
+"Bialko": 8,3,
+"Tluszcz": 6
+},
+{
+"Nazwa": "Cielęcina w potrawce",
+"Kcal": 103,
+"Weglowodany": 4,
+"Bialko": 13,5,
+"Tluszcz": 4
+},
+{
+"Nazwa": "Cielęcina, łopatka",
+"Kcal": 106,
+"Weglowodany": 0,
+"Bialko": 19,9,
+"Tluszcz": 2,8
+},
+{
+"Nazwa": "Cielęcina, sznyclówka",
+"Kcal": 105,
+"Weglowodany": 0,
+"Bialko": 20,5,
+"Tluszcz": 2,4
+},
+{
+"Nazwa": "Cielęcina, udziec",
+"Kcal": 108,
+"Weglowodany": 0,
+"Bialko": 19,9,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Coca Cola",
+"Kcal": 42,
+"Weglowodany": 10,4,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Cukier",
+"Kcal": 405,
+"Weglowodany": 99,8,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Cukierki irysy",
+"Kcal": 421,
+"Weglowodany": 76,1,
+"Bialko": 4,3,
+"Tluszcz": 10,7
+},
+{
+"Nazwa": "Cukierki krówki",
+"Kcal": 421,
+"Weglowodany": 76,1,
+"Bialko": 4,3,
+"Tluszcz": 10,7
+},
+{
+"Nazwa": "Cukinia",
+"Kcal": 15,
+"Weglowodany": 3,2,
+"Bialko": 1,2,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Cykoria",
+"Kcal": 21,
+"Weglowodany": 4,1,
+"Bialko": 1,7,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Cytryna",
+"Kcal": 36,
+"Weglowodany": 9,5,
+"Bialko": 0,8,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Czarne jagody",
+"Kcal": 45,
+"Weglowodany": 12,2,
+"Bialko": 0,8,
+"Tluszcz": 0,6
+},
+{
+"Nazwa": "Czarne porzeczki, dżem niskosłodzony",
+"Kcal": 152,
+"Weglowodany": 39,6,
+"Bialko": 0,5,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Czarne porzeczki, dżem wysokosłodzony",
+"Kcal": 251,
+"Weglowodany": 63,9,
+"Bialko": 0,5,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Czekolada biała",
+"Kcal": 530,
+"Weglowodany": 51,
+"Bialko": 7,7,
+"Tluszcz": 38,4
+},
+{
+"Nazwa": "Czekolada deserowa",
+"Kcal": 531,
+"Weglowodany": 64,
+"Bialko": 5,3,
+"Tluszcz": 28,9
+},
+{
+"Nazwa": "Czekolada gorzka",
+"Kcal": 554,
+"Weglowodany": 56,6,
+"Bialko": 6,7,
+"Tluszcz": 34,3
+},
+{
+"Nazwa": "Czekolada kawowa",
+"Kcal": 526,
+"Weglowodany": 62,7,
+"Bialko": 5,5,
+"Tluszcz": 29
+},
+{
+"Nazwa": "Czekolada mleczna",
+"Kcal": 549,
+"Weglowodany": 54,7,
+"Bialko": 9,8,
+"Tluszcz": 32,8
+},
+{
+"Nazwa": "Czekolada mleczna z orzechami laskowymi",
+"Kcal": 539,
+"Weglowodany": 57,3,
+"Bialko": 8,6,
+"Tluszcz": 30,9
+},
+{
+"Nazwa": "Czekolada nadziewana",
+"Kcal": 450,
+"Weglowodany": 68,8,
+"Bialko": 3,9,
+"Tluszcz": 17,6
+},
+{
+"Nazwa": "Czereśnie",
+"Kcal": 61,
+"Weglowodany": 14,6,
+"Bialko": 1,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Czosnek",
+"Kcal": 146,
+"Weglowodany": 32,6,
+"Bialko": 6,4,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Ćwikła",
+"Kcal": 41,
+"Weglowodany": 10,2,
+"Bialko": 1,6,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Daktyle suszone",
+"Kcal": 277,
+"Weglowodany": 74,
+"Bialko": 2,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Delicje szampańskie",
+"Kcal": 327,
+"Weglowodany": 52,8,
+"Bialko": 4,1,
+"Tluszcz": 11,2
+},
+{
+"Nazwa": "Deser ryżowy jabłkowy",
+"Kcal": 134,
+"Weglowodany": 23,9,
+"Bialko": 2,8,
+"Tluszcz": 3
+},
+{
+"Nazwa": "Deser ryżowy waniliowy",
+"Kcal": 133,
+"Weglowodany": 23,5,
+"Bialko": 3,
+"Tluszcz": 2,9
+},
+{
+"Nazwa": "Deser twarogowy termizowany kakaowy",
+"Kcal": 156,
+"Weglowodany": 11,2,
+"Bialko": 13,9,
+"Tluszcz": 6,2
+},
+{
+"Nazwa": "Deser twarogowy termizowany truskawkowy",
+"Kcal": 170,
+"Weglowodany": 18,3,
+"Bialko": 11,
+"Tluszcz": 5,8
+},
+{
+"Nazwa": "Dorsz świeży",
+"Kcal": 78,
+"Weglowodany":               0	,
+"Bialko": 17,7,
+"Tluszcz": 0,7
+},
+{
+"Nazwa": "Dorsz świeży, filety bez skóry",
+"Kcal": 70,
+"Weglowodany":               0	,
+"Bialko": 16,5,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Dorsz w jarzynach",
+"Kcal": 117,
+"Weglowodany": 3,9,
+"Bialko": 15,6,
+"Tluszcz": 4,9
+},
+{
+"Nazwa": "Dorsz wędzony",
+"Kcal": 94,
+"Weglowodany":               0	,
+"Bialko": 22,1,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Dorsz z rusztu",
+"Kcal": 172,
+"Weglowodany": 0,6,
+"Bialko": 22,1,
+"Tluszcz": 9,1
+},
+{
+"Nazwa": "Dorsz, filety po grecku",
+"Kcal": 152,
+"Weglowodany": 4,6,
+"Bialko": 10,6,
+"Tluszcz": 10,8
+},
+{
+"Nazwa": "Dorsz, filety smażone panierowane",
+"Kcal": 273,
+"Weglowodany": 14,6,
+"Bialko": 19,1,
+"Tluszcz": 15,8
+},
+{
+"Nazwa": "Dorsz, kotlet mielony",
+"Kcal": 260,
+"Weglowodany": 10,9,
+"Bialko": 14,9,
+"Tluszcz": 17,8
+},
+{
+"Nazwa": "Dorsz, pulpety",
+"Kcal": 112,
+"Weglowodany": 8,8,
+"Bialko": 14,2,
+"Tluszcz": 2,6
+},
+{
+"Nazwa": "Dorsz, sałatka",
+"Kcal": 187,
+"Weglowodany": 7,2,
+"Bialko": 9,8,
+"Tluszcz": 13,9
+},
+{
+"Nazwa": "Dynia",
+"Kcal": 28,
+"Weglowodany": 7,7,
+"Bialko": 1,3,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Dynia z pomidorami",
+"Kcal": 44,
+"Weglowodany": 6,5,
+"Bialko": 1,2,
+"Tluszcz": 2,4
+},
+{
+"Nazwa": "Dynia, pestki",
+"Kcal": 556,
+"Weglowodany": 18,
+"Bialko": 24,5,
+"Tluszcz": 45,8
+},
+{
+"Nazwa": "Eklerki z bitą śmietaną",
+"Kcal": 317,
+"Weglowodany": 33,5,
+"Bialko": 5,8,
+"Tluszcz": 18
+},
+{
+"Nazwa": "Fasola biała, suche nasiona",
+"Kcal": 288,
+"Weglowodany": 61,6,
+"Bialko": 21,4,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Fasola cięta konserwowa",
+"Kcal": 16,
+"Weglowodany": 4,5,
+"Bialko": 1,5,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Fasola szparagowa",
+"Kcal": 27,
+"Weglowodany": 7,6,
+"Bialko": 2,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Fasolka flageolet konserwowa",
+"Kcal": 61,
+"Weglowodany": 15,
+"Bialko": 6,3,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Fasolka po bretońsku",
+"Kcal": 141,
+"Weglowodany": 15,9,
+"Bialko": 8,
+"Tluszcz": 6,6
+},
+{
+"Nazwa": "Fasolka szparagowa",
+"Kcal": 97,
+"Weglowodany": 10,3,
+"Bialko": 2,9,
+"Tluszcz": 6,9
+},
+{
+"Nazwa": "Fasolka szparagowa mrożona",
+"Kcal": 24,
+"Weglowodany": 6,8,
+"Bialko": 2,2,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Figi suszone",
+"Kcal": 290,
+"Weglowodany": 78,
+"Bialko": 3,6,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Flaki",
+"Kcal": 84,
+"Weglowodany": 0,
+"Bialko": 16,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Flądra świeża",
+"Kcal": 83,
+"Weglowodany": 0,
+"Bialko": 16,5,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Galaretka z nóżek wieprzowych",
+"Kcal": 202,
+"Weglowodany": 0,8,
+"Bialko": 16,9,
+"Tluszcz": 14,9
+},
+{
+"Nazwa": "Gęś, tuszka",
+"Kcal": 339,
+"Weglowodany":               0	,
+"Bialko": 14,1,
+"Tluszcz": 31,8
+},
+{
+"Nazwa": "Gołąbki z mięsem i ryżem w sosie pomidorowym",
+"Kcal": 108,
+"Weglowodany": 10,
+"Bialko": 3,6,
+"Tluszcz": 6,7
+},
+{
+"Nazwa": "Grejpfrut",
+"Kcal": 36,
+"Weglowodany": 9,8,
+"Bialko": 0,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Groch, suche nasiona",
+"Kcal": 293,
+"Weglowodany": 60,2,
+"Bialko": 23,8,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Groszek zielony",
+"Kcal": 75,
+"Weglowodany": 17,
+"Bialko": 6,7,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Groszek zielony konserwowy",
+"Kcal": 63,
+"Weglowodany": 15,8,
+"Bialko": 4,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Groszek zielony mrożony",
+"Kcal": 72,
+"Weglowodany": 16,3,
+"Bialko": 6,4,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Groszek zielony z masłem",
+"Kcal": 100,
+"Weglowodany": 9,3,
+"Bialko": 3,7,
+"Tluszcz": 6,8
+},
+{
+"Nazwa": "Gruszka",
+"Kcal": 54,
+"Weglowodany": 14,4,
+"Bialko": 0,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Gruszki w sosie waniliowym",
+"Kcal": 151,
+"Weglowodany": 34,8,
+"Bialko": 1,6,
+"Tluszcz": 1,1
+},
+{
+"Nazwa": "Gulasz wołowy",
+"Kcal": 148,
+"Weglowodany": 2,6,
+"Bialko": 14,
+"Tluszcz": 9,2
+},
+{
+"Nazwa": "Halibut biały świeży",
+"Kcal": 98,
+"Weglowodany":               0	,
+"Bialko": 20,1,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Herbata bez cukru",
+"Kcal":  ,
+"Weglowodany": 0,
+"Bialko": 0,1,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Herbatniki",
+"Kcal": 437,
+"Weglowodany": 76,8,
+"Bialko": 8,2,
+"Tluszcz": 11
+},
+{
+"Nazwa": "Herbatniki Corso",
+"Kcal": 440,
+"Weglowodany": 67,1,
+"Bialko": 5,
+"Tluszcz": 17,2
+},
+{
+"Nazwa": "Herbatniki kakaowe",
+"Kcal": 474,
+"Weglowodany": 62,9,
+"Bialko": 6,9,
+"Tluszcz": 22,3
+},
+{
+"Nazwa": "Herbatniki kokosowe",
+"Kcal": 473,
+"Weglowodany": 59,8,
+"Bialko": 6,4,
+"Tluszcz": 25,2
+},
+{
+"Nazwa": "Herbatniki sezamowe",
+"Kcal": 503,
+"Weglowodany": 55,7,
+"Bialko": 8,1,
+"Tluszcz": 28,6
+},
+{
+"Nazwa": "Herbatniki w czekoladzie",
+"Kcal": 489,
+"Weglowodany": 63,1,
+"Bialko": 6,3,
+"Tluszcz": 24
+},
+{
+"Nazwa": "Herbatniki z cukrem",
+"Kcal": 460,
+"Weglowodany": 70,7,
+"Bialko": 6,7,
+"Tluszcz": 17,2
+},
+{
+"Nazwa": "Herbatniki z nadzieniem czekoladowym",
+"Kcal": 497,
+"Weglowodany": 57,3,
+"Bialko": 5,5,
+"Tluszcz": 27,9
+},
+{
+"Nazwa": "Herbatniki z nadzieniem owocowym",
+"Kcal": 389,
+"Weglowodany": 58,6,
+"Bialko": 3,8,
+"Tluszcz": 16,1
+},
+{
+"Nazwa": "Indyk, mięso z piersi bez skóry",
+"Kcal": 84,
+"Weglowodany": 0,
+"Bialko": 19,2,
+"Tluszcz": 0,7
+},
+{
+"Nazwa": "Indyk, mięso z podudzia ze skórą",
+"Kcal": 142,
+"Weglowodany": 0,
+"Bialko": 15,7,
+"Tluszcz": 8,9
+},
+{
+"Nazwa": "Indyk, mięso z udźca ze skórą",
+"Kcal": 131,
+"Weglowodany": 0,
+"Bialko": 18,4,
+"Tluszcz": 6,4
+},
+{
+"Nazwa": "ndyk, skrzydło",
+"Kcal": 168,
+"Weglowodany": 0,
+"Bialko": 16,5,
+"Tluszcz": 11,4
+},
+{
+"Nazwa": "Jabłka pieczone",
+"Kcal": 93,
+"Weglowodany": 20,8,
+"Bialko": 0,3,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Jabłka suszone",
+"Kcal": 238,
+"Weglowodany": 62,3,
+"Bialko": 2,1,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Jabłka w kruchym cieście",
+"Kcal": 348,
+"Weglowodany": 45,3,
+"Bialko": 4,1,
+"Tluszcz": 17,4
+},
+{
+"Nazwa": "Jabłko",
+"Kcal": 46,
+"Weglowodany": 12,1,
+"Bialko": 0,4,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Jagody, dżem niskosłodzony",
+"Kcal": 153,
+"Weglowodany": 38,2,
+"Bialko": 0,3,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Jagodzianki",
+"Kcal": 314,
+"Weglowodany": 60,6,
+"Bialko": 7,1,
+"Tluszcz": 5,4
+},
+{
+"Nazwa": "Jaja gotowane",
+"Kcal": 109,
+"Weglowodany": 0,5,
+"Bialko": 9,8,
+"Tluszcz": 7,6
+},
+{
+"Nazwa": "Jaja kurze całe",
+"Kcal": 139,
+"Weglowodany": 0,6,
+"Bialko": 12,5,
+"Tluszcz": 9,7
+},
+{
+"Nazwa": "Jaja sadzone",
+"Kcal": 168,
+"Weglowodany": 0,6,
+"Bialko": 9,9,
+"Tluszcz": 14,2
+},
+{
+"Nazwa": "Jajecznica",
+"Kcal": 119,
+"Weglowodany": 0,5,
+"Bialko": 9,8,
+"Tluszcz": 8,7
+},
+{
+"Nazwa": "Jarmuż",
+"Kcal": 29,
+"Weglowodany": 6,1,
+"Bialko": 3,3,
+"Tluszcz": 0,7
+},
+{
+"Nazwa": "Jarzyny mrożone",
+"Kcal": 30,
+"Weglowodany": 7,5,
+"Bialko": 2,8,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Jogurt bananowy 1,5 %",
+"Kcal": 70,
+"Weglowodany": 10,4,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Jogurt jagodowy 1,5 %",
+"Kcal": 62,
+"Weglowodany": 8,8,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Jogurt morelowy 1,5 %",
+"Kcal": 63,
+"Weglowodany": 8,9,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Jogurt naturalny 2 %",
+"Kcal": 60,
+"Weglowodany": 6,2,
+"Bialko": 4,3,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Jogurt truskawkowy 1,5 %",
+"Kcal": 60,
+"Weglowodany": 8,2,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Jogurt wiśniowy 1,5 %",
+"Kcal": 61,
+"Weglowodany": 8,2,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Kabanosy",
+"Kcal": 326,
+"Weglowodany": 0	,
+"Bialko": 27,4,
+"Tluszcz": 24,3
+},
+{
+"Nazwa": "Kabanosy z kurczaka",
+"Kcal": 247,
+"Weglowodany": 0,1,
+"Bialko": 22,8,
+"Tluszcz": 17,4
+},
+{
+"Nazwa": "Kaczka, tuszka",
+"Kcal": 308,
+"Weglowodany": 0	,
+"Bialko": 13,5,
+"Tluszcz": 28,6
+},
+{
+"Nazwa": "Kakao w proszku 16 %",
+"Kcal": 448,
+"Weglowodany": 50,6,
+"Bialko": 18,2,
+"Tluszcz": 21,7
+},
+{
+"Nazwa": "Kalafior",
+"Kcal": 22,
+"Weglowodany": 5,
+"Bialko": 2,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kalafior mrożony",
+"Kcal": 20,
+"Weglowodany": 4,5,
+"Bialko": 2,2,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kalafior z wody",
+"Kcal": 33,
+"Weglowodany": 5,5,
+"Bialko": 2,
+"Tluszcz": 6,8
+},
+{
+"Nazwa": "Kalarepa",
+"Kcal": 29,
+"Weglowodany": 6,5,
+"Bialko": 2,2,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Kapusta biała",
+"Kcal": 29,
+"Weglowodany": 7,4,
+"Bialko": 1,7,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kapusta biała zasmażana",
+"Kcal": 69,
+"Weglowodany": 7,2,
+"Bialko": 1,6,
+"Tluszcz": 4,7
+},
+{
+"Nazwa": "Kapusta czerwona",
+"Kcal": 27,
+"Weglowodany": 6,7,
+"Bialko": 1,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kapusta kwaszona",
+"Kcal": 12,
+"Weglowodany": 3,4,
+"Bialko": 1,1,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kapusta pekińska",
+"Kcal": 12,
+"Weglowodany": 3,2,
+"Bialko": 1,2,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Kapusta włoska",
+"Kcal": 38,
+"Weglowodany": 7,8,
+"Bialko": 3,3,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Kapuśniak z kapusty kwaszonej",
+"Kcal": 21,
+"Weglowodany": 1,6,
+"Bialko": 1,4,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Kapuśniak z kapusty słodkiej",
+"Kcal": 31,
+"Weglowodany": 3,2,
+"Bialko": 0,7,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Karmelki nadziewane",
+"Kcal": 378,
+"Weglowodany": 92,
+"Bialko": 0,3,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Karmelki twarde",
+"Kcal": 399,
+"Weglowodany": 98,2,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Karp świeży",
+"Kcal": 110,
+"Weglowodany": 0,
+"Bialko": 18,
+"Tluszcz": 4,2
+},
+{
+"Nazwa": "Karp w galarecie z warzywami",
+"Kcal": 137,
+"Weglowodany": 2,1,
+"Bialko": 26,1,
+"Tluszcz": 2,9
+},
+{
+"Nazwa": "Karp z wody",
+"Kcal": 102,
+"Weglowodany": 2,
+"Bialko": 16,
+"Tluszcz": 3,7
+},
+{
+"Nazwa": "Kasza gryczana",
+"Kcal": 336,
+"Weglowodany": 69,3,
+"Bialko": 12,6,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Kasza gryczana na sypko",
+"Kcal": 132,
+"Weglowodany": 25,
+"Bialko": 4,5,
+"Tluszcz": 2,3
+},
+{
+"Nazwa": "Kasza jaglana",
+"Kcal": 346,
+"Weglowodany": 71,6,
+"Bialko": 10,5,
+"Tluszcz": 2,9
+},
+{
+"Nazwa": "Kasza jęczmienna na mleku",
+"Kcal": 63,
+"Weglowodany": 8,5,
+"Bialko": 2,6,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Kasza jęczmienna perłowa",
+"Kcal": 327,
+"Weglowodany": 75,
+"Bialko": 6,9,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Kasza jęczmienna pęczak",
+"Kcal": 334,
+"Weglowodany": 74,9,
+"Bialko": 8,4,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Kasza manna",
+"Kcal": 348,
+"Weglowodany": 76,7,
+"Bialko": 8,7,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Kasza manna na mleku",
+"Kcal": 67,
+"Weglowodany": 9,3,
+"Bialko": 2,7,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Kasza manna na wywarze jarzynowym",
+"Kcal": 21,
+"Weglowodany": 3,4,
+"Bialko": 0,5,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Kasza perłowa na sypko",
+"Kcal": 115,
+"Weglowodany": 23,6,
+"Bialko": 2,2,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Kaszanka z kurczaka",
+"Kcal": 204,
+"Weglowodany": 16,4,
+"Bialko": 9,8,
+"Tluszcz": 11,7
+},
+{
+"Nazwa": "Kawa bez cukru",
+"Kcal": 2,
+"Weglowodany": 0,3,
+"Bialko": 0,2,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Kefir 2 %",
+"Kcal": 51,
+"Weglowodany": 4,7,
+"Bialko": 3,4,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Keks bakaliowy",
+"Kcal": 384,
+"Weglowodany": 53,5,
+"Bialko": 6,4,
+"Tluszcz": 17,6
+},
+{
+"Nazwa": "Ketchup",
+"Kcal": 93,
+"Weglowodany": 22,2,
+"Bialko": 1,8,
+"Tluszcz": 1
+},
+{
+"Nazwa": "Kiełbasa jałowcowa z kurczaka",
+"Kcal": 236,
+"Weglowodany": 0,1,
+"Bialko": 19,
+"Tluszcz": 17,9
+},
+{
+"Nazwa": "Kiełbasa krakowska sucha",
+"Kcal": 323,
+"Weglowodany": 0,
+"Bialko": 25,6,
+"Tluszcz": 24,8
+},
+{
+"Nazwa": "Kiełbasa mazurska z indyka",
+"Kcal": 129,
+"Weglowodany": 0,1,
+"Bialko": 14,8,
+"Tluszcz": 7,7
+},
+{
+"Nazwa": "Kiełbasa mortadela",
+"Kcal": 205,
+"Weglowodany": 0,
+"Bialko": 12,
+"Tluszcz": 17,7
+},
+{
+"Nazwa": "Kiełbasa myśliwska sucha",
+"Kcal": 291,
+"Weglowodany": 0,
+"Bialko": 27,8,
+"Tluszcz": 20,1
+},
+{
+"Nazwa": "Kiełbasa parówkowa",
+"Kcal": 323,
+"Weglowodany": 0,
+"Bialko": 11,
+"Tluszcz": 31,5
+},
+{
+"Nazwa": "Kiełbasa podlaska z kurczaka",
+"Kcal": 232,
+"Weglowodany": 0,1,
+"Bialko": 20,7,
+"Tluszcz": 16,7
+},
+{
+"Nazwa": "Kiełbasa podsuszana z kurczaka",
+"Kcal": 162,
+"Weglowodany": 0,
+"Bialko": 21,7,
+"Tluszcz": 8,4
+},
+{
+"Nazwa": "Kiełbasa podwawelska",
+"Kcal": 247,
+"Weglowodany": 0,9,
+"Bialko": 17,3,
+"Tluszcz": 19,6
+},
+{
+"Nazwa": "Kiełbasa szynkowa z indyka",
+"Kcal": 88,
+"Weglowodany": 0,2,
+"Bialko": 17,2,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Kiełbasa szynkowa z kurczaka",
+"Kcal": 110,
+"Weglowodany": 0,
+"Bialko": 16,2,
+"Tluszcz": 5
+},
+{
+"Nazwa": "Kiełbasa śląska",
+"Kcal": 210,
+"Weglowodany": 0,
+"Bialko": 18,4,
+"Tluszcz": 15,3
+},
+{
+"Nazwa": "Kiełbasa toruńska",
+"Kcal": 263,
+"Weglowodany": 0,
+"Bialko": 20,9,
+"Tluszcz": 20,1
+},
+{
+"Nazwa": "Kiełbasa zwyczajna",
+"Kcal": 209,
+"Weglowodany": 0,
+"Bialko": 17,6,
+"Tluszcz": 15,6
+},
+{
+"Nazwa": "Kiełbasa żywiecka",
+"Kcal": 315,
+"Weglowodany": 0,
+"Bialko": 20,3,
+"Tluszcz": 26,3
+},
+{
+"Nazwa": "Kisiel porzeczkowy",
+"Kcal": 88,
+"Weglowodany": 23,3,
+"Bialko": 0,3,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Kisiel waniliowy",
+"Kcal": 121,
+"Weglowodany": 16,6,
+"Bialko": 3,3,
+"Tluszcz": 4,5
+},
+{
+"Nazwa": "Kiszka kaszana jęczmienna",
+"Kcal": 194,
+"Weglowodany": 13,
+"Bialko": 8,5,
+"Tluszcz": 12,6
+},
+{
+"Nazwa": "Kiszka krwista",
+"Kcal": 404,
+"Weglowodany": 9,2,
+"Bialko": 14,2,
+"Tluszcz": 35
+},
+{
+"Nazwa": "Kiszka pasztetowa",
+"Kcal": 384,
+"Weglowodany": 4,3,
+"Bialko": 12,5,
+"Tluszcz": 35,7
+},
+{
+"Nazwa": "Kiwi",
+"Kcal": 56,
+"Weglowodany": 13,9,
+"Bialko": 0,9,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Kiwi, dżem niskosłodzony",
+"Kcal": 154,
+"Weglowodany": 37,8,
+"Bialko": 0,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Klopsiki cielęce mielone",
+"Kcal": 250,
+"Weglowodany": 14,3,
+"Bialko": 16,2,
+"Tluszcz": 14,6
+},
+{
+"Nazwa": "Klopsiki mielone z mięsa mieszanego",
+"Kcal": 272,
+"Weglowodany": 15,9,
+"Bialko": 13,5,
+"Tluszcz": 17,5
+},
+{
+"Nazwa": "Kluski kładzione",
+"Kcal": 165,
+"Weglowodany": 33,8,
+"Bialko": 5,1,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Kluski lane",
+"Kcal": 93,
+"Weglowodany": 14,9,
+"Bialko": 4,1,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Kluski lane na mleku",
+"Kcal": 70,
+"Weglowodany": 6,8,
+"Bialko": 3,6,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Kluski śląskie",
+"Kcal": 169,
+"Weglowodany": 32,1,
+"Bialko": 2,6,
+"Tluszcz": 3,8
+},
+{
+"Nazwa": "Knedle ze śliwkami",
+"Kcal": 161,
+"Weglowodany": 25,8,
+"Bialko": 2,7,
+"Tluszcz": 5,9
+},
+{
+"Nazwa": "Kompot z jabłek",
+"Kcal": 51,
+"Weglowodany": 13,2,
+"Bialko": 0,2,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Kompot z wiśni",
+"Kcal": 69,
+"Weglowodany": 16,9,
+"Bialko": 0,2,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Koncentrat pomidorowy 30 %",
+"Kcal": 92,
+"Weglowodany": 16,7,
+"Bialko": 5,6,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Koper",
+"Kcal": 26,
+"Weglowodany": 6,1,
+"Bialko": 2,8,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Kopytka",
+"Kcal": 143,
+"Weglowodany": 31,2,
+"Bialko": 4,
+"Tluszcz": 0,7
+},
+{
+"Nazwa": "Kotlet cielęcy panierowany",
+"Kcal": 365,
+"Weglowodany": 17,4,
+"Bialko": 27,1,
+"Tluszcz": 21,3
+},
+{
+"Nazwa": "Kotlet mielony z mięsa mieszanego",
+"Kcal": 284,
+"Weglowodany": 11,8,
+"Bialko": 13,
+"Tluszcz": 21,1
+},
+{
+"Nazwa": "Kotlet schabowy panierowany",
+"Kcal": 351,
+"Weglowodany": 15,9,
+"Bialko": 19,
+"Tluszcz": 24,1
+},
+{
+"Nazwa": "Kotlet z kurczaka smażony panierowany",
+"Kcal": 248,
+"Weglowodany": 7,6,
+"Bialko": 19,7,
+"Tluszcz": 15,7
+},
+{
+"Nazwa": "Kotlet z kurczaka smażony saute",
+"Kcal": 241,
+"Weglowodany": 3,3,
+"Bialko": 20,3,
+"Tluszcz": 16,5
+},
+{
+"Nazwa": "Kotlet z kury mielony",
+"Kcal": 382,
+"Weglowodany": 14,3,
+"Bialko": 19,9,
+"Tluszcz": 27,8
+},
+{
+"Nazwa": "Kotlety z jaj",
+"Kcal": 275,
+"Weglowodany": 10,8,
+"Bialko": 7,9,
+"Tluszcz": 22,7
+},
+{
+"Nazwa": "Kotlety ziemniaczane",
+"Kcal": 241,
+"Weglowodany": 29,3,
+"Bialko": 4,3,
+"Tluszcz": 12,8
+},
+{
+"Nazwa": "Krem z zielonego groszku",
+"Kcal": 63,
+"Weglowodany": 5,9,
+"Bialko": 3,1,
+"Tluszcz": 3,8
+},
+{
+"Nazwa": "Królik, tuszka",
+"Kcal": 156,
+"Weglowodany": 0,
+"Bialko": 21,
+"Tluszcz": 8
+},
+{
+"Nazwa": "Krupnik z kaszy gryczanej",
+"Kcal": 43,
+"Weglowodany": 7,2,
+"Bialko": 1,7,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Krupnik z kaszy jęczmiennej",
+"Kcal": 40,
+"Weglowodany": 7,4,
+"Bialko": 1,5,
+"Tluszcz": 0,9
+},
+{
+"Nazwa": "Krupnik z ryżu",
+"Kcal": 43,
+"Weglowodany": 7,6,
+"Bialko": 1,5,
+"Tluszcz": 1,1
+},
+{
+"Nazwa": "Kukurydza",
+"Kcal": 110,
+"Weglowodany": 23,4,
+"Bialko": 3,7,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Kukurydza konserwowa",
+"Kcal": 102,
+"Weglowodany": 23,6,
+"Bialko": 2,9,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Kulebiak",
+"Kcal": 222,
+"Weglowodany": 20,1,
+"Bialko": 7,6,
+"Tluszcz": 12,7
+},
+{
+"Nazwa": "Kura w galarecie",
+"Kcal": 192,
+"Weglowodany": 1,2,
+"Bialko": 27,3,
+"Tluszcz": 8,9
+},
+{
+"Nazwa": "Kura, tuszka",
+"Kcal": 202,
+"Weglowodany": 0,
+"Bialko": 18,5,
+"Tluszcz": 14,3
+},
+{
+"Nazwa": "Kurczak faszerowany pieczony",
+"Kcal": 199,
+"Weglowodany": 2,8,
+"Bialko": 20,5,
+"Tluszcz": 11,9
+},
+{
+"Nazwa": "Kurczak gotowany w jarzynach",
+"Kcal": 99,
+"Weglowodany": 4,6,
+"Bialko": 7,6,
+"Tluszcz": 6,4
+},
+{
+"Nazwa": "Kurczak pieczony",
+"Kcal": 179,
+"Weglowodany": 0,1,
+"Bialko": 16,4,
+"Tluszcz": 12,7
+},
+{
+"Nazwa": "Kurczak, mięso z piersi bez skóry",
+"Kcal": 99,
+"Weglowodany": 0,
+"Bialko": 21,5,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Kurczak, mięso z uda ze skórą",
+"Kcal": 158,
+"Weglowodany": 0,
+"Bialko": 16,8,
+"Tluszcz": 10,2
+},
+{
+"Nazwa": "Kurczak, skrzydło",
+"Kcal": 186,
+"Weglowodany": 0,
+"Bialko": 19,2,
+"Tluszcz": 12,2
+},
+{
+"Nazwa": "Kurczak, tuszka",
+"Kcal": 158,
+"Weglowodany": 0,
+"Bialko": 18,6,
+"Tluszcz": 9,3
+},
+{
+"Nazwa": "Kurczak, wątroba",
+"Kcal": 136,
+"Weglowodany": 0,6,
+"Bialko": 19,1,
+"Tluszcz": 6,3
+},
+{
+"Nazwa": "Kurczak, żołądek",
+"Kcal": 114,
+"Weglowodany": 0,6,
+"Bialko": 18,2,
+"Tluszcz": 4,2
+},
+{
+"Nazwa": "Lody mleczno-owocowe",
+"Kcal": 116,
+"Weglowodany": 19,4,
+"Bialko": 3,9,
+"Tluszcz": 2,5
+},
+{
+"Nazwa": "Lody śmietankowe",
+"Kcal": 160,
+"Weglowodany": 17,6,
+"Bialko": 3,2,
+"Tluszcz": 8,5
+},
+{
+"Nazwa": "Łosoś smażony saute",
+"Kcal": 379,
+"Weglowodany": 4,1,
+"Bialko": 21,1,
+"Tluszcz": 31,4
+},
+{
+"Nazwa": "Łosoś świeży",
+"Kcal": 201,
+"Weglowodany": 0,
+"Bialko": 19,9,
+"Tluszcz": 13,6
+},
+{
+"Nazwa": "Łosoś wędzony",
+"Kcal": 162,
+"Weglowodany": 0	,
+"Bialko": 21,5,
+"Tluszcz": 8,4
+},
+{
+"Nazwa": "Łosoś z rusztu",
+"Kcal": 283,
+"Weglowodany": 0,6,
+"Bialko": 20,7,
+"Tluszcz": 22,3
+},
+{
+"Nazwa": "Majonez z olejem rzepakowym",
+"Kcal": 714,
+"Weglowodany": 2,6,
+"Bialko": 1,3,
+"Tluszcz": 79
+},
+{
+"Nazwa": "Majonez z olejem słonecznikowym",
+"Kcal": 714,
+"Weglowodany": 2,6,
+"Bialko": 1,3,
+"Tluszcz": 79
+},
+{
+"Nazwa": "Mak niebieski",
+"Kcal": 478,
+"Weglowodany": 24,7,
+"Bialko": 20,1,
+"Tluszcz": 42,9
+},
+{
+"Nazwa": "Makaron bezjajeczny",
+"Kcal": 363,
+"Weglowodany": 78,5,
+"Bialko": 10,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Makaron czterojajeczny",
+"Kcal": 377,
+"Weglowodany": 76,2,
+"Bialko": 12,
+"Tluszcz": 3,4
+},
+{
+"Nazwa": "Makaron dwujajeczny",
+"Kcal": 373,
+"Weglowodany": 77,4,
+"Bialko": 11,5,
+"Tluszcz": 2,6
+},
+{
+"Nazwa": "Makaron na mleku",
+"Kcal": 66,
+"Weglowodany": 8,5,
+"Bialko": 2,9,
+"Tluszcz": 2,3
+},
+{
+"Nazwa": "Makrela świeża",
+"Kcal": 181,
+"Weglowodany": 0,
+"Bialko": 18,7,
+"Tluszcz": 11,9
+},
+{
+"Nazwa": "Makrela wędzona",
+"Kcal": 221,
+"Weglowodany": 0,
+"Bialko": 20,7,
+"Tluszcz": 15,5
+},
+{
+"Nazwa": "Makrela, filety z czerwoną fasolą",
+"Kcal": 128,
+"Weglowodany": 4,4,
+"Bialko": 12,4,
+"Tluszcz": 7,3
+},
+{
+"Nazwa": "Makrela, filety z warzywami",
+"Kcal": 124,
+"Weglowodany": 3,6,
+"Bialko": 12,
+"Tluszcz": 7,3
+},
+{
+"Nazwa": "Makrela, sałatka pikantna",
+"Kcal": 181,
+"Weglowodany": 6,9,
+"Bialko": 10,2,
+"Tluszcz": 13,2
+},
+{
+"Nazwa": "Maliny",
+"Kcal": 29,
+"Weglowodany": 12,
+"Bialko": 1,3,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Mandarynki",
+"Kcal": 42,
+"Weglowodany": 11,2,
+"Bialko": 0,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Marchew",
+"Kcal": 27,
+"Weglowodany": 8,7,
+"Bialko": 1,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Marchew mrożona",
+"Kcal": 24,
+"Weglowodany": 7,8,
+"Bialko": 0,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Marchew z groszkiem",
+"Kcal": 64,
+"Weglowodany": 10,8,
+"Bialko": 1,7,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Marchew zasmażana",
+"Kcal": 69,
+"Weglowodany": 8,4,
+"Bialko": 1,
+"Tluszcz": 4,8
+},
+{
+"Nazwa": "Margaryna Bona",
+"Kcal": 442,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 50
+},
+{
+"Nazwa": "Margaryna Flora",
+"Kcal": 531,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 60
+},
+{
+"Nazwa": "Margaryna Kama",
+"Kcal": 398,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 45
+},
+{
+"Nazwa": "Margaryna mleczna",
+"Kcal": 710,
+"Weglowodany": 0,4,
+"Bialko": 0,3,
+"Tluszcz": 80
+},
+{
+"Nazwa": "Margaryna Palma",
+"Kcal": 710,
+"Weglowodany": 0,4,
+"Bialko": 0,3,
+"Tluszcz": 80
+},
+{
+"Nazwa": "Margaryna Rama",
+"Kcal": 621,
+"Weglowodany": 0,4,
+"Bialko": 0,1,
+"Tluszcz": 70
+},
+{
+"Nazwa": "Margaryna Słoneczna",
+"Kcal": 710,
+"Weglowodany": 0,4,
+"Bialko": 0,3,
+"Tluszcz": 80
+},
+{
+"Nazwa": "Margaryna Tina",
+"Kcal": 442,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 45
+},
+{
+"Nazwa": "Margaryna zwykła",
+"Kcal": 710,
+"Weglowodany": 0,4,
+"Bialko": 0,3,
+"Tluszcz": 80
+},
+{
+"Nazwa": "Markizy",
+"Kcal": 483,
+"Weglowodany": 64,3,
+"Bialko": 5,6,
+"Tluszcz": 23
+},
+{
+"Nazwa": "Masło ekstra",
+"Kcal": 735,
+"Weglowodany": 0,7,
+"Bialko": 0,7,
+"Tluszcz": 82,5
+},
+{
+"Nazwa": "Masło roślinne Nova",
+"Kcal": 442,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 50
+},
+{
+"Nazwa": "Masło roślinne zwykłe",
+"Kcal": 666,
+"Weglowodany": 0,4,
+"Bialko": 0,3,
+"Tluszcz": 75
+},
+{
+"Nazwa": "Masło śmietankowe",
+"Kcal": 659,
+"Weglowodany": 1,1,
+"Bialko": 1,1,
+"Tluszcz": 73,5
+},
+{
+"Nazwa": "Maślanka 0,5 %",
+"Kcal": 37,
+"Weglowodany": 4,7,
+"Bialko": 3,4,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Mąka pszenna typ 500",
+"Kcal": 342,
+"Weglowodany": 74,9,
+"Bialko": 9,2,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Mąka pszenna typ 550",
+"Kcal": 343,
+"Weglowodany": 74,1,
+"Bialko": 9,4,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Medaliony z indyka",
+"Kcal": 247,
+"Weglowodany": 3,4,
+"Bialko": 18,6,
+"Tluszcz": 17,9
+},
+{
+"Nazwa": "Melon",
+"Kcal": 36,
+"Weglowodany": 8,4,
+"Bialko": 0,9,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Mielonka",
+"Kcal": 171,
+"Weglowodany": 3,7,
+"Bialko": 12,8,
+"Tluszcz": 11,7
+},
+{
+"Nazwa": "Migdały",
+"Kcal": 572,
+"Weglowodany": 20,5,
+"Bialko": 20,
+"Tluszcz": 52
+},
+{
+"Nazwa": "Mintaj świeży",
+"Kcal": 73,
+"Weglowodany": 0,
+"Bialko": 16,6,
+"Tluszcz": 0,6
+},
+{
+"Nazwa": "Miód pszczeli",
+"Kcal": 324,
+"Weglowodany": 79,5,
+"Bialko":         00,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Mizeria ze śmietaną",
+"Kcal": 34,
+"Weglowodany": 2,8,
+"Bialko": 1,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Mleko kozie",
+"Kcal": 68,
+"Weglowodany": 4,5,
+"Bialko": 3,2,
+"Tluszcz": 4,1
+},
+{
+"Nazwa": "Mleko owcze",
+"Kcal": 107,
+"Weglowodany": 5,1,
+"Bialko": 6,
+"Tluszcz": 7
+},
+{
+"Nazwa": "Mleko spożywcze 0,5 %",
+"Kcal": 39,
+"Weglowodany": 5,1,
+"Bialko": 3,5,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Mleko spożywcze 1,5 %",
+"Kcal": 47,
+"Weglowodany": 5,
+"Bialko": 3,4,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Mleko spożywcze 2 %",
+"Kcal": 51,
+"Weglowodany": 4,9,
+"Bialko": 3,4,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Mleko spożywcze 3,2 %",
+"Kcal": 61,
+"Weglowodany": 4,8,
+"Bialko": 3,3,
+"Tluszcz": 3,2
+},
+{
+"Nazwa": "Mleko spożywcze 3,5 %",
+"Kcal": 64,
+"Weglowodany": 4,8,
+"Bialko": 3,3,
+"Tluszcz": 3,5
+},
+{
+"Nazwa": "Mleko w proszku odtłuszczone",
+"Kcal": 360,
+"Weglowodany": 51,2,
+"Bialko": 35,7,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Mleko w proszku pełne",
+"Kcal": 479,
+"Weglowodany": 38,7,
+"Bialko": 27,
+"Tluszcz": 24
+},
+{
+"Nazwa": "Mleko zagęszczone niesłodzone",
+"Kcal": 131,
+"Weglowodany": 9,4,
+"Bialko": 6,6,
+"Tluszcz": 7,5
+},
+{
+"Nazwa": "Mleko zagęszczone słodzone",
+"Kcal": 326,
+"Weglowodany": 55,3,
+"Bialko": 7,5,
+"Tluszcz": 8
+},
+{
+"Nazwa": "Morela",
+"Kcal": 47,
+"Weglowodany": 11,9,
+"Bialko": 0,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Morele suszone",
+"Kcal": 284,
+"Weglowodany": 72,2,
+"Bialko": 5,4,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Morele, dżem niskosłodzony",
+"Kcal": 157,
+"Weglowodany": 38,8,
+"Bialko": 0,4,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Morszczuk świeży",
+"Kcal": 89,
+"Weglowodany": 0,
+"Bialko": 17,2,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Mus jabłkowy",
+"Kcal": 127,
+"Weglowodany": 28,7,
+"Bialko": 2,2,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Musli z owocami suszonymi",
+"Kcal": 325,
+"Weglowodany": 72,2,
+"Bialko": 8,4,
+"Tluszcz": 3,4
+},
+{
+"Nazwa": "Musli z rodzynkami i orzechami",
+"Kcal": 375,
+"Weglowodany": 62,9,
+"Bialko": 11,5,
+"Tluszcz": 12,7
+},
+{
+"Nazwa": "Musztarda",
+"Kcal": 162,
+"Weglowodany": 22,
+"Bialko": 5,7,
+"Tluszcz": 6,4
+},
+{
+"Nazwa": "Naleśniki z kapustą",
+"Kcal": 147,
+"Weglowodany": 15,2,
+"Bialko": 3,2,
+"Tluszcz": 9,2
+},
+{
+"Nazwa": "Naleśniki z serem",
+"Kcal": 242,
+"Weglowodany": 27,4,
+"Bialko": 10,1,
+"Tluszcz": 10,3
+},
+{
+"Nazwa": "Napój mleczny jogurtowy",
+"Kcal": 82,
+"Weglowodany": 12,1,
+"Bialko": 4,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Napój mleczny kakaowy",
+"Kcal": 81,
+"Weglowodany": 12,1,
+"Bialko": 3,3,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Napój owocowy gazowany",
+"Kcal": 42,
+"Weglowodany": 10,3,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Nektarynka",
+"Kcal": 48,
+"Weglowodany": 11,8,
+"Bialko": 0,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Nerki wieprzowe",
+"Kcal": 102,
+"Weglowodany": 0,
+"Bialko": 16,8,
+"Tluszcz": 3,8
+},
+{
+"Nazwa": "Nogi wieprzowe",
+"Kcal": 274,
+"Weglowodany": 0,
+"Bialko": 23,
+"Tluszcz": 20,4
+},
+{
+"Nazwa": "Ocet winny",
+"Kcal": 20,
+"Weglowodany": 5,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Ogórek",
+"Kcal": 15,
+"Weglowodany": 2,9,
+"Bialko": 0,7,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Ogórek kiszony",
+"Kcal": 12,
+"Weglowodany": 1,9,
+"Bialko": 0,7,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Olej kukurydziany",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Olej lniany",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Olej rzepakowy",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Olej słonecznikowy",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Olej sojowy",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Oliwa z oliwek",
+"Kcal": 897,
+"Weglowodany": 0,2,
+"Bialko": 0,
+"Tluszcz": 99,6
+},
+{
+"Nazwa": "Oliwki",
+"Kcal": 147,
+"Weglowodany": 4,1,
+"Bialko": 1,4,
+"Tluszcz": 13,9
+},
+{
+"Nazwa": "Orzechy arachidowe",
+"Kcal": 595,
+"Weglowodany": 19,2,
+"Bialko": 25,7,
+"Tluszcz": 46,1
+},
+{
+"Nazwa": "Orzechy laskowe",
+"Kcal": 695,
+"Weglowodany": 11,
+"Bialko": 14,4,
+"Tluszcz": 65,9
+},
+{
+"Nazwa": "Orzechy nerkowca",
+"Kcal": 638,
+"Weglowodany": 24,
+"Bialko": 17,
+"Tluszcz": 54
+},
+{
+"Nazwa": "Orzechy pistacjowe",
+"Kcal": 618,
+"Weglowodany": 17,5,
+"Bialko": 20,8,
+"Tluszcz": 51,6
+},
+{
+"Nazwa": "Orzechy włoskie",
+"Kcal": 679,
+"Weglowodany": 18,
+"Bialko": 16,
+"Tluszcz": 60,3
+},
+{
+"Nazwa": "Orzeszki ziemne",
+"Kcal": 634,
+"Weglowodany": 13,3,
+"Bialko": 26,
+"Tluszcz": 53
+},
+{
+"Nazwa": "Ostrygi",
+"Kcal": 85,
+"Weglowodany": 5,
+"Bialko": 5,
+"Tluszcz": 5
+},
+{
+"Nazwa": "Otręby pszenne",
+"Kcal": 183,
+"Weglowodany": 61,9,
+"Bialko": 16,
+"Tluszcz": 4,6
+},
+{
+"Nazwa": "Ozory cielęce",
+"Kcal": 106,
+"Weglowodany": 0,
+"Bialko": 17,1,
+"Tluszcz": 4,2
+},
+{
+"Nazwa": "Ozory wieprzowe",
+"Kcal": 166,
+"Weglowodany": 0	,
+"Bialko": 16,5,
+"Tluszcz": 11,1
+},
+{
+"Nazwa": "Paluszki",
+"Kcal": 384,
+"Weglowodany": 75,2,
+"Bialko": 9,9,
+"Tluszcz": 4,9
+},
+{
+"Nazwa": "Papaja",
+"Kcal": 43,
+"Weglowodany": 9,8,
+"Bialko": 0,6,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Papryka czerwona",
+"Kcal": 35,
+"Weglowodany": 6,9,
+"Bialko": 1,2,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Papryka konserwowa",
+"Kcal": 37,
+"Weglowodany": 5,
+"Bialko": 0,8,
+"Tluszcz": 1,5
+},
+{
+"Nazwa": "Paprykarz Szczeciński",
+"Kcal": 181,
+"Weglowodany": 8,6,
+"Bialko": 9,9,
+"Tluszcz": 11,9
+},
+{
+"Nazwa": "Parówki dla dzieci Morlinki",
+"Kcal": 223,
+"Weglowodany": 0,4,
+"Bialko": 12,4,
+"Tluszcz": 19,1
+},
+{
+"Nazwa": "Parówki popularne",
+"Kcal": 347,
+"Weglowodany": 0,
+"Bialko": 9,5,
+"Tluszcz": 34,3
+},
+{
+"Nazwa": "Parówki z kurczaka",
+"Kcal": 262,
+"Weglowodany": 4,2,
+"Bialko": 10,8,
+"Tluszcz": 22,4
+},
+{
+"Nazwa": "Pasternak",
+"Kcal": 80,
+"Weglowodany": 18,
+"Bialko": 1,2,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Pasztet popularny",
+"Kcal": 405,
+"Weglowodany": 2,
+"Bialko": 13,2,
+"Tluszcz": 38,2
+},
+{
+"Nazwa": "Pasztet z drobiu",
+"Kcal": 270,
+"Weglowodany": 4,4,
+"Bialko": 9,6,
+"Tluszcz": 23,8
+},
+{
+"Nazwa": "Pączki",
+"Kcal": 376,
+"Weglowodany": 52,
+"Bialko": 6,
+"Tluszcz": 16
+},
+{
+"Nazwa": "Pepsi, Cola, napój",
+"Kcal": 42,
+"Weglowodany": 10,4,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Pepsi, Cola light, napój",
+"Kcal": 0,24,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Pestki dyni",
+"Kcal": 596,
+"Weglowodany": 15,
+"Bialko": 29,
+"Tluszcz": 46,7
+},
+{
+"Nazwa": "Pędy bambusa",
+"Kcal": 34,
+"Weglowodany": 5,2,
+"Bialko": 2,6,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Pędy bambusa, konserwa, odsączone",
+"Kcal": 23,
+"Weglowodany": 3,2,
+"Bialko": 1,7,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Pieczarka suszona",
+"Kcal": 331,
+"Weglowodany": 49,3,
+"Bialko": 19,1,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Pieczarka świeża",
+"Kcal": 24,
+"Weglowodany": 2,5,
+"Bialko": 2,6,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Pieczywo chrupkie pszenne Wasa",
+"Kcal": 360,
+"Weglowodany": 73,
+"Bialko": 12,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Pierogi leniwe mrożone",
+"Kcal": 157,
+"Weglowodany": 30,2,
+"Bialko": 7,3,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Pierogi ruskie mrożone",
+"Kcal": 215,
+"Weglowodany": 37,9,
+"Bialko": 7,2,
+"Tluszcz": 3,8
+},
+{
+"Nazwa": "Pierogi z kapustą i grzybami mrożone",
+"Kcal": 209,
+"Weglowodany": 34,5,
+"Bialko": 5,
+"Tluszcz": 5,7
+},
+{
+"Nazwa": "Pierogi z mięsem mrożone",
+"Kcal": 255,
+"Weglowodany": 34,8,
+"Bialko": 10,5,
+"Tluszcz": 8,2
+},
+{
+"Nazwa": "Pierogi z serem mrożone",
+"Kcal": 198,
+"Weglowodany": 36,4,
+"Bialko": 10,9,
+"Tluszcz": 1
+},
+{
+"Nazwa": "Pierogi z truskawkami mrożone",
+"Kcal": 194,
+"Weglowodany": 42,4,
+"Bialko": 4,3,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Piernik czekoladowy",
+"Kcal": 317,
+"Weglowodany": 74,3,
+"Bialko": 4,9,
+"Tluszcz": 11,8
+},
+{
+"Nazwa": "Piersi bez skóry indycze",
+"Kcal": 109,
+"Weglowodany": 0,
+"Bialko": 21,3,
+"Tluszcz": 2,6
+},
+{
+"Nazwa": "Piersi bez skóry z kurczaka",
+"Kcal": 100,
+"Weglowodany": 0,
+"Bialko": 21,5,
+"Tluszcz": 1,3
+},
+{
+"Nazwa": "Piersi ze skórą z kurczaka",
+"Kcal": 155,
+"Weglowodany": 0,
+"Bialko": 19,3,
+"Tluszcz": 8,6
+},
+{
+"Nazwa": "Pietruszka korzeń",
+"Kcal": 83,
+"Weglowodany": 17,1,
+"Bialko": 2,6,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Pietruszka liście",
+"Kcal": 60,
+"Weglowodany": 9,
+"Bialko": 3,7,
+"Tluszcz": 1
+},
+{
+"Nazwa": "Pikling",
+"Kcal": 216,
+"Weglowodany": 0,
+"Bialko": 21,8,
+"Tluszcz": 14,3
+},
+{
+"Nazwa": "Piwo bezalkoholowe",
+"Kcal": 27,
+"Weglowodany": 5,2,
+"Bialko": 0,2,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Piwo ciemne pełne",
+"Kcal": 42,
+"Weglowodany": 4,6,
+"Bialko": 0,4,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Piwo jasne mocne",
+"Kcal": 64,
+"Weglowodany": 5,4,
+"Bialko": 7,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Piwo jasne pełne",
+"Kcal": 49,
+"Weglowodany": 3,8,
+"Bialko": 0,5,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Pizza z pieczarkami i cebulą",
+"Kcal": 296,
+"Weglowodany": 32,1,
+"Bialko": 12,
+"Tluszcz": 13,3
+},
+{
+"Nazwa": "Pizza z szynką",
+"Kcal": 223,
+"Weglowodany": 40,2,
+"Bialko": 9,8,
+"Tluszcz": 2,5
+},
+{
+"Nazwa": "Planta, tłuszcz roślinny",
+"Kcal": 900,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 100
+},
+{
+"Nazwa": "Płatki jęczmienne",
+"Kcal": 389,
+"Weglowodany": 79,4,
+"Bialko": 9,8,
+"Tluszcz": 3,6
+},
+{
+"Nazwa": "Płatki kukurydziane",
+"Kcal": 385,
+"Weglowodany": 83,6,
+"Bialko": 6,9,
+"Tluszcz": 2,5
+},
+{
+"Nazwa": "Płatki kukurydziane Nestle Corn Flakes",
+"Kcal": 370,
+"Weglowodany": 83,3,
+"Bialko": 7,3,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Płatki owsiane",
+"Kcal": 390,
+"Weglowodany": 69,3,
+"Bialko": 11,9,
+"Tluszcz": 7,2
+},
+{
+"Nazwa": "Płatki pszenne",
+"Kcal": 387,
+"Weglowodany": 81,
+"Bialko": 9,
+"Tluszcz": 3
+},
+{
+"Nazwa": "Płatki żytnie",
+"Kcal": 385,
+"Weglowodany": 82,6,
+"Bialko": 6,4,
+"Tluszcz": 3,2
+},
+{
+"Nazwa": "Polędwica wołowa",
+"Kcal": 112,
+"Weglowodany": 0,
+"Bialko": 20,1,
+"Tluszcz": 3,5
+},
+{
+"Nazwa": "Pomidor",
+"Kcal": 29,
+"Weglowodany": 5,2,
+"Bialko": 0,9,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Por",
+"Kcal": 47,
+"Weglowodany": 9,9,
+"Bialko": 1,7,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Pomarańcza",
+"Kcal": 51,
+"Weglowodany": 11,3,
+"Bialko": 0,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Popcorn bez tłuszczu",
+"Kcal": 397,
+"Weglowodany": 77,9,
+"Bialko": 12,
+"Tluszcz": 4,2
+},
+{
+"Nazwa": "Popcorn z tłuszczem",
+"Kcal": 518,
+"Weglowodany": 57,1,
+"Bialko": 9,
+"Tluszcz": 28,1
+},
+{
+"Nazwa": "Porzeczki białe",
+"Kcal": 63,
+"Weglowodany": 14,5,
+"Bialko": 0,4,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Porzeczki czarne",
+"Kcal": 84,
+"Weglowodany": 17,4,
+"Bialko": 1,5,
+"Tluszcz": 0,9
+},
+{
+"Nazwa": "Porzeczki czerwone",
+"Kcal": 64,
+"Weglowodany": 13,8,
+"Bialko": 1,3,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Powidła śliwkowe",
+"Kcal": 218,
+"Weglowodany": 53,
+"Bialko": 1,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Poziomki",
+"Kcal": 41,
+"Weglowodany": 8,3,
+"Bialko": 0,8,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Precelki",
+"Kcal": 385,
+"Weglowodany": 79,5,
+"Bialko": 9,1,
+"Tluszcz": 3,5
+},
+{
+"Nazwa": "Prince Polo, wafel",
+"Kcal": 534,
+"Weglowodany": 57,5,
+"Bialko": 4,8,
+"Tluszcz": 31,5
+},
+{
+"Nazwa": "Princessa, wafel",
+"Kcal": 562,
+"Weglowodany": 58,4,
+"Bialko": 4,1,
+"Tluszcz": 34,6
+},
+{
+"Nazwa": "Przyprawa do zup Maggi",
+"Kcal": 17,
+"Weglowodany": 1,5,
+"Bialko": 2,7,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Pstrąg świeży",
+"Kcal": 96,
+"Weglowodany": 0,
+"Bialko": 19,2,
+"Tluszcz": 2,1
+},
+{
+"Nazwa": "Ptyś z bitą śmietaną, ciastko",
+"Kcal": 352,
+"Weglowodany": 25,8,
+"Bialko": 5,4,
+"Tluszcz": 25,2
+},
+{
+"Nazwa": "Pyzy z mięsem mrożone",
+"Kcal": 169,
+"Weglowodany": 26,2,
+"Bialko": 5,2,
+"Tluszcz": 4,9
+},
+{
+"Nazwa": "Pyzy ziemniaczane mrożone",
+"Kcal": 140,
+"Weglowodany": 32,2,
+"Bialko": 1,7,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Rabarabar",
+"Kcal": 18,
+"Weglowodany": 3,8,
+"Bialko": 0,5,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Raffaello, czekoladki",
+"Kcal": 600,
+"Weglowodany": 35,4,
+"Bialko": 9,7,
+"Tluszcz": 46,6
+},
+{
+"Nazwa": "Rama Classic, margaryna",
+"Kcal": 631,
+"Weglowodany": 0,2,
+"Bialko": 0,
+"Tluszcz": 70
+},
+{
+"Nazwa": "Red Bull, napój",
+"Kcal": 45,
+"Weglowodany": 11,3,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Rodzynki",
+"Kcal": 298,
+"Weglowodany": 71,2,
+"Bialko": 2,3,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Rostbef wołowy",
+"Kcal": 152,
+"Weglowodany": 0,
+"Bialko": 21,5,
+"Tluszcz": 7,3
+},
+{
+"Nazwa": "Rozbratel wołowy",
+"Kcal": 158,
+"Weglowodany": 0,
+"Bialko": 16,7,
+"Tluszcz": 10,1
+},
+{
+"Nazwa": "Ryż biały",
+"Kcal": 349,
+"Weglowodany": 78,9,
+"Bialko": 6,7,
+"Tluszcz": 0,7
+},
+{
+"Nazwa": "Ryż brązowy",
+"Kcal": 353,
+"Weglowodany": 76,8,
+"Bialko": 7,1,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Ryż dziki amerykański",
+"Kcal": 351,
+"Weglowodany": 73,
+"Bialko": 13,8,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Ryż preparowany",
+"Kcal": 376,
+"Weglowodany": 84,1,
+"Bialko": 6,3,
+"Tluszcz": 1,6
+},
+{
+"Nazwa": "Rzeżucha",
+"Kcal": 15,
+"Weglowodany": 1,3,
+"Bialko": 2,3,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Rzodkiewka",
+"Kcal": 21,
+"Weglowodany": 3,6,
+"Bialko": 0,8,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Salceson czarny",
+"Kcal": 340,
+"Weglowodany": 0,5,
+"Bialko": 12,6,
+"Tluszcz": 32
+},
+{
+"Nazwa": "Salceson włoski",
+"Kcal": 322,
+"Weglowodany": 0,
+"Bialko": 14,6,
+"Tluszcz": 29,3
+},
+{
+"Nazwa": "Sałata",
+"Kcal": 20,
+"Weglowodany": 2,9,
+"Bialko": 1,4,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Sandacz świeży",
+"Kcal": 80,
+"Weglowodany": 0,9,
+"Bialko": 18,3,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Sardynki w oleju, konserwa",
+"Kcal": 202,
+"Weglowodany": 0,
+"Bialko": 24,
+"Tluszcz": 11,5
+},
+{
+"Nazwa": "Sardynki w sosie pomidorowym, konserwa",
+"Kcal": 163,
+"Weglowodany": 1,4,
+"Bialko": 17,
+"Tluszcz": 9,9
+},
+{
+"Nazwa": "Sarnina",
+"Kcal": 102,
+"Weglowodany": 0,4,
+"Bialko": 20,8,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Schab surowy wieprzowy",
+"Kcal": 174,
+"Weglowodany": 0,
+"Bialko": 21,
+"Tluszcz": 10
+},
+{
+"Nazwa": "Schab wędzony",
+"Kcal": 136,
+"Weglowodany": 0,
+"Bialko": 25,
+"Tluszcz": 4
+},
+{
+"Nazwa": "Seler korzeń",
+"Kcal": 61,
+"Weglowodany": 13,6,
+"Bialko": 1,3,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Ser Feta",
+"Kcal": 216,
+"Weglowodany": 1,
+"Bialko": 17,
+"Tluszcz": 16
+},
+{
+"Nazwa": "Ser pleśniowy Brie pełnotłusty",
+"Kcal": 293,
+"Weglowodany": 0,
+"Bialko": 18,
+"Tluszcz": 24,5
+},
+{
+"Nazwa": "Ser pleśniowy Rokpol pełnotłusty",
+"Kcal": 354,
+"Weglowodany": 0,
+"Bialko": 22,6,
+"Tluszcz": 29,3
+},
+{
+"Nazwa": "Ser podpuszczkowy Brie pełnotłusty",
+"Kcal": 332,
+"Weglowodany": 0,2,
+"Bialko": 19,8,
+"Tluszcz": 28
+},
+{
+"Nazwa": "Ser podpuszczkowy Camembert tłusty",
+"Kcal": 263,
+"Weglowodany": 1,9,
+"Bialko": 19,3,
+"Tluszcz": 19,8
+},
+{
+"Nazwa": "Ser podpuszczkowy Cheddar pełnotłusty",
+"Kcal": 382,
+"Weglowodany": 2,5,
+"Bialko": 27,1,
+"Tluszcz": 29,3
+},
+{
+"Nazwa": "Ser podpuszczkowy Ementaler pełnotłusty",
+"Kcal": 383,
+"Weglowodany": 0,1,
+"Bialko": 28,8,
+"Tluszcz": 29,7
+},
+{
+"Nazwa": "Ser podpuszczkowy Ementaler tłusty",
+"Kcal": 330,
+"Weglowodany": 1,5,
+"Bialko": 28,8,
+"Tluszcz": 23,2
+},
+{
+"Nazwa": "Ser podpuszczkowy Gouda tłusty",
+"Kcal": 314,
+"Weglowodany": 1,
+"Bialko": 27,9,
+"Tluszcz": 22
+},
+{
+"Nazwa": "Ser podpuszczkowy Mozarella tłusty",
+"Kcal": 224,
+"Weglowodany": 0,
+"Bialko": 20,
+"Tluszcz": 16
+},
+{
+"Nazwa": "Ser podpuszczkowy Myśliwski pełnotłusty",
+"Kcal": 349,
+"Weglowodany": 0,1,
+"Bialko": 25,5,
+"Tluszcz": 27,4
+},
+{
+"Nazwa": "Ser podpuszczkowy Parmezan",
+"Kcal": 408,
+"Weglowodany": 0,1,
+"Bialko": 35,1,
+"Tluszcz": 29,7
+},
+{
+"Nazwa": "Ser podpuszczkowy Salami pełnotłusty",
+"Kcal": 354,
+"Weglowodany": 0,1,
+"Bialko": 25,2,
+"Tluszcz": 28,1
+},
+{
+"Nazwa": "Ser podpuszczkowy Salami tłusty",
+"Kcal": 329,
+"Weglowodany": 3,1,
+"Bialko": 29,5,
+"Tluszcz": 22,1
+},
+{
+"Nazwa": "Ser podpuszczkowy Tylżycki pełnotłusty",
+"Kcal": 356,
+"Weglowodany": 0,1,
+"Bialko": 26,1,
+"Tluszcz": 27,9
+},
+{
+"Nazwa": "Ser podpuszczkowy Tylżycki tłusty",
+"Kcal": 327,
+"Weglowodany": 2,1,
+"Bialko": 27,8,
+"Tluszcz": 23
+},
+{
+"Nazwa": "Ser topiony tłusty",
+"Kcal": 222,
+"Weglowodany": 1,6,
+"Bialko": 18,
+"Tluszcz": 16
+},
+{
+"Nazwa": "Ser twarogowy chudy",
+"Kcal": 98,
+"Weglowodany": 3,5,
+"Bialko": 19,8,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Ser twarogowy półtłusty",
+"Kcal": 132,
+"Weglowodany": 3,7,
+"Bialko": 18,7,
+"Tluszcz": 4,7
+},
+{
+"Nazwa": "Ser twarogowy pełnotłusty",
+"Kcal": 176,
+"Weglowodany": 3,5,
+"Bialko": 17,7,
+"Tluszcz": 10,1
+},
+{
+"Nazwa": "Serca wieprzowe",
+"Kcal": 111,
+"Weglowodany": 0,
+"Bialko": 16,9,
+"Tluszcz": 4,8
+},
+{
+"Nazwa": "Serdelki drobiowe",
+"Kcal": 239,
+"Weglowodany": 1,9,
+"Bialko": 13,9,
+"Tluszcz": 19,5
+},
+{
+"Nazwa": "Serek Fromage naturalny",
+"Kcal": 384,
+"Weglowodany": 2,4,
+"Bialko": 10,2,
+"Tluszcz": 37,1
+},
+{
+"Nazwa": "Serek homogenizowany truskawkowy",
+"Kcal": 167,
+"Weglowodany": 17,7,
+"Bialko": 15,3,
+"Tluszcz": 3,9
+},
+{
+"Nazwa": "Serek homogenizowany waniliowy",
+"Kcal": 158,
+"Weglowodany": 13,3,
+"Bialko": 16,8,
+"Tluszcz": 4,2
+},
+{
+"Nazwa": "Serek twarogowy ziarnisty",
+"Kcal": 101,
+"Weglowodany": 3,3,
+"Bialko": 12,3,
+"Tluszcz": 4,3
+},
+{
+"Nazwa": "Sernik",
+"Kcal": 273,
+"Weglowodany": 38,
+"Bialko": 10,
+"Tluszcz": 9
+},
+{
+"Nazwa": "Sernik z rodzynkami, ciasto",
+"Kcal": 342,
+"Weglowodany": 39,6,
+"Bialko": 14,6,
+"Tluszcz": 13,9
+},
+{
+"Nazwa": "Serwatka płynna",
+"Kcal": 25,
+"Weglowodany": 5,1,
+"Bialko": 0,8,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Sezamki",
+"Kcal": 511,
+"Weglowodany": 56,2,
+"Bialko": 13,4,
+"Tluszcz": 25,8
+},
+{
+"Nazwa": "Skrobia kukurydziana",
+"Kcal": 367,
+"Weglowodany": 91,3,
+"Bialko": 0,3,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Skrzydło bez skóry indycze",
+"Kcal": 169,
+"Weglowodany": 0,
+"Bialko": 16,5,
+"Tluszcz": 11,4
+},
+{
+"Nazwa": "Słonecznik ziarno",
+"Kcal": 580,
+"Weglowodany": 12,3,
+"Bialko": 22,5,
+"Tluszcz": 49
+},
+{
+"Nazwa": "Słonina",
+"Kcal": 811,
+"Weglowodany":      0	,
+"Bialko": 2,4,
+"Tluszcz": 89
+},
+{
+"Nazwa": "Smalec",
+"Kcal": 896,
+"Weglowodany": 0,
+"Bialko": 0,
+"Tluszcz": 99,5
+},
+{
+"Nazwa": "Snickers, baton",
+"Kcal": 509,
+"Weglowodany": 52,6,
+"Bialko": 9,7,
+"Tluszcz": 28,9
+},
+{
+"Nazwa": "Soczewica, suche ziarno",
+"Kcal": 347,
+"Weglowodany": 59,5,
+"Bialko": 25,
+"Tluszcz": 1
+},
+{
+"Nazwa": "Soja, suche ziarno",
+"Kcal": 442,
+"Weglowodany": 34,8,
+"Bialko": 34,9,
+"Tluszcz": 18,1
+},
+{
+"Nazwa": "Sola świeża",
+"Kcal": 83,
+"Weglowodany":      0	,
+"Bialko": 17,5,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Sok ananasowy",
+"Kcal": 48,
+"Weglowodany": 11,4,
+"Bialko": 0,3,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Sok grejfrutowy",
+"Kcal": 35,
+"Weglowodany": 7,8,
+"Bialko": 0,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Sok jabłkowy",
+"Kcal": 45,
+"Weglowodany": 10,
+"Bialko": 0,4,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Sok marchwiowy",
+"Kcal": 48,
+"Weglowodany": 11,3,
+"Bialko": 0,4,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Sok pomarańczowy",
+"Kcal": 45,
+"Weglowodany": 10,5,
+"Bialko": 0,5,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Sok pomidorowy",
+"Kcal": 19,
+"Weglowodany": 2,6,
+"Bialko": 0,8,
+"Tluszcz": 0,6
+},
+{
+"Nazwa": "Sok z czarnej porzeczki",
+"Kcal": 45,
+"Weglowodany": 10,2,
+"Bialko": 0,3,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Sprite, napój",
+"Kcal": 42,
+"Weglowodany": 10,5,
+"Bialko": 0,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Syrop truskawkowy",
+"Kcal": 262,
+"Weglowodany": 62,
+"Bialko": 0,2,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Szampan półsłodki",
+"Kcal": 97,
+"Weglowodany": 7,
+"Bialko": 0,2,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Szampan półwytrawny",
+"Kcal": 83,
+"Weglowodany": 3,4,
+"Bialko": 0,1,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Szampan słodki",
+"Kcal": 117,
+"Weglowodany": 12,
+"Bialko": 0,2,
+"Tluszcz": 0
+},
+{
+"Nazwa": "Szczaw",
+"Kcal": 39,
+"Weglowodany": 3,9,
+"Bialko": 1,1,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Szczupak świeży",
+"Kcal": 81,
+"Weglowodany": 0,
+"Bialko": 18,4,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Szczypiorek",
+"Kcal": 39,
+"Weglowodany": 3,9,
+"Bialko": 4,1,
+"Tluszcz": 0,8
+},
+{
+"Nazwa": "Szparagi",
+"Kcal": 24,
+"Weglowodany": 3,7,
+"Bialko": 1,9,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Szpinak",
+"Kcal": 26,
+"Weglowodany": 3,
+"Bialko": 2,6,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Szponder wołowy",
+"Kcal": 218,
+"Weglowodany": 0,
+"Bialko": 19,3,
+"Tluszcz": 15,7
+},
+{
+"Nazwa": "Szprot wędzony",
+"Kcal": 243,
+"Weglowodany": 0,
+"Bialko": 19,3,
+"Tluszcz": 18,3
+},
+{
+"Nazwa": "Szynka surowa wieprzowa",
+"Kcal": 264,
+"Weglowodany": 0,
+"Bialko": 18,
+"Tluszcz": 21,3
+},
+{
+"Nazwa": "Szynka wędzona gotowana",
+"Kcal": 389,
+"Weglowodany": 0,
+"Bialko": 23,
+"Tluszcz": 33
+},
+{
+"Nazwa": "Śmietana 12% tłuszczu",
+"Kcal": 134,
+"Weglowodany": 3,9,
+"Bialko": 2,7,
+"Tluszcz": 12
+},
+{
+"Nazwa": "Śmietana 18% tłuszczu",
+"Kcal": 186,
+"Weglowodany": 3,6,
+"Bialko": 2,5,
+"Tluszcz": 18
+},
+{
+"Nazwa": "Śmietanka do kawy 9% tłuszczu",
+"Kcal": 54,
+"Weglowodany": 4,
+"Bialko": 2,8,
+"Tluszcz": 9
+},
+{
+"Nazwa": "Śmietanka kremowa 30% tłuszczu",
+"Kcal": 291,
+"Weglowodany": 3,1,
+"Bialko": 2,2,
+"Tluszcz": 30
+},
+{
+"Nazwa": "Śledź solony",
+"Kcal": 218,
+"Weglowodany": 0,
+"Bialko": 19,8,
+"Tluszcz": 15,4
+},
+{
+"Nazwa": "Śledź świeży",
+"Kcal": 162,
+"Weglowodany": 0,
+"Bialko": 16,3,
+"Tluszcz": 10,7
+},
+{
+"Nazwa": "Śledź w oleju, konserwa",
+"Kcal": 343,
+"Weglowodany": 0,
+"Bialko": 19,7,
+"Tluszcz": 29,4
+},
+{
+"Nazwa": "Śledź w pomidorach, konserwa",
+"Kcal": 177,
+"Weglowodany": 1,8,
+"Bialko": 13,7,
+"Tluszcz": 12,8
+},
+{
+"Nazwa": "Śliwki",
+"Kcal": 70,
+"Weglowodany": 15,9,
+"Bialko": 1,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Śliwki suszone",
+"Kcal": 311,
+"Weglowodany": 70,8,
+"Bialko": 4,9,
+"Tluszcz": 0,9
+},
+{
+"Nazwa": "Truskawki",
+"Kcal": 28,
+"Weglowodany": 7,2,
+"Bialko": 0,7,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Truskawki w galaretce",
+"Kcal": 126,
+"Weglowodany": 16,
+"Bialko": 15,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Truskawki z bitą śmietaną",
+"Kcal": 127,
+"Weglowodany": 8,4,
+"Bialko": 1,1,
+"Tluszcz": 10,4
+},
+{
+"Nazwa": "Truskawki, dżem niskosłodzony",
+"Kcal": 153,
+"Weglowodany": 37,8,
+"Bialko": 0,3,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Truskawki, dżem wysokosłodzony",
+"Kcal": 252,
+"Weglowodany": 62,3,
+"Bialko": 0,3,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Tuńczyk w oleju",
+"Kcal": 190,
+"Weglowodany": 0,
+"Bialko": 27,1,
+"Tluszcz": 9
+},
+{
+"Nazwa": "Tuńczyk w wodzie",
+"Kcal": 96,
+"Weglowodany": 0,
+"Bialko": 21,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Wafle nadziewane",
+"Kcal": 519,
+"Weglowodany": 60,7,
+"Bialko": 8,3,
+"Tluszcz": 27,5
+},
+{
+"Nazwa": "Wafle w czekoladzie",
+"Kcal": 553,
+"Weglowodany": 55,6,
+"Bialko": 7,4,
+"Tluszcz": 33,9
+},
+{
+"Nazwa": "Wątroba cielęca",
+"Kcal": 124,
+"Weglowodany": 4,1,
+"Bialko": 19,2,
+"Tluszcz": 3,3
+},
+{
+"Nazwa": "Wątroba wieprzowa",
+"Kcal": 130,
+"Weglowodany": 2,6,
+"Bialko": 22,
+"Tluszcz": 3,4
+},
+{
+"Nazwa": "Wątroba wołowa",
+"Kcal": 125,
+"Weglowodany": 4,
+"Bialko": 20,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Wątróbka wieprzowa saute",
+"Kcal": 239,
+"Weglowodany": 4,9,
+"Bialko": 20,5,
+"Tluszcz": 15,5
+},
+{
+"Nazwa": "Wędzonka wołowa gotowana",
+"Kcal": 102,
+"Weglowodany": 0,5,
+"Bialko": 17,8,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Węgorz wędzony",
+"Kcal": 326,
+"Weglowodany": 0,
+"Bialko": 17,9,
+"Tluszcz": 28,6
+},
+{
+"Nazwa": "Wieprzowina duszona",
+"Kcal": 225,
+"Weglowodany": 1,2,
+"Bialko": 11,4,
+"Tluszcz": 19,8
+},
+{
+"Nazwa": "Wieprzowina gotowana",
+"Kcal": 364,
+"Weglowodany": 3,1,
+"Bialko": 22,6,
+"Tluszcz": 30
+},
+{
+"Nazwa": "Winogrona",
+"Kcal": 69,
+"Weglowodany": 17,6,
+"Bialko": 0,5,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Wiórki kokosowe",
+"Kcal": 606,
+"Weglowodany": 27,
+"Bialko": 5,6,
+"Tluszcz": 63,2
+},
+{
+"Nazwa": "Wiśnie",
+"Kcal": 47,
+"Weglowodany": 10,9,
+"Bialko": 0,9,
+"Tluszcz": 0,4
+},
+{
+"Nazwa": "Wiśnie, dżem niskosłodzony",
+"Kcal": 154,
+"Weglowodany": 37,8,
+"Bialko": 0,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Wiśnie, dżem wysokosłodzony",
+"Kcal": 252,
+"Weglowodany": 61,7,
+"Bialko": 0,4,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Włoszczyzna mrożona",
+"Kcal": 25,
+"Weglowodany": 7,9,
+"Bialko": 1,4,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Wołowina, pieczeń",
+"Kcal": 117,
+"Weglowodany": 0,
+"Bialko": 20,9,
+"Tluszcz": 3,6
+},
+{
+"Nazwa": "Wołowina, polędwica",
+"Kcal": 113,
+"Weglowodany": 0,
+"Bialko": 20,1,
+"Tluszcz": 3,5
+},
+{
+"Nazwa": "Wołowina, rostbef",
+"Kcal": 152,
+"Weglowodany": 0,
+"Bialko": 21,5,
+"Tluszcz": 7,3
+},
+{
+"Nazwa": "Wołowina, rozbratel",
+"Kcal": 157,
+"Weglowodany": 0,
+"Bialko": 16,7,
+"Tluszcz": 10,1
+},
+{
+"Nazwa": "Wołowina, szponder",
+"Kcal": 217,
+"Weglowodany": 0,
+"Bialko": 19,3,
+"Tluszcz": 15,7
+},
+{
+"Nazwa": "Ziemniaki późne",
+"Kcal": 85,
+"Weglowodany": 20,5,
+"Bialko": 1,9,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Ziemniaki puree",
+"Kcal": 90,
+"Weglowodany": 18,4,
+"Bialko": 2,1,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Ziemniaki wczesne",
+"Kcal": 69,
+"Weglowodany": 16,3,
+"Bialko": 1,8,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Ziemniaki z tłuszczem",
+"Kcal": 106,
+"Weglowodany": 18,7,
+"Bialko": 2,
+"Tluszcz": 3,1
+},
+{
+"Nazwa": "Zupa cebulowa",
+"Kcal": 44,
+"Weglowodany": 4,
+"Bialko": 1,4,
+"Tluszcz": 2,7
+},
+{
+"Nazwa": "Zupa cytrynowa z ryżem",
+"Kcal": 58,
+"Weglowodany": 8,7,
+"Bialko": 1,4,
+"Tluszcz": 2,2
+},
+{
+"Nazwa": "Zupa fasolowa",
+"Kcal": 62,
+"Weglowodany": 10,
+"Bialko": 4,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa grochowa",
+"Kcal": 66,
+"Weglowodany": 8,9,
+"Bialko": 4,4,
+"Tluszcz": 2,4
+},
+{
+"Nazwa": "Zupa grzybowa zabielana",
+"Kcal": 26,
+"Weglowodany": 1,3,
+"Bialko": 1,3,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa jarzynowa",
+"Kcal": 43,
+"Weglowodany": 6,2,
+"Bialko": 1,7,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa jesienna mrożona",
+"Kcal": 27,
+"Weglowodany": 7,2,
+"Bialko": 1,6,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Zupa kalafiorowa",
+"Kcal": 28,
+"Weglowodany": 4,9,
+"Bialko": 1,6,
+"Tluszcz": 0,5
+},
+{
+"Nazwa": "Zupa kalafiorowa mrożona",
+"Kcal": 22,
+"Weglowodany": 5,5,
+"Bialko": 2,
+"Tluszcz": 0,2
+},
+{
+"Nazwa": "Zupa neapolitańska",
+"Kcal": 63,
+"Weglowodany": 8,2,
+"Bialko": 2,2,
+"Tluszcz": 2,6
+},
+{
+"Nazwa": "Zupa ogórkowa",
+"Kcal": 42,
+"Weglowodany": 5,
+"Bialko": 1,4,
+"Tluszcz": 2
+},
+{
+"Nazwa": "Zupa owocowa z jabłek",
+"Kcal": 42,
+"Weglowodany": 11,8,
+"Bialko": 0,1,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Zupa pomidorowa",
+"Kcal": 11,
+"Weglowodany": 2,1,
+"Bialko": 1,
+"Tluszcz": 0,1
+},
+{
+"Nazwa": "Zupa pomidorowa z makaronem",
+"Kcal": 35,
+"Weglowodany": 3,3,
+"Bialko": 1,5,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa pomidorowa z ryżem",
+"Kcal": 37,
+"Weglowodany": 3,9,
+"Bialko": 1,5,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa pomidorowa zabielana",
+"Kcal": 28,
+"Weglowodany": 1,9,
+"Bialko": 1,3,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa selerowa",
+"Kcal": 37,
+"Weglowodany": 4,5,
+"Bialko": 1,6,
+"Tluszcz": 1,8
+},
+{
+"Nazwa": "Zupa selerowa z grzankami",
+"Kcal": 51,
+"Weglowodany": 8,1,
+"Bialko": 1,8,
+"Tluszcz": 1,9
+},
+{
+"Nazwa": "Zupa szczawiowa",
+"Kcal": 40,
+"Weglowodany": 2,9,
+"Bialko": 1,6,
+"Tluszcz": 2,5
+},
+{
+"Nazwa": "Zupa szpinakowa z ziemniakami",
+"Kcal": 40,
+"Weglowodany": 6,6,
+"Bialko": 2,2,
+"Tluszcz": 0,9
+},
+{
+"Nazwa": "Zupa włoska mrożona",
+"Kcal": 27,
+"Weglowodany": 6,9,
+"Bialko": 1,8,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Zupa z fasoli szparagowej",
+"Kcal": 43,
+"Weglowodany": 8,9,
+"Bialko": 2,2,
+"Tluszcz": 0,6
+},
+{
+"Nazwa": "Zupa z porów z makaronem",
+"Kcal": 58,
+"Weglowodany": 10,3,
+"Bialko": 2,4,
+"Tluszcz": 1,4
+},
+{
+"Nazwa": "Zupa z zielonego groszku",
+"Kcal": 56,
+"Weglowodany": 11,2,
+"Bialko": 3,2,
+"Tluszcz": 1,2
+},
+{
+"Nazwa": "Zupa ziemniaczana",
+"Kcal": 39,
+"Weglowodany": 6,6,
+"Bialko": 1,4,
+"Tluszcz": 1,1
+},
+{
+"Nazwa": "Zupa zimowa mrożona",
+"Kcal": 25,
+"Weglowodany": 6,9,
+"Bialko": 2,1,
+"Tluszcz": 0,3
+},
+{
+"Nazwa": "Żeberka wieprzowe duszone",
+"Kcal": 210,
+"Weglowodany": 2,2,
+"Bialko": 7,9,
+"Tluszcz": 19,2
+},
+{
+"Nazwa": "Żółtko jaja kurzego",
+"Kcal": 314,
+"Weglowodany": 0,3,
+"Bialko": 15,5,
+"Tluszcz": 28,2
+},
+{
+"Nazwa": "Żurek",
+"Kcal": 124,
+"Weglowodany": 23,5,
+"Bialko": 2,2,
+"Tluszcz": 3,1
+},

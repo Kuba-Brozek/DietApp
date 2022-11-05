@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.DTO.Event
+import ayathe.project.scheduleapp.DTO.Day
 import com.bumptech.glide.Glide
 
 typealias dr = R.drawable
 
-class DayAdapter(private val eventList: ArrayList<Event>, private val listener: OnEventClickListener): RecyclerView.Adapter<DayAdapter.EventViewHolder>() {
+class DayAdapter(private val dayList: ArrayList<Day>, private val listener: OnEventClickListener): RecyclerView.Adapter<DayAdapter.EventViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -22,25 +22,25 @@ class DayAdapter(private val eventList: ArrayList<Event>, private val listener: 
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        val event: Event = eventList[position]
-        holder.date.text = event.date
-        holder.desc.text = event.name
+        val day: Day = dayList[position]
+        holder.date.text = day.date
+        holder.desc.text = day.name
         val itV = holder.itemView
         try{
             when {
-                event.category.toString() ==  "biznes" -> {
+                day.category.toString() ==  "biznes" -> {
                     Glide.with(itV).load(dr.business).into(itV.findViewById(R.id.background_event))
                 }
-                event.category.toString() == "edukacja" -> {
+                day.category.toString() == "edukacja" -> {
                     Glide.with(itV).load(dr.education).into(itV.findViewById(R.id.background_event))
                 }
-                event.category.toString() == "sprawy domowe" -> {
+                day.category.toString() == "sprawy domowe" -> {
                     Glide.with(itV).load(dr.home).into(itV.findViewById(R.id.background_event))
                 }
-                event.category.toString() == "trening" -> {
+                day.category.toString() == "trening" -> {
                     Glide.with(itV).load(dr.work_out).into(itV.findViewById(R.id.background_event))
                 }
-                event.category.toString() == "inne" -> {
+                day.category.toString() == "inne" -> {
                     Glide.with(itV).load(dr.other).into(itV.findViewById(R.id.background_event))
                 }
             }
@@ -50,7 +50,7 @@ class DayAdapter(private val eventList: ArrayList<Event>, private val listener: 
     }
 
     override fun getItemCount(): Int {
-        return eventList.size
+        return dayList.size
     }
 
 
@@ -61,11 +61,11 @@ class DayAdapter(private val eventList: ArrayList<Event>, private val listener: 
 
         init{
             itemView.setOnLongClickListener{
-                listener.onEventLongClick(eventList[absoluteAdapterPosition], absoluteAdapterPosition)
+                listener.onEventLongClick(dayList[absoluteAdapterPosition], absoluteAdapterPosition)
                 true
             }
             itemView.setOnClickListener{
-                listener.onEventClick(eventList[absoluteAdapterPosition], absoluteAdapterPosition)
+                listener.onEventClick(dayList[absoluteAdapterPosition], absoluteAdapterPosition)
             }
         }
     }
@@ -73,6 +73,6 @@ class DayAdapter(private val eventList: ArrayList<Event>, private val listener: 
 }
 
 interface OnEventClickListener {
-    fun onEventLongClick(event: Event, position: Int)
-    fun onEventClick(event: Event, position: Int)
+    fun onEventLongClick(day: Day, position: Int)
+    fun onEventClick(day: Day, position: Int)
 }

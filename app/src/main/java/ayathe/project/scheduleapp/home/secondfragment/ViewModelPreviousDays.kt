@@ -8,7 +8,7 @@ import android.widget.Spinner
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
-import ayathe.project.scheduleapp.DTO.Event
+import ayathe.project.scheduleapp.DTO.Day
 import ayathe.project.scheduleapp.repository.UserRepository
 import kotlinx.android.synthetic.main.fragment_second.view.*
 
@@ -19,8 +19,8 @@ class ViewModelPreviousDays: ViewModel() {
         item.adapter = ArrayAdapter(context, R.layout.simple_spinner_item, list)
     }
 
-    fun addEvent(event: Event){
-        repo.addEvent(event)
+    fun addEvent(day: Day){
+        repo.addEvent(day)
     }
 
     fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener){

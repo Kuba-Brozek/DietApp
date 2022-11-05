@@ -35,14 +35,14 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         setContentView(view)
         lifecycleScope.launch {
             try {
-                userSettingsVM.readUserData {
-                    username_TV_CPI.text = it.username.toString()
-                    email_TV_CPI.text = it.email.toString()
-                    age_TV_CPI.text = it.age.toString()
-                    weight_TV_CPI.text = it.weight.toString()
-                    height_TV_CPI.text = it.height.toString()
-                    destination_TV_CPI.text = it.destination.toString()
-                }
+//                userSettingsVM.readUserData {
+//                    username_TV_CPI.text = it.username.toString()
+//                    email_TV_CPI.text = it.email.toString()
+//                    age_TV_CPI.text = it.age.toString()
+//                    weight_TV_CPI.text = it.weight.toString()
+//                    height_TV_CPI.text = it.height.toString()
+//                    destination_TV_CPI.text = it.destination.toString()
+//                }
                 userSettingsVM.loadProfileImage(
                     this@ChangePersonalInfoActivity, profile_image_IV_CPI)
             } catch (ex: Exception) {

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import ayathe.project.scheduleapp.R
-import ayathe.project.scheduleapp.DTO.Event
+import ayathe.project.scheduleapp.DTO.Day
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.PreviousDaysFragment
 import ayathe.project.scheduleapp.home.secondfragment.ViewModelPreviousDays
@@ -54,7 +54,7 @@ class PreviousDaysInfo : Fragment() {
         }
 
         view.btn_save.setOnClickListener {
-            val event = Event(view.event_name.text.toString(),
+            val event = Day(view.event_name.text.toString(),
                 view.event_date.text.toString(),
                 view.event_description.text.toString(),
                 eventCategory.toString())

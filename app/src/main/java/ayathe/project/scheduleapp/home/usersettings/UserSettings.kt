@@ -49,6 +49,8 @@ class UserSettings : AppCompatActivity() {
 
             }
         }
+            val jsonString = userSettingsVM.getJsonDataFromAsset(this@UserSettings, "json.json")
+            userSettingsVM.dataClassFromJsonString(jsonString!!)
             val loadImage = registerForActivityResult(ActivityResultContracts
                 .GetContent()) {
                 profile_image.setImageURI(it)
@@ -61,6 +63,7 @@ class UserSettings : AppCompatActivity() {
             profile_image.setOnClickListener {
                 loadImage.launch("image/*")
             }
+
             change_personal_info_btn.setOnClickListener {
                 val intent = Intent(this@UserSettings,
                     ChangePersonalInfoActivity::class.java)
@@ -90,6 +93,7 @@ class UserSettings : AppCompatActivity() {
         val intent = Intent(this@UserSettings, HomeActivity::class.java)
         startActivity(intent)
     }
+
 
 }
 

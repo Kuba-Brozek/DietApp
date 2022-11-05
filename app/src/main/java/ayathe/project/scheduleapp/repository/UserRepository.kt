@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.DayAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
-import ayathe.project.scheduleapp.DTO.Event
+import ayathe.project.scheduleapp.DTO.Day
 import ayathe.project.scheduleapp.DTO.User
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +21,9 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 
 class UserRepository {
 
@@ -31,7 +33,7 @@ class UserRepository {
     private val doc = "DOC"
     private val userCreationTag = "UserCreation"
     private val cloud = FirebaseFirestore.getInstance()
-    private lateinit var eventArrayList: ArrayList<Event>
+    private lateinit var dayArrayList: ArrayList<Day>
     private lateinit var dayAdapter: DayAdapter
     private val fbStorage = Firebase.storage
     private val storage = fbStorage.reference
@@ -62,14 +64,14 @@ class UserRepository {
             }
     }
 
-    fun addEvent(event: Event) {
+    fun addEvent(day: Day) {
         val eventMap = hashMapOf(
-            "category" to event.category,
-            "name" to event.name,
-            "date" to event.date,
-            "description" to event.description
+            "category" to day.category,
+            "name" to day.name,
+            "date" to day.date,
+            "description" to day.description
         )
-        cloud.collection(auth.currentUser!!.uid).document(event.name.toString())
+        cloud.collection(auth.currentUser!!.uid).document(day.name.toString())
             .set(eventMap)
             .addOnSuccessListener {
                 Log.d(debug, "Event added successfully!")
@@ -81,8 +83,8 @@ class UserRepository {
 
     fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener) {
 
-        eventArrayList = arrayListOf()
-        dayAdapter = DayAdapter(eventArrayList, listener)
+        dayArrayList = arrayListOf()
+        dayAdapter = DayAdapter(dayArrayList, listener)
         recyclerView.adapter = dayAdapter
         cloud.collection(auth.currentUser!!.uid)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
@@ -98,7 +100,7 @@ class UserRepository {
                     for (doc in value?.documentChanges!!) {
 
                         if (doc.type == DocumentChange.Type.ADDED) {
-                            eventArrayList.add(doc.document.toObject(Event::class.java))
+                            dayArrayList.add(doc.document.toObject(Day::class.java))
                         }
                     }
                     dayAdapter.notifyDataSetChanged()
@@ -131,11 +133,13 @@ class UserRepository {
         }
 
 
+
+
     fun showEventInfo(view: View, context: Context, eventName: String) {
         val docRef = cloud.collection(auth.currentUser!!.uid).document(eventName)
 
         docRef.get().addOnSuccessListener { docSnapshot ->
-            val event = docSnapshot.toObject<Event>()
+            val event = docSnapshot.toObject<Day>()
             view.event_name.setText(event?.name.toString())
             view.event_date.text = event?.date.toString()
             view.event_description.setText(event?.description.toString())

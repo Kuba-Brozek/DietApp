@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.scheduleapp.R
 import ayathe.project.scheduleapp.adapter.DayAdapter
 import ayathe.project.scheduleapp.adapter.OnEventClickListener
-import ayathe.project.scheduleapp.DTO.Event
+import ayathe.project.scheduleapp.DTO.Day
 import ayathe.project.scheduleapp.home.homeactivity.HomeActivity
 import ayathe.project.scheduleapp.home.secondfragment.eventinfo.PreviousDaysInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -28,7 +28,7 @@ import java.util.*
 class PreviousDaysFragment : Fragment(), OnEventClickListener {
 
 
-    private lateinit var eventArrayList: ArrayList<Event>
+    private lateinit var dayArrayList: ArrayList<Day>
     private lateinit var dayAdapter: DayAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: FirebaseFirestore
@@ -54,8 +54,8 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
         recyclerView = view.findViewById(R.id.event_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.setHasFixedSize(true)
-        eventArrayList = arrayListOf()
-        dayAdapter = DayAdapter(eventArrayList, this)
+        dayArrayList = arrayListOf()
+        dayAdapter = DayAdapter(dayArrayList, this)
         recyclerView.adapter = dayAdapter
 
         secondVM.eventChangeListener(recyclerView, this)
@@ -73,7 +73,7 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
             }
         }
         view.btn_submit_event.setOnClickListener {
-            val event = Event(view.event_name_ET.text.toString(),
+            val event = Day(view.event_name_ET.text.toString(),
                 view.date_TV.text.toString(),
                 view.event_description_ET.text.toString(),
                 view.category_spinner.selectedItem.toString())
@@ -92,19 +92,19 @@ class PreviousDaysFragment : Fragment(), OnEventClickListener {
         return view
     }
 
-    override fun onEventLongClick(event: Event, position: Int) {
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${event.name.toString()}")
+    override fun onEventLongClick(day: Day, position: Int) {
+        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${day.name.toString()}")
             .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
             .setPositiveButton("Delete Event!"){ _, _ ->
-                secondVM.deleteEvent(event.name.toString())
+                secondVM.deleteEvent(day.name.toString())
                 (activity as HomeActivity).fragmentsReplacement(PreviousDaysFragment())
             }.show()
         Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
     }
 
-    override fun onEventClick(event: Event, position: Int) {
-        val name = event.name.toString()
-        val category =event.category.toString()
+    override fun onEventClick(day: Day, position: Int) {
+        val name = day.name.toString()
+        val category =day.category.toString()
         val bundle = Bundle()
         val eventInfo = PreviousDaysInfo()
         bundle.putString("EventName",name)
