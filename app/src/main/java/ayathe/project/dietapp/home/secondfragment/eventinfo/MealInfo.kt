@@ -38,7 +38,6 @@ class MealInfo : Fragment() {
         val mealDate = args?.getString("MealDate")
         Log.i("rty", mealName.toString())
 
-
         view.meal_name.setText(mealName.toString())
         secondVM.showEventInfo(view, requireContext(), mealName.toString(), mealDate.toString())
 

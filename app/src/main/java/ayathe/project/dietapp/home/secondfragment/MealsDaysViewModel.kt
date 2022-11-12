@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import ayathe.project.dietapp.adapter.OnEventClickListener
+import ayathe.project.dietapp.adapter.onMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.ProductFromJSON
 import ayathe.project.dietapp.repository.UserRepository
@@ -20,8 +20,8 @@ class MealsDaysViewModel: ViewModel() {
         repo.addMeal(meal)
     }
 
-    fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener){
-        repo.eventChangeListener(recyclerView, listener)
+    fun eventChangeListener(recyclerView: RecyclerView, listener: onMealClickListener, date: String){
+        repo.eventChangeListener(recyclerView, listener, date)
     }
 
 
@@ -77,7 +77,11 @@ class MealsDaysViewModel: ViewModel() {
         val year = string.substring(0, 4)
         val month = string.substring(5, 7)
         val day = string.substring(8)
-        return "$day.$month-$year"
+        return "$day.$month.$year"
+    }
+
+    fun getMeals(date: String): ArrayList<Meal> {
+        return repo.getMeals(date)
     }
 }
 //yyyy-MM-dd

@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.adapter.DayAdapter
-import ayathe.project.dietapp.adapter.OnEventClickListener
+import ayathe.project.dietapp.adapter.MealAdapter
+import ayathe.project.dietapp.adapter.onMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.User
 import com.bumptech.glide.Glide
@@ -35,7 +35,7 @@ class UserRepository {
     private val userCreationTag = "UserCreation"
     private val cloud = FirebaseFirestore.getInstance()
     private lateinit var mealArrayList: ArrayList<Meal>
-    private lateinit var dayAdapter: DayAdapter
+    private lateinit var mealAdapter: MealAdapter
     private val fbStorage = Firebase.storage
     private val storage = fbStorage.reference
 
@@ -87,14 +87,12 @@ class UserRepository {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun eventChangeListener(recyclerView: RecyclerView, listener: OnEventClickListener) {
+    fun eventChangeListener(recyclerView: RecyclerView, listener: onMealClickListener, date: String) {
         mealArrayList = arrayListOf()
-        dayAdapter = DayAdapter(mealArrayList, listener)
-        recyclerView.adapter = dayAdapter
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
-        val currentDate = sdf.format(Date())
+        mealAdapter = MealAdapter(mealArrayList, listener)
+        recyclerView.adapter = mealAdapter
         cloud.collection(auth.currentUser!!.uid)
-            .document("Meals").collection(currentDate)
+            .document("Meals").collection(date)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onEvent(value: QuerySnapshot?,
@@ -112,7 +110,7 @@ class UserRepository {
                             mealArrayList.add(doc.document.toObject(Meal::class.java))
                         }
                     }
-                    dayAdapter.notifyDataSetChanged()
+                    mealAdapter.notifyDataSetChanged()
                 }
             })
     }
@@ -263,6 +261,20 @@ class UserRepository {
 
     private fun toast(context: Context, string: String) { //working
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    fun getMeals(date: String): ArrayList<Meal> {
+        val list = arrayListOf<Meal>()
+        val a = cloud.collection(auth.currentUser!!.uid)
+            .document("Meals").collection(date)
+            .get()
+            .addOnSuccessListener { doc ->
+                for ( document in doc){
+                    val documento = document.toObject(Meal::class.java)
+                    list.add(documento)
+                }
+            }
+        return list
     }
 
 
