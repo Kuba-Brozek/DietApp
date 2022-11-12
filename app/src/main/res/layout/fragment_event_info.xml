@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.secondfragment.eventinfo.PreviousDaysInfo">
+    tools:context=".home.secondfragment.eventinfo.MealInfo">
 
 
     <ImageView
@@ -21,55 +21,80 @@
         app:layout_constraintVertical_bias="0.168" />
 
     <EditText
-        android:id="@+id/event_description"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:minLines="4"
-        android:text="Event description"
-        android:inputType="textMultiLine"
+        android:id="@+id/meal_grams_ET"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:inputType="phone"
+        android:text="grams"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727" />
+        app:layout_constraintVertical_bias="0.603" />
 
     <TextView
-        android:id="@+id/event_date"
+        android:id="@+id/meal_kcal"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:text="kcal"
+        android:textAlignment="center"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_calculate_kcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="calculate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.601" />
+
+    <TextView
+        android:id="@+id/meal_date"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Event date"
-        android:textSize="26dp"
-        android:textAlignment="center"
         android:inputType="textNoSuggestions"
+        android:text="Today's date"
+        android:textAlignment="center"
+        android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.556" />
+        app:layout_constraintVertical_bias="0.468" />
 
     <EditText
-        android:id="@+id/event_name"
+        android:id="@+id/meal_name"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text=""
-        android:hint="Event name"
+        android:hint="Meal name"
         android:inputType="textNoSuggestions"
+        android:text=""
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.386" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EXIT"
+        android:text="exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"

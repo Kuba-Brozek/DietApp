@@ -17,7 +17,7 @@ android {
         viewBinding true
     }
     defaultConfig {
-        applicationId "ayathe.project.scheduleapp"
+        applicationId "ayathe.project.dietapp"
         minSdk 21
         targetSdk 33
         versionCode 1
