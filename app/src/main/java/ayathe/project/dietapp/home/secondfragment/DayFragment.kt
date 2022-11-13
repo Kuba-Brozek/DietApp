@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.R
@@ -25,6 +26,10 @@ import ayathe.project.dietapp.home.secondfragment.eventinfo.MealInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.current_day_fragment.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -47,7 +52,7 @@ class DayFragment : Fragment(), onMealClickListener {
     private var choice: String? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("SetTextI18n", "SimpleDateFormat")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,18 +60,14 @@ class DayFragment : Fragment(), onMealClickListener {
         val view: View = inflater.inflate(R.layout.current_day_fragment, container, false)
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
-        view.date_TV.text = currentDate
-        view.date_TV.setOnClickListener {
-            val dpd = DatePickerDialog(requireContext(),
-                { _, mYear, mMonth, mDay -> date_TV.text = "$mDay.${mMonth+1}.$mYear" }, year, month, day)
-            dpd.show()
-        }
+        view.date_TV.text = "12.11.2022"
 
         recyclerView = view.findViewById(R.id.event_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView.setHasFixedSize(true)
         mealArrayList = arrayListOf()
-        recyclerView.adapter = MealAdapter(mealArrayList, this@DayFragment)
+        mealAdapter = MealAdapter(mealArrayList, this@DayFragment)
+        recyclerView.adapter = mealAdapter
         val jsonString = mdVM.getJsonDataFromAsset(requireContext(), "json.json")
         val userList = mdVM.dataClassFromJsonString(jsonString!!)
         mdVM.eventChangeListener(recyclerView, this, view.date_TV.text.toString())
@@ -87,6 +88,26 @@ class DayFragment : Fragment(), onMealClickListener {
             view.date_TV.text = final
         }
 
+        view.date_TV.setOnClickListener {
+                    val dpd = DatePickerDialog(requireContext(),
+                        { _, mYear, mMonth, mDay -> date_TV.text = "$mDay.${mMonth+1}.$mYear" }, year, month, day)
+                    dpd.show()
+        }
+
+        view.date_TV.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                mdVM.eventChangeListener(recyclerView, this@DayFragment, view.date_TV.text.toString())
+                mealAdapter.notifyDataSetChanged()
+            }
+
+        })
+
         view.btn_submit_event.setOnClickListener {
             try{
                 val jsonElement = userList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
@@ -98,7 +119,7 @@ class DayFragment : Fragment(), onMealClickListener {
 
                 val meal = Meal(
                     view.meal_name_ET.text.toString(),
-                    currentDate,
+                    view.date_TV.text.toString(),
                     grams,
                     caloriesFromMeal
                 )
