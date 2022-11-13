@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.adapter.MealAdapter
-import ayathe.project.dietapp.adapter.onMealClickListener
+import ayathe.project.dietapp.adapter.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.User
 import com.bumptech.glide.Glide
@@ -87,7 +87,7 @@ class UserRepository {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun eventChangeListener(recyclerView: RecyclerView, listener: onMealClickListener, date: String) {
+    fun eventChangeListener(recyclerView: RecyclerView, listener: OnMealClickListener, date: String) {
         mealArrayList = arrayListOf()
         mealAdapter = MealAdapter(mealArrayList, listener)
         recyclerView.adapter = mealAdapter
@@ -152,7 +152,8 @@ class UserRepository {
         docRef.get().addOnSuccessListener { docSnapshot ->
             val meal = docSnapshot.toObject<Meal>()
             view.meal_name.setText(meal?.name.toString())
-            view.meal_date.text = "${meal?.date.toString().substring(0, 7)}.."
+//            view.meal_name.setText("${meal?.name.toString().substring(0, 7)}..")
+            view.meal_date.text = meal?.date.toString()
             view.meal_grams_ET.setText(meal?.grams.toString())
             view.meal_kcal.text = meal?.cals.toString()
             try {

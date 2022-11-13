@@ -13,7 +13,7 @@ import ayathe.project.dietapp.DTO.Meal
 
 typealias dr = R.drawable
 
-class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: onMealClickListener): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
+class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: OnMealClickListener): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
@@ -24,8 +24,10 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: o
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
         val meal: Meal = mealList[position]
+        if(meal.name?.length!! > 6){
+            holder.name.text = meal.name!!.substring(0,6)
+        } else holder.name.text = meal.name
         holder.date.text = meal.date
-        holder.desc.text = meal.name
         holder.kcal.text = meal.cals.toString()
         holder.grams.text = meal.grams.toString()
         val itV = holder.background
@@ -55,8 +57,8 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: o
     inner class MealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val background: ConstraintLayout = itemView.findViewById(R.id.meal_bg)
+        val name: TextView = itemView.findViewById(R.id.name_TV)
         val date: TextView = itemView.findViewById(R.id.date_CV)
-        val desc: TextView = itemView.findViewById(R.id.name_TV)
         val kcal: TextView = itemView.findViewById(R.id.kcal_TV)
         val grams: TextView = itemView.findViewById(R.id.grams_TV)
 
@@ -73,7 +75,7 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: o
 
 }
 
-interface onMealClickListener {
+interface OnMealClickListener {
     fun onMealLongClick(meal: Meal, position: Int)
     fun onMealClick(meal: Meal, position: Int)
 }

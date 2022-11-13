@@ -14,22 +14,17 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.adapter.MealAdapter
-import ayathe.project.dietapp.adapter.onMealClickListener
+import ayathe.project.dietapp.adapter.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.home.homeactivity.HomeActivity
 import ayathe.project.dietapp.home.secondfragment.eventinfo.MealInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.current_day_fragment.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -37,7 +32,7 @@ import java.time.Period
 import java.util.*
 
 
-class DayFragment : Fragment(), onMealClickListener {
+class DayFragment : Fragment(), OnMealClickListener {
 
 
     private lateinit var mealArrayList: ArrayList<Meal>
@@ -60,10 +55,10 @@ class DayFragment : Fragment(), onMealClickListener {
         val view: View = inflater.inflate(R.layout.current_day_fragment, container, false)
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
-        view.date_TV.text = "12.11.2022"
+        view.date_TV.text = currentDate
 
         recyclerView = view.findViewById(R.id.event_list_RV)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.setHasFixedSize(true)
         mealArrayList = arrayListOf()
         mealAdapter = MealAdapter(mealArrayList, this@DayFragment)
