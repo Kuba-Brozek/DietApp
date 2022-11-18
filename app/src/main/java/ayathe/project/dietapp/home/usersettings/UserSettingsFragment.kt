@@ -24,6 +24,8 @@ import kotlinx.coroutines.Dispatchers
 class UserSettingsFragment : Fragment() {
 
     private val userSettingsVM by viewModels<UserSettingsViewModel>()
+    private val mainDispatcher = Dispatchers.Main
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,12 +35,12 @@ class UserSettingsFragment : Fragment() {
             try {
 
                 userSettingsVM.readUserData {
-                    CoroutineScope(Dispatchers.Main).launch {
+                    CoroutineScope(Dispatchers.IO).launch {
                         view.username_TV.text = it.username.toString()
                         view.email_displayTV.text = it.email.toString()
                     }
                 }
-                    CoroutineScope(Dispatchers.Main).launch {
+                    CoroutineScope(Dispatchers.IO).launch {
                         userSettingsVM.loadProfileImage(requireContext(), view.profile_image)
                     }
             } catch ( ex: Exception){
@@ -57,19 +59,22 @@ class UserSettingsFragment : Fragment() {
                 .GetContent()) {
                 view.profile_image.setImageURI(it)
                 replaceImage(it, view)
-                CoroutineScope(Dispatchers.Main).launch {
+                CoroutineScope(Dispatchers.IO).launch {
                     userSettingsVM.uploadProfileImage(it)
                 }
             }
 
-            view.profile_image.setOnClickListener {
-                loadImage.launch("image/*")
-            }
+                CoroutineScope(mainDispatcher).launch {
 
-            view.change_personal_info_btn.setOnClickListener {
-                val intent = Intent(requireContext(),
-                    ChangePersonalInfoActivity::class.java)
-                startActivity(intent)
+                    view.change_personal_info_btn.setOnClickListener {
+                    val intent = Intent(requireContext(),
+                        ChangePersonalInfoActivity::class.java)
+                    startActivity(intent)
+                    }
+
+                    view.profile_image.setOnClickListener {
+                        loadImage.launch("image/*")
+                    }
             }
         return view
     }
