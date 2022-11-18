@@ -34,14 +34,19 @@ class UserSettings : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         lifecycleScope.launch {
-            
             try {
-                userSettingsVM.readUserData {
-                    username_TV.text = it.destination.toString()
-                }
-                userSettingsVM.loadProfileImage(this@UserSettings, profile_image)
-            } catch ( ex: Exception){
 
+                userSettingsVM.readUserData {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        username_TV.text = it.username.toString()
+                        email_displayTV.text = it.email.toString()
+                    }
+                }
+                    CoroutineScope(Dispatchers.Main).launch {
+                        userSettingsVM.loadProfileImage(this@UserSettings, profile_image)
+                    }
+            } catch ( ex: Exception){
+                Log.e("LoadingError", "Loading image, or user data failed")
             }
         }
             val jsonString = userSettingsVM.getJsonDataFromAsset(this@UserSettings, "json.json")
