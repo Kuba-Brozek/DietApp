@@ -9,6 +9,7 @@ data class Meal(
 
 data class DayInfo(
     var date: String? = null,
+    val dayDescription: String? = null,
     var dayIndex: Int? = null,
     var kcalGoal: Int? = null,
     var kcalEaten: Int? = null,

@@ -14,7 +14,6 @@ import ayathe.project.dietapp.databinding.ActivityChangePersonalInfoBinding
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_change_personal_info.*
-import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -74,19 +73,5 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 loadImage.launch("image/*")
             }
         }
-    }
-
-    private fun replaceImage(uri: Uri?) {
-        try {
-            val imageUri: Uri = Uri.parse(uri.toString())
-            profile_image.setImageURI(imageUri)
-        } catch (e: Exception) {
-            Log.e("Image Error", "Profile Image not found.")
-        }
-    }
-
-    override fun onBackPressed() {
-        val intent = Intent(this@ChangePersonalInfoActivity, UserSettings::class.java)
-        startActivity(intent)
     }
 }

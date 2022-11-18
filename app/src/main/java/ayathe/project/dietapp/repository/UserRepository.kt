@@ -209,6 +209,8 @@ class UserRepository {
                     val imageURL = Uri.toString()
                     Glide.with(context).load(imageURL)
                         .circleCrop().into(imageView)
+                }.addOnFailureListener {
+                    Log.e("Image Exception", "${it.printStackTrace()}")
                 }
             } catch (e: Exception) {
                 Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")

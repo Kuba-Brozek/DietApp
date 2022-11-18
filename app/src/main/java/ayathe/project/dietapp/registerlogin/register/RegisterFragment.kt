@@ -1,5 +1,6 @@
 package ayathe.project.dietapp.registerlogin.register
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -22,18 +23,19 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.fragment_register, container, false)
+
         auth = FirebaseAuth.getInstance()
         view.buttonRegister.setOnClickListener {
             onClickSignUp()
         }
 
-        // Inflate the layout for this fragment
         return view
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun onClickSignUp() {
 
         if (emailET.text.toString().isEmpty()) {
@@ -57,7 +59,9 @@ class RegisterFragment : Fragment() {
             password_confirmET.requestFocus()
             return
         }
-        (activity as LogRegActivity).userCreation(emailET.text.toString(), passwordET.text.toString())
+        (activity as LogRegActivity)
+            .userCreation(emailET.text.toString(),
+                passwordET.text.toString())
     }
 
 }

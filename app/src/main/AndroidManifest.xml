@@ -22,7 +22,7 @@
             android:name="ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity"
             android:exported="true"></activity>
         <activity
-            android:name="ayathe.project.dietapp.home.usersettings.UserSettings"
+            android:name="ayathe.project.dietapp.home.usersettings.UserSettingsFragment"
             android:exported="true"></activity>
         <activity
             android:name="ayathe.project.dietapp.home.usersettings.ChangePersonalInfoActivity"

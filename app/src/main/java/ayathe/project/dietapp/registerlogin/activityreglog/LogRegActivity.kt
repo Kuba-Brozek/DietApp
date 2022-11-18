@@ -52,7 +52,7 @@ class LogRegActivity : AppCompatActivity() {
 
                 if (task.isSuccessful) {
 
-                    Log.d(TAG, "User created succesfully")
+                    Log.d(TAG, "User created successfully")
                     val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "")
                     mainActivityVm.addUserToDatabase(user)
                     val intent = Intent(this, AfterRegistrationActivity::class.java)
@@ -60,7 +60,7 @@ class LogRegActivity : AppCompatActivity() {
 
                 } else {
 
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Log.w(TAG, "signInWithEmail failed", task.exception)
                     Toast.makeText(baseContext, "Authentication failed. $password, $password",
                         Toast.LENGTH_SHORT).show()
                 }
