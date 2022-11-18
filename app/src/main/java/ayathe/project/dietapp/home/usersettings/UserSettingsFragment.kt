@@ -41,7 +41,7 @@ class UserSettingsFragment : Fragment() {
                     }
                 }
                     CoroutineScope(Dispatchers.IO).launch {
-                        userSettingsVM.loadProfileImage(requireContext(), view.profile_image)
+                        userSettingsVM.loadProfileImage(this@UserSettingsFragment.requireContext(), view.profile_image)
                     }
             } catch ( ex: Exception){
                 Log.e("LoadingError", "Loading image, or user data failed")
@@ -49,11 +49,12 @@ class UserSettingsFragment : Fragment() {
         }
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val intent = Intent(requireContext(), HomeActivity::class.java)
+                val intent = Intent(this@UserSettingsFragment.requireContext(), HomeActivity::class.java)
                 startActivity(intent)
             }
         })
-            val jsonString = userSettingsVM.getJsonDataFromAsset(requireContext(), "json.json")
+            val jsonString = userSettingsVM.getJsonDataFromAsset(
+                this@UserSettingsFragment.requireContext(), "json.json")
 //            val userList = userSettingsVM.dataClassFromJsonString(jsonString!!)
             val loadImage = registerForActivityResult(ActivityResultContracts
                 .GetContent()) {
@@ -67,7 +68,8 @@ class UserSettingsFragment : Fragment() {
                 CoroutineScope(mainDispatcher).launch {
 
                     view.change_personal_info_btn.setOnClickListener {
-                    val intent = Intent(requireContext(),
+                    val intent = Intent(
+                        this@UserSettingsFragment.requireContext(),
                         ChangePersonalInfoActivity::class.java)
                     startActivity(intent)
                     }
