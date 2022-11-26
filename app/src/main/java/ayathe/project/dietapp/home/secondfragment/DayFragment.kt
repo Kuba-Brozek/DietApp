@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
@@ -67,6 +68,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         view.date_TV.text = currentDate
         var jsonElement = ProductFromJSON()
 
+        view.meal_gramss_ET.inputType = InputType.TYPE_NULL
         recyclerView = view.findViewById(R.id.meal_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.setHasFixedSize(true)
@@ -80,6 +82,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         view.json_list_LV.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
             jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }!!
             Log.i("Clicked LV Item", jsonElement.Nazwa.toString())
+            view.meal_gramss_ET.inputType = InputType.TYPE_CLASS_NUMBER
 
             view.current_meal_name_TV.text = jsonElement.Nazwa?.take(6)
             view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Weglowodany!!.toInt()).toString()
@@ -155,7 +158,6 @@ class DayFragment : Fragment(), OnMealClickListener {
 
             override fun afterTextChanged(s: Editable?) {
                 if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && s.toString()!= "") {
-                        jsonElement = mealList.find { it.Nazwa.toString() == view.current_meal_name_TV.text.toString() }!!
 
                         view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Weglowodany!!.toInt()).toString()
                         view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
@@ -163,8 +165,10 @@ class DayFragment : Fragment(), OnMealClickListener {
                         view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
                     return
                     }else {
-                        view.meal_gramss_ET.setText("0")
-                   Toast.makeText(this@DayFragment.requireContext(), "Please enter data", Toast.LENGTH_SHORT).show()
+                    view.wegle_in_meal_TV.text = "0"
+                        view.bialka_in_meal_TV.text = "0"
+                        view.tluszcz_in_meal_TV.text = "0"
+                    view.kcal_in_meal_TV.text = "0"
                     return
                 }
             }
