@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.R
@@ -57,7 +58,7 @@ class MealRepository {
     }
 
     @SuppressLint("SimpleDateFormat")
-    fun addMeal(meal: Meal) {
+    fun addMeal(meal: Meal): String {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
         val mealInfo = hashMapOf(
@@ -66,15 +67,18 @@ class MealRepository {
             "date" to meal.date,
             "grams" to meal.grams
         )
+        var toastMessage = ""
         cloud.collection(auth.currentUser!!.uid).document("Meals")
             .collection(currentDate).document(meal.name.toString())
             .set(mealInfo)
             .addOnSuccessListener {
                 Log.d(debug, "Meal added successfully!")
-
+                toastMessage = "Meal added successfully!"
             }.addOnFailureListener {
                 Log.d(debug, "Meal adding failure")
+                toastMessage = "Meal adding failure"
             }
+        return toastMessage
     }
 
     @SuppressLint("SetTextI18n")

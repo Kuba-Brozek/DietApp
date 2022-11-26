@@ -33,8 +33,8 @@ class UserRepository {
     private val IODispatcher = Dispatchers.IO
 
     fun changePassword(password: String, context: Context) {
-        val success = "Udało się zmienić hasło"
-        val failure = "Nie udało się zmienić hasła"
+        val success = "Password change success"
+        val failure = "Password change failure"
         user!!.updatePassword(password)
             .addOnSuccessListener {
                 Log.i(doc, "Password change success.")
@@ -46,8 +46,8 @@ class UserRepository {
     }
 
     fun changeEmail(email: String, context: Context) {
-        val success = "Udało się zmienić email"
-        val failure = "Nie udało się zmienić adresu email"
+        val success = "Email changes successfully"
+        val failure = "Email change failure"
         user!!.updateEmail(email)
             .addOnSuccessListener {
                 toast(context, success)
@@ -88,13 +88,13 @@ class UserRepository {
                         .circleCrop().into(imageView)
                 }
                 uri.addOnFailureListener {
-                    Log.e("Image Exception", "${it.printStackTrace()}")
+                    Log.e("Image", "Internet access error")
                 }
             } catch (e: Exception) {
-                Log.e("Loading Error", "Image loading error into ImageView: profile_picture.")
+                Log.e("Image", "Image loading error into ImageView: profile_picture.")
             }
         } else {
-            Log.i("Image Error", "Current user doesn't have a profile picture.")
+            Log.i("Image", "Current user doesn't have a profile picture.")
         }
     }
 
@@ -105,11 +105,11 @@ class UserRepository {
         } else {
             storage.child(uid).putFile(imageFileUri)
                 .addOnSuccessListener {
-                    Log.i("Upload Image Success",
+                    Log.i("Image",
                         "Profile Image succesfully uploaded to Cloud Storage."
                     )
                 }.addOnFailureListener {
-                    Log.e("Upload Image Failure",
+                    Log.e("Image",
                         "Profile Image upload Error.")
                 }
 

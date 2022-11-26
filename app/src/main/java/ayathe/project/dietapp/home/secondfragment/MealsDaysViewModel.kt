@@ -18,8 +18,8 @@ class MealsDaysViewModel: ViewModel() {
     private val repo = MealRepository()
 
 
-    fun addMeal(meal: Meal){
-        repo.addMeal(meal)
+    fun addMeal(meal: Meal): String {
+        return repo.addMeal(meal)
     }
 
     fun eventChangeListener(recyclerView: RecyclerView, listener: OnMealClickListener, date: String){

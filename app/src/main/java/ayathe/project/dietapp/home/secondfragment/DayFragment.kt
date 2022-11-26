@@ -79,10 +79,10 @@ class DayFragment : Fragment(), OnMealClickListener {
         arrayAdapterFilter(mealList, view)
         view.json_list_LV.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
             jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }!!
-            Log.i("Clicked LV Item", jsonElement?.Nazwa.toString())
+            Log.i("Clicked LV Item", jsonElement.Nazwa.toString())
 
-            view.current_meal_name_TV.text = jsonElement?.Nazwa?.take(6)
-            view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement?.Weglowodany!!.toInt()).toString()
+            view.current_meal_name_TV.text = jsonElement.Nazwa?.take(6)
+            view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Weglowodany!!.toInt()).toString()
             view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Bialko!!.toInt()).toString()
             view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(100, jsonElement.Tluszcz!!.toInt()).toString()
             view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Kcal!!.toInt()).toString()
@@ -157,13 +157,15 @@ class DayFragment : Fragment(), OnMealClickListener {
                 if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && s.toString()!= "") {
                         jsonElement = mealList.find { it.Nazwa.toString() == view.current_meal_name_TV.text.toString() }!!
 
-                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement?.Weglowodany!!.toInt()).toString()
+                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Weglowodany!!.toInt()).toString()
                         view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
                         view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
                         view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
-                    } else {
+                    return
+                    }else {
                         view.meal_gramss_ET.setText("0")
-                   Toast.makeText(this@DayFragment.requireContext(), "Please choose meal", Toast.LENGTH_SHORT).show()
+                   Toast.makeText(this@DayFragment.requireContext(), "Please enter data", Toast.LENGTH_SHORT).show()
+                    return
                 }
             }
         })
@@ -173,7 +175,7 @@ class DayFragment : Fragment(), OnMealClickListener {
                 && view.meal_gramss_ET.text.toString() != "grams"
                 && view.meal_gramss_ET.text.toString().isEmpty().not()) {
                 jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }!!
-                Log.i("asdqwe", jsonElement.Nazwa.toString())
+                Log.i("added meal:", jsonElement.Nazwa.toString())
                 val caloriesPer100 = jsonElement.Kcal
                 val caloriesPer1gram = caloriesPer100?.toDouble()!!.div(100)
                 val grams = view.meal_gramss_ET.text.toString().toInt()
@@ -187,7 +189,9 @@ class DayFragment : Fragment(), OnMealClickListener {
                 )
                 CoroutineScope(Dispatchers.IO).launch {
                     val a = CoroutineScope(Dispatchers.IO).async {
-                        mdVM.addMeal(meal)
+                        val addMeal = mdVM.addMeal(meal)
+                        Toast.makeText(this@DayFragment.requireContext(),
+                            addMeal, Toast.LENGTH_SHORT).show()
                     }
                     a.await()
                     CoroutineScope(Dispatchers.Main).launch {
@@ -206,9 +210,9 @@ class DayFragment : Fragment(), OnMealClickListener {
     }
 
     override fun onMealLongClick(meal: Meal, position: Int) {
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete meal: ${meal.name.toString()}")
-            .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
-            .setPositiveButton("I didn't eat it!"){ _, _ ->
+        MaterialAlertDialogBuilder(requireContext()).setTitle(meal.name.toString()).setMessage("Are you sure you want to delete it?")
+            .setNegativeButton("Keep it that way"){ _, _ -> }
+            .setPositiveButton("Delete meal"){ _, _ ->
                 mdVM.deleteMeal(meal.date!!, meal.name!!)
                 (activity as HomeActivity).fragmentsReplacement(DayFragment())
             }.show()
