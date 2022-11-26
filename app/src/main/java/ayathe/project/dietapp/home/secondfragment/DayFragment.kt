@@ -65,6 +65,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
         view.date_TV.text = currentDate
+        var jsonElement = ProductFromJSON()
 
         recyclerView = view.findViewById(R.id.meal_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
@@ -77,7 +78,7 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         arrayAdapterFilter(mealList, view)
         view.json_list_LV.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
-            val jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }
+            jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }!!
             Log.i("Clicked LV Item", jsonElement?.Nazwa.toString())
 
             view.current_meal_name_TV.text = jsonElement?.Nazwa?.take(6)
@@ -153,13 +154,17 @@ class DayFragment : Fragment(), OnMealClickListener {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                val jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
+                if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && s.toString()!= "") {
+                        jsonElement = mealList.find { it.Nazwa.toString() == view.current_meal_name_TV.text.toString() }!!
 
-                view.meal_name_ET.setText(jsonElement?.Nazwa.toString())
-                view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement?.Weglowodany!!.toInt()).toString()
-                view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
-                view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
-                view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
+                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement?.Weglowodany!!.toInt()).toString()
+                        view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
+                        view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
+                        view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
+                    } else {
+                        view.meal_gramss_ET.setText("0")
+                   Toast.makeText(this@DayFragment.requireContext(), "Please choose meal", Toast.LENGTH_SHORT).show()
+                }
             }
         })
 
@@ -167,9 +172,9 @@ class DayFragment : Fragment(), OnMealClickListener {
             if (mealList.map { it.Nazwa }.contains(view.meal_name_ET.text.toString())
                 && view.meal_gramss_ET.text.toString() != "grams"
                 && view.meal_gramss_ET.text.toString().isEmpty().not()) {
-                val jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
-                Log.i("asdqwe", jsonElement?.Nazwa.toString())
-                val caloriesPer100 = jsonElement?.Kcal
+                jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }!!
+                Log.i("asdqwe", jsonElement.Nazwa.toString())
+                val caloriesPer100 = jsonElement.Kcal
                 val caloriesPer1gram = caloriesPer100?.toDouble()!!.div(100)
                 val grams = view.meal_gramss_ET.text.toString().toInt()
                 val caloriesFromMeal = caloriesPer1gram.times(grams.toDouble()).toInt()
