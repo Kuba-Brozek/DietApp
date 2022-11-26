@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.adapter.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.ProductFromJSON
+import ayathe.project.dietapp.repository.MealRepository
 import ayathe.project.dietapp.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 
 class MealsDaysViewModel: ViewModel() {
-    private val repo = UserRepository()
+    private val userRepo = UserRepository()
+    private val repo = MealRepository()
 
 
     fun addMeal(meal: Meal){

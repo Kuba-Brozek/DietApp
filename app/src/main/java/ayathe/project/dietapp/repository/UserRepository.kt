@@ -65,66 +65,7 @@ class UserRepository {
             }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    fun addMeal(meal: Meal) {
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
-        val currentDate = sdf.format(Date())
-        val mealInfo = hashMapOf(
-            "cals" to meal.cals,
-            "name" to meal.name,
-            "date" to meal.date,
-            "grams" to meal.grams
-        )
-        cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(currentDate).document(meal.name.toString())
-            .set(mealInfo)
-            .addOnSuccessListener {
-                Log.d(debug, "Meal added successfully!")
 
-            }.addOnFailureListener {
-                Log.d(debug, "Meal adding failure")
-            }
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    fun eventChangeListener(recyclerView: RecyclerView, listener: OnMealClickListener, date: String) {
-        mealArrayList = arrayListOf()
-        mealAdapter = MealAdapter(mealArrayList, listener)
-        recyclerView.adapter = mealAdapter
-        cloud.collection(auth.currentUser!!.uid)
-            .document("Meals").collection(date)
-            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                @SuppressLint("NotifyDataSetChanged")
-                override fun onEvent(value: QuerySnapshot?,
-                                     error: FirebaseFirestoreException?) {
-                    if (error != null) {
-                        Log.e(
-                            "Error loading meals.",
-                            error.message.toString()
-                        )
-                        return
-                    }
-                    for (doc in value?.documentChanges!!) {
-
-                        if (doc.type == DocumentChange.Type.ADDED) {
-                            mealArrayList.add(doc.document.toObject(Meal::class.java))
-                        }
-                    }
-                    mealAdapter.notifyDataSetChanged()
-                }
-            })
-    }
-
-
-    fun deleteMeal(mealDate: String, mealName: String) {
-        cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(mealDate).document(mealName).delete()
-            .addOnSuccessListener {
-                Log.i(doc, "Meal deleted succesfully")
-            }.addOnFailureListener {
-                Log.e(doc, "Error deleting meal")
-            }
-    }
 
     fun showUserInfo(): String {
         return auth.currentUser!!.email.toString()
@@ -140,65 +81,6 @@ class UserRepository {
             }
         }
 
-
-
-
-    @SuppressLint("SetTextI18n")
-    fun showMealInfo(view: View, context: Context, mealName: String, mealDate: String) {
-
-        val docRef = cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(mealDate).document(mealName)
-
-        docRef.get().addOnSuccessListener { docSnapshot ->
-            val meal = docSnapshot.toObject<Meal>()
-            view.meal_name.setText(meal?.name.toString())
-//            view.meal_name.setText("${meal?.name.toString().substring(0, 7)}..")
-            view.meal_date.text = meal?.date.toString()
-            view.meal_grams_ET.setText(meal?.grams.toString())
-            view.meal_kcal.text = meal?.cals.toString()
-            try {
-                when {
-                    meal?.cals.toString() == "biznes" -> {
-                        Glide.with(context).load(R.drawable.business).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "edukacja" -> {
-                        Glide.with(context).load(R.drawable.education).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "sprawy domowe" -> {
-                        Glide.with(context).load(R.drawable.home).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "trening" -> {
-                        Glide.with(context).load(R.drawable.work_out).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "inne" -> {
-                        Glide.with(context).load(R.drawable.other).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                }
-            } catch (e: Exception) {
-                Log.e("error", "failed to load image")
-            }
-        }
-    }
 
     fun loadProfileImage(context: Context, imageView: ImageView) {
         val imageName = auth.currentUser!!.uid
@@ -264,20 +146,6 @@ class UserRepository {
 
     private fun toast(context: Context, string: String) { //working
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
-    }
-
-    fun getMeals(date: String): ArrayList<Meal> {
-        val list = arrayListOf<Meal>()
-        val a = cloud.collection(auth.currentUser!!.uid)
-            .document("Meals").collection(date)
-            .get()
-            .addOnSuccessListener { doc ->
-                for ( document in doc){
-                    val documento = document.toObject(Meal::class.java)
-                    list.add(documento)
-                }
-            }
-        return list
     }
 
 
