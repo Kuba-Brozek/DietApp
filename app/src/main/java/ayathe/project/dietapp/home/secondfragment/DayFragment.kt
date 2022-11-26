@@ -164,7 +164,9 @@ class DayFragment : Fragment(), OnMealClickListener {
         })
 
         view.btn_add_meal.setOnClickListener {
-            try{
+            if (mealList.map { it.Nazwa }.contains(view.meal_name_ET.text.toString())
+                && view.meal_gramss_ET.text.toString() != "grams"
+                && view.meal_gramss_ET.text.toString().isEmpty().not()) {
                 val jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
                 Log.i("asdqwe", jsonElement?.Nazwa.toString())
                 val caloriesPer100 = jsonElement?.Kcal
@@ -188,8 +190,9 @@ class DayFragment : Fragment(), OnMealClickListener {
                     }
                 }
             }
-            catch (e:NullPointerException){
-                Log.e("Null", "NullPointerException occured")
+            else {
+                Toast.makeText(this@DayFragment.requireContext(),
+                    "Please insert valid meal name", Toast.LENGTH_SHORT).show()
             }
 
         }
