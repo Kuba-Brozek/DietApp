@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.adapter
+package ayathe.project.dietapp.adapters
 
 import android.graphics.Color
 import android.util.Log

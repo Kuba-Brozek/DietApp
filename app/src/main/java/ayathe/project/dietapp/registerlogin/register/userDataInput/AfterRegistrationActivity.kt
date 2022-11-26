@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.adapter.ViewPagerAdapter
+import ayathe.project.dietapp.adapters.ViewPagerAdapter
 import ayathe.project.dietapp.registerlogin.register.ViewModelRegister
 import ayathe.project.dietapp.registerlogin.register.userDataInput.fragments.IntroductionFragment
 import ayathe.project.dietapp.registerlogin.register.userDataInput.fragments.UserInfoFragment

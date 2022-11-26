@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.adapter
+package ayathe.project.dietapp.adapters
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

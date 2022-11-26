@@ -10,21 +10,29 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.adapter.MealAdapter
-import ayathe.project.dietapp.adapter.OnMealClickListener
+import ayathe.project.dietapp.adapters.MealAdapter
+import ayathe.project.dietapp.adapters.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
+import ayathe.project.dietapp.DTO.ProductFromJSON
 import ayathe.project.dietapp.home.homeactivity.HomeActivity
 import ayathe.project.dietapp.home.secondfragment.eventinfo.MealInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.current_day_fragment.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -36,6 +44,7 @@ class DayFragment : Fragment(), OnMealClickListener {
 
 
     private lateinit var mealArrayList: ArrayList<Meal>
+    private lateinit var arrayAdapter: ArrayAdapter<*>
     private lateinit var mealAdapter: MealAdapter
     private lateinit var recyclerView: RecyclerView
     private val mdVM by viewModels<MealsDaysViewModel>()
@@ -57,15 +66,49 @@ class DayFragment : Fragment(), OnMealClickListener {
         val currentDate = sdf.format(Date())
         view.date_TV.text = currentDate
 
-        recyclerView = view.findViewById(R.id.event_list_RV)
+        recyclerView = view.findViewById(R.id.meal_list_RV)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.setHasFixedSize(true)
         mealArrayList = arrayListOf()
         mealAdapter = MealAdapter(mealArrayList, this@DayFragment)
         recyclerView.adapter = mealAdapter
         val jsonString = mdVM.getJsonDataFromAsset(requireContext(), "json.json")
-        val userList = mdVM.dataClassFromJsonString(jsonString!!)
+        val mealList = mdVM.dataClassFromJsonString(jsonString!!)
+
+        arrayAdapterFilter(mealList, view)
+        view.json_list_LV.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
+            val jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }
+            Log.i("Clicked LV Item", jsonElement?.Nazwa.toString())
+
+            view.current_meal_name_TV.text = jsonElement?.Nazwa?.take(6)
+            view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement?.Weglowodany!!.toInt()).toString()
+            view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Bialko!!.toInt()).toString()
+            view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(100, jsonElement.Tluszcz!!.toInt()).toString()
+            view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Kcal!!.toInt()).toString()
+        }
+
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                mealAdapter.notifyDataSetChanged()
+            }
+        })
+
+        view.meal_name_ET.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString() != ""){
+                    val queryText = s.toString()
+                    arrayAdapterFilter(mealList.filter { it.Nazwa!!.lowercase().contains(queryText.lowercase()) }, view)
+                } else {
+                    arrayAdapterFilter(mealList, view)
+                }
+            }
+        })
+
         mdVM.eventChangeListener(recyclerView, this, view.date_TV.text.toString())
+
         view.decrement_date_btn.setOnClickListener {
             val result = mdVM.dataParserFromDate(view.date_TV.text.toString())
             val period = Period.of(0,0,1)
@@ -74,6 +117,7 @@ class DayFragment : Fragment(), OnMealClickListener {
             val final = mdVM.dataParserToDate(r.toString())
             view.date_TV.text = final
         }
+
         view.increment_date_btn.setOnClickListener {
             val result = mdVM.dataParserFromDate(view.date_TV.text.toString())
             val period = Period.of(0,0,1)
@@ -103,9 +147,25 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         })
 
-        view.btn_submit_event.setOnClickListener {
+        view.meal_gramss_ET.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
+
+                view.meal_name_ET.setText(jsonElement?.Nazwa.toString())
+                view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement?.Weglowodany!!.toInt()).toString()
+                view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
+                view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
+                view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
+            }
+        })
+
+        view.btn_add_meal.setOnClickListener {
             try{
-                val jsonElement = userList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
+                val jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }
                 Log.i("asdqwe", jsonElement?.Nazwa.toString())
                 val caloriesPer100 = jsonElement?.Kcal
                 val caloriesPer1gram = caloriesPer100?.toDouble()!!.div(100)
@@ -118,20 +178,29 @@ class DayFragment : Fragment(), OnMealClickListener {
                     grams,
                     caloriesFromMeal
                 )
-                mdVM.addMeal(meal)
+                CoroutineScope(Dispatchers.IO).launch {
+                    val a = CoroutineScope(Dispatchers.IO).async {
+                        mdVM.addMeal(meal)
+                    }
+                    a.await()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        mealAdapter.notifyDataSetChanged()
+                    }
+                }
             }
             catch (e:NullPointerException){
-
+                Log.e("Null", "NullPointerException occured")
             }
 
         }
+
         return view
     }
 
     override fun onMealLongClick(meal: Meal, position: Int) {
-        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${meal.name.toString()}")
+        MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete meal: ${meal.name.toString()}")
             .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
-            .setPositiveButton("Delete Event!"){ _, _ ->
+            .setPositiveButton("I didn't eat it!"){ _, _ ->
                 mdVM.deleteMeal(meal.date!!, meal.name!!)
                 (activity as HomeActivity).fragmentsReplacement(DayFragment())
             }.show()
@@ -149,5 +218,9 @@ class DayFragment : Fragment(), OnMealClickListener {
         (activity as HomeActivity).fragmentsReplacement(mealInfo)
     }
 
+    fun arrayAdapterFilter(list: List<ProductFromJSON>, view: View){
+        arrayAdapter = ArrayAdapter(this@DayFragment.requireContext(), android.R.layout.simple_list_item_1, list.map { it.Nazwa })
+        view.json_list_LV.adapter = arrayAdapter
+    }
 
 }

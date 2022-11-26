@@ -56,13 +56,10 @@ class UserSettingsViewModel: ViewModel() {
         return repo.showUserInfo()
     }
 
-    suspend fun loadProfileImage(context: Context, view: ImageView){
+    fun loadProfileImage(context: Context, view: ImageView){
         try {
-            viewModelScope.launch {
                 repo.loadProfileImage(context, view)
-            }.join()
         } catch (ex: Exception){
-
         }
     }
 
@@ -94,9 +91,7 @@ class UserSettingsViewModel: ViewModel() {
         return repo.readUserData(myCallback)
     }
 
-    suspend fun uploadProfileImage(imageFileUri: Uri) {
-        viewModelScope.launch {
-            repo.uploadProfileImage(imageFileUri)
-        }.join()
+    fun uploadProfileImage(imageFileUri: Uri) {
+        repo.uploadProfileImage(imageFileUri)
     }
 }

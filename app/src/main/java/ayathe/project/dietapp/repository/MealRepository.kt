@@ -7,8 +7,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.adapter.MealAdapter
-import ayathe.project.dietapp.adapter.OnMealClickListener
+import ayathe.project.dietapp.adapters.MealAdapter
+import ayathe.project.dietapp.adapters.OnMealClickListener
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -18,6 +18,9 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -36,17 +39,20 @@ class MealRepository {
     private val storage = fbStorage.reference
 
 
-    fun getMeals(date: String): ArrayList<Meal> {
+
+    suspend fun getMeals(date: String): ArrayList<Meal> {
         val list = arrayListOf<Meal>()
-        val a = cloud.collection(auth.currentUser!!.uid)
-            .document("Meals").collection(date)
-            .get()
-            .addOnSuccessListener { doc ->
-                for ( document in doc){
-                    val documento = document.toObject(Meal::class.java)
-                    list.add(documento)
+        CoroutineScope(Dispatchers.IO).launch {
+            cloud.collection(auth.currentUser!!.uid)
+                .document("Meals").collection(date)
+                .get()
+                .addOnSuccessListener { doc ->
+                    for (document in doc) {
+                        val documento = document.toObject(Meal::class.java)
+                        list.add(documento)
+                    }
                 }
-            }
+        }.join()
         return list
     }
 

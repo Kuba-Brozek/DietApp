@@ -1,29 +1,21 @@
 package ayathe.project.dietapp.repository
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import ayathe.project.dietapp.R
-import ayathe.project.dietapp.adapter.MealAdapter
-import ayathe.project.dietapp.adapter.OnMealClickListener
+import ayathe.project.dietapp.adapters.MealAdapter
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.User
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.main.fragment_event_info.view.*
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlinx.coroutines.Dispatchers
 import kotlin.collections.ArrayList
 
 class UserRepository {
@@ -38,6 +30,7 @@ class UserRepository {
     private lateinit var mealAdapter: MealAdapter
     private val fbStorage = Firebase.storage
     private val storage = fbStorage.reference
+    private val IODispatcher = Dispatchers.IO
 
     fun changePassword(password: String, context: Context) {
         val success = "Udało się zmienić hasło"
@@ -79,19 +72,22 @@ class UserRepository {
                     myCallback(user)
                 }
             }
-        }
+    }
+
 
 
     fun loadProfileImage(context: Context, imageView: ImageView) {
         val imageName = auth.currentUser!!.uid
-        val uri = storage.child(imageName)
-        if (uri.equals(null).not()) {
+        val storageReference = storage.child(imageName)
+        if (storageReference.equals(null).not()) {
             try {
-                uri.downloadUrl.addOnSuccessListener { Uri ->
-                    val imageURL = Uri.toString()
+                val uri = storageReference.downloadUrl
+                        uri.addOnSuccessListener {
+                    val imageURL = it.toString()
                     Glide.with(context).load(imageURL)
                         .circleCrop().into(imageView)
-                }.addOnFailureListener {
+                }
+                uri.addOnFailureListener {
                     Log.e("Image Exception", "${it.printStackTrace()}")
                 }
             } catch (e: Exception) {

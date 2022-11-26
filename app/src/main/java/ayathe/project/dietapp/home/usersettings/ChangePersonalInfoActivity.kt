@@ -29,49 +29,42 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
             ActivityChangePersonalInfoBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        lifecycleScope.launch {
             try {
-                CoroutineScope(Dispatchers.Main).launch {
-                    userSettingsVM.readUserData {
-                        username_TV_CPI.text = it.username.toString()
-                        email_TV_CPI.text = it.email.toString()
-                        age_TV_CPI.text = it.age.toString()
-                        weight_TV_CPI.text = it.weight.toString()
-                        height_TV_CPI.text = it.height.toString()
-                        destination_TV_CPI.text = it.destination.toString()
-                    }
+                userSettingsVM.readUserData {
+                    username_TV_CPI.text = it.username.toString()
+                    email_TV_CPI.text = it.email.toString()
+                    age_TV_CPI.text = it.age.toString()
+                    weight_TV_CPI.text = it.weight.toString()
+                    height_TV_CPI.text = it.height.toString()
+                    destination_TV_CPI.text = it.destination.toString()
                 }
-                CoroutineScope(Dispatchers.Main).launch {
-                    userSettingsVM.loadProfileImage(
-                        this@ChangePersonalInfoActivity, profile_image_IV_CPI)
-                }
+
+                userSettingsVM.loadProfileImage(
+                    this@ChangePersonalInfoActivity, profile_image_IV_CPI)
+
             } catch (ex: Exception) {
 
             }
 
             val loadImage = registerForActivityResult(
                 ActivityResultContracts
-                .GetContent()) {
+                    .GetContent()) {
                 profile_image_IV_CPI.setImageURI(it)
                 Glide.with(this@ChangePersonalInfoActivity)
                     .load(it).circleCrop().into(profile_image_IV_CPI)
-                    val a = it
-                    profile_image_BTN_CPI.setOnClickListener {
-                            loading_changes.visibility = View.VISIBLE
-                        CoroutineScope(Dispatchers.Main).launch {
+                val a = it
+                profile_image_BTN_CPI.setOnClickListener {
+                    loading_changes.visibility = View.VISIBLE
+
                         userSettingsVM.uploadProfileImage(a)
-                            Handler().postDelayed({
-                                loading_changes.visibility = View.GONE
-                            }, 2000)
-
-                    }
-
+                        Handler().postDelayed({
+                            loading_changes.visibility = View.GONE
+                        }, 2000)
                 }
             }
 
             profile_image_IV_CPI.setOnClickListener {
                 loadImage.launch("image/*")
             }
-        }
     }
 }

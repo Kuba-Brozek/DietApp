@@ -35,14 +35,13 @@ class UserSettingsFragment : Fragment() {
             try {
 
                 userSettingsVM.readUserData {
-                    CoroutineScope(Dispatchers.IO).launch {
+                    CoroutineScope(Dispatchers.Main).launch {
                         view.username_TV.text = it.username.toString()
                         view.email_displayTV.text = it.email.toString()
                     }
                 }
-                    CoroutineScope(Dispatchers.IO).launch {
-                        userSettingsVM.loadProfileImage(this@UserSettingsFragment.requireContext(), view.profile_image)
-                    }
+                userSettingsVM.loadProfileImage(this@UserSettingsFragment.requireContext(), view.profile_image)
+
             } catch ( ex: Exception){
                 Log.e("LoadingError", "Loading image, or user data failed")
             }
@@ -60,24 +59,19 @@ class UserSettingsFragment : Fragment() {
                 .GetContent()) {
                 view.profile_image.setImageURI(it)
                 replaceImage(it, view)
-                CoroutineScope(Dispatchers.IO).launch {
-                    userSettingsVM.uploadProfileImage(it)
-                }
+                userSettingsVM.uploadProfileImage(it)
             }
 
-                CoroutineScope(mainDispatcher).launch {
+        view.change_personal_info_btn.setOnClickListener {
+            val intent = Intent(
+                this@UserSettingsFragment.requireContext(),
+                ChangePersonalInfoActivity::class.java)
+            startActivity(intent)
+        }
+        view.profile_image.setOnClickListener {
+            loadImage.launch("image/*")
+        }
 
-                    view.change_personal_info_btn.setOnClickListener {
-                    val intent = Intent(
-                        this@UserSettingsFragment.requireContext(),
-                        ChangePersonalInfoActivity::class.java)
-                    startActivity(intent)
-                    }
-
-                    view.profile_image.setOnClickListener {
-                        loadImage.launch("image/*")
-                    }
-            }
         return view
     }
 
