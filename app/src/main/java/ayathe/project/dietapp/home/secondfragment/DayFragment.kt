@@ -175,37 +175,32 @@ class DayFragment : Fragment(), OnMealClickListener {
         })
 
         view.btn_add_meal.setOnClickListener {
-            if (mealList.map { it.Nazwa }.contains(view.meal_name_ET.text.toString())
+            if (mealList.map { it.Nazwa }.contains(jsonElement.Nazwa.toString())
                 && view.meal_gramss_ET.text.toString() != "grams"
                 && view.meal_gramss_ET.text.toString().isEmpty().not()) {
-                jsonElement = mealList.find { it.Nazwa.toString() == view.meal_name_ET.text.toString() }!!
-                Log.i("added meal:", jsonElement.Nazwa.toString())
+
                 val caloriesPer100 = jsonElement.Kcal
                 val caloriesPer1gram = caloriesPer100?.toDouble()!!.div(100)
                 val grams = view.meal_gramss_ET.text.toString().toInt()
                 val caloriesFromMeal = caloriesPer1gram.times(grams.toDouble()).toInt()
 
                 val meal = Meal(
-                    view.meal_name_ET.text.toString(),
+                    jsonElement.Nazwa.toString(),
                     view.date_TV.text.toString(),
                     grams,
                     caloriesFromMeal
                 )
                 CoroutineScope(Dispatchers.IO).launch {
                     val a = CoroutineScope(Dispatchers.IO).async {
-                        val addMeal = mdVM.addMeal(meal)
-                        Toast.makeText(this@DayFragment.requireContext(),
-                            addMeal, Toast.LENGTH_SHORT).show()
+                        mdVM.addMeal(meal)
+                        Log.i("added meal:", jsonElement.Nazwa.toString())
                     }
                     a.await()
-                    CoroutineScope(Dispatchers.Main).launch {
-                        mealAdapter.notifyDataSetChanged()
-                    }
                 }
             }
             else {
                 Toast.makeText(this@DayFragment.requireContext(),
-                    "Please insert valid meal name", Toast.LENGTH_SHORT).show()
+                    "Please insert valid data", Toast.LENGTH_SHORT).show()
             }
 
         }
