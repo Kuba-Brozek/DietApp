@@ -1,12 +1,16 @@
 package ayathe.project.dietapp.home.secondfragment
 
 import android.content.Context
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import ayathe.project.dietapp.DTO.DayInfo
 import ayathe.project.dietapp.adapters.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.ProductFromJSON
+import ayathe.project.dietapp.DTO.User
 import ayathe.project.dietapp.repository.MealRepository
 import ayathe.project.dietapp.repository.UserRepository
 import com.google.gson.Gson
@@ -18,8 +22,13 @@ class MealsDaysViewModel: ViewModel() {
     private val repo = MealRepository()
 
 
-    fun addMeal(meal: Meal): String {
-        return repo.addMeal(meal)
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {
+        return repo.addMeal(meal, kcalEaten, date)
+    }
+
+    fun readUserData(myCallback: (User) -> Unit){
+        return userRepo.readUserData(myCallback)
     }
 
     fun eventChangeListener(recyclerView: RecyclerView, listener: OnMealClickListener, date: String){
@@ -84,8 +93,12 @@ class MealsDaysViewModel: ViewModel() {
 
 
     fun nutritionalValuesCalc(grams: Int, value: Int): Int {
-        return (grams / 100 * value.toInt())
+        val kcalIn1Gram = grams.toDouble() / 100
+        val result = kcalIn1Gram * value
+        return result.toInt()
+    }
+
+    fun dayInfoReader(date: String, callback: (DayInfo) -> Unit){
+        return repo.dayInfoReader(date, callback)
     }
 }
-//yyyy-MM-dd
-//0123 4 56 7 89

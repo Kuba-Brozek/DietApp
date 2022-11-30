@@ -1,5 +1,6 @@
 package ayathe.project.dietapp.registerlogin.activityreglog
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +17,8 @@ import ayathe.project.dietapp.registerlogin.register.RegisterFragment
 import ayathe.project.dietapp.registerlogin.register.userDataInput.AfterRegistrationActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LogRegActivity : AppCompatActivity() {
 
@@ -46,14 +49,16 @@ class LogRegActivity : AppCompatActivity() {
         fragmentContainer.commit()
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun userCreation(email: String, password: String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
 
                 if (task.isSuccessful) {
-
+                    val sdf = SimpleDateFormat("dd.MM.yyyy")
+                    val currentDate = sdf.format(Date())
                     Log.d(TAG, "User created successfully")
-                    val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "")
+                    val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "", currentDate)
                     mainActivityVm.addUserToDatabase(user)
                     val intent = Intent(this, AfterRegistrationActivity::class.java)
                     startActivity(intent)

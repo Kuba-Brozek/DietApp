@@ -59,12 +59,6 @@ class UserRepository {
     }
 
 
-
-    fun showUserInfo(): String {
-        return auth.currentUser!!.email.toString()
-    }
-
-
     fun readUserData(myCallback: (User) -> Unit) {
         cloud.collection(auth.currentUser!!.uid).document("userInfo").get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -125,7 +119,8 @@ class UserRepository {
             "age" to user.age,
             "weight" to user.weight,
             "height" to user.height,
-            "destination" to user.destination
+            "destination" to user.destination,
+            "startingDate" to user.startingDate
         )
 
         cloud.collection(auth.currentUser!!.uid)

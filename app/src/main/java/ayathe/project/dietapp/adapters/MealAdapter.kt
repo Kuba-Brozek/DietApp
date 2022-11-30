@@ -24,12 +24,12 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: O
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
         val meal: Meal = mealList[position]
-        if(meal.name?.length!! > 6){
-            holder.name.text = meal.name!!.substring(0,6)
-        } else holder.name.text = meal.name
+
+        holder.name.text = meal.name
         holder.date.text = meal.date
         holder.kcal.text = meal.cals.toString()
         holder.grams.text = meal.grams.toString()
+
         val itV = holder.background
         try{
             when {

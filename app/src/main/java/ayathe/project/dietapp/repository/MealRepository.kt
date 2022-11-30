@@ -2,11 +2,14 @@ package ayathe.project.dietapp.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import ayathe.project.dietapp.DTO.DayInfo
 import ayathe.project.dietapp.DTO.Meal
+import ayathe.project.dietapp.DTO.User
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.adapters.MealAdapter
 import ayathe.project.dietapp.adapters.OnMealClickListener
@@ -21,18 +24,24 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.*
 import kotlin.collections.ArrayList
 
 class MealRepository {
 
     private var auth = FirebaseAuth.getInstance()
+    private var userRepo = UserRepository()
     private val user = Firebase.auth.currentUser
     private val debug = "DEBUG"
     private val doc = "DOC"
-    private val userCreationTag = "UserCreation"
+    private val dayInfoLog = "dayInfoLog"
+    private val mealLog = "MealLog"
     private val cloud = FirebaseFirestore.getInstance()
     private lateinit var mealArrayList: ArrayList<Meal>
     private lateinit var mealAdapter: MealAdapter
@@ -57,8 +66,9 @@ class MealRepository {
         return list
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
-    fun addMeal(meal: Meal): String {
+    fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
         val mealInfo = hashMapOf(
@@ -67,19 +77,85 @@ class MealRepository {
             "date" to meal.date,
             "grams" to meal.grams
         )
+        var dayInfo = DayInfo()
+        CoroutineScope(Dispatchers.IO).launch {
+
+                userRepo.readUserData {
+                    dayInfo = DayInfo(
+                        date,
+                        dayIndexCalc(
+                            getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
+                            getLocalDateFromString(currentDate, "dd.MM.yyyy")
+                        ),
+                        kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
+                        kcalEaten + meal.cals!!,
+                        activitiesMade(),
+                        kcalBurnt()
+                    )
+                    cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                        .collection(date).document(date).set(dayInfo)
+                        .addOnSuccessListener {
+                            Log.i(dayInfoLog, "Day info added successfully")
+                        } .addOnFailureListener{
+                            Log.i(dayInfoLog, "Day info added successfully")
+                        }
+                }
+        }
         var toastMessage = ""
         cloud.collection(auth.currentUser!!.uid).document("Meals")
             .collection(currentDate).document(meal.name.toString())
             .set(mealInfo)
             .addOnSuccessListener {
-                Log.d(debug, "Meal added successfully!")
+                Log.d(dayInfoLog, "Meal added successfully!")
                 toastMessage = "Meal added successfully!"
             }.addOnFailureListener {
-                Log.d(debug, "Meal adding failure")
+                Log.d(dayInfoLog, "Meal adding failure")
                 toastMessage = "Meal adding failure"
             }
         return toastMessage
     }
+
+    fun dayInfoReader(date: String, Callback: (DayInfo) -> Unit) {
+
+            try {
+                val dayInfo = cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                    .collection(date).document(date).get()
+                dayInfo.addOnSuccessListener { task ->
+                    if (task.exists()) {
+                        Callback(task.toObject<DayInfo>()!!)
+                        Log.i(dayInfoLog,"Document exist in DB")
+                    }
+                    else {
+                        Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999))
+                        Log.i(dayInfoLog,"Document doesn't exist in DB")
+                    }
+                }
+            } catch (e: Exception){
+
+            }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun dayIndexCalc(startingDate: LocalDate, currentDate: LocalDate): Int {
+        return ChronoUnit.DAYS.between(startingDate, currentDate).toInt() + 1
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getLocalDateFromString(d: String, format: String): LocalDate {
+        return LocalDate.parse(d, DateTimeFormatter.ofPattern(format))
+    }
+
+    private fun kcalGoalCalc(weight: Double, height: Int, age: Int): Int {
+        return (66 + (13.7 * weight) + (5 * height) - (6.8 * age)).toInt()
+    }
+
+    private fun activitiesMade(): List<String> {
+        return listOf()
+    } // TODO()
+
+    private fun kcalBurnt(): Int {
+        return 0
+    } //TODO()
 
     @SuppressLint("SetTextI18n")
     fun showMealInfo(view: View, context: Context, mealName: String, mealDate: String) {
@@ -143,9 +219,9 @@ class MealRepository {
         cloud.collection(auth.currentUser!!.uid).document("Meals")
             .collection(mealDate).document(mealName).delete()
             .addOnSuccessListener {
-                Log.i(doc, "Meal deleted succesfully")
+                Log.i(mealLog, "Meal deleted succesfully")
             }.addOnFailureListener {
-                Log.e(doc, "Error deleting meal")
+                Log.e(mealLog, "Error deleting meal")
             }
     }
 
@@ -161,9 +237,7 @@ class MealRepository {
                 override fun onEvent(value: QuerySnapshot?,
                                      error: FirebaseFirestoreException?) {
                     if (error != null) {
-                        Log.e(
-                            "Error loading meals.",
-                            error.message.toString()
+                        Log.e("mealLog", error.message.toString()
                         )
                         return
                     }

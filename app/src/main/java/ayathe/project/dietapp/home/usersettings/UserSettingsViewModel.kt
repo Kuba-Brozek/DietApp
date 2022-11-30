@@ -52,10 +52,6 @@ class UserSettingsViewModel: ViewModel() {
     }
 
 
-    fun showUserInfo(): String{
-        return repo.showUserInfo()
-    }
-
     fun loadProfileImage(context: Context, view: ImageView){
         try {
                 repo.loadProfileImage(context, view)

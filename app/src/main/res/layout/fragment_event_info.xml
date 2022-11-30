@@ -65,7 +65,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:inputType="textNoSuggestions"
-        android:text="Today's date"
+        android:text="Meal date"
         android:textAlignment="center"
         android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"

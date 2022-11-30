@@ -9,6 +9,7 @@ data class User(
     var age: Int? = null,
     var weight: Double? = null,
     var height: Int? = null,
-    var destination: String? = null
+    var destination: String? = null,
+    var startingDate: String? = null
 )
 
