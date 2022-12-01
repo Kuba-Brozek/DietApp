@@ -108,17 +108,6 @@ class DayFragment : Fragment(), OnMealClickListener {
             override fun afterTextChanged(queryText: Editable?) {
                 if (queryText.toString() != ""){
                     arrayAdapterFilter(mealList.filter { it.Nazwa!!.lowercase().contains(queryText.toString().lowercase()) }, view)
-
-                    mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                        if ( view.current_day_kcal_TVV.text.toString().toInt() != 9999 &&
-                            view.kcal_goal_TV.text.toString().toInt() != 9999 &&
-                            view.day_index_TV.text.toString().toInt() != 9999 ) {
-                            view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                            view.kcal_goal_TV.text = it.kcalGoal.toString()
-                            view.day_index_TV.text = it.dayIndex.toString()
-                            dayInfo = it
-                        }
-                    }
                 } else {
                     arrayAdapterFilter(mealList, view)
                 }
@@ -130,16 +119,22 @@ class DayFragment : Fragment(), OnMealClickListener {
         }
 
         mdVM.dayInfoReader(view.date_TV.text.toString()) {
-            if ( view.current_day_kcal_TVV.text.toString().toInt() != 9999 &&
-                view.kcal_goal_TV.text.toString().toInt() != 9999 &&
-                view.day_index_TV.text.toString().toInt() != 9999 ) {
+            if ( it.kcalEaten != 9999 &&
+                it.kcalGoal != 9999 &&
+                it.dayIndex != 9999 ) {
                 view.current_day_kcal_TVV.text = it.kcalEaten.toString()
                 view.kcal_goal_TV.text = it.kcalGoal.toString()
                 view.day_index_TV.text = it.dayIndex.toString()
                 dayInfo = it
+            } else {
+                view.current_day_kcal_TVV.text = "KCAL"
+                view.kcal_goal_TV.text = "GOAL"
+                view.day_index_TV.text = mdVM.dayIndexCalc(
+                    mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                    mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                ).toString()
             }
         }
-
 
         mdVM.eventChangeListener(recyclerView, this, view.date_TV.text.toString())
 
@@ -150,33 +145,7 @@ class DayFragment : Fragment(), OnMealClickListener {
             val r = parsed.minus(period)
             val final = mdVM.dataParserToDate(r.toString())
 
-            mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                if ( view.current_day_kcal_TVV.text.toString().toInt() != 9999 &&
-                    view.kcal_goal_TV.text.toString().toInt() != 9999 &&
-                    view.day_index_TV.text.toString().toInt() != 9999 ) {
-                    view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                    view.kcal_goal_TV.text = it.kcalGoal.toString()
-                    view.day_index_TV.text = it.dayIndex.toString()
-                    dayInfo = it
-                }
-            }
-            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-            if (LocalDate.parse(final, formatter).isBefore(LocalDate.parse(userInfo.startingDate, formatter)).not()) {
-                date_TV.text = final
-            } else {
-                Toast.makeText(this@DayFragment.requireContext(),
-                    "You can't search meals at date before your sign in date", Toast.LENGTH_LONG).show()
-            }
-            mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                if ( view.current_day_kcal_TVV.text.toString().toInt() != 9999 &&
-                    view.kcal_goal_TV.text.toString().toInt() != 9999 &&
-                    view.day_index_TV.text.toString().toInt() != 9999 ) {
-                    view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                    view.kcal_goal_TV.text = it.kcalGoal.toString()
-                    view.day_index_TV.text = it.dayIndex.toString()
-                    dayInfo = it
-                }
-            }
+            date_TV.text = final
         }
 
         view.increment_date_btn.setOnClickListener {
@@ -186,31 +155,12 @@ class DayFragment : Fragment(), OnMealClickListener {
             val r = parsed.plus(period)
             val final = mdVM.dataParserToDate(r.toString())
             view.date_TV.text = final
-
-                mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                if ( view.current_day_kcal_TVV.toString().toInt() != 9999 &&
-                   view.kcal_goal_TV.toString().toInt() != 9999 &&
-                   view.day_index_TV.text.toString().toInt() != 9999 ) {
-                    view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                    view.kcal_goal_TV.text = it.kcalGoal.toString()
-                    view.day_index_TV.text = it.dayIndex.toString()
-                    dayInfo = it
-                    }
-                }
         }
 
         view.date_TV.setOnClickListener {
                     val dpd = DatePickerDialog(requireContext(),
                         { _, mYear, mMonth, mDay ->
-                            var mmDay = mDay.toString()
-                            if(mDay < 10) mmDay = "0${mDay}"
-                            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-                            if (LocalDate.parse("$mmDay.${mMonth+1}.$mYear", formatter).isBefore(LocalDate.parse(userInfo.startingDate, formatter)).not()) {
                                 date_TV.text = "$mDay.${mMonth+1}.$mYear"
-                            } else {
-                                Toast.makeText(this@DayFragment.requireContext(),
-                                "You can't search meals at date before your sign in date", Toast.LENGTH_LONG).show()
-                            }
                         }, year, month, day)
                     dpd.show()
         }
@@ -225,6 +175,26 @@ class DayFragment : Fragment(), OnMealClickListener {
             override fun afterTextChanged(s: Editable?) {
                 mdVM.eventChangeListener(recyclerView, this@DayFragment, view.date_TV.text.toString())
                 mealAdapter.notifyDataSetChanged()
+                mdVM.dayInfoReader(view.date_TV.text.toString()) {
+                    if ( it.kcalEaten != 9999 &&
+                        it.kcalGoal != 9999 &&
+                        it.dayIndex != 9999 ) {
+                        view.current_day_kcal_TVV.text = it.kcalEaten.toString()
+                        view.kcal_goal_TV.text = it.kcalGoal.toString()
+                        view.day_index_TV.text = mdVM.dayIndexCalc(
+                            mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                                    mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                        ).toString()
+                        dayInfo = it
+                    } else {
+                        view.current_day_kcal_TVV.text = "KCAL"
+                        view.kcal_goal_TV.text = "GOAL"
+                        view.day_index_TV.text = mdVM.dayIndexCalc(
+                            mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                            mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                        ).toString()
+                    }
+                }
             }
 
         })
@@ -253,51 +223,56 @@ class DayFragment : Fragment(), OnMealClickListener {
         })
 
         view.btn_add_meal.setOnClickListener {
-            if (mealList.map { it.Nazwa }.contains(jsonElement.Nazwa.toString())
-                && view.meal_gramss_ET.text.toString() != "grams"
-                && view.meal_gramss_ET.text.toString().isEmpty().not()) {
+            if (view.meal_gramss_ET.text.isNotEmpty()){
+                if (mealList.map { it.Nazwa }.contains(jsonElement.Nazwa.toString())
+                    && view.meal_gramss_ET.text.toString() != "grams"
+                    && view.meal_gramss_ET.text.toString().isEmpty().not()) {
 
-                val caloriesPer100 = jsonElement.Kcal
-                val caloriesPer1gram = caloriesPer100?.toDouble()!!.div(100)
-                val grams = view.meal_gramss_ET.text.toString().toInt()
-                val caloriesFromMeal = caloriesPer1gram.times(grams.toDouble()).toInt()
+                    val grams = view.meal_gramss_ET.text.toString().toInt()
+                    val caloriesFromMeal = mdVM.nutritionalValuesCalc(grams, jsonElement.Kcal!!.toInt())
 
-                val meal = Meal(
-                    jsonElement.Nazwa.toString(),
-                    view.date_TV.text.toString(),
-                    grams,
-                    caloriesFromMeal
-                )
-                CoroutineScope(Dispatchers.IO).launch {
-                    val a = CoroutineScope(Dispatchers.IO).async {
-                        mdVM.addMeal(meal, view.current_day_kcal_TVV.text.toString().toInt(), view.date_TV.text.toString())
-                        mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                            if ( view.current_day_kcal_TVV.text.toString().toInt() != 9999 &&
-                                view.kcal_goal_TV.text.toString().toInt() != 9999 &&
-                                view.day_index_TV.text.toString().toInt() != 9999 ) {
-                                view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                                view.kcal_goal_TV.text = it.kcalGoal.toString()
-                                view.day_index_TV.text = it.dayIndex.toString()
-                                dayInfo = it
+                    val meal = Meal(
+                        jsonElement.Nazwa.toString(),
+                        view.date_TV.text.toString(),
+                        grams,
+                        caloriesFromMeal
+                    )
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val a = CoroutineScope(Dispatchers.IO).async {
+                            val kcalEaten = if (view.current_day_kcal_TVV.text.toString() == "KCAL") 0 else view.current_day_kcal_TVV.text.toString().toInt()
+                            mdVM.addMeal(meal, kcalEaten, view.date_TV.text.toString())
+                            val date = view.date_TV.text.toString()
+                            mdVM.dayInfoReader(date) {
+                                if ( it.kcalEaten != 9999 &&
+                                    it.kcalGoal != 9999 &&
+                                    it.dayIndex != 9999 ) {
+                                    view.current_day_kcal_TVV.text = (it.kcalEaten?.plus(
+                                        caloriesFromMeal
+                                    )).toString()
+                                    view.kcal_goal_TV.text = it.kcalGoal.toString()
+                                    view.day_index_TV.text = mdVM.dayIndexCalc(
+                                        mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                                        mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                                    ).toString()
+                                    dayInfo = it
+                                    Log.i("added meal:", jsonElement.Nazwa.toString())
+                                } else {
+                                    view.date_TV.text = date
+                                }
                             }
                         }
-                        Log.i("added meal:", jsonElement.Nazwa.toString())
-                        if (view.kcal_in_meal_TV.text == "0"){
-                            view.current_day_kcal_TVV.text = caloriesFromMeal.toString()
-                        } else {
-                            view.current_day_kcal_TVV.text = (view.current_day_kcal_TVV.text.toString().toInt()
-                                    + caloriesFromMeal).toString()
-                        }
+                        a.await()
                     }
-                    a.await()
                 }
-            }
-            else {
-                Toast.makeText(this@DayFragment.requireContext(),
-                    "Please insert valid data", Toast.LENGTH_SHORT).show()
-            }
+                else {
+                    Toast.makeText(this@DayFragment.requireContext(),
+                        "Please insert valid data", Toast.LENGTH_SHORT).show()
+                }
 
-        mealAdapter.notifyDataSetChanged()
+                mealAdapter.notifyDataSetChanged()
+            } else {
+                Toast.makeText(this@DayFragment.requireContext(), "Please enter grams or choose meal type", Toast.LENGTH_LONG).show()
+            }
         }
 
         return view

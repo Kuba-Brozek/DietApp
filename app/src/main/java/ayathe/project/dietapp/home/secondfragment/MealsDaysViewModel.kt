@@ -16,6 +16,8 @@ import ayathe.project.dietapp.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MealsDaysViewModel: ViewModel() {
     private val userRepo = UserRepository()
@@ -100,5 +102,15 @@ class MealsDaysViewModel: ViewModel() {
 
     fun dayInfoReader(date: String, callback: (DayInfo) -> Unit){
         return repo.dayInfoReader(date, callback)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun dayIndexCalc(startingDate: LocalDate, currentDate: LocalDate): Int {
+        return repo.dayIndexCalc(startingDate, currentDate)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getLocalDateFromString(d: String, format: String): LocalDate {
+        return repo.getLocalDateFromString(d, format)
     }
 }

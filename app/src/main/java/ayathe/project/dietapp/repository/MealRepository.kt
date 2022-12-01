@@ -103,7 +103,7 @@ class MealRepository {
         }
         var toastMessage = ""
         cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(currentDate).document(meal.name.toString())
+            .collection(meal.date.toString()).document(meal.name.toString())
             .set(mealInfo)
             .addOnSuccessListener {
                 Log.d(dayInfoLog, "Meal added successfully!")
@@ -136,7 +136,7 @@ class MealRepository {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun dayIndexCalc(startingDate: LocalDate, currentDate: LocalDate): Int {
+    fun dayIndexCalc(startingDate: LocalDate, currentDate: LocalDate): Int {
         return ChronoUnit.DAYS.between(startingDate, currentDate).toInt() + 1
     }
 
