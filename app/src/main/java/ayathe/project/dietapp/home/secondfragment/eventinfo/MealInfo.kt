@@ -38,12 +38,18 @@ class MealInfo : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_event_info, container, false)
         val args = this.arguments
+        var meal = Meal()
         val mealName = args?.getString("MealName")
         val mealDate = args?.getString("MealDate")
         Log.i("rty", mealName.toString())
 
-        view.meal_name.setText(mealName.toString())
-        secondVM.showEventInfo(view, requireContext(), mealName.toString(), mealDate.toString())
+        secondVM.showMealInfo(mealName.toString(), mealDate.toString()) {
+            meal = it
+            view.meal_name.setText(it.name.toString())
+            view.meal_date.text = it.date.toString()
+            view.meal_grams_ET.setText(it.grams.toString())
+            view.meal_kcal.text = it.cals.toString()
+        }
 
         val jsonString = secondVM.getJsonDataFromAsset(requireContext(), "json.json")
         val userList = secondVM.dataClassFromJsonString(jsonString!!)
@@ -65,7 +71,7 @@ class MealInfo : Fragment() {
             MaterialAlertDialogBuilder(requireContext()).setTitle("Alert").setMessage("Are you sure you want to delete event: ${mealName.toString()}")
                 .setNegativeButton("No, I am fine, thanks :D"){ _, _ -> }
                 .setPositiveButton("Delete Event!"){ _, _ ->
-                    secondVM.deleteMeal(mealName!!, meal_date.text.toString())
+                    secondVM.deleteMeal(meal) { }
                     (activity as HomeActivity).fragmentsReplacement(DayFragment())
                 }.show()
         }
@@ -75,7 +81,7 @@ class MealInfo : Fragment() {
             val kcalPer100gram = finalElement?.Kcal
             val grams = view.meal_grams_ET.text.toString().toInt()
             val caloriesFromMeal = secondVM.nutritionalValuesCalc(kcalPer100gram!!, grams)
-            val meal = Meal(
+            meal = Meal(
                 view.meal_name.text.toString(),
                 view.meal_date.text.toString(),
                 grams,
@@ -89,12 +95,6 @@ class MealInfo : Fragment() {
 
             }
 
-        }
-
-        view.meal_date.setOnClickListener {
-            val dpd = DatePickerDialog(requireContext(),
-                { _, mYear, mMonth, mDay -> meal_date.text = "$mDay/${mMonth+1}/$mYear" }, year, month, day)
-            dpd.show()
         }
 
         return view

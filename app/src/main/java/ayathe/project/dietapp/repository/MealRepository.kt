@@ -37,17 +37,11 @@ class MealRepository {
 
     private var auth = FirebaseAuth.getInstance()
     private var userRepo = UserRepository()
-    private val user = Firebase.auth.currentUser
-    private val debug = "DEBUG"
-    private val doc = "DOC"
     private val dayInfoLog = "dayInfoLog"
     private val mealLog = "MealLog"
     private val cloud = FirebaseFirestore.getInstance()
     private lateinit var mealArrayList: ArrayList<Meal>
     private lateinit var mealAdapter: MealAdapter
-    private val fbStorage = Firebase.storage
-    private val storage = fbStorage.reference
-
 
 
     suspend fun getMeals(date: String): ArrayList<Meal> {
@@ -77,7 +71,7 @@ class MealRepository {
             "date" to meal.date,
             "grams" to meal.grams
         )
-        var dayInfo = DayInfo()
+        var dayInfo: DayInfo
         CoroutineScope(Dispatchers.IO).launch {
 
                 userRepo.readUserData {
@@ -158,71 +152,40 @@ class MealRepository {
     } //TODO()
 
     @SuppressLint("SetTextI18n")
-    fun showMealInfo(view: View, context: Context, mealName: String, mealDate: String) {
+    fun showMealInfo(mealName: String, mealDate: String, callback: (Meal) -> Unit) {
 
         val docRef = cloud.collection(auth.currentUser!!.uid).document("Meals")
             .collection(mealDate).document(mealName)
 
         docRef.get().addOnSuccessListener { docSnapshot ->
             val meal = docSnapshot.toObject<Meal>()
-            view.meal_name.setText(meal?.name.toString())
-//            view.meal_name.setText("${meal?.name.toString().substring(0, 7)}..")
-            view.meal_date.text = meal?.date.toString()
-            view.meal_grams_ET.setText(meal?.grams.toString())
-            view.meal_kcal.text = meal?.cals.toString()
-            try {
-                when {
-                    meal?.cals.toString() == "biznes" -> {
-                        Glide.with(context).load(R.drawable.business).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "edukacja" -> {
-                        Glide.with(context).load(R.drawable.education).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "sprawy domowe" -> {
-                        Glide.with(context).load(R.drawable.home).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "trening" -> {
-                        Glide.with(context).load(R.drawable.work_out).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                    meal?.cals.toString() == "inne" -> {
-                        Glide.with(context).load(R.drawable.other).into(
-                            view.findViewById(
-                                R.id.category_image
-                            )
-                        )
-                    }
-                }
-            } catch (e: Exception) {
-                Log.e("error", "failed to load image")
-            }
+            callback(meal!!)
         }
     }
 
 
-    fun deleteMeal(mealDate: String, mealName: String) {
+    fun deleteMeal(meal: Meal, callback: (DayInfo) -> Unit) {
         cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(mealDate).document(mealName).delete()
+            .collection(meal.date!!).document(meal.name!!).delete()
             .addOnSuccessListener {
-                Log.i(mealLog, "Meal deleted succesfully")
+                Log.i(mealLog, "Meal deleted successfully")
             }.addOnFailureListener {
                 Log.e(mealLog, "Error deleting meal")
             }
+        dayInfoReader(meal.date!!) {
+            val dayInfo = it
+            dayInfo.kcalEaten = it.kcalEaten!!.minus(meal.cals!!)
+            cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                .collection(meal.date!!).document(meal.date!!).set(dayInfo)
+                .addOnSuccessListener {
+                    callback(dayInfo)
+                    Log.i(dayInfoLog, "DayInfo corrected successfully")
+                }.addOnFailureListener { _ ->
+                    callback(it)
+                    Log.e(dayInfoLog, "DayInfo correction failure")
+                }
+
+        }
     }
 
     @SuppressLint("SimpleDateFormat")

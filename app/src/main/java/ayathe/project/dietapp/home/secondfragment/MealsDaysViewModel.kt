@@ -38,8 +38,8 @@ class MealsDaysViewModel: ViewModel() {
     }
 
 
-    fun deleteMeal(mealDate: String, mealName: String){
-        repo.deleteMeal(mealDate, mealName)
+    fun deleteMeal(meal: Meal, callback: (DayInfo) -> Unit){
+        repo.deleteMeal(meal, callback)
     }
 
     fun getJsonDataFromAsset(context: Context, filename: String): String? {
@@ -49,8 +49,7 @@ class MealsDaysViewModel: ViewModel() {
                 it.readText()
             }
         } catch (e: IOException) {
-            e.printStackTrace()
-            return null
+            return jsonString
         }
         return jsonString
     }
@@ -67,8 +66,8 @@ class MealsDaysViewModel: ViewModel() {
     }
 
 
-    fun showEventInfo(view: View, context: Context, mealName: String, mealDate: String) {
-        repo.showMealInfo(view, context, mealName, mealDate)
+    fun showMealInfo(mealName: String, mealDate: String, callback: (Meal) -> Unit) {
+        repo.showMealInfo(mealName, mealDate, callback)
     }
 
     fun kcalCalculator(a: Int, b: Int): Int{

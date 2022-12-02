@@ -39,7 +39,6 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Period
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -79,7 +78,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         mealArrayList = arrayListOf()
         mealAdapter = MealAdapter(mealArrayList, this@DayFragment)
         recyclerView.adapter = mealAdapter
-        val jsonString = mdVM.getJsonDataFromAsset(requireContext(), "json.json")
+        val jsonString = mdVM.getJsonDataFromAsset(this@DayFragment.requireContext(), "json.json")
         val mealList = mdVM.dataClassFromJsonString(jsonString!!)
 
         arrayAdapterFilter(mealList, view)
@@ -158,9 +157,17 @@ class DayFragment : Fragment(), OnMealClickListener {
         }
 
         view.date_TV.setOnClickListener {
-                    val dpd = DatePickerDialog(requireContext(),
+                    val dpd = DatePickerDialog(this@DayFragment.requireContext(),
                         { _, mYear, mMonth, mDay ->
-                                date_TV.text = "$mDay.${mMonth+1}.$mYear"
+                            var mmMonth = mMonth.toString()
+                            var mmDay = mDay.toString()
+                            if (mmMonth.toInt() < 10){
+                                mmMonth = "0$mmMonth"
+                            }
+                            if (mmDay.toInt() < 10){
+                                mmDay = "0$mmDay"
+                            }
+                                date_TV.text = "${mmDay.toInt()}.${mmMonth.toInt()+1}.$mYear"
                         }, year, month, day)
                     dpd.show()
         }
@@ -175,8 +182,10 @@ class DayFragment : Fragment(), OnMealClickListener {
             override fun afterTextChanged(s: Editable?) {
                 mdVM.eventChangeListener(recyclerView, this@DayFragment, view.date_TV.text.toString())
                 mealAdapter.notifyDataSetChanged()
+
                 mdVM.dayInfoReader(view.date_TV.text.toString()) {
-                    if ( it.kcalEaten != 9999 &&
+
+                        if ( it.kcalEaten != 9999 &&
                         it.kcalGoal != 9999 &&
                         it.dayIndex != 9999 ) {
                         view.current_day_kcal_TVV.text = it.kcalEaten.toString()
@@ -204,13 +213,13 @@ class DayFragment : Fragment(), OnMealClickListener {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
-            override fun afterTextChanged(s: Editable?) {
-                if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && s.toString()!= "") {
+            override fun afterTextChanged(grams: Editable?) {
+                if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && grams.toString()!= "") {
 
-                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Weglowodany!!.toInt()).toString()
-                        view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
-                        view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
-                        view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(s.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
+                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Weglowodany!!.toInt()).toString()
+                        view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
+                        view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
+                        view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
                     return
                     }else {
                     view.wegle_in_meal_TV.text = "0"
@@ -268,24 +277,27 @@ class DayFragment : Fragment(), OnMealClickListener {
                     Toast.makeText(this@DayFragment.requireContext(),
                         "Please insert valid data", Toast.LENGTH_SHORT).show()
                 }
-
-                mealAdapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(this@DayFragment.requireContext(), "Please enter grams or choose meal type", Toast.LENGTH_LONG).show()
             }
+            mealAdapter.notifyDataSetChanged()
         }
 
         return view
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onMealLongClick(meal: Meal, position: Int) {
-        MaterialAlertDialogBuilder(requireContext()).setTitle(meal.name.toString()).setMessage("Are you sure you want to delete it?")
+        MaterialAlertDialogBuilder(requireContext()).setTitle(meal.name.toString()).setMessage("Are you sure you want to delete meal?")
             .setNegativeButton("Keep it that way"){ _, _ -> }
             .setPositiveButton("Delete meal"){ _, _ ->
-                mdVM.deleteMeal(meal.date!!, meal.name!!)
-                (activity as HomeActivity).fragmentsReplacement(DayFragment())
+                mdVM.deleteMeal(meal) {
+                    date_TV.text = it.date
+                    current_day_kcal_TVV.text = it.kcalEaten.toString()
+                }
+
             }.show()
-        Toast.makeText(requireContext(), position.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), meal.name, Toast.LENGTH_SHORT).show()
     }
 
     override fun onMealClick(meal: Meal, position: Int) {
