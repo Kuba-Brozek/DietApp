@@ -1,8 +1,7 @@
-package ayathe.project.dietapp.home.secondfragment
+package ayathe.project.dietapp.fragments.secondfragment
 
 import android.content.Context
 import android.os.Build
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
@@ -17,12 +16,16 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class MealsDaysViewModel: ViewModel() {
     private val userRepo = UserRepository()
     private val repo = MealRepository()
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun modifyMeal(meal: Meal, mealModified: Meal, kcalEaten: Int) {
+        repo.modifyMeal(meal, mealModified, kcalEaten)
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {

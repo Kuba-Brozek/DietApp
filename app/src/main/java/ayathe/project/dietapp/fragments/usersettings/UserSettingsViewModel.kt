@@ -1,8 +1,7 @@
-package ayathe.project.dietapp.home.usersettings
+package ayathe.project.dietapp.fragments.usersettings
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModel

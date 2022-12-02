@@ -34,13 +34,13 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: O
         try{
             when {
                 meal.cals.toString().toInt() > 150 -> {
-                    itV.setBackgroundColor(Color.parseColor("#FFCF6C37"))
+                    itV.setBackgroundColor(Color.parseColor("#E42020"))
                 }
                 meal.cals.toString().toInt() in 50 until 150 -> {
-                    itV.setBackgroundColor(Color.parseColor("#FFCDDC46"))
+                    itV.setBackgroundColor(Color.parseColor("#ffff00"))
                 }
                 else -> {
-                    itV.setBackgroundColor(Color.parseColor("#FF6BDA4E"))
+                    itV.setBackgroundColor(Color.parseColor("#25C113"))
                 }
 
             }

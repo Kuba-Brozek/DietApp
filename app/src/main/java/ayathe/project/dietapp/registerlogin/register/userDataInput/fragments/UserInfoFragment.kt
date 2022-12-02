@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.home.homeactivity.HomeActivity
+import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
 import ayathe.project.dietapp.registerlogin.register.ViewModelRegister
 import kotlinx.android.synthetic.main.fragment_user_info.view.*
 import kotlinx.coroutines.*

@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.home.homeactivity
+package ayathe.project.dietapp.fragments.homeactivity
 
 import androidx.lifecycle.ViewModel
 

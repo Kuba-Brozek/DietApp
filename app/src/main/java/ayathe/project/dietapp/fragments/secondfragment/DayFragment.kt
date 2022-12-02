@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.home.secondfragment
+package ayathe.project.dietapp.fragments.secondfragment
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -27,8 +27,8 @@ import ayathe.project.dietapp.adapters.OnMealClickListener
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.ProductFromJSON
 import ayathe.project.dietapp.DTO.User
-import ayathe.project.dietapp.home.homeactivity.HomeActivity
-import ayathe.project.dietapp.home.secondfragment.eventinfo.MealInfo
+import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
+import ayathe.project.dietapp.fragments.secondfragment.eventinfo.MealInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.current_day_fragment.view.*
@@ -83,15 +83,15 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         arrayAdapterFilter(mealList, view)
         view.json_list_LV.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
-            jsonElement = mealList.find { it.Nazwa.toString() == parent?.getItemAtPosition(position).toString() }!!
-            Log.i("Clicked LV Item", jsonElement.Nazwa.toString())
+            jsonElement = mealList.find { it.name.toString() == parent?.getItemAtPosition(position).toString() }!!
+            Log.i("Clicked LV Item", jsonElement.name.toString())
             view.meal_gramss_ET.inputType = InputType.TYPE_CLASS_NUMBER
 
-            view.current_meal_name_TV.text = jsonElement.Nazwa
-            view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Weglowodany!!.toInt()).toString()
-            view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Bialko!!.toInt()).toString()
-            view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(100, jsonElement.Tluszcz!!.toInt()).toString()
-            view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.Kcal!!.toInt()).toString()
+            view.current_meal_name_TV.text = jsonElement.name
+            view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.carbs!!.toInt()).toString()
+            view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.protein!!.toInt()).toString()
+            view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(100, jsonElement.fat!!.toInt()).toString()
+            view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.kcal!!.toInt()).toString()
         }
 
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
@@ -106,7 +106,7 @@ class DayFragment : Fragment(), OnMealClickListener {
 
             override fun afterTextChanged(queryText: Editable?) {
                 if (queryText.toString() != ""){
-                    arrayAdapterFilter(mealList.filter { it.Nazwa!!.lowercase().contains(queryText.toString().lowercase()) }, view)
+                    arrayAdapterFilter(mealList.filter { it.name!!.lowercase().contains(queryText.toString().lowercase()) }, view)
                 } else {
                     arrayAdapterFilter(mealList, view)
                 }
@@ -157,42 +157,38 @@ class DayFragment : Fragment(), OnMealClickListener {
         }
 
         view.date_TV.setOnClickListener {
-                    val dpd = DatePickerDialog(this@DayFragment.requireContext(),
-                        { _, mYear, mMonth, mDay ->
-                            var mmMonth = mMonth.toString()
-                            var mmDay = mDay.toString()
-                            if (mmMonth.toInt() < 10){
-                                mmMonth = "0$mmMonth"
-                            }
-                            if (mmDay.toInt() < 10){
-                                mmDay = "0$mmDay"
-                            }
-                                date_TV.text = "${mmDay.toInt()}.${mmMonth.toInt()+1}.$mYear"
-                        }, year, month, day)
-                    dpd.show()
+            val dpd = DatePickerDialog(this@DayFragment.requireContext(),
+                { _, mYear, mMonth, mDay ->
+                    var mmMonth = mMonth.toString()
+                    var mmDay = mDay.toString()
+                    if (mmMonth.toInt() < 10){
+                        mmMonth = "0$mmMonth"
+                    }
+                    if (mmDay.toInt() < 10){
+                        mmDay = "0$mmDay"
+                    }
+                    date_TV.text = "${mmDay.toInt()}.${mmMonth.toInt()+1}.$mYear"
+                }, year, month, day)
+            dpd.show()
         }
 
         view.date_TV.addTextChangedListener(object: TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 mdVM.eventChangeListener(recyclerView, this@DayFragment, view.date_TV.text.toString())
                 mealAdapter.notifyDataSetChanged()
 
                 mdVM.dayInfoReader(view.date_TV.text.toString()) {
 
-                        if ( it.kcalEaten != 9999 &&
+                    if ( it.kcalEaten != 9999 &&
                         it.kcalGoal != 9999 &&
                         it.dayIndex != 9999 ) {
                         view.current_day_kcal_TVV.text = it.kcalEaten.toString()
                         view.kcal_goal_TV.text = it.kcalGoal.toString()
                         view.day_index_TV.text = mdVM.dayIndexCalc(
                             mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
-                                    mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                            mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
                         ).toString()
                         dayInfo = it
                     } else {
@@ -210,21 +206,19 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         view.meal_gramss_ET.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
             override fun afterTextChanged(grams: Editable?) {
-                if(mealList.map { it.Nazwa }.contains(jsonElement.Nazwa) && grams.toString()!= "") {
+                if(mealList.map { it.name }.contains(jsonElement.name) && grams.toString()!= "") {
 
-                        view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Weglowodany!!.toInt()).toString()
-                        view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Bialko!!.toInt()).toString()
-                        view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Tluszcz!!.toInt()).toString()
-                        view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.Kcal!!.toInt()).toString()
+                    view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.carbs!!.toInt()).toString()
+                    view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.protein!!.toInt()).toString()
+                    view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.fat!!.toInt()).toString()
+                    view.kcal_in_meal_TV.text = mdVM.nutritionalValuesCalc(grams.toString().toInt(), jsonElement.kcal!!.toInt()).toString()
                     return
-                    }else {
+                }else {
                     view.wegle_in_meal_TV.text = "0"
-                        view.bialka_in_meal_TV.text = "0"
-                        view.tluszcz_in_meal_TV.text = "0"
+                    view.bialka_in_meal_TV.text = "0"
+                    view.tluszcz_in_meal_TV.text = "0"
                     view.kcal_in_meal_TV.text = "0"
                     return
                 }
@@ -233,15 +227,15 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         view.btn_add_meal.setOnClickListener {
             if (view.meal_gramss_ET.text.isNotEmpty()){
-                if (mealList.map { it.Nazwa }.contains(jsonElement.Nazwa.toString())
+                if (mealList.map { it.name }.contains(jsonElement.name.toString())
                     && view.meal_gramss_ET.text.toString() != "grams"
                     && view.meal_gramss_ET.text.toString().isEmpty().not()) {
 
                     val grams = view.meal_gramss_ET.text.toString().toInt()
-                    val caloriesFromMeal = mdVM.nutritionalValuesCalc(grams, jsonElement.Kcal!!.toInt())
+                    val caloriesFromMeal = mdVM.nutritionalValuesCalc(grams, jsonElement.kcal!!.toInt())
 
                     val meal = Meal(
-                        jsonElement.Nazwa.toString(),
+                        jsonElement.name.toString(),
                         view.date_TV.text.toString(),
                         grams,
                         caloriesFromMeal
@@ -264,7 +258,7 @@ class DayFragment : Fragment(), OnMealClickListener {
                                         mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
                                     ).toString()
                                     dayInfo = it
-                                    Log.i("added meal:", jsonElement.Nazwa.toString())
+                                    Log.i("added meal:", jsonElement.name.toString())
                                 } else {
                                     view.date_TV.text = date
                                 }
@@ -312,7 +306,7 @@ class DayFragment : Fragment(), OnMealClickListener {
     }
 
     fun arrayAdapterFilter(list: List<ProductFromJSON>, view: View){
-        arrayAdapter = ArrayAdapter(this@DayFragment.requireContext(), android.R.layout.simple_list_item_1, list.map { it.Nazwa })
+        arrayAdapter = ArrayAdapter(this@DayFragment.requireContext(), android.R.layout.simple_list_item_1, list.map { it.name })
         view.json_list_LV.adapter = arrayAdapter
     }
 

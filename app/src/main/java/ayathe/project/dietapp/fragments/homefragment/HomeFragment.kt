@@ -1,6 +1,5 @@
-package ayathe.project.dietapp.home.homefragment
+package ayathe.project.dietapp.fragments.homefragment
 
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import ayathe.project.dietapp.R
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.DTO.User
-import ayathe.project.dietapp.home.homeactivity.HomeActivity
+import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
 import ayathe.project.dietapp.registerlogin.login.LoginFragment
 import ayathe.project.dietapp.registerlogin.register.RegisterFragment
 import ayathe.project.dietapp.registerlogin.register.userDataInput.AfterRegistrationActivity

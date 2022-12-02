@@ -1,22 +1,15 @@
-package ayathe.project.dietapp.home.usersettings
+package ayathe.project.dietapp.fragments.usersettings
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import ayathe.project.dietapp.databinding.ActivityChangePersonalInfoBinding
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_change_personal_info.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ChangePersonalInfoActivity : AppCompatActivity() {
 

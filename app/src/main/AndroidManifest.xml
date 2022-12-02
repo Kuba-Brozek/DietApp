@@ -16,13 +16,13 @@
             android:name="ayathe.project.dietapp.registerlogin.register.userDataInput.AfterRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name="ayathe.project.dietapp.home.homeactivity.HomeActivity"
+            android:name="ayathe.project.dietapp.fragments.homeactivity.HomeActivity"
             android:exported="false" />
         <activity
             android:name="ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity"
             android:exported="true" />
         <activity
-            android:name="ayathe.project.dietapp.home.usersettings.ChangePersonalInfoActivity"
+            android:name="ayathe.project.dietapp.fragments.usersettings.ChangePersonalInfoActivity"
             android:exported="true" />
         <activity
             android:name="ayathe.project.dietapp.SplashScreen"

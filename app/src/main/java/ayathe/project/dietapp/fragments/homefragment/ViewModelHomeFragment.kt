@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.home.homefragment
+package ayathe.project.dietapp.fragments.homefragment
 
 import android.animation.ValueAnimator
 import android.widget.TextView

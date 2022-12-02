@@ -1,13 +1,13 @@
-package ayathe.project.dietapp.home.homeactivity
+package ayathe.project.dietapp.fragments.homeactivity
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ayathe.project.dietapp.R
-import ayathe.project.dietapp.home.homefragment.HomeFragment
-import ayathe.project.dietapp.home.secondfragment.DayFragment
-import ayathe.project.dietapp.home.usersettings.UserSettingsFragment
+import ayathe.project.dietapp.fragments.homefragment.HomeFragment
+import ayathe.project.dietapp.fragments.secondfragment.DayFragment
+import ayathe.project.dietapp.fragments.usersettings.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

@@ -1,9 +1,16 @@
 package ayathe.project.dietapp.DTO
 
+import com.google.gson.annotations.SerializedName
+
 data class ProductFromJSON(
-    var Nazwa: String? = null,
-    var Kcal: Int? = null,
-    var Weglowodany: Double? = null,
-    var Bialko: Double? = null,
-    var Tluszcz: Double? = null
+    @SerializedName("Nazwa")
+    var name: String? = null,
+    @SerializedName("Kcal")
+    var kcal: Int? = null,
+    @SerializedName("Weglowodany")
+    var carbs: Double? = null,
+    @SerializedName("Bialko")
+    var protein: Double? = null,
+    @SerializedName("Tluszcz")
+    var fat: Double? = null
 )

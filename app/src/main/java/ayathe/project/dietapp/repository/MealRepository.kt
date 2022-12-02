@@ -60,6 +60,50 @@ class MealRepository {
         return list
     }
 
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun modifyMeal(meal: Meal, mealModified: Meal, kcalEaten: Int) {
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val currentDate = sdf.format(Date())
+        val mealInfo = hashMapOf(
+            "cals" to meal.cals,
+            "name" to meal.name,
+            "date" to meal.date,
+            "grams" to meal.grams
+        )
+        var dayInfo: DayInfo
+        CoroutineScope(Dispatchers.IO).launch {
+            userRepo.readUserData {
+                dayInfo = DayInfo(
+                    meal.date,
+                    dayIndexCalc(
+                        getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
+                        getLocalDateFromString(currentDate, "dd.MM.yyyy")
+                    ),
+                    kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
+                    kcalEaten - meal.cals!! + mealModified.cals!!,
+                    activitiesMade(),
+                    kcalBurnt()
+                )
+                cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                    .collection(meal.date!!).document(meal.date!!).set(dayInfo)
+                    .addOnSuccessListener {
+                        Log.i(dayInfoLog, "Day info modified successfully")
+                        cloud.collection(auth.currentUser!!.uid).document("Meals")
+                            .collection(meal.date.toString()).document(meal.name.toString())
+                            .set(mealModified)
+                            .addOnSuccessListener {
+                                Log.d(dayInfoLog, "Meal modified successfully!")
+                            }.addOnFailureListener {
+                                Log.d(dayInfoLog, "Meal modifying failure")
+                            }
+                    } .addOnFailureListener{
+                        Log.i(dayInfoLog, "Day info modified successfully")
+                    }
+            }
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
     fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {
@@ -72,61 +116,61 @@ class MealRepository {
             "grams" to meal.grams
         )
         var dayInfo: DayInfo
-        var toastMessage = ""
         CoroutineScope(Dispatchers.IO).launch {
-                userRepo.readUserData {
-                    dayInfo = DayInfo(
-                        date,
-                        dayIndexCalc(
-                            getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
-                            getLocalDateFromString(currentDate, "dd.MM.yyyy")
-                        ),
-                        kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
-                        kcalEaten + meal.cals!!,
-                        activitiesMade(),
-                        kcalBurnt()
-                    )
-                    cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
-                        .collection(date).document(date).set(dayInfo)
-                        .addOnSuccessListener {
-                            Log.i(dayInfoLog, "Day info added successfully")
-                            cloud.collection(auth.currentUser!!.uid).document("Meals")
-                                .collection(meal.date.toString()).document(meal.name.toString())
-                                .set(mealInfo)
-                                .addOnSuccessListener {
-                                    Log.d(dayInfoLog, "Meal added successfully!")
-                                    toastMessage = "Meal added successfully!"
-                                }.addOnFailureListener {
-                                    Log.d(dayInfoLog, "Meal adding failure")
-                                    toastMessage = "Meal adding failure"
-                                }
-                        } .addOnFailureListener{
-                            Log.i(dayInfoLog, "Day info added successfully")
-                        }
-                }
-        }
 
+            userRepo.readUserData {
+                dayInfo = DayInfo(
+                    date,
+                    dayIndexCalc(
+                        getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
+                        getLocalDateFromString(currentDate, "dd.MM.yyyy")
+                    ),
+                    kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
+                    kcalEaten + meal.cals!!,
+                    activitiesMade(),
+                    kcalBurnt()
+                )
+                cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                    .collection(date).document(date).set(dayInfo)
+                    .addOnSuccessListener {
+                        Log.i(dayInfoLog, "Day info added successfully")
+                    } .addOnFailureListener{
+                        Log.i(dayInfoLog, "Day info added successfully")
+                    }
+            }
+        }
+        var toastMessage = ""
+        cloud.collection(auth.currentUser!!.uid).document("Meals")
+            .collection(meal.date.toString()).document(meal.name.toString())
+            .set(mealInfo)
+            .addOnSuccessListener {
+                Log.d(dayInfoLog, "Meal added successfully!")
+                toastMessage = "Meal added successfully!"
+            }.addOnFailureListener {
+                Log.d(dayInfoLog, "Meal adding failure")
+                toastMessage = "Meal adding failure"
+            }
         return toastMessage
     }
 
     fun dayInfoReader(date: String, Callback: (DayInfo) -> Unit) {
 
-            try {
-                val dayInfo = cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
-                    .collection(date).document(date).get()
-                dayInfo.addOnSuccessListener { task ->
-                    if (task.exists()) {
-                        Callback(task.toObject<DayInfo>()!!)
-                        Log.i(dayInfoLog,"Document exist in DB")
-                    }
-                    else {
-                        Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999))
-                        Log.i(dayInfoLog,"Document doesn't exist in DB")
-                    }
+        try {
+            val dayInfo = cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                .collection(date).document(date).get()
+            dayInfo.addOnSuccessListener { task ->
+                if (task.exists()) {
+                    Callback(task.toObject<DayInfo>()!!)
+                    Log.i(dayInfoLog,"Document exist in DB")
                 }
-            } catch (e: Exception){
-
+                else {
+                    Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999))
+                    Log.i(dayInfoLog,"Document doesn't exist in DB")
+                }
             }
+        } catch (e: Exception){
+
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -169,23 +213,23 @@ class MealRepository {
             .collection(meal.date!!).document(meal.name!!).delete()
             .addOnSuccessListener {
                 Log.i(mealLog, "Meal deleted successfully")
-                dayInfoReader(meal.date!!) {
-                    val dayInfo = it
-                    dayInfo.kcalEaten = it.kcalEaten!!.minus(meal.cals!!)
-                    cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
-                        .collection(meal.date!!).document(meal.date!!).set(dayInfo)
-                        .addOnSuccessListener {
-                            callback(dayInfo)
-                            Log.i(dayInfoLog, "DayInfo corrected successfully")
-                        }.addOnFailureListener { _ ->
-                            callback(it)
-                            Log.e(dayInfoLog, "DayInfo correction failure")
-                        }
-                }
             }.addOnFailureListener {
                 Log.e(mealLog, "Error deleting meal")
             }
+        dayInfoReader(meal.date!!) {
+            val dayInfo = it
+            dayInfo.kcalEaten = it.kcalEaten!!.minus(meal.cals!!)
+            cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                .collection(meal.date!!).document(meal.date!!).set(dayInfo)
+                .addOnSuccessListener {
+                    callback(dayInfo)
+                    Log.i(dayInfoLog, "DayInfo corrected successfully")
+                }.addOnFailureListener { _ ->
+                    callback(it)
+                    Log.e(dayInfoLog, "DayInfo correction failure")
+                }
 
+        }
     }
 
     @SuppressLint("SimpleDateFormat")

@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.home.usersettings
+package ayathe.project.dietapp.fragments.usersettings
 
 import android.content.Intent
 import android.net.Uri
@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import ayathe.project.dietapp.R
 import kotlinx.coroutines.launch
-import ayathe.project.dietapp.home.homeactivity.HomeActivity
+import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.settings_fragment.view.*
 import kotlinx.coroutines.CoroutineScope
