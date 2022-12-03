@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/one"
-        android:icon="@drawable/one"
-        android:title="IDK"
+        android:icon="@drawable/ic_history"
+        android:title=""
     />
     <item
         android:id="@+id/two"
-        android:icon="@drawable/events"
-        android:title="EVENTS"
+        android:icon="@drawable/ic_food"
+        android:title=""
         />
     <item
         android:id="@+id/three"
-        android:icon="@drawable/user_info"
-        android:title="SETTINGS"
+        android:icon="@drawable/ic_settings"
+        android:title=""
         />
 
 </menu>

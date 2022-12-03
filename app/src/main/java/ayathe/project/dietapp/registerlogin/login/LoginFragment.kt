@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity
+import ayathe.project.dietapp.registerlogin.register.RegisterFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -51,6 +52,12 @@ class LoginFragment : Fragment() {
                 Toast.makeText(this@LoginFragment.requireContext(), "Enter your email in email field before sending email verification", Toast.LENGTH_SHORT).show()
             }
         }
+
+        view.register_fragment_changer.setOnClickListener{
+            val fragment = RegisterFragment()
+            (activity as LogRegActivity).fragmentsReplacements(fragment)
+        }
+
         return view
     }
 

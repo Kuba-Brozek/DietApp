@@ -26,18 +26,11 @@ class UserSettingsViewModel: ViewModel() {
         }
     }
 
-    private fun addUserToDatabase(user: User){
+    fun addUserToDatabase(user: User){
         repo.addUserToDatabase(user)
     }
 
-    fun dataChangeConfirmation(context: Context, user: User) = viewModelScope.launch {
-        MaterialAlertDialogBuilder(context).setTitle("Alert")
-            .setMessage("Are you sure you want to change your personal data?")
-            .setNegativeButton("I'll keep it that way") { _, _ -> }
-            .setPositiveButton("Change my data!") { _, _ ->
-                addUserToDatabase(user)
-            }.show()
-    }
+
 
 
     fun passwordChangeConfirmation(context: Context, password: String)= viewModelScope.launch{

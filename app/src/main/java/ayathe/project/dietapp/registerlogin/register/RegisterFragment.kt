@@ -1,15 +1,19 @@
 package ayathe.project.dietapp.registerlogin.register
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import ayathe.project.dietapp.R
+import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
 import ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity
+import ayathe.project.dietapp.registerlogin.login.LoginFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
@@ -30,6 +34,13 @@ class RegisterFragment : Fragment() {
         view.buttonRegister.setOnClickListener {
             onClickSignUp()
         }
+
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val fragment = LoginFragment()
+                (activity as LogRegActivity).fragmentsReplacements(fragment)
+            }
+        })
 
         return view
 

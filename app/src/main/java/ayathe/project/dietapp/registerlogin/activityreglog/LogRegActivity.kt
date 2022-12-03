@@ -34,13 +34,7 @@ class LogRegActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         fragmentsReplacement(loginFragment)
         auth = FirebaseAuth.getInstance()
-        bottom_nav_reg_log.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home -> fragmentsReplacement(loginFragment)
-                R.id.home2 -> fragmentsReplacement(registerFragment)
-            }
-            true
-        }
+
     }
 
     private fun fragmentsReplacement(fragment: Fragment){
@@ -87,10 +81,10 @@ class LogRegActivity : AppCompatActivity() {
             }
     }
 
-
-
-
-
-
+    fun fragmentsReplacements(fragment: Fragment){
+        val fragmentContainer = supportFragmentManager.beginTransaction()
+        fragmentContainer.replace(R.id.container_reg_log, fragment)
+        fragmentContainer.commit()
+    }
 
 }
