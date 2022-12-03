@@ -101,7 +101,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         height_ET_CPI.inputType = InputType.TYPE_CLASS_NUMBER
 
         save_changes_btn.setOnClickListener {
-            if (goal_spinner_settings.selectedItem != "Your Goal") {
+            if (goal_spinner_settings.selectedItem != "Your goal") {
                 userSettingsVM.readUserData {
 
                     val user = it
@@ -120,9 +120,8 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                     if (height_ET_CPI.text.toString() != "") {
                         user.height = height_ET_CPI.text.toString().toInt()
                     }
-                    if (goal_spinner_settings.selectedItem != "Your Goal") {
-                        user.destination = goal_spinner_settings.selectedItem.toString()
-                    }
+                    user.destination = goal_spinner_settings.selectedItem.toString()
+
 
 
                     dataChangeConfirmation(this@ChangePersonalInfoActivity, user) {
