@@ -26,8 +26,6 @@ class UserRepository {
     private val doc = "DOC"
     private val userCreationTag = "UserCreation"
     private val cloud = FirebaseFirestore.getInstance()
-    private lateinit var mealArrayList: ArrayList<Meal>
-    private lateinit var mealAdapter: MealAdapter
     private val fbStorage = Firebase.storage
     private val storage = fbStorage.reference
     private val IODispatcher = Dispatchers.IO
@@ -42,19 +40,6 @@ class UserRepository {
             }.addOnFailureListener {
                 Log.e(doc, "Password change failure.")
                 toast(context, failure)
-            }
-    }
-
-    fun changeEmail(email: String, context: Context) {
-        val success = "Email changes successfully"
-        val failure = "Email change failure"
-        user!!.updateEmail(email)
-            .addOnSuccessListener {
-                toast(context, success)
-                Log.i(debug, "Email change success.")
-            }.addOnFailureListener {
-                toast(context, failure)
-                Log.e(debug, "Email change failure.")
             }
     }
 
@@ -127,16 +112,30 @@ class UserRepository {
             .document("userInfo")
             .set(userMap)
             .addOnSuccessListener {
-                Log.i(userCreationTag,
-                    "User added to database")
+                Log.i(userCreationTag, "User added to database")
+                Firebase.auth.currentUser!!.updateEmail(user.email!!)
+                    .addOnSuccessListener {
+                        Log.i(debug, "Email change success.")
+                    }.addOnFailureListener {
+                        Log.e(debug, "Email change failure.")
+                    }
+
             }.addOnFailureListener {
-                Log.e(userCreationTag,
-                    "User NOT added to database")
+                Log.e(userCreationTag, "User NOT added to database")
             }
     }
 
     private fun toast(context: Context, string: String) { //working
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    fun sendEmail(email: String) {
+        Firebase.auth.sendPasswordResetEmail(email)
+            .addOnSuccessListener {
+                Log.i("RESET" ,"Password reset email sent to the user.")
+            }.addOnFailureListener {
+                Log.i("RESET", "Password reset email not delivered to the user.")
+            }
     }
 
 

@@ -38,12 +38,15 @@ class UserSettingsFragment : Fragment() {
                     CoroutineScope(Dispatchers.Main).launch {
                         view.username_TV.text = it.username.toString()
                         view.email_displayTV.text = it.email.toString()
+                        view.age_displayTV.text = it.age.toString()
+                        view.height_displayTV.text = it.height.toString()
+                        view.destination_displayTV.text = it.destination.toString()
                     }
                 }
                 userSettingsVM.loadProfileImage(this@UserSettingsFragment.requireContext(), view.profile_image)
 
             } catch ( ex: Exception){
-                Log.e("LoadingError", "Loading image, or user data failed")
+                Log.e("LoadingError", "Loading image, or user data loading failed")
             }
         }
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {

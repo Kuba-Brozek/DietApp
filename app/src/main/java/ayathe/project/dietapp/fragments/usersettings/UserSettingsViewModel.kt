@@ -26,18 +26,16 @@ class UserSettingsViewModel: ViewModel() {
         }
     }
 
-    private fun changeEmail(email: String, context: Context) {
-        viewModelScope.launch {
-            repo.changeEmail(email, context)
-        }
+    private fun addUserToDatabase(user: User){
+        repo.addUserToDatabase(user)
     }
 
-    fun emailChangeConfirmation(context: Context, textView: TextView) = viewModelScope.launch {
+    fun dataChangeConfirmation(context: Context, user: User) = viewModelScope.launch {
         MaterialAlertDialogBuilder(context).setTitle("Alert")
-            .setMessage("Are you sure you want to change your email?")
+            .setMessage("Are you sure you want to change your personal data?")
             .setNegativeButton("I'll keep it that way") { _, _ -> }
-            .setPositiveButton("Change my email!") { _, _ ->
-                changeEmail(textView.text.toString(), context)
+            .setPositiveButton("Change my data!") { _, _ ->
+                addUserToDatabase(user)
             }.show()
     }
 

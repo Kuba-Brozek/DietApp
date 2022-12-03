@@ -12,7 +12,7 @@
             android:layout_width="110sp"
             android:src="@drawable/round_button"
             android:layout_height="110sp"
-            android:padding="3dp"
+            android:padding="3sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +20,7 @@
             android:id="@+id/profile_image_IV_CPI"
             android:layout_width="100sp"
             android:layout_height="100sp"
-            android:layout_marginStart="5sp"
+            android:layout_marginEnd="5sp"
             android:layout_marginTop="5sp"
             android:src="@drawable/round_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +28,10 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/profile_image_BTN_CPI"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="180dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="70sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="32dp"
             android:text="zmien zdjecie"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,74 +40,215 @@
         <TextView
             android:id="@+id/username_TV_CPI"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="308dp"
+            android:layout_height="30sp"
+            android:layout_marginTop="160sp"
+            android:layout_marginEnd="200sp"
             android:text="username"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/username_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:layout_marginTop="150sp"
+            android:layout_marginEnd="80sp"
+            android:hint="username"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/email_TV_CPI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="200sp"
             android:text="email"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/age_TV_CPI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="176dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginEnd="200sp"
             android:text="age"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/age_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:layout_marginTop="250sp"
+            android:layout_marginEnd="80sp"
+            android:hint="age"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/email_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:layout_marginTop="200sp"
+            android:layout_marginEnd="80sp"
+            android:hint="email"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/weight_TV_CPI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="212dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginTop="310dp"
+            android:layout_marginEnd="200sp"
             android:text="weight"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/starting_weight_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="80sp"
+            android:hint="starting weight"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/height_TV_CPI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="248dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginEnd="200sp"
             android:text="height"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/height_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="50sp"
+            android:layout_marginTop="345dp"
+            android:layout_marginEnd="80sp"
+            android:hint="height"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/destination_TV_CPI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="284dp"
-            android:layout_marginEnd="308dp"
+            android:layout_marginTop="410dp"
+            android:layout_marginEnd="200sp"
             android:text="destination"
+            android:textAlignment="3"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/destination_ET_CPI"
+            android:layout_width="110sp"
+            android:layout_height="45sp"
+            android:layout_marginTop="400dp"
+            android:layout_marginEnd="80sp"
+            android:hint="destination"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/loading_changes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="320sp"
             android:indeterminate="true"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_changes_btn"
+            android:layout_width="match_parent"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="480sp"
+            android:textSize="20dp"
+            android:text="s a v e   c h a n g e s"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_main"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/main_menu"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/black"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
