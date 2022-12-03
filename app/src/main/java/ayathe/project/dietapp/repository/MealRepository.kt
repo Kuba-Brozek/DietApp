@@ -74,6 +74,8 @@ class MealRepository {
         var dayInfo: DayInfo
         CoroutineScope(Dispatchers.IO).launch {
             userRepo.readUserData {
+                var weight = 0.0
+                dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight ?: it.weight!! }
                 dayInfo = DayInfo(
                     meal.date,
                     dayIndexCalc(
@@ -83,7 +85,8 @@ class MealRepository {
                     kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
                     kcalEaten - meal.cals!! + mealModified.cals!!,
                     activitiesMade(),
-                    kcalBurnt()
+                    kcalBurnt(),
+                    weight
                 )
                 cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                     .collection(meal.date!!).document(meal.date!!).set(dayInfo)
@@ -119,6 +122,9 @@ class MealRepository {
         CoroutineScope(Dispatchers.IO).launch {
 
             userRepo.readUserData {
+                var weight: Double
+                dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight?.toDouble()
+                    ?: it.weight!!
                 dayInfo = DayInfo(
                     date,
                     dayIndexCalc(
@@ -128,7 +134,8 @@ class MealRepository {
                     kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
                     kcalEaten + meal.cals!!,
                     activitiesMade(),
-                    kcalBurnt()
+                    kcalBurnt(),
+                    weight
                 )
                 cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                     .collection(date).document(date).set(dayInfo)
@@ -137,6 +144,7 @@ class MealRepository {
                     } .addOnFailureListener{
                         Log.i(dayInfoLog, "Day info added successfully")
                     }
+                }
             }
         }
         var toastMessage = ""
@@ -164,7 +172,7 @@ class MealRepository {
                     Log.i(dayInfoLog,"Document exist in DB")
                 }
                 else {
-                    Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999))
+                    Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999, 9999.9))
                     Log.i(dayInfoLog,"Document doesn't exist in DB")
                 }
             }

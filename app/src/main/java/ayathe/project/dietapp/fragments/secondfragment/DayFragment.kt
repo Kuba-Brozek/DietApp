@@ -113,25 +113,32 @@ class DayFragment : Fragment(), OnMealClickListener {
             }
         })
 
-        mdVM.readUserData {
-            userInfo = it
-        }
 
-        mdVM.dayInfoReader(view.date_TV.text.toString()) {
-            if ( it.kcalEaten != 9999 &&
-                it.kcalGoal != 9999 &&
-                it.dayIndex != 9999 ) {
-                view.current_day_kcal_TVV.text = it.kcalEaten.toString()
-                view.kcal_goal_TV.text = it.kcalGoal.toString()
-                view.day_index_TV.text = it.dayIndex.toString()
-                dayInfo = it
+
+        mdVM.dayInfoReader(view.date_TV.text.toString()) { dayInfoReaded ->
+            mdVM.readUserData {
+                userInfo = it
+            }
+            if ( dayInfoReaded.kcalEaten != 9999 &&
+                dayInfoReaded.kcalGoal != 9999 &&
+                dayInfoReaded.dayIndex != 9999 ) {
+                view.current_day_kcal_TVV.text = dayInfoReaded.kcalEaten.toString()
+                view.kcal_goal_TV.text = dayInfoReaded.kcalGoal.toString()
+                view.day_index_TV.text = dayInfoReaded.dayIndex.toString()
+                dayInfo = dayInfoReaded
             } else {
                 view.current_day_kcal_TVV.text = "KCAL"
                 view.kcal_goal_TV.text = "GOAL"
-                view.day_index_TV.text = mdVM.dayIndexCalc(
-                    mdVM.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
-                    mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
-                ).toString()
+                   mdVM.readUserData {
+                       val x =  mdVM.dayIndexCalc(
+                           mdVM.getLocalDateFromString( it.startingDate!! , "dd.MM.yyyy"),
+                           mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
+                       ).toString()
+                       view.day_index_TV.text = x
+                   }
+                if (view.day_index_TV.text == ""){
+                    view.day_index_TV.text = "DAY"
+                }
             }
         }
 
@@ -258,6 +265,7 @@ class DayFragment : Fragment(), OnMealClickListener {
                                         mdVM.getLocalDateFromString(view.date_TV.text.toString(), "dd.MM.yyyy")
                                     ).toString()
                                     dayInfo = it
+                                    view.date_TV.text = date
                                     Log.i("added meal:", jsonElement.name.toString())
                                 } else {
                                     view.date_TV.text = date

@@ -6,5 +6,6 @@ data class DayInfo(
     var kcalGoal: Int? = null,
     var kcalEaten: Int? = null,
     var activitiesMade: List<String>? = null,
-    var kcalBurnt: Int? = null
+    var kcalBurnt: Int? = null,
+    var weight: Double? = null
 )
