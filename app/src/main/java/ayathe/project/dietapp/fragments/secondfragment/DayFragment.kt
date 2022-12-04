@@ -251,7 +251,6 @@ class DayFragment : Fragment(), OnMealClickListener {
                         val a = CoroutineScope(Dispatchers.IO).async {
                             val kcalEaten = if (view.current_day_kcal_TVV.text.toString() == "KCAL") 0 else view.current_day_kcal_TVV.text.toString().toInt()
                             mdVM.addMeal(meal, kcalEaten, view.date_TV.text.toString()) {
-                                val date = view.date_TV.text.toString()
                                     view.current_day_kcal_TVV.text = it.kcalEaten.toString()
                                     view.kcal_goal_TV.text = it.kcalGoal.toString()
                                     view.day_index_TV.text = mdVM.dayIndexCalc(
