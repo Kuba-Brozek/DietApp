@@ -15,6 +15,7 @@ import ayathe.project.dietapp.R
 import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
 import ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity
 import ayathe.project.dietapp.registerlogin.login.LoginFragment
+import ayathe.project.dietapp.registerlogin.register.userDataInput.fragments.PrivacyPolicyFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
@@ -24,6 +25,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val registerVM by viewModels<ViewModelRegister>()
+    val privacyPolicyFragment = PrivacyPolicyFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +43,7 @@ class RegisterFragment : Fragment() {
         }
 
         view.privacy_policy_TV.setOnClickListener{
-
+            (activity as LogRegActivity).fragmentsReplacements(privacyPolicyFragment)
         }
 
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
