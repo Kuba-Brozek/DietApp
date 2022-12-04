@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import ayathe.project.dietapp.R
@@ -32,7 +33,15 @@ class RegisterFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         view.buttonRegister.setOnClickListener {
-            onClickSignUp()
+            if (view.check_box_privacy_policy.isChecked) {
+                onClickSignUp()
+            } else {
+                Toast.makeText(this@RegisterFragment.requireContext(), "You must accept privacy policy before signing up.", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        view.privacy_policy_TV.setOnClickListener{
+
         }
 
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
