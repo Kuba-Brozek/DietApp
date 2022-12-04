@@ -109,7 +109,7 @@ class MealRepository {
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
-    fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {
+    fun addMeal(meal: Meal, kcalEaten: Int, date: String, callback: (DayInfo) -> Unit) {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
         val mealInfo = hashMapOf(
@@ -120,7 +120,6 @@ class MealRepository {
         )
         var dayInfo: DayInfo
         CoroutineScope(Dispatchers.IO).launch {
-
             userRepo.readUserData {
                 var weight: Double
                 dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight?.toDouble()
@@ -137,28 +136,26 @@ class MealRepository {
                     kcalBurnt(),
                     weight
                 )
+                callback(dayInfo)
                 cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                     .collection(date).document(date).set(dayInfo)
                     .addOnSuccessListener {
+
                         Log.i(dayInfoLog, "Day info added successfully")
+                        cloud.collection(auth.currentUser!!.uid).document("Meals")
+                            .collection(meal.date.toString()).document(meal.name.toString())
+                            .set(mealInfo)
+                            .addOnSuccessListener {
+                                Log.d(dayInfoLog, "Meal added successfully!")
+                            }.addOnFailureListener {
+                                Log.d(dayInfoLog, "Meal adding failure")
+                            }
                     } .addOnFailureListener{
                         Log.i(dayInfoLog, "Day info added successfully")
                     }
                 }
             }
         }
-        var toastMessage = ""
-        cloud.collection(auth.currentUser!!.uid).document("Meals")
-            .collection(meal.date.toString()).document(meal.name.toString())
-            .set(mealInfo)
-            .addOnSuccessListener {
-                Log.d(dayInfoLog, "Meal added successfully!")
-                toastMessage = "Meal added successfully!"
-            }.addOnFailureListener {
-                Log.d(dayInfoLog, "Meal adding failure")
-                toastMessage = "Meal adding failure"
-            }
-        return toastMessage
     }
 
     fun dayInfoReader(date: String, Callback: (DayInfo) -> Unit) {

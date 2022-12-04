@@ -28,8 +28,8 @@ class MealsDaysViewModel: ViewModel() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addMeal(meal: Meal, kcalEaten: Int, date: String): String {
-        return repo.addMeal(meal, kcalEaten, date)
+    fun addMeal(meal: Meal, kcalEaten: Int, date: String, callback: (DayInfo) -> Unit) {
+        repo.addMeal(meal, kcalEaten, date, callback)
     }
 
     fun readUserData(myCallback: (User) -> Unit){
