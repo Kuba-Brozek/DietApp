@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ayathe.project.dietapp.fragments.usersummary.HomeFragment
+import ayathe.project.dietapp.fragments.usersummary.UserSummaryFragment
 import ayathe.project.dietapp.fragments.dayInfo.DayFragment
 import ayathe.project.dietapp.fragments.usersettings.UserSettingsFragment
 import kotlinx.android.synthetic.main.activity_home.*
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeVM by viewModels<ViewModelHomeActivity>()
-    private val homeFragment = HomeFragment()
+    private val homeFragment = UserSummaryFragment()
     private val dayFragment = DayFragment()
     private val userSettings = UserSettingsFragment()
     @RequiresApi(Build.VERSION_CODES.O)

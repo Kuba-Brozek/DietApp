@@ -75,7 +75,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="34sp"
+        android:layout_marginStart="35sp"
         android:layout_marginTop="409sp"
         android:layout_marginEnd="110sp"
         android:layout_marginBottom="220sp"
@@ -430,7 +430,7 @@
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:layout_marginStart="10sp"
-        android:layout_marginTop="600sp"
+        android:layout_marginTop="700sp"
         android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -445,7 +445,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30sp"
-        android:layout_marginTop="609sp"
+        android:layout_marginTop="709sp"
         android:layout_marginEnd="110sp"
         android:text="You're"
         android:textSize="15sp"
@@ -456,11 +456,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
+    <TextView
+        android:id="@+id/textView723"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24.5sp"
+        android:layout_marginTop="609sp"
+        android:text="Ur today"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/curr_weight_TV"
+        android:layout_width="80sp"
+        android:layout_height="30sp"
+        android:layout_marginTop="621sp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:translationZ="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
     <TextView
         android:id="@+id/day_index_TV"
         android:layout_width="80sp"
         android:layout_height="30sp"
-        android:layout_marginTop="621sp"
+        android:layout_marginTop="721sp"
         android:text="0"
         android:textAlignment="center"
         android:textSize="25sp"
@@ -473,14 +507,45 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/textView731"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27sp"
+        android:layout_marginTop="647sp"
+        android:layout_marginEnd="110sp"
+        android:text="weight"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/textView73"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26sp"
-        android:layout_marginTop="647sp"
+        android:layout_marginTop="747sp"
         android:layout_marginEnd="110sp"
         android:text="days in"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <ImageView
+        android:id="@+id/imageViewSXX"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="600sp"
+        android:src="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

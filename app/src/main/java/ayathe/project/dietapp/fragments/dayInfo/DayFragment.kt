@@ -126,6 +126,7 @@ class DayFragment : Fragment(), OnMealClickListener {
                 view.current_day_kcal_TVV.text = dayInfoReaded.kcalEaten.toString()
                 view.kcal_goal_TV.text = dayInfoReaded.kcalGoal.toString()
                 view.day_index_TV.text = dayInfoReaded.dayIndex.toString()
+                view.curr_weight_TV.text = dayInfoReaded.weight.toString()
                 dayInfo = dayInfoReaded
             } else {
                 view.current_day_kcal_TVV.text = "KCAL"

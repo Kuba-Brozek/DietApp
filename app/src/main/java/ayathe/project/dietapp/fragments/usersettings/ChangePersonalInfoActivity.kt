@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ayathe.project.dietapp.DTO.User
 import ayathe.project.dietapp.databinding.ActivityChangePersonalInfoBinding
 import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
-import ayathe.project.dietapp.fragments.usersummary.HomeFragment
+import ayathe.project.dietapp.fragments.usersummary.UserSummaryFragment
 import ayathe.project.dietapp.fragments.dayInfo.DayFragment
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -33,7 +33,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
     private val userSettingsVM by viewModels<UserSettingsViewModel>()
     private var auth = FirebaseAuth.getInstance()
     private val homeActivity = HomeActivity()
-    private val homeFragment = HomeFragment()
+    private val homeFragment = UserSummaryFragment()
     private val dayFragment = DayFragment()
     private val userSettings = UserSettingsFragment()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
