@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.fragments.homefragment
+package ayathe.project.dietapp.fragments.usersummary
 
 import android.annotation.SuppressLint
 import android.os.Bundle

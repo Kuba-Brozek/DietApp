@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import ayathe.project.dietapp.DTO.User
 import ayathe.project.dietapp.databinding.ActivityChangePersonalInfoBinding
 import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
-import ayathe.project.dietapp.fragments.homefragment.HomeFragment
-import ayathe.project.dietapp.fragments.secondfragment.DayFragment
+import ayathe.project.dietapp.fragments.usersummary.HomeFragment
+import ayathe.project.dietapp.fragments.dayInfo.DayFragment
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth

@@ -1,18 +1,14 @@
 package ayathe.project.dietapp.fragments.homeactivity
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.toColor
-import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
-import ayathe.project.dietapp.fragments.homefragment.HomeFragment
-import ayathe.project.dietapp.fragments.secondfragment.DayFragment
+import ayathe.project.dietapp.fragments.usersummary.HomeFragment
+import ayathe.project.dietapp.fragments.dayInfo.DayFragment
 import ayathe.project.dietapp.fragments.usersettings.UserSettingsFragment
-import com.google.android.material.internal.TextDrawableHelper
 import kotlinx.android.synthetic.main.activity_home.*
 
 

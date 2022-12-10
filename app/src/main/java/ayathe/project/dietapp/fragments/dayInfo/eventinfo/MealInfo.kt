@@ -1,10 +1,9 @@
-package ayathe.project.dietapp.fragments.secondfragment.eventinfo
+package ayathe.project.dietapp.fragments.dayInfo.eventinfo
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,10 +17,9 @@ import ayathe.project.dietapp.DTO.DayInfo
 import ayathe.project.dietapp.R
 import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
-import ayathe.project.dietapp.fragments.secondfragment.DayFragment
-import ayathe.project.dietapp.fragments.secondfragment.MealsDaysViewModel
+import ayathe.project.dietapp.fragments.dayInfo.DayFragment
+import ayathe.project.dietapp.fragments.dayInfo.MealsDaysViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.fragment_event_info.*
 import kotlinx.android.synthetic.main.fragment_event_info.view.*
 

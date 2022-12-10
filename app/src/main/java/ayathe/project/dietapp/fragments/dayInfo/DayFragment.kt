@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.fragments.secondfragment
+package ayathe.project.dietapp.fragments.dayInfo
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -28,7 +28,7 @@ import ayathe.project.dietapp.DTO.Meal
 import ayathe.project.dietapp.DTO.ProductFromJSON
 import ayathe.project.dietapp.DTO.User
 import ayathe.project.dietapp.fragments.homeactivity.HomeActivity
-import ayathe.project.dietapp.fragments.secondfragment.eventinfo.MealInfo
+import ayathe.project.dietapp.fragments.dayInfo.eventinfo.MealInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.current_day_fragment.*
 import kotlinx.android.synthetic.main.current_day_fragment.view.*

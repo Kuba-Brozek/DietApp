@@ -1,4 +1,4 @@
-package ayathe.project.dietapp.fragments.secondfragment
+package ayathe.project.dietapp.fragments.dayInfo
 
 import android.content.Context
 import android.os.Build
