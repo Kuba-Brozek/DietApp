@@ -62,8 +62,8 @@ class MealsDaysViewModel: ViewModel() {
         val productList = mutableListOf<ProductFromJSON>()
         val listType = object : TypeToken<List<ProductFromJSON>>() {}.type
         val listOfProducts: List<ProductFromJSON> = gson.fromJson(jsonString, listType)
-        listOfProducts.forEachIndexed { _, product ->
-            productList.add(product)
+        listOfProducts.forEach {
+            productList.add(it)
         }
         return productList
     }

@@ -88,6 +88,7 @@ class DayFragment : Fragment(), OnMealClickListener {
             view.meal_gramss_ET.inputType = InputType.TYPE_CLASS_NUMBER
 
             view.current_meal_name_TV.text = jsonElement.name
+            view.meal_gramss_ET.setText("100")
             view.wegle_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.carbs!!.toInt()).toString()
             view.bialka_in_meal_TV.text = mdVM.nutritionalValuesCalc(100, jsonElement.protein!!.toInt()).toString()
             view.tluszcz_in_meal_TV.text =  mdVM.nutritionalValuesCalc(100, jsonElement.fat!!.toInt()).toString()
@@ -166,15 +167,15 @@ class DayFragment : Fragment(), OnMealClickListener {
         view.date_TV.setOnClickListener {
             val dpd = DatePickerDialog(this@DayFragment.requireContext(),
                 { _, mYear, mMonth, mDay ->
-                    var mmMonth = mMonth.toString()
+                    var stringMonth = (mMonth +1).toString()
                     var mmDay = mDay.toString()
-                    if (mmMonth.toInt() < 10){
-                        mmMonth = "0$mmMonth"
+                    if (stringMonth.toInt() < 10){
+                        stringMonth = "0${stringMonth}"
                     }
                     if (mmDay.toInt() < 10){
                         mmDay = "0$mmDay"
                     }
-                    date_TV.text = "${mmDay.toInt()}.${mmMonth.toInt()+1}.$mYear"
+                    date_TV.text = "$mmDay.$stringMonth.$mYear"
                 }, year, month, day)
             dpd.show()
         }

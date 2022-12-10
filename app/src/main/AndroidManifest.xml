@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ayathe.project.dietapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +15,13 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name="ayathe.project.dietapp.registerlogin.register.userDataInput.AfterRegistrationActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name="ayathe.project.dietapp.fragments.homeactivity.HomeActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name="ayathe.project.dietapp.registerlogin.activityreglog.LogRegActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name="ayathe.project.dietapp.fragments.usersettings.ChangePersonalInfoActivity"
             android:exported="true" />
