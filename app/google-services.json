@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "690039688353",
+    "project_id": "scheduleapp-d4190",
+    "storage_bucket": "scheduleapp-d4190.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690039688353:android:5f85e7b89629c9a9a3b4e0",
+        "android_client_info": {
+          "package_name": "ayathe.project.dietapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690039688353-en8fv3ml353sjtviu15d6520lc3gm4dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgEkeZCPp6CBEjDoRcxQIOyVyUPrLN-pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690039688353-en8fv3ml353sjtviu15d6520lc3gm4dt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690039688353:android:00206181ea4a1452a3b4e0",
+        "android_client_info": {
+          "package_name": "com.example.dietapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690039688353-en8fv3ml353sjtviu15d6520lc3gm4dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgEkeZCPp6CBEjDoRcxQIOyVyUPrLN-pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690039688353-en8fv3ml353sjtviu15d6520lc3gm4dt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
