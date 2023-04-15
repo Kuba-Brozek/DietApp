@@ -1,5 +1,7 @@
 package com.example.dietapp2.registerlogin.register.userDataInput.fragments
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,32 +12,53 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
+import com.example.dietapp2.repository.UserRepository
 
 class IntroductionFragment : Fragment() {
 
 
     private lateinit var user_nickname_ET: EditText
     private lateinit var goal_spinner: Spinner
+    private lateinit var introduction: TextView
     private val vm by viewModels<ViewModelRegister>()
+    private val repo = UserRepository()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
     private var goal = "Your goal"
     private var nickname = "Your nickname"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+
+
         val view: View =  inflater.inflate(R.layout.fragment_introduction, container, false)
         user_nickname_ET = view.findViewById(R.id.user_nickname_ET)
         goal_spinner = view.findViewById(R.id.goal_spinner)
+        introduction = view.findViewById(R.id.textView4)
+        view.findViewById<ImageView>(R.id.work_out_IV).clipToOutline = true
+
+
+
+        repo.readUserData {
+            introduction.text = "Hello ${it.email}"
+        }
+
+
+
 
         goal_spinner.adapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, options)
+
 
 
         user_nickname_ET.addTextChangedListener(object: TextWatcher{

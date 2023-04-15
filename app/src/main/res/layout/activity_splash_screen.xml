@@ -7,19 +7,56 @@
     tools:context=".SplashScreen">
 
 
-    <TextView
-        android:id="@+id/AppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DietApp"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:textStyle="bold"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="120sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="-10sp"
+        android:background="@drawable/bg_recycler_view"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131" />
+        app:layout_constraintVertical_bias="0.0" >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="75sp"
+            android:layout_height="75sp"
+            app:cardCornerRadius="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="5sp"
+            app:layout_constraintVertical_bias="0.511">
+
+
+            <ImageView
+                android:layout_margin="5sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome! Glad you here."
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.883"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView_splashScreen"
@@ -39,7 +76,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:translationZ="1dp"
-        app:cpb_background_progressbar_color="#b6bbd8"
+        app:cpb_background_progressbar_color="#EE15E805"
         app:cpb_background_progressbar_width="8dp"
         app:cpb_progress_direction="to_right"
         app:cpb_progressbar_color="#403514"
