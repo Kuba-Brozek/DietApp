@@ -61,7 +61,7 @@ class UserSettingsFragment : Fragment() {
                         destination_displayTV.text = it.destination.toString()
                     }
                 }
-                userSettingsVM.loadProfileImage(this@UserSettingsFragment.requireContext(), profile_image)
+                userSettingsVM.loadProfileImage(requireContext(), profile_image)
 
             } catch ( ex: Exception){
                 Log.e("LoadingError", "Loading image, or user data loading failed")
@@ -69,12 +69,12 @@ class UserSettingsFragment : Fragment() {
         }
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val intent = Intent(this@UserSettingsFragment.requireContext(), HomeActivity::class.java)
+                val intent = Intent(requireContext(), HomeActivity::class.java)
                 startActivity(intent)
             }
         })
             val jsonString = userSettingsVM.getJsonDataFromAsset(
-                this@UserSettingsFragment.requireContext(), "json.json")
+                requireContext(), "json.json")
 //            val userList = userSettingsVM.dataClassFromJsonString(jsonString!!)
             val loadImage = registerForActivityResult(ActivityResultContracts
                 .GetContent()) {
@@ -89,7 +89,7 @@ class UserSettingsFragment : Fragment() {
 
         change_personal_info_btn.setOnClickListener {
             val intent = Intent(
-                this@UserSettingsFragment.requireContext(),
+                requireContext(),
                 ChangePersonalInfoActivity::class.java)
             startActivity(intent)
         }

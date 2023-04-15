@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/container_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="52sp"
+        android:layout_height="55sp"
         app:cardCornerRadius="12sp"
         android:background="#123123"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_main"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="55dp"
         android:background="#EE15E805"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

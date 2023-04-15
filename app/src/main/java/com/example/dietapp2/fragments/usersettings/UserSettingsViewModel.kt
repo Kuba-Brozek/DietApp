@@ -48,15 +48,14 @@ class UserSettingsViewModel: ViewModel() {
         }
     }
 
-    fun getJsonDataFromAsset(context: Context, filename: String): String? {
-        var jsonString: String = ""
+    fun getJsonDataFromAsset(context: Context, filename: String): String {
+        var jsonString = ""
         try {
             jsonString = context.assets.open(filename).bufferedReader().use {
                 it.readText()
             }
         } catch (e: IOException) {
             e.printStackTrace()
-            return null
             }
         return jsonString
         }
