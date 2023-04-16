@@ -1,11 +1,13 @@
 package com.example.dietapp2.registerlogin.register.userDataInput.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.activityreglog.LogRegActivity
 import com.example.dietapp2.registerlogin.register.RegisterFragment
@@ -19,7 +21,8 @@ class PrivacyPolicyFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.privacy_policy_fragment, container, false)
 
-
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.freeprivacypolicy.com/live/15d63160-ff3b-4e45-b2d9-0e6da8129cf3"))
+        startActivity(browserIntent)
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

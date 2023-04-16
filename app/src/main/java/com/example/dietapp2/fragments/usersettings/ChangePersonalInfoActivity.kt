@@ -47,11 +47,6 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
     private lateinit var username_ET_CPI: EditText
     private lateinit var email_ET_CPI: EditText
     private val userSettingsVM by viewModels<UserSettingsViewModel>()
-    private var auth = FirebaseAuth.getInstance()
-    private val homeActivity = HomeActivity()
-    private val homeFragment = UserSummaryFragment()
-    private val dayFragment = DayFragment()
-    private val userSettings = UserSettingsFragment()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
     private var goal = "Your Goal"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +54,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_change_personal_info)
 
         username_TV_CPI = findViewById(R.id.username_TV_CPI)
-        username_TV_CPI = findViewById(R.id.username_TV_CPI)
+        email_TV_CPI = findViewById(R.id.email_TV_CPI)
         age_TV_CPI = findViewById(R.id.age_TV_CPI)
         weight_TV_CPI = findViewById(R.id.weight_TV_CPI)
         height_TV_CPI = findViewById(R.id.height_TV_CPI)

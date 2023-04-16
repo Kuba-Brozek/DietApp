@@ -6,8 +6,13 @@ import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dietapp2.DTO.Meal
 import com.example.dietapp2.DTO.User
+import com.example.dietapp2.DTO.UserDetails
+import com.example.dietapp2.adapters.MealAdapter
+import com.example.dietapp2.adapters.OnMealClickListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.*
@@ -22,6 +27,7 @@ class UserRepository {
     private val user = Firebase.auth.currentUser
     private val debug = "DEBUG"
     private val doc = "DOC"
+    private val userDetailsTAG = "userDetailsTAG"
     private val userCreationTag = "UserCreation"
     private val cloud = FirebaseFirestore.getInstance()
     private val fbStorage = Firebase.storage
@@ -137,6 +143,33 @@ class UserRepository {
                 Log.i("RESET", "Password reset email sent to the user.")
             }.addOnFailureListener {
                 Log.i("RESET", "Password reset email not delivered to the user.")
+            }
+    }
+
+    fun addUserDetailsToDB(userDetails: UserDetails) {
+        val userDetailsHashMap = hashMapOf(
+            "weight" to userDetails.weight,
+            "caloriesBurnt" to userDetails.caloriesBurnt,
+            "hasPremium" to userDetails.hasPremium
+        )
+
+        cloud.collection(auth.currentUser!!.uid)
+            .document("userDetails")
+            .set(userDetailsHashMap)
+            .addOnSuccessListener {
+                Log.i(userDetailsTAG, "User details added/modified in database")
+            }.addOnFailureListener {
+                Log.e(userDetailsTAG, "Internal Error")
+            }
+    }
+
+    fun readUserDetails(myCallback: (UserDetails) -> Unit) {
+        cloud.collection(auth.currentUser!!.uid).document("userDetails").get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = task.result!!.toObject<UserDetails>()!!
+                    myCallback(user)
+                }
             }
     }
 

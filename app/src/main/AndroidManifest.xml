@@ -14,19 +14,19 @@
         android:theme="@style/Theme.ScheduleApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.dietapp2.registerlogin.register.userDataInput.AfterRegistrationActivity"
-            android:exported="false"/>
+            android:name=".registerlogin.register.userDataInput.AfterRegistrationActivity"
+            android:exported="false" />
         <activity
-            android:name="com.example.dietapp2.fragments.homeactivity.HomeActivity"
-            android:exported="false"/>
+            android:name=".fragments.homeactivity.HomeActivity"
+            android:exported="false" />
         <activity
-            android:name="com.example.dietapp2.registerlogin.activityreglog.LogRegActivity"
-            android:exported="true"/>
-        <activity
-            android:name="com.example.dietapp2.fragments.usersettings.ChangePersonalInfoActivity"
+            android:name=".registerlogin.activityreglog.LogRegActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.dietapp2.SplashScreen"
+            android:name=".fragments.usersettings.ChangePersonalInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

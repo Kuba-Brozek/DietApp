@@ -33,50 +33,25 @@ class MealRepository {
     private lateinit var mealAdapter: MealAdapter
 
 
-    suspend fun getMeals(date: String): ArrayList<Meal> {
-        val list = arrayListOf<Meal>()
-        CoroutineScope(Dispatchers.IO).launch {
-            cloud.collection(auth.currentUser!!.uid)
-                .document("Meals").collection(date)
-                .get()
-                .addOnSuccessListener { doc ->
-                    for (document in doc) {
-                        val documento = document.toObject(Meal::class.java)
-                        list.add(documento)
-                    }
-                }
-        }.join()
-        return list
-    }
-
     @SuppressLint("SimpleDateFormat")
-    @RequiresApi(Build.VERSION_CODES.O)
     fun modifyMeal(meal: Meal, mealModified: Meal, kcalEaten: Int) {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
-        val mealInfo = hashMapOf(
-            "cals" to meal.cals,
-            "name" to meal.name,
-            "date" to meal.date,
-            "grams" to meal.grams
-        )
         var dayInfo: DayInfo
         CoroutineScope(Dispatchers.IO).launch {
             userRepo.readUserData {
-                var weight = 0.0
-                dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight ?: it.weight!! }
-                dayInfo = DayInfo(
-                    meal.date,
-                    dayIndexCalc(
+                var weight: Double
+                dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight ?: it.weight!!
+                    dayInfo = dayInfoRead
+                    dayInfo.dayIndex = dayIndexCalc(
                         getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
                         getLocalDateFromString(currentDate, "dd.MM.yyyy")
-                    ),
-                    kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
-                    kcalEaten - meal.cals!! + mealModified.cals!!,
-                    activitiesMade(),
-                    kcalBurnt(),
-                    weight
-                )
+                    )
+                    dayInfo.kcalGoal = if(dayInfo.kcalGoal != 9999) dayInfo.kcalGoal
+                    else kcalGoalCalc(it.weight!!, it.height!!, it.age!!)
+                    dayInfo.weight = weight
+                    dayInfo.kcalBurnt = 0
+                    dayInfo.kcalEaten = (kcalEaten - meal.cals!!) + mealModified.cals!!
                 cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                     .collection(meal.date!!).document(meal.date!!).set(dayInfo)
                     .addOnSuccessListener {
@@ -92,11 +67,11 @@ class MealRepository {
                     } .addOnFailureListener{
                         Log.i(dayInfoLog, "Day info modified successfully")
                     }
+                }
             }
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SimpleDateFormat")
     fun addMeal(meal: Meal, kcalEaten: Int, date: String, callback: (DayInfo) -> Unit) {
         val sdf = SimpleDateFormat("dd.MM.yyyy")
@@ -113,18 +88,15 @@ class MealRepository {
                 var weight: Double
                 dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight?.toDouble()
                     ?: it.weight!!
-                dayInfo = DayInfo(
-                    date,
-                    dayIndexCalc(
+                    dayInfo = dayInfoRead
+                    dayInfo.date = date
+                    dayInfo.dayIndex = dayIndexCalc(
                         getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
                         getLocalDateFromString(currentDate, "dd.MM.yyyy")
-                    ),
-                    kcalGoalCalc(it.weight!!, it.height!!, it.age!!),
-                    kcalEaten + meal.cals!!,
-                    activitiesMade(),
-                    kcalBurnt(),
-                    weight
-                )
+                    )
+                    dayInfo.kcalGoal = if(dayInfo.kcalGoal != 9999) dayInfo.kcalGoal
+                    else kcalGoalCalc(it.weight!!, it.height!!, it.age!!)
+                    dayInfo.weight = weight
                 callback(dayInfo)
                 cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                     .collection(date).document(date).set(dayInfo)
@@ -163,16 +135,23 @@ class MealRepository {
                 }
             }
         } catch (e: Exception){
-
+            Log.e("dayInfoError", "Internal Error")
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    fun updateDayInfo(date: String, dayInfo: DayInfo) {
+        try {
+            cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
+                .collection(date).document(date).set(dayInfo)
+        } catch (e: Exception){
+            Log.e("dayInfoError", "Day Info not updated correctly")
+        }
+    }
+
     fun dayIndexCalc(startingDate: LocalDate, currentDate: LocalDate): Int {
         return ChronoUnit.DAYS.between(startingDate, currentDate).toInt() + 1
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun getLocalDateFromString(d: String, format: String): LocalDate {
         return LocalDate.parse(d, DateTimeFormatter.ofPattern(format))
     }
@@ -182,7 +161,7 @@ class MealRepository {
     }
 
     private fun activitiesMade(): List<String> {
-        return listOf()
+        return emptyList()
     } // TODO()
 
     private fun kcalBurnt(): Int {

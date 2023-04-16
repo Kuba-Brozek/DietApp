@@ -104,7 +104,6 @@ class DayFragment : Fragment(), OnMealClickListener {
         btn_add_meal = view.findViewById(R.id.btn_add_meal)
 
         val sdf = SimpleDateFormat("dd.MM.yyyy")
-
         val currentDate = sdf.format(Date())
         date_TV.text = currentDate
         var jsonElement = ProductFromJSON()
@@ -121,7 +120,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         val jsonString = mdVM.getJsonDataFromAsset(this@DayFragment.requireContext(), "json.json")
         val mealList = mdVM.dataClassFromJsonString(jsonString!!)
 
-        arrayAdapterFilter(mealList, view)
+        arrayAdapterFilter(mealList)
         json_list_LV.onItemClickListener =
             AdapterView.OnItemClickListener { parent, v, position, id ->
                 jsonElement = mealList.find {
@@ -158,31 +157,32 @@ class DayFragment : Fragment(), OnMealClickListener {
                 if (queryText.toString() != "") {
                     arrayAdapterFilter(mealList.filter {
                         it.name!!.lowercase().contains(queryText.toString().lowercase())
-                    }, view)
+                    })
                 } else {
-                    arrayAdapterFilter(mealList, view)
+                    arrayAdapterFilter(mealList)
                 }
             }
         })
 
 
 
-        mdVM.dayInfoReader(date_TV.text.toString()) { dayInfoReaded ->
+        mdVM.dayInfoReader(date_TV.text.toString()) { currentDayInfo ->
             mdVM.readUserData {
                 userInfo = it
             }
-            if (dayInfoReaded.kcalEaten != 9999 &&
-                dayInfoReaded.kcalGoal != 9999 &&
-                dayInfoReaded.dayIndex != 9999
+            if (currentDayInfo.kcalEaten != 9999 &&
+                currentDayInfo.kcalGoal != 9999 &&
+                currentDayInfo.dayIndex != 9999
             ) {
-                current_day_kcal_TVV.text = dayInfoReaded.kcalEaten.toString()
-                kcal_goal_TV.text = dayInfoReaded.kcalGoal.toString()
-                day_index_TV.text = dayInfoReaded.dayIndex.toString()
-                curr_weight_TV.text = dayInfoReaded.weight.toString()
-                dayInfo = dayInfoReaded
+                current_day_kcal_TVV.text = currentDayInfo.kcalEaten.toString()
+                kcal_goal_TV.text = currentDayInfo.kcalGoal.toString()
+                day_index_TV.text = currentDayInfo.dayIndex.toString()
+                curr_weight_TV.text = if (currentDayInfo.weight.toString() == "0") userInfo.weight.toString()
+                else currentDayInfo.weight.toString()
+                dayInfo = currentDayInfo
             } else {
-                current_day_kcal_TVV.text = "KCAL"
-                kcal_goal_TV.text = "GOAL"
+                current_day_kcal_TVV.text = "---"
+                kcal_goal_TV.text = "---"
                 mdVM.readUserData {
                     val x = mdVM.dayIndexCalc(
                         mdVM.getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
@@ -386,7 +386,7 @@ class DayFragment : Fragment(), OnMealClickListener {
         (activity as HomeActivity).fragmentsReplacement(mealInfo)
     }
 
-    fun arrayAdapterFilter(list: List<ProductFromJSON>, view: View) {
+    fun arrayAdapterFilter(list: List<ProductFromJSON>) {
         arrayAdapter = ArrayAdapter(
             this@DayFragment.requireContext(),
             android.R.layout.simple_list_item_1,
