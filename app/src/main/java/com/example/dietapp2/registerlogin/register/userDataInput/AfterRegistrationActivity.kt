@@ -41,4 +41,8 @@ class AfterRegistrationActivity : AppCompatActivity() {
             viewPager.currentItem = viewPager.currentItem -1
         }
     }
+
+    fun swipeRight(){
+        viewPager.currentItem = 1
+    }
 }

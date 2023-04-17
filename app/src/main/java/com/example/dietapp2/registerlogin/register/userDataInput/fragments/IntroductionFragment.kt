@@ -16,10 +16,12 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
+import com.example.dietapp2.registerlogin.register.userDataInput.AfterRegistrationActivity
 import com.example.dietapp2.repository.UserRepository
 
 class IntroductionFragment : Fragment() {
@@ -28,6 +30,7 @@ class IntroductionFragment : Fragment() {
     private lateinit var user_nickname_ET: EditText
     private lateinit var goal_spinner: Spinner
     private lateinit var introduction: TextView
+    private lateinit var btn_go_to_next_fragment: AppCompatButton
     private val vm by viewModels<ViewModelRegister>()
     private val repo = UserRepository()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
@@ -46,9 +49,12 @@ class IntroductionFragment : Fragment() {
         user_nickname_ET = view.findViewById(R.id.user_nickname_ET)
         goal_spinner = view.findViewById(R.id.goal_spinner)
         introduction = view.findViewById(R.id.textView4)
+        btn_go_to_next_fragment = view.findViewById(R.id.btn_go_to_next_fragment)
         view.findViewById<ImageView>(R.id.work_out_IV).clipToOutline = true
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
-
+        btn_go_to_next_fragment.setOnClickListener {
+            (activity as AfterRegistrationActivity).swipeRight()
+        }
 
         repo.readUserData {
             introduction.text = "Hello ${it.email}"
