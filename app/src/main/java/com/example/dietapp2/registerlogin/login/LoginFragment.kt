@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -35,7 +36,7 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
         loginVM = ViewModelProvider(this)[ViewModelLogin::class.java]
-
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
     }
 

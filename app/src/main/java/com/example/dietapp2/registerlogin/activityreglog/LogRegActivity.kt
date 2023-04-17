@@ -5,6 +5,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -33,6 +34,7 @@ class LogRegActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         fragmentsReplacement(loginFragment)
         auth = FirebaseAuth.getInstance()
+        window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
     }
 

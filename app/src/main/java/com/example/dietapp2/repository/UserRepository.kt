@@ -87,6 +87,7 @@ class UserRepository {
         if (storage.child(uid).equals(null)) {
             Log.i("Auth error", " Current user authentification ended with error.")
         } else {
+
             storage.child(uid).putFile(imageFileUri)
                 .addOnSuccessListener {
                     Log.i(
@@ -146,7 +147,7 @@ class UserRepository {
             }
     }
 
-    fun addUserDetailsToDB(userDetails: UserDetails) {
+    fun addUserDetailsToDB(userDetails: UserDetails, callback: (UserDetails) -> Unit) {
         val userDetailsHashMap = hashMapOf(
             "weight" to userDetails.weight,
             "caloriesBurnt" to userDetails.caloriesBurnt,
@@ -157,8 +158,10 @@ class UserRepository {
             .document("userDetails")
             .set(userDetailsHashMap)
             .addOnSuccessListener {
+                callback(userDetails)
                 Log.i(userDetailsTAG, "User details added/modified in database")
             }.addOnFailureListener {
+                callback(userDetails)
                 Log.e(userDetailsTAG, "Internal Error")
             }
     }

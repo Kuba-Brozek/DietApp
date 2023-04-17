@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dietapp2.registerlogin.activityreglog.LogRegActivity
@@ -21,6 +22,7 @@ class SplashScreen : AppCompatActivity() {
 
         val circularProgressBar = findViewById<CircularProgressBar>(R.id.circularProgressBar)
         circularProgressBar.apply {
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
             setProgressWithAnimation(200f, 3000)
             progressMax = 200f

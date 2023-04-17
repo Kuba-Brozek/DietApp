@@ -24,14 +24,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="75sp"
                 android:layout_height="75sp"
+                android:layout_marginTop="22.5sp"
+                android:layout_marginStart="22.5sp"
                 android:padding="5sp"
                 app:cardCornerRadius="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.511">
+                app:layout_constraintVertical_bias="0.088">
 
 
                 <ImageView
@@ -46,12 +48,13 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This is your new start!"
+                android:layout_marginStart="120sp"
+                android:text="Settings."
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.883"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +66,7 @@
             android:id="@+id/profile_image"
             android:layout_width="100sp"
             android:layout_height="100sp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="132dp"
             android:background="@drawable/background_shape_image_view"
             android:src="@drawable/round_button"
@@ -72,82 +75,139 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/change_personal_info_btn"
-            android:layout_width="25sp"
-            android:layout_height="25sp"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_arrow_pointing_right"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_marginBottom="30sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginEnd="30sp"
+            android:text="Change Your personal Info"
+            android:paddingStart="10sp"
+            android:paddingEnd="10sp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_recycler_view"
+            android:drawableStart="@drawable/ic_settings"
+            android:drawableEnd="@drawable/ic_settings"
+            android:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.236" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/username_TV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="username"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintHorizontal_bias="0.534"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.483" />
+            app:layout_constraintVertical_bias="0.191" />
 
         <TextView
             android:id="@+id/email_displayTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="email"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintHorizontal_bias="0.408"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.529" />
+            app:layout_constraintVertical_bias="0.258" />
+
 
         <TextView
             android:id="@+id/height_displayTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginStart="150sp"
+            android:layout_marginTop="270sp"
             android:text="height"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.494" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="270dp"
+            android:text="Your height:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="320sp"
+            android:text="Your age:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="370sp"
+            android:text="Your goal:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/age_displayTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginStart="150sp"
+            android:layout_marginTop="320sp"
             android:text="age"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.524" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/destination_displayTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginStart="150sp"
+            android:layout_marginTop="370sp"
             android:text="destination"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.562" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

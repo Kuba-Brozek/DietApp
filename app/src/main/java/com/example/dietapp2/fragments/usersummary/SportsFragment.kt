@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -68,6 +69,7 @@ class SportsFragment : Fragment() {
         curr_date_TV = view.findViewById(R.id.curr_date_TV)
         manage_sports_btn = view.findViewById(R.id.manage_sports_btn)
 
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
 
         var userDetails = UserDetails()

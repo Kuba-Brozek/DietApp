@@ -2,6 +2,7 @@ package com.example.dietapp2.registerlogin.register.userDataInput
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -25,6 +26,7 @@ class AfterRegistrationActivity : AppCompatActivity() {
             IntroductionFragment(),
             UserInfoFragment()
         )
+        window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
 
         val adapter = ViewPagerAdapter(fragmentList, this)

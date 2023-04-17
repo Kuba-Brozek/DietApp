@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -46,7 +47,7 @@ class IntroductionFragment : Fragment() {
         goal_spinner = view.findViewById(R.id.goal_spinner)
         introduction = view.findViewById(R.id.textView4)
         view.findViewById<ImageView>(R.id.work_out_IV).clipToOutline = true
-
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
 
         repo.readUserData {

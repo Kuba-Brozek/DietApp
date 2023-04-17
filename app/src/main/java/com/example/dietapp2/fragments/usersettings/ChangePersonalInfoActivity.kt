@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.InputType
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -21,11 +22,8 @@ import androidx.appcompat.widget.AppCompatButton
 import com.bumptech.glide.Glide
 import com.example.dietapp2.DTO.User
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.dayInfo.DayFragment
 import com.example.dietapp2.fragments.homeactivity.HomeActivity
-import com.example.dietapp2.fragments.usersummary.UserSummaryFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
 
 class ChangePersonalInfoActivity : AppCompatActivity() {
@@ -40,6 +38,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
     private lateinit var profile_image_IV_CPI: ImageView
     private lateinit var profile_image_BTN_CPI: AppCompatButton
     private lateinit var loading_changes: ProgressBar
+    private lateinit var loading_changes_TV: TextView
     private lateinit var age_ET_CPI: EditText
     private lateinit var height_ET_CPI: EditText
     private lateinit var starting_weight_ET_CPI: EditText
@@ -64,6 +63,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         profile_image_BTN_CPI = findViewById(R.id.profile_image_BTN_CPI)
         loading_changes = findViewById(R.id.loading_changes)
         age_ET_CPI = findViewById(R.id.age_ET_CPI)
+        loading_changes_TV = findViewById(R.id.loading_changes_TV)
         starting_weight_ET_CPI = findViewById(R.id.starting_weight_ET_CPI)
         height_ET_CPI = findViewById(R.id.height_ET_CPI)
         save_changes_btn = findViewById(R.id.save_changes_btn)
@@ -99,16 +99,18 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 .load(it)
                 .circleCrop()
                 .into(profile_image_IV_CPI)
-            val a = it
+            val uri = it
             profile_image_BTN_CPI.setOnClickListener {
+                loading_changes_TV.visibility = View.VISIBLE
                 loading_changes.visibility = View.VISIBLE
 
-                if (a != null) {
-                    userSettingsVM.uploadProfileImage(a)
+                if (uri != null) {
+                    userSettingsVM.uploadProfileImage(uri)
                 }
                 Handler().postDelayed({
                     loading_changes.visibility = View.GONE
-                }, 2000)
+                    loading_changes_TV.visibility = View.GONE
+                }, 5000)
             }
         }
 
@@ -130,6 +132,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 }
             }
         }
+        window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         age_ET_CPI.inputType = InputType.TYPE_CLASS_NUMBER
         starting_weight_ET_CPI.inputType = InputType.TYPE_CLASS_NUMBER

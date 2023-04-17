@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -40,7 +41,7 @@ class UserSettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view: View = inflater.inflate(R.layout.settings_fragment, container, false)
-
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         username_TV = view.findViewById(R.id.username_TV)
         email_displayTV = view.findViewById(R.id.email_displayTV)
         age_displayTV = view.findViewById(R.id.age_displayTV)
@@ -54,10 +55,13 @@ class UserSettingsFragment : Fragment() {
 
                 userSettingsVM.readUserData {
                     CoroutineScope(Dispatchers.Main).launch {
-                        username_TV.text = it.username.toString()
+                        val username = "Hello ${it.username.toString()}!"
+                        username_TV.text = username
                         email_displayTV.text = it.email.toString()
-                        age_displayTV.text = it.age.toString()
-                        height_displayTV.text = it.height.toString()
+                        val age = "${it.age.toString()} years old"
+                        age_displayTV.text = age
+                        val height = "${it.height.toString()} cm"
+                        height_displayTV.text = height
                         destination_displayTV.text = it.destination.toString()
                     }
                 }

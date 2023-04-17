@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
@@ -47,6 +48,8 @@ class RegisterFragment : Fragment() {
         passwordET = view.findViewById(R.id.passwordET)
         password_confirmET = view.findViewById(R.id.password_confirmET)
         error_msg = view.findViewById(R.id.error_msg)
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         auth = FirebaseAuth.getInstance()
         buttonRegister.setOnClickListener {

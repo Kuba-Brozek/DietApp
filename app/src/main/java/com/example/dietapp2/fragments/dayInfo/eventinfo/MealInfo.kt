@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -61,12 +62,12 @@ class MealInfo : Fragment() {
         var meal = Meal()
         val mealName = args?.getString("MealName")
         val mealDate = args?.getString("MealDate")
-        Log.i("rty", mealName.toString())
         var dayInfo = DayInfo()
 
         secondVM.dayInfoReader(mealDate.toString()) {
             dayInfo = it
         }
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         val jsonString = secondVM.getJsonDataFromAsset(requireContext(), "json.json")
         val mealList = secondVM.dataClassFromJsonString(jsonString!!)
