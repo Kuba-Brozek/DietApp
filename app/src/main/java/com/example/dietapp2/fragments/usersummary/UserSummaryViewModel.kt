@@ -52,8 +52,8 @@ class UserSummaryViewModel: ViewModel() {
         return ChronoUnit.DAYS.between(startingDate, currentDate).toString()
     }
 
-    fun addUserDetailsToDB(userDetails: UserDetails){
-        return userRepo.addUserDetailsToDB(userDetails)
+    fun addUserDetailsToDB(userDetails: UserDetails, callback: (UserDetails) -> Unit){
+        return userRepo.addUserDetailsToDB(userDetails, callback)
     }
 
     fun updateDayInfo(date: String, dayInfo: DayInfo){

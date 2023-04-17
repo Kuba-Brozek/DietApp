@@ -108,7 +108,7 @@ class UserSummaryFragment : Fragment() {
             if(latestWeight.isDigitsOnly()){
                 userDetails.weight = latestWeight.toString().toDouble()
                 diff_TV.text = (user.weight!! - latestWeight.toString().toDouble()).toString()
-                summaryVM.addUserDetailsToDB(userDetails)
+                summaryVM.addUserDetailsToDB(userDetails){}
             } else {
                 Toast.makeText(requireContext(), "Please provide proper weight", Toast.LENGTH_SHORT).show()
             }
@@ -124,7 +124,7 @@ class UserSummaryFragment : Fragment() {
                     userDetails.hasPremium = true
                     buy_premium_BTN.visibility = View.GONE
                     locked_content_IV.visibility = View.GONE
-                    summaryVM.addUserDetailsToDB(userDetails)
+                    summaryVM.addUserDetailsToDB(userDetails){}
                     fragmentsReplacement(SportsFragment())
                     }
                 .show()
