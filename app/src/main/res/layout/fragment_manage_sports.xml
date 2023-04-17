@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.usersummary.ManageSports">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/increment_date_btn_manage"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:layout_marginTop="5sp"
+        android:background="@drawable/btn_bg_"
+        android:drawableTop="@drawable/password"
+        android:gravity="center"
+        android:layout_marginEnd="30sp"
+        android:paddingStart="3sp"
+        android:paddingTop="5sp"
+        android:backgroundTint="#2DA1ED"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlSymmetry" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/decrement_date_btn_manage"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="5sp"
+        android:background="@drawable/btn_bg_"
+        android:backgroundTint="#2DA1ED"
+        android:drawableTop="@drawable/ic_baseline_arrow_back_ios_24"
+        android:gravity="center"
+        android:paddingStart="10sp"
+        android:paddingTop="5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/curr_date_TV_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_marginBottom="220sp"
+        android:text="Choose date"
+        android:layout_marginTop="5sp"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginBottom="150sp"
+        android:text="Sport name:"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/sport_name_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginBottom="115sp"
+        android:text="Sport name"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="150sp"
+        android:text="Kcal burnt:"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/kcal_burnt_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="115sp"
+        android:text="Kcal burnt"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete_sport_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="70sp"
+        android:background="@drawable/btn_bg_"
+        android:drawableEnd="@drawable/x"
+        android:drawableStart="@drawable/x"
+        android:elevation="10sp"
+        android:backgroundTint="#FF0029"
+        android:paddingStart="8sp"
+        android:text="delete sport"
+        android:paddingEnd="8sp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/go_back_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginStart="30sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="25sp"
+        android:background="@drawable/btn_bg_"
+        android:drawableEnd="@drawable/ic_back"
+        android:drawableStart="@drawable/ic_back"
+        android:elevation="10sp"
+        android:paddingStart="8sp"
+        android:text="Go back"
+        android:paddingEnd="8sp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <LinearLayout
+        android:id="@+id/linlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_recycler_view"
+        android:padding="4sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginStart="30sp"
+        android:backgroundTint="#A80B0B"
+        android:layout_marginTop="90sp"
+        android:layout_marginBottom="200sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/sport_list_LV_manage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="3sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
