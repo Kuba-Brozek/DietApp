@@ -171,30 +171,19 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         mdVM.dayInfoReader(date_TV.text.toString()) { currentDayInfo ->
             mdVM.readUserData {
-                userInfo = it
-            }
-            if (currentDayInfo.kcalEaten != 9999 &&
-                currentDayInfo.kcalGoal != 9999 &&
-                currentDayInfo.dayIndex != 9999
-            ) {
-                current_day_kcal_TVV.text = currentDayInfo.kcalEaten.toString()
-                kcal_goal_TV.text = currentDayInfo.kcalGoal.toString()
-                day_index_TV.text = currentDayInfo.dayIndex.toString()
-                curr_weight_TV.text = if (currentDayInfo.weight.toString() == "0") userInfo.weight.toString()
-                else currentDayInfo.weight.toString()
-                dayInfo = currentDayInfo
-            } else {
-                current_day_kcal_TVV.text = "---"
-                kcal_goal_TV.text = "---"
-                mdVM.readUserData {
-                    val x = mdVM.dayIndexCalc(
+                mdVM.readUserDetails {userDetails ->
+                    userInfo = it
+                    if (currentDayInfo.kcalEaten!! > 9998) currentDayInfo.kcalEaten = 0
+                    if (currentDayInfo.kcalGoal!! > 9998) currentDayInfo.kcalGoal = mdVM.kcalGoalCalc(it)
+                    if (currentDayInfo.dayIndex!! > 9998) currentDayInfo.dayIndex = mdVM.dayIndexCalc(
                         mdVM.getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
-                        mdVM.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy")
-                    ).toString()
-                    day_index_TV.text = x
-                }
-                if (day_index_TV.text == "") {
-                    day_index_TV.text = "DAY"
+                        mdVM.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy"))
+                    current_day_kcal_TVV.text = currentDayInfo.kcalEaten.toString()
+                    kcal_goal_TV.text = currentDayInfo.kcalGoal.toString()
+                    day_index_TV.text = currentDayInfo.dayIndex.toString()
+                    curr_weight_TV.text = if (currentDayInfo.weight.toString() == "0") userDetails.weight.toString()
+                    else userDetails.weight.toString()
+                    dayInfo = currentDayInfo
                 }
             }
         }
@@ -246,8 +235,8 @@ class DayFragment : Fragment(), OnMealClickListener {
 
                 mdVM.dayInfoReader(date_TV.text.toString()) {
 
-                    if (it.kcalEaten != 9999 &&
-                        it.kcalGoal != 9999 &&
+                    if (it.kcalEaten != 9999 ||
+                        it.kcalGoal != 9999 ||
                         it.dayIndex != 9999
                     ) {
                         current_day_kcal_TVV.text = it.kcalEaten.toString()
@@ -323,23 +312,12 @@ class DayFragment : Fragment(), OnMealClickListener {
                     CoroutineScope(Dispatchers.IO).launch {
                         val a = CoroutineScope(Dispatchers.IO).async {
                             val kcalEaten =
-                                if (current_day_kcal_TVV.text.toString() == "KCAL") 0 else current_day_kcal_TVV.text.toString()
+                                if (current_day_kcal_TVV.text.toString() == "---") 0 else current_day_kcal_TVV.text.toString()
                                     .toInt()
-                            mdVM.addMeal(meal, kcalEaten, date_TV.text.toString()) {
-                                current_day_kcal_TVV.text = it.kcalEaten.toString()
-                                kcal_goal_TV.text = it.kcalGoal.toString()
-                                day_index_TV.text = mdVM.dayIndexCalc(
-                                    mdVM.getLocalDateFromString(
-                                        userInfo.startingDate!!,
-                                        "dd.MM.yyyy"
-                                    ),
-                                    mdVM.getLocalDateFromString(
-                                        date_TV.text.toString(),
-                                        "dd.MM.yyyy"
-                                    )
-                                ).toString()
+                            mdVM.addMeal(meal, kcalEaten, meal.date!!) {
                                 dayInfo = it
                                 Log.i("added meal:", jsonElement.name.toString())
+                                (activity as HomeActivity).fragmentsReplacement(DayFragment())
                             }
                         }
                         a.await()

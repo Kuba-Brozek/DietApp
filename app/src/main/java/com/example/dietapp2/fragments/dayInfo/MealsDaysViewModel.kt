@@ -9,6 +9,7 @@ import com.example.dietapp2.DTO.DayInfo
 import com.example.dietapp2.DTO.Meal
 import com.example.dietapp2.DTO.ProductFromJSON
 import com.example.dietapp2.DTO.User
+import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.adapters.OnMealClickListener
 import com.example.dietapp2.repository.MealRepository
 import com.example.dietapp2.repository.UserRepository
@@ -86,6 +87,10 @@ class MealsDaysViewModel: ViewModel() {
         return "$year-$month-$day"
     }
 
+    fun readUserDetails(callback: (UserDetails) -> Unit) {
+        return userRepo.readUserDetails(callback)
+    }
+
     fun dataParserToDate(string: String): String {
         val year = string.substring(0, 4)
         val month = string.substring(5, 7)
@@ -98,6 +103,10 @@ class MealsDaysViewModel: ViewModel() {
         val kcalIn1Gram = grams.toDouble() / 100
         val result = kcalIn1Gram * value
         return result.toInt()
+    }
+
+    fun kcalGoalCalc(user: User): Int {
+        return repo.kcalGoalCalc(user.weight!!, user.height!!, user.age!!)
     }
 
     fun dayInfoReader(date: String, callback: (DayInfo) -> Unit){

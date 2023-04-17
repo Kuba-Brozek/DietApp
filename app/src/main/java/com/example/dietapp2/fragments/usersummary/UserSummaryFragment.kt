@@ -45,6 +45,7 @@ class UserSummaryFragment : Fragment() {
     private lateinit var dayX_TV: TextView
     private lateinit var diff_TV: TextView
     private lateinit var hello_user_TV: TextView
+    private lateinit var current_day_TV: TextView
     private lateinit var latest_weight_ET: EditText
     private lateinit var change_weight_BTN: AppCompatButton
     private lateinit var buy_premium_BTN: AppCompatButton
@@ -68,6 +69,7 @@ class UserSummaryFragment : Fragment() {
         diff_TV = view.findViewById(R.id.diff_TV)
         hello_user_TV = view.findViewById(R.id.hello_user_TV)
         locked_content_IV = view.findViewById(R.id.locked_content_IV)
+        current_day_TV = view.findViewById(R.id.current_day_TV)
         var user = User()
         var userDetails = UserDetails()
 
@@ -85,11 +87,12 @@ class UserSummaryFragment : Fragment() {
             val currentDate: LocalDate = LocalDate.parse(helper, formatter)
             val startingDate: LocalDate = LocalDate.parse(user.startingDate, formatter)
             val userAccountAgeInDays = summaryVM.userAccountAgeInDays(startingDate, currentDate)
-            current_day_count_TV.text = userAccountAgeInDays
-            val dayX = "DAY $userAccountAgeInDays"
+            current_day_count_TV.text = (userAccountAgeInDays.toInt()+1).toString()
+            val dayX = "DAY ${(userAccountAgeInDays.toInt()+1)}"
             dayX_TV.text = dayX
             val userMessage = "Hello ${user.username}!"
             hello_user_TV.text = userMessage
+            current_day_TV.text = currentDate.format(formatter)
             summaryVM.readUserDetails {
                 userDetails = it
                 if(userDetails.hasPremium){
@@ -105,7 +108,7 @@ class UserSummaryFragment : Fragment() {
 
         change_weight_BTN.setOnClickListener {
             val latestWeight = latest_weight_ET.text
-            if(latestWeight.isDigitsOnly()){
+            if(latestWeight.toString().toDoubleOrNull() != null){
                 userDetails.weight = latestWeight.toString().toDouble()
                 diff_TV.text = (user.weight!! - latestWeight.toString().toDouble()).toString()
                 summaryVM.addUserDetailsToDB(userDetails){}

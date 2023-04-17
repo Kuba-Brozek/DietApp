@@ -86,7 +86,8 @@ class MealRepository {
         CoroutineScope(Dispatchers.IO).launch {
             userRepo.readUserData {
                 var weight: Double
-                dayInfoReader(meal.date!!) { dayInfoRead -> weight = dayInfoRead.weight?.toDouble()
+                dayInfoReader(meal.date!!) { dayInfoRead ->
+                    weight = dayInfoRead.weight
                     ?: it.weight!!
                     dayInfo = dayInfoRead
                     dayInfo.date = date
@@ -94,6 +95,7 @@ class MealRepository {
                         getLocalDateFromString(it.startingDate!!, "dd.MM.yyyy"),
                         getLocalDateFromString(currentDate, "dd.MM.yyyy")
                     )
+                    dayInfo.kcalEaten = kcalEaten + meal.cals!!
                     dayInfo.kcalGoal = if(dayInfo.kcalGoal != 9999) dayInfo.kcalGoal
                     else kcalGoalCalc(it.weight!!, it.height!!, it.age!!)
                     dayInfo.weight = weight
@@ -192,7 +194,7 @@ class MealRepository {
             }
         dayInfoReader(meal.date!!) {
             val dayInfo = it
-            dayInfo.kcalEaten = it.kcalEaten!!.minus(meal.cals!!)
+            dayInfo.kcalEaten = dayInfo.kcalEaten!!.minus(meal.cals!!)
             cloud.collection(auth.currentUser!!.uid).document("DaysInfo")
                 .collection(meal.date!!).document(meal.date!!).set(dayInfo)
                 .addOnSuccessListener {
