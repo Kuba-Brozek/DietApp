@@ -18,6 +18,7 @@
         android:layout_marginEnd="30sp"
         android:paddingStart="3sp"
         android:paddingTop="5sp"
+        android:backgroundTint="#2DA1ED"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -33,6 +34,7 @@
         android:layout_height="35sp"
         android:layout_marginStart="30sp"
         android:layout_marginTop="5sp"
+        android:backgroundTint="#2DA1ED"
         android:background="@drawable/btn_bg_"
         android:drawableTop="@drawable/ic_baseline_arrow_back_ios_24"
         android:gravity="center"
@@ -68,7 +70,6 @@
         android:layout_marginTop="40sp"
         android:layout_marginStart="30sp"
         android:drawableEnd="@drawable/ic_baseline_search_24"
-        android:drawableTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,6 +83,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_recycler_view"
         android:padding="4sp"
+        android:backgroundTint="#A80B0B"
         android:layout_marginEnd="30sp"
         android:layout_marginStart="30sp"
         android:layout_marginTop="90sp"
@@ -103,14 +105,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="25sp"
+        android:layout_marginBottom="60sp"
         android:text="Sport: "
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -119,36 +122,51 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.961" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="25sp"
+        android:layout_marginBottom="60sp"
         android:text="Time:"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintVertical_bias="0.996" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25sp"
+        android:layout_marginBottom="28sp"
+        android:text="min"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.997" />
 
 
     <TextView
         android:id="@+id/sport_name_TV"
         android:layout_width="wrap_content"
         android:layout_height="25sp"
+        android:layout_marginBottom="60sp"
         android:text="Sport Name"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/kcal_sport_TV"
@@ -158,26 +176,26 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
+        app:layout_constraintVertical_bias="0.961" />
 
     <EditText
         android:id="@+id/time_trained_ET"
         android:layout_width="wrap_content"
-        android:layout_height="43sp"
-        android:text="60"
-        android:textSize="19sp"
-        android:textColor="#757575"
+        android:layout_height="50sp"
+        android:layout_marginBottom="8sp"
         android:backgroundTint="#00FFFFFF"
+        android:text="60"
+        android:textColor="#757575"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="0.988" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/send_kcal_to_db_IV"
@@ -211,11 +229,13 @@
         android:drawableStart="@drawable/ic_sport"
         android:drawableEnd="@drawable/ic_sport"
         android:elevation="10sp"
+        android:drawableTint="@color/black"
+        android:backgroundTint="#F3E70F"
         android:paddingStart="8sp"
         android:paddingEnd="8sp"
         android:text="Manage your today's sport list"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#020000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

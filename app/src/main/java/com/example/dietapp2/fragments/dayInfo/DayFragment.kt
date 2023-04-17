@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -119,6 +120,8 @@ class DayFragment : Fragment(), OnMealClickListener {
         recyclerView.adapter = mealAdapter
         val jsonString = mdVM.getJsonDataFromAsset(this@DayFragment.requireContext(), "json.json")
         val mealList = mdVM.dataClassFromJsonString(jsonString!!)
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         arrayAdapterFilter(mealList)
         json_list_LV.onItemClickListener =

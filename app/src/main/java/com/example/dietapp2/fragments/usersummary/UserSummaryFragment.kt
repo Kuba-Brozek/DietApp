@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
@@ -70,15 +71,9 @@ class UserSummaryFragment : Fragment() {
         var user = User()
         var userDetails = UserDetails()
 
-        summaryVM.readUserDetails {
-            userDetails = it
-            if(userDetails.hasPremium){
-                buy_premium_BTN.visibility = View.GONE
-                locked_content_IV.visibility = View.GONE
-                fragmentsReplacement(SportsFragment())
-            }
-            latest_weight_ET.setText(it.weight.toString())
-        }
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+
+
         latest_weight_ET.inputType = InputType.TYPE_CLASS_NUMBER
         summaryVM.readUserData {userInfo ->
             user = userInfo
@@ -95,6 +90,16 @@ class UserSummaryFragment : Fragment() {
             dayX_TV.text = dayX
             val userMessage = "Hello ${user.username}!"
             hello_user_TV.text = userMessage
+            summaryVM.readUserDetails {
+                userDetails = it
+                if(userDetails.hasPremium){
+                    buy_premium_BTN.visibility = View.GONE
+                    locked_content_IV.visibility = View.GONE
+                    fragmentsReplacement(SportsFragment())
+                }
+                latest_weight_ET.setText(it.weight.toString())
+                diff_TV.text = (user.weight!! - it.weight).toString()
+            }
         }
 
 

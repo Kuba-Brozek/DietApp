@@ -126,8 +126,9 @@ class MealRepository {
                 .collection(date).document(date).get()
             dayInfo.addOnSuccessListener { task ->
                 if (task.exists()) {
-                    Callback(task.toObject<DayInfo>()!!)
-                    Log.i(dayInfoLog,"Document exist in DB")
+                    val day = task.toObject<DayInfo>()
+                    Callback(day!!)
+                    Log.i(dayInfoLog,"Document exist in DB ${day.date}")
                 }
                 else {
                     Callback(DayInfo("", 9999, 9999, 9999, listOf(), 9999, 9999.9))
@@ -156,7 +157,7 @@ class MealRepository {
         return LocalDate.parse(d, DateTimeFormatter.ofPattern(format))
     }
 
-    private fun kcalGoalCalc(weight: Double, height: Int, age: Int): Int {
+    fun kcalGoalCalc(weight: Double, height: Int, age: Int): Int {
         return (66 + (13.7 * weight) + (5 * height) - (6.8 * age)).toInt()
     }
 

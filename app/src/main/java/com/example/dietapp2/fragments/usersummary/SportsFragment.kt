@@ -1,6 +1,7 @@
 package com.example.dietapp2.fragments.usersummary
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,14 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.DayInfo
 import com.example.dietapp2.DTO.Sport
@@ -27,6 +25,8 @@ import com.example.dietapp2.R
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Period
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import java.util.Date
 
 class SportsFragment : Fragment() {
@@ -44,8 +44,12 @@ class SportsFragment : Fragment() {
     private lateinit var decrement_date_btn_sport: AppCompatButton
     private lateinit var curr_date_TV: TextView
     private lateinit var manage_sports_btn: AppCompatButton
+    private val calendar = Calendar.getInstance()
+    private val year = calendar.get(Calendar.YEAR)
+    private val month = calendar.get(Calendar.MONTH)
+    private val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,27 +69,37 @@ class SportsFragment : Fragment() {
         manage_sports_btn = view.findViewById(R.id.manage_sports_btn)
 
 
+
         var userDetails = UserDetails()
         var user = User()
         var sport = Sport()
         var dayInfo = DayInfo()
+        val sdf = SimpleDateFormat("dd.MM.yyyy")
+        val currentDate = sdf.format(Date())
+        curr_date_TV.text = currentDate
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
         arrayAdapterFilter(sportList)
         sport_list_LV.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView: AdapterView<*>, _: View, i: Int, _: Long ->
                 sport = sportList.find { it.toString() == adapterView.getItemAtPosition(i).toString() }!!
                 sport_name_TV.text = sport.name
-                kcal_sport_TV.text = ((sport.kcal1hr / 60) * time_trained_ET.text.toString().toInt()).toString()
+                kcal_sport_TV.text = ((sport.kcal / 60) * time_trained_ET.text.toString().toInt()).toString()
+
             }
         summaryVM.readUserDetails {
             userDetails = it
         }
+        var userAccountAgeInDays = ""
         summaryVM.readUserData {
             user = it
+            val startingDate: LocalDate = LocalDate.parse(user.startingDate, formatter)
+            val date: LocalDate = LocalDate.parse(currentDate, formatter)
+            userAccountAgeInDays = summaryVM.userAccountAgeInDays(startingDate, date)
+
         }
 
-        val sdf = SimpleDateFormat("dd.MM.yyyy")
-        val currentDate = sdf.format(Date())
-        curr_date_TV.text = currentDate
+
+
 
         increment_date_btn_sport.setOnClickListener {
             val result = summaryVM.dataParserFromDate(curr_date_TV.text.toString())
@@ -106,12 +120,29 @@ class SportsFragment : Fragment() {
         }
 
         manage_sports_btn.setOnClickListener {
-            Toast.makeText(activity, "asddsadsadsa", Toast.LENGTH_SHORT).show()
+            fragmentsReplacement(ManageSports())
         }
 
 
         summaryVM.readDayInfo(curr_date_TV.text.toString()) {
             dayInfo = it
+        }
+
+        curr_date_TV.setOnClickListener {
+            val dpd = DatePickerDialog(requireContext(),
+                { _, mYear, mMonth, mDay ->
+                    var stringMonth = (mMonth + 1).toString()
+                    var mmDay = mDay.toString()
+                    if (stringMonth.toInt() < 10) {
+                        stringMonth = "0${stringMonth}"
+                    }
+                    if (mmDay.toInt() < 10) {
+                        mmDay = "0$mmDay"
+                    }
+                    curr_date_TV.text = "$mmDay.$stringMonth.$mYear"
+                }, year, month, day
+            )
+            dpd.show()
         }
 
 
@@ -142,15 +173,16 @@ class SportsFragment : Fragment() {
         })
 
         send_kcal_to_db_IV.setOnClickListener {
-            dayInfo.kcalGoal = dayInfo.kcalGoal!! + kcal_sport_TV.text.toString().toInt()
-            val list =  mutableListOf(sport.name)
+            if(dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal = summaryVM.kcalGoalCalc(user) + kcal_sport_TV.text.toString().toInt()
+            else dayInfo.kcalGoal = dayInfo.kcalGoal!! + kcal_sport_TV.text.toString().toInt()
+            dayInfo.dayIndex = userAccountAgeInDays.toInt()
+            if (dayInfo.kcalBurnt!! > 9998) dayInfo.kcalBurnt = kcal_sport_TV.text.toString().toInt()
+            else dayInfo.kcalBurnt = dayInfo.kcalBurnt!! + kcal_sport_TV.text.toString().toInt()
+            if(dayInfo.weight!! > 9999) dayInfo.weight = user.weight
+            if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
+            val list =  mutableListOf("${sport.name}, kcal Burned: ${kcal_sport_TV.text}")
             list.addAll(dayInfo.activitiesMade!!)
             dayInfo.activitiesMade = list
-            if(dayInfo.kcalEaten != 9999 ||
-                dayInfo.kcalGoal != 9999 ||
-                dayInfo.dayIndex != 9999) {
-                //TODO(Update dayInfo accordingly)
-            }
             summaryVM.updateDayInfo(curr_date_TV.text.toString(), dayInfo)
         }
 
@@ -159,10 +191,10 @@ class SportsFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 if (s.toString().isNotBlank()) {
-                    kcal_sport_TV.text = (s.toString().toInt() * (sport.kcal1hr / 60)).toString()
+                    kcal_sport_TV.text = (s.toString().toInt() * (sport.kcal / 60)).toString()
                 } else {
                     time_trained_ET.setText("0")
-                    kcal_sport_TV.text = sport.kcal1hr.toString()
+                    kcal_sport_TV.text = sport.kcal.toString()
                 }
             }
         })
@@ -203,6 +235,12 @@ class SportsFragment : Fragment() {
         list.add(Sport("EMS", 2001))
         list.add(Sport("Trening siłowy", 532))
         return list
+    }
+
+    private fun fragmentsReplacement(fragment: Fragment){
+        val fragmentContainer = requireParentFragment().childFragmentManager.beginTransaction()
+        fragmentContainer.replace(R.id.container_sports, fragment)
+        fragmentContainer.commit()
     }
 }
 

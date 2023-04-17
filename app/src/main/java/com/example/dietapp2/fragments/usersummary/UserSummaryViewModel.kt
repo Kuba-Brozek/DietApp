@@ -26,6 +26,10 @@ class UserSummaryViewModel: ViewModel() {
         valueAnimator.start()
     }
 
+    fun kcalGoalCalc(user: User): Int {
+        return mealRepo.kcalGoalCalc(user.weight!!, user.height!!, user.age!!)
+    }
+
     fun readUserData(callback: (User) -> Unit) {
         return userRepo.readUserData(callback)
     }
