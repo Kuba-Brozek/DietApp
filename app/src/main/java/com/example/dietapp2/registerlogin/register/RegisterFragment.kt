@@ -85,17 +85,17 @@ class RegisterFragment : Fragment() {
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(emailET.text.toString()).matches()) {
-            error_msg.text = "Please enter VALID email!"
+            error_msg.text = "Please enter valid email!"
             emailET.requestFocus()
             return
         }
-        if (passwordET.text.toString().isEmpty()) {
-            error_msg.text = "Please enter password!"
+        if (passwordET.text.toString().isEmpty() || passwordET.text.toString().length < 8) {
+            error_msg.text = "Password is too short."
             passwordET.requestFocus()
             return
         }
         if (password_confirmET.text.toString() != passwordET.text.toString()) {
-            error_msg.text = "Passwords ain't the same!"
+            error_msg.text = "Passwords are not the same!"
             password_confirmET.requestFocus()
             return
         }
