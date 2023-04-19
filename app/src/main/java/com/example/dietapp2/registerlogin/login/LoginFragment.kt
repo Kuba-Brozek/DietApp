@@ -76,7 +76,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun onClickLogin(){
-            (activity as LogRegActivity).userSignIn(emailETL.text.toString(), passwordETL.text.toString())
+            if(emailETL.text.toString().isEmpty() || passwordETL.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Enter your credentials.", Toast.LENGTH_SHORT).show()
+            } else {
+                (activity as LogRegActivity).userSignIn(emailETL.text.toString(), passwordETL.text.toString())
+            }
     }
 
 

@@ -83,9 +83,12 @@ class SportsFragment : Fragment() {
         arrayAdapterFilter(sportList)
         sport_list_LV.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView: AdapterView<*>, _: View, i: Int, _: Long ->
-                sport = sportList.find { it.toString() == adapterView.getItemAtPosition(i).toString() }!!
+                sport = sportList.find {
+                    it.toString() == adapterView.getItemAtPosition(i).toString()
+                }!!
                 sport_name_TV.text = sport.name
-                kcal_sport_TV.text = ((sport.kcal / 60) * time_trained_ET.text.toString().toInt()).toString()
+                kcal_sport_TV.text =
+                    ((sport.kcal / 60) * time_trained_ET.text.toString().toInt()).toString()
 
             }
         summaryVM.readUserDetails {
@@ -131,7 +134,8 @@ class SportsFragment : Fragment() {
         }
 
         curr_date_TV.setOnClickListener {
-            val dpd = DatePickerDialog(requireContext(),
+            val dpd = DatePickerDialog(
+                requireContext(),
                 { _, mYear, mMonth, mDay ->
                     var stringMonth = (mMonth + 1).toString()
                     var mmDay = mDay.toString()
@@ -175,14 +179,16 @@ class SportsFragment : Fragment() {
         })
 
         send_kcal_to_db_IV.setOnClickListener {
-            if(dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal = summaryVM.kcalGoalCalc(user) + kcal_sport_TV.text.toString().toInt()
+            if (dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal =
+                summaryVM.kcalGoalCalc(user) + kcal_sport_TV.text.toString().toInt()
             else dayInfo.kcalGoal = dayInfo.kcalGoal!! + kcal_sport_TV.text.toString().toInt()
             dayInfo.dayIndex = userAccountAgeInDays.toInt()
-            if (dayInfo.kcalBurnt!! > 9998) dayInfo.kcalBurnt = kcal_sport_TV.text.toString().toInt()
+            if (dayInfo.kcalBurnt!! > 9998) dayInfo.kcalBurnt =
+                kcal_sport_TV.text.toString().toInt()
             else dayInfo.kcalBurnt = dayInfo.kcalBurnt!! + kcal_sport_TV.text.toString().toInt()
-            if(dayInfo.weight!! > 9999) dayInfo.weight = user.weight
+            if (dayInfo.weight!! > 9999) dayInfo.weight = user.weight
             if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
-            val list =  mutableListOf("${sport.name}, kcal Burned: ${kcal_sport_TV.text}")
+            val list = mutableListOf("${sport.name}, kcal Burned: ${kcal_sport_TV.text}")
             list.addAll(dayInfo.activitiesMade!!)
             dayInfo.activitiesMade = list
             summaryVM.updateDayInfo(curr_date_TV.text.toString(), dayInfo)
@@ -208,7 +214,8 @@ class SportsFragment : Fragment() {
         arrayAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
-            list)
+            list
+        )
         sport_list_LV.adapter = arrayAdapter
     }
 
@@ -239,7 +246,7 @@ class SportsFragment : Fragment() {
         return list
     }
 
-    private fun fragmentsReplacement(fragment: Fragment){
+    private fun fragmentsReplacement(fragment: Fragment) {
         val fragmentContainer = requireParentFragment().childFragmentManager.beginTransaction()
         fragmentContainer.replace(R.id.container_sports, fragment)
         fragmentContainer.commit()

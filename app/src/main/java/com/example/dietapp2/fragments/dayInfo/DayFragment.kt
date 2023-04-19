@@ -47,7 +47,7 @@ import java.time.Period
 import java.util.*
 
 
-class DayFragment : Fragment(), OnMealClickListener {
+class DayFragment(val dt: String = "") : Fragment(), OnMealClickListener {
 
 
     private lateinit var mealArrayList: ArrayList<Meal>
@@ -106,7 +106,12 @@ class DayFragment : Fragment(), OnMealClickListener {
 
         val sdf = SimpleDateFormat("dd.MM.yyyy")
         val currentDate = sdf.format(Date())
-        date_TV.text = currentDate
+        if(dt.isEmpty()) {
+            date_TV.text = currentDate
+        } else {
+            date_TV.text = dt
+        }
+
         var jsonElement = ProductFromJSON()
         var dayInfo = DayInfo()
         var userInfo = User()
@@ -317,7 +322,7 @@ class DayFragment : Fragment(), OnMealClickListener {
                             mdVM.addMeal(meal, kcalEaten, meal.date!!) {
                                 dayInfo = it
                                 Log.i("added meal:", jsonElement.name.toString())
-                                (activity as HomeActivity).fragmentsReplacement(DayFragment())
+                                (activity as HomeActivity).fragmentsReplacement(DayFragment(meal.date!!))
                             }
                         }
                         a.await()

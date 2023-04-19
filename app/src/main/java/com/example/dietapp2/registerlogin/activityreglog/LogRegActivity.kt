@@ -61,7 +61,7 @@ class LogRegActivity : AppCompatActivity() {
                 } else {
 
                     Log.w(TAG, "signInWithEmail failed", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed. $password, $password",
+                    Toast.makeText(baseContext, "Password is too short!",
                         Toast.LENGTH_SHORT).show()
                 }
             }

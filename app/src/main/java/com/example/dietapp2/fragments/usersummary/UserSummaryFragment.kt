@@ -46,6 +46,10 @@ class UserSummaryFragment : Fragment() {
     private lateinit var diff_TV: TextView
     private lateinit var hello_user_TV: TextView
     private lateinit var current_day_TV: TextView
+    private lateinit var premium_TV_1: TextView
+    private lateinit var premium_TV_2: TextView
+    private lateinit var premium_TV_3: TextView
+    private lateinit var premium_TV_4: TextView
     private lateinit var latest_weight_ET: EditText
     private lateinit var change_weight_BTN: AppCompatButton
     private lateinit var buy_premium_BTN: AppCompatButton
@@ -70,6 +74,10 @@ class UserSummaryFragment : Fragment() {
         hello_user_TV = view.findViewById(R.id.hello_user_TV)
         locked_content_IV = view.findViewById(R.id.locked_content_IV)
         current_day_TV = view.findViewById(R.id.current_day_TV)
+        premium_TV_1 = view.findViewById(R.id.premium_TV_1)
+        premium_TV_2 = view.findViewById(R.id.premium_TV_2)
+        premium_TV_3 = view.findViewById(R.id.premium_TV_3)
+        premium_TV_4 = view.findViewById(R.id.premium_TV_4)
         var user = User()
         var userDetails = UserDetails()
 
@@ -98,6 +106,10 @@ class UserSummaryFragment : Fragment() {
                 if(userDetails.hasPremium){
                     buy_premium_BTN.visibility = View.GONE
                     locked_content_IV.visibility = View.GONE
+                    premium_TV_1.visibility = View.GONE
+                    premium_TV_2.visibility = View.GONE
+                    premium_TV_3.visibility = View.GONE
+                    premium_TV_4.visibility = View.GONE
                     fragmentsReplacement(SportsFragment())
                 }
                 latest_weight_ET.setText(it.weight.toString())
@@ -127,6 +139,10 @@ class UserSummaryFragment : Fragment() {
                     userDetails.hasPremium = true
                     buy_premium_BTN.visibility = View.GONE
                     locked_content_IV.visibility = View.GONE
+                    premium_TV_1.visibility = View.GONE
+                    premium_TV_2.visibility = View.GONE
+                    premium_TV_3.visibility = View.GONE
+                    premium_TV_4.visibility = View.GONE
                     summaryVM.addUserDetailsToDB(userDetails){}
                     fragmentsReplacement(SportsFragment())
                     }
