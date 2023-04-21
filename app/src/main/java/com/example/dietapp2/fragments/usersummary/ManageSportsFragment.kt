@@ -29,9 +29,9 @@ import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
 
-class ManageSports : Fragment() {
+class ManageSportsFragment : Fragment() {
 
-    private val summaryVM by viewModels<UserSummaryViewModel>()
+    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
     private lateinit var increment_date_btn_manage: AppCompatButton
     private lateinit var decrement_date_btn_manage: AppCompatButton
     private lateinit var delete_sport_BTN: AppCompatButton
@@ -130,7 +130,7 @@ class ManageSports : Fragment() {
         sport_list_LV_manage.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView: AdapterView<*>, _: View, i: Int, _: Long ->
                 val x = dayInfo.activitiesMade!!
-                    .find { it == adapterView.getItemAtPosition(i).toString() }!!.split(", kcal Burned: ")
+                    .find { it == adapterView.getItemAtPosition(i).toString() }!!.split(", kcal Burnt: ")
                 sport.name = x[0]
                 sport.kcal = x[1].toInt()
                 sport_name_TV.text = if(sport.name.length < 13) sport.name else sport.name.substring(0..12)

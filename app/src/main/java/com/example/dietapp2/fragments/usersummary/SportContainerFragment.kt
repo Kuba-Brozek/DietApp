@@ -1,8 +1,6 @@
 package com.example.dietapp2.fragments.usersummary
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
@@ -11,33 +9,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat
-import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.viewModels
-import com.example.dietapp2.DTO.DayInfo
-import com.example.dietapp2.DTO.ProductFromJSON
 import com.example.dietapp2.DTO.User
 import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.time.Period
 import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
-import kotlin.math.log
 
 
-class UserSummaryFragment : Fragment() {
+class SportContainerFragment : Fragment() {
 
     private lateinit var starting_day_TV: TextView
     private lateinit var current_day_count_TV: TextView
@@ -54,7 +43,7 @@ class UserSummaryFragment : Fragment() {
     private lateinit var change_weight_BTN: AppCompatButton
     private lateinit var buy_premium_BTN: AppCompatButton
     private lateinit var locked_content_IV: ImageView
-    private val summaryVM by viewModels<UserSummaryViewModel>()
+    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(

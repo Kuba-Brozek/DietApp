@@ -15,9 +15,8 @@ typealias dr = R.drawable
 
 class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: OnMealClickListener): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_event,
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_meal,
             parent, false)
         return MealViewHolder(itemView)
     }
@@ -33,10 +32,10 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: O
         val itV = holder.background
         try{
             when {
-                meal.cals.toString().toInt() > 150 -> {
+                meal.cals.toString().toInt() > 450 -> {
                     itV.setBackgroundColor(Color.parseColor("#E42020"))
                 }
-                meal.cals.toString().toInt() in 50 until 150 -> {
+                meal.cals.toString().toInt() in 200.. 450 -> {
                     itV.setBackgroundColor(Color.parseColor("#ffff00"))
                 }
                 else -> {
@@ -44,7 +43,7 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: O
                 }
 
             }
-        }catch(e: Exception){
+        } catch(e: Exception) {
             Log.e("error","failed to load resources")
         }
     }

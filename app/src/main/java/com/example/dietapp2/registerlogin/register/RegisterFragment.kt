@@ -2,6 +2,7 @@ package com.example.dietapp2.registerlogin.register
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -19,7 +20,6 @@ import androidx.fragment.app.viewModels
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.activityreglog.LogRegActivity
 import com.example.dietapp2.registerlogin.login.LoginFragment
-import com.example.dietapp2.registerlogin.register.userDataInput.fragments.PrivacyPolicyFragment
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -27,7 +27,6 @@ class RegisterFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private val registerVM by viewModels<ViewModelRegister>()
-    val privacyPolicyFragment = PrivacyPolicyFragment()
     private lateinit var buttonRegister: AppCompatButton
     private lateinit var check_box_privacy_policy: CheckBox
     private lateinit var privacy_policy_TV: TextView
@@ -56,12 +55,14 @@ class RegisterFragment : Fragment() {
             if (check_box_privacy_policy.isChecked) {
                 onClickSignUp()
             } else {
-                Toast.makeText(this@RegisterFragment.requireContext(), "You must accept privacy policy before signing up.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@RegisterFragment.requireContext(),
+                    "You must accept privacy policy before signing up.", Toast.LENGTH_LONG).show()
             }
         }
 
         privacy_policy_TV.setOnClickListener{
-            (activity as LogRegActivity).fragmentsReplacements(privacyPolicyFragment)
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.freeprivacypolicy.com/live/15d63160-ff3b-4e45-b2d9-0e6da8129cf3"))
+            startActivity(browserIntent)
         }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -78,14 +79,9 @@ class RegisterFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun onClickSignUp() {
 
-        if (emailET.text.toString().isEmpty()) {
+        if (emailET.text.toString().isEmpty() ||
+            !Patterns.EMAIL_ADDRESS.matcher(emailET.text.toString()).matches()) {
             error_msg.text = "Please enter email!"
-            emailET.requestFocus()
-            return
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailET.text.toString()).matches()) {
-            error_msg.text = "Please enter valid email!"
             emailET.requestFocus()
             return
         }
@@ -100,8 +96,7 @@ class RegisterFragment : Fragment() {
             return
         }
         (activity as LogRegActivity)
-            .userCreation(emailET.text.toString(),
-                passwordET.text.toString())
+            .userCreation(emailET.text.toString(), passwordET.text.toString())
     }
 
 }

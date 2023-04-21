@@ -1,8 +1,6 @@
 package com.example.dietapp2.fragments.dayInfo
 
 import android.content.Context
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dietapp2.DTO.DayInfo
@@ -18,7 +16,7 @@ import com.google.gson.reflect.TypeToken
 import java.io.IOException
 import java.time.LocalDate
 
-class MealsDaysViewModel: ViewModel() {
+class FoodFragmentViewModel: ViewModel() {
     private val userRepo = UserRepository()
     private val repo = MealRepository()
 
@@ -51,6 +49,7 @@ class MealsDaysViewModel: ViewModel() {
                 it.readText()
             }
         } catch (e: IOException) {
+            e.printStackTrace()
             return jsonString
         }
         return jsonString

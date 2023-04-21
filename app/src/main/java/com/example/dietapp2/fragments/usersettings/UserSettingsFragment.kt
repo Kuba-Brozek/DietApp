@@ -33,8 +33,7 @@ class UserSettingsFragment : Fragment() {
     private lateinit var destination_displayTV: TextView
     private lateinit var profile_image: ImageView
     private lateinit var change_personal_info_btn: AppCompatButton
-    private val userSettingsVM by viewModels<UserSettingsViewModel>()
-    private val mainDispatcher = Dispatchers.Main
+    private val userSettingsViewModel by viewModels<UserSettingsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +52,7 @@ class UserSettingsFragment : Fragment() {
         lifecycleScope.launch {
             try {
 
-                userSettingsVM.readUserData {
+                userSettingsViewModel.readUserData {
                     CoroutineScope(Dispatchers.Main).launch {
                         val username = "Hello ${it.username.toString()}!"
                         username_TV.text = username
@@ -65,7 +64,7 @@ class UserSettingsFragment : Fragment() {
                         destination_displayTV.text = it.destination.toString()
                     }
                 }
-                userSettingsVM.loadProfileImage(requireContext(), profile_image)
+                userSettingsViewModel.loadProfileImage(requireContext(), profile_image)
 
             } catch ( ex: Exception){
                 Log.e("LoadingError", "Loading image, or user data loading failed")
@@ -77,15 +76,13 @@ class UserSettingsFragment : Fragment() {
                 startActivity(intent)
             }
         })
-            val jsonString = userSettingsVM.getJsonDataFromAsset(
-                requireContext(), "json.json")
-//            val userList = userSettingsVM.dataClassFromJsonString(jsonString!!)
+
             val loadImage = registerForActivityResult(ActivityResultContracts
                 .GetContent()) {
                 profile_image.setImageURI(it)
                 replaceImage(it, view)
                 if (it != null) {
-                    userSettingsVM.uploadProfileImage(it)
+                    userSettingsViewModel.uploadProfileImage(it)
                 } else {
                     Toast.makeText(requireContext(), "Uri parsing failed.", Toast.LENGTH_LONG).show()
                 }

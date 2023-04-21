@@ -9,10 +9,9 @@ import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.repository.MealRepository
 import com.example.dietapp2.repository.UserRepository
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
-class UserSummaryViewModel: ViewModel() {
+class SportContainerFragmentViewModel: ViewModel() {
 
     private val userRepo = UserRepository()
     private val mealRepo = MealRepository()

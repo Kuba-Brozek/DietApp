@@ -104,7 +104,7 @@ class UserRepository {
         }
     }
 
-    fun addUserToDatabase(user: User) { //working
+    fun addUserToDatabase(user: User) {
         val userMap = hashMapOf(
             "userId" to user.userId,
             "username" to user.username,
@@ -130,7 +130,7 @@ class UserRepository {
                     }
 
             }.addOnFailureListener {
-                Log.e(userCreationTag, "User NOT added to database")
+                Log.e(userCreationTag, "Connection with database failed.")
             }
     }
 

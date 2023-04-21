@@ -14,7 +14,6 @@ import com.example.dietapp2.DTO.User
 import com.example.dietapp2.R
 import com.example.dietapp2.fragments.homeactivity.HomeActivity
 import com.example.dietapp2.registerlogin.login.LoginFragment
-import com.example.dietapp2.registerlogin.register.RegisterFragment
 import com.example.dietapp2.registerlogin.register.userDataInput.AfterRegistrationActivity
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
@@ -23,15 +22,14 @@ import java.util.*
 class LogRegActivity : AppCompatActivity() {
 
     private val loginFragment = LoginFragment()
-    private val registerFragment = RegisterFragment()
-    private lateinit var mainActivityVm: ViewModelMainActivity
+    private lateinit var logRegActivityViewModel: LogRegActivityViewModel
     private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainActivityVm = ViewModelProvider(this)[ViewModelMainActivity::class.java]
+        logRegActivityViewModel = ViewModelProvider(this)[LogRegActivityViewModel::class.java]
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_log_reg)
         fragmentsReplacement(loginFragment)
         auth = FirebaseAuth.getInstance()
         window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
@@ -54,14 +52,12 @@ class LogRegActivity : AppCompatActivity() {
                     val currentDate = sdf.format(Date())
                     Log.d(TAG, "User created successfully")
                     val user = User(auth.currentUser!!.uid, email, email, "",0 , 0.0, 160, "", currentDate)
-                    mainActivityVm.addUserToDatabase(user)
+                    logRegActivityViewModel.addUserToDatabase(user)
                     val intent = Intent(this, AfterRegistrationActivity::class.java)
                     startActivity(intent)
-
                 } else {
-
                     Log.w(TAG, "signInWithEmail failed", task.exception)
-                    Toast.makeText(baseContext, "Password is too short!",
+                    Toast.makeText(baseContext, "Account exists",
                         Toast.LENGTH_SHORT).show()
                 }
             }
@@ -76,7 +72,7 @@ class LogRegActivity : AppCompatActivity() {
                     startActivity(intent)
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "Account do not exist.",
                         Toast.LENGTH_SHORT).show()
                 }
             }

@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.DayInfo
@@ -32,7 +31,7 @@ import java.util.Date
 
 class SportsFragment : Fragment() {
 
-    private val summaryVM by viewModels<UserSummaryViewModel>()
+    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
     private var sportList = getSportsList()
     private lateinit var arrayAdapter: ArrayAdapter<*>
     private lateinit var sport_list_LV: ListView
@@ -80,7 +79,7 @@ class SportsFragment : Fragment() {
         val currentDate = sdf.format(Date())
         curr_date_TV.text = currentDate
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        arrayAdapterFilter(sportList)
+        adapterProvider(sportList)
         sport_list_LV.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView: AdapterView<*>, _: View, i: Int, _: Long ->
                 sport = sportList.find {
@@ -125,7 +124,7 @@ class SportsFragment : Fragment() {
         }
 
         manage_sports_btn.setOnClickListener {
-            fragmentsReplacement(ManageSports())
+            fragmentsReplacement(ManageSportsFragment())
         }
 
 
@@ -169,11 +168,11 @@ class SportsFragment : Fragment() {
 
             override fun afterTextChanged(queryText: Editable?) {
                 if (queryText.toString() != "") {
-                    arrayAdapterFilter(sportList.filter {
+                    adapterProvider(sportList.filter {
                         it.name.lowercase().contains(queryText.toString().lowercase())
                     })
                 } else {
-                    arrayAdapterFilter(sportList)
+                    adapterProvider(sportList)
                 }
             }
         })
@@ -188,7 +187,7 @@ class SportsFragment : Fragment() {
             else dayInfo.kcalBurnt = dayInfo.kcalBurnt!! + kcal_sport_TV.text.toString().toInt()
             if (dayInfo.weight!! > 9999) dayInfo.weight = user.weight
             if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
-            val list = mutableListOf("${sport.name}, kcal Burned: ${kcal_sport_TV.text}")
+            val list = mutableListOf("${sport.name}, kcal Burnt: ${kcal_sport_TV.text}")
             list.addAll(dayInfo.activitiesMade!!)
             dayInfo.activitiesMade = list
             summaryVM.updateDayInfo(curr_date_TV.text.toString(), dayInfo)
@@ -210,7 +209,7 @@ class SportsFragment : Fragment() {
         return view
     }
 
-    private fun arrayAdapterFilter(list: List<Sport>) {
+    private fun adapterProvider(list: List<Sport>) {
         arrayAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,

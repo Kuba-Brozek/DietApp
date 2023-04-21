@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.InputType
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -45,7 +46,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
     private lateinit var save_changes_btn: AppCompatButton
     private lateinit var username_ET_CPI: EditText
     private lateinit var email_ET_CPI: EditText
-    private val userSettingsVM by viewModels<UserSettingsViewModel>()
+    private val userSettingsViewModel by viewModels<UserSettingsViewModel>()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
     private var goal = "Your Goal"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +72,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         email_ET_CPI = findViewById(R.id.email_ET_CPI)
 
         try {
-            userSettingsVM.readUserData {
+            userSettingsViewModel.readUserData {
                 username_TV_CPI.text = it.username.toString()
                 email_TV_CPI.text = it.email.toString()
                 age_TV_CPI.text = it.age.toString()
@@ -82,7 +83,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                     ArrayAdapter(this, android.R.layout.simple_list_item_1, options)
             }
 
-            userSettingsVM.loadProfileImage(
+            userSettingsViewModel.loadProfileImage(
                 this, profile_image_IV_CPI
             )
 
@@ -105,7 +106,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 loading_changes.visibility = View.VISIBLE
 
                 if (uri != null) {
-                    userSettingsVM.uploadProfileImage(uri)
+                    userSettingsViewModel.uploadProfileImage(uri)
                 }
                 Handler().postDelayed({
                     loading_changes.visibility = View.GONE
@@ -116,7 +117,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
 
         goal_spinner_settings.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                userSettingsVM.readUserData { user ->
+                userSettingsViewModel.readUserData { user ->
                     parent!!.setSelection(options.indexOf(user.destination))
                 }
             }
@@ -140,7 +141,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
 
         save_changes_btn.setOnClickListener {
             if (goal_spinner_settings.selectedItem != "Your goal") {
-                userSettingsVM.readUserData {
+                userSettingsViewModel.readUserData {
 
                     val user = it
                     if (username_ET_CPI.text.toString() != "") {
@@ -192,7 +193,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
             .setMessage("Are you sure you want to change your personal data?")
             .setNegativeButton("I'll keep it that way") { _, _ -> }
             .setPositiveButton("Change my data!") { _, _ ->
-                userSettingsVM.addUserToDatabase(user)
+                userSettingsViewModel.addUserToDatabase(user)
                 callback(user)
             }.show()
     }
