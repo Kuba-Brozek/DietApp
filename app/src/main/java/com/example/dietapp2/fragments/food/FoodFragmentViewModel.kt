@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.dayInfo
+package com.example.dietapp2.fragments.food
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

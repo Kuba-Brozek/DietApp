@@ -1,4 +1,4 @@
-package com.example.dietapp2
+package com.example.dietapp2.startingscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Handler
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.activityreglog.LogRegActivity
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 

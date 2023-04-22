@@ -25,6 +25,7 @@ class UserRepository {
 
     private var auth = FirebaseAuth.getInstance()
     private val user = Firebase.auth.currentUser
+    private val IMAGE_TAG = "ImageTag"
     private val debug = "DEBUG"
     private val doc = "DOC"
     private val userDetailsTAG = "userDetailsTAG"
@@ -59,8 +60,8 @@ class UserRepository {
     }
 
 
-    @SuppressLint("SuspiciousIndentation")
     fun loadProfileImage(context: Context, imageView: ImageView) {
+
         val imageName = auth.currentUser!!.uid
         val storageReference = storage.child(imageName)
         if (storageReference.equals(null).not()) {
@@ -72,13 +73,13 @@ class UserRepository {
                         .circleCrop().into(imageView)
                 }
                 uri.addOnFailureListener {
-                    Log.e("Image", "Internet access error")
+                    Toast.makeText(context, "Internet access error", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Log.e("Image", "Image loading error into ImageView: profile_picture.")
+                Toast.makeText(context,"Image loading error into ImageView: profile_picture.", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Log.i("Image", "Current user doesn't have a profile picture.")
+            Toast.makeText(context, "Current user doesn't have a profile picture.", Toast.LENGTH_SHORT).show()
         }
     }
 

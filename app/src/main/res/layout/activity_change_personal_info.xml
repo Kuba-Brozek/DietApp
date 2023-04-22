@@ -84,7 +84,7 @@
                     android:layout_marginTop="52sp"
                     android:layout_marginEnd="30sp"
                     android:background="@drawable/bg_recycler_view"
-                    android:text="   zmien zdjecie   "
+                    android:text="    Change picture    "
                     android:drawableEnd="@drawable/ic_camera"
                     android:drawableStart="@drawable/ic_camera"
                     android:paddingStart="12sp"

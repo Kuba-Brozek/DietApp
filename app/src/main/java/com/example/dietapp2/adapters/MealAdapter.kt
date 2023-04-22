@@ -74,7 +74,3 @@ class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: O
 
 }
 
-interface OnMealClickListener {
-    fun onMealLongClick(meal: Meal, position: Int)
-    fun onMealClick(meal: Meal, position: Int)
-}

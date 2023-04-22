@@ -1,4 +1,4 @@
-package com.example.dietapp2.registerlogin.register.userDataInput.fragments
+package com.example.dietapp2.registerlogin.register.afterregistration.fragments
 
 import android.content.Intent
 import android.os.Bundle

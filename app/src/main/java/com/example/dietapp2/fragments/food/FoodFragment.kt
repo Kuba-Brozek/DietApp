@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.dayInfo
+package com.example.dietapp2.fragments.food
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -31,7 +31,7 @@ import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.R
 import com.example.dietapp2.adapters.MealAdapter
 import com.example.dietapp2.adapters.OnMealClickListener
-import com.example.dietapp2.fragments.dayInfo.eventinfo.MealInfoFragment
+import com.example.dietapp2.fragments.food.mealinfo.MealInfoFragment
 import com.example.dietapp2.fragments.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope

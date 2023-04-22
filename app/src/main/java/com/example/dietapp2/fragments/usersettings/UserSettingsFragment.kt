@@ -67,6 +67,7 @@ class UserSettingsFragment : Fragment() {
                 userSettingsViewModel.loadProfileImage(requireContext(), profile_image)
 
             } catch ( ex: Exception){
+                ex.printStackTrace()
                 Log.e("LoadingError", "Loading image, or user data loading failed")
             }
         }
@@ -77,39 +78,15 @@ class UserSettingsFragment : Fragment() {
             }
         })
 
-            val loadImage = registerForActivityResult(ActivityResultContracts
-                .GetContent()) {
-                profile_image.setImageURI(it)
-                replaceImage(it, view)
-                if (it != null) {
-                    userSettingsViewModel.uploadProfileImage(it)
-                } else {
-                    Toast.makeText(requireContext(), "Uri parsing failed.", Toast.LENGTH_LONG).show()
-                }
-            }
-
         change_personal_info_btn.setOnClickListener {
             val intent = Intent(
                 requireContext(),
                 ChangePersonalInfoActivity::class.java)
             startActivity(intent)
         }
-        profile_image.setOnClickListener {
-            loadImage.launch("image/*")
-        }
+
 
         return view
-    }
-
-
-    private fun replaceImage(uri: Uri?, view: View) {
-        try {
-            val imageUri: Uri = Uri.parse(uri.toString())
-            profile_image.setImageURI(imageUri)
-
-        } catch (e: Exception) {
-            Log.e("Image Error", "Profile Image not found.")
-        }
     }
 }
 

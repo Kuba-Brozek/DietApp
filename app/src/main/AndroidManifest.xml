@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ScheduleApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".registerlogin.register.userDataInput.AfterRegistrationActivity"
+            android:name=".registerlogin.register.afterregistration.AfterRegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".fragments.homeactivity.HomeActivity"
@@ -26,7 +26,7 @@
             android:name=".fragments.usersettings.ChangePersonalInfoActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".startingscreen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,7 +1,6 @@
-package com.example.dietapp2.registerlogin.register.userDataInput.fragments
+package com.example.dietapp2.registerlogin.register.afterregistration.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -18,10 +17,9 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
-import com.example.dietapp2.registerlogin.register.userDataInput.AfterRegistrationActivity
+import com.example.dietapp2.registerlogin.register.afterregistration.AfterRegistrationActivity
 import com.example.dietapp2.repository.UserRepository
 
 class IntroductionFragment : Fragment() {

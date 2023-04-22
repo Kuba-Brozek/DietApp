@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.dayInfo.eventinfo
+package com.example.dietapp2.fragments.food.mealinfo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -17,8 +17,8 @@ import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.DayInfo
 import com.example.dietapp2.DTO.Meal
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.dayInfo.FoodFragment
-import com.example.dietapp2.fragments.dayInfo.FoodFragmentViewModel
+import com.example.dietapp2.fragments.food.FoodFragment
+import com.example.dietapp2.fragments.food.FoodFragmentViewModel
 import com.example.dietapp2.fragments.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 

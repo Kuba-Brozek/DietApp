@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.usersummary
+package com.example.dietapp2.fragments.sport
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -116,14 +116,10 @@ class ManageSportsFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                summaryVM.readDayInfo(curr_date_TV_manage.text.toString()) {
-                    dayInfo = it
-                    Toast.makeText(requireContext(), "Choose sport you want to delete again", Toast.LENGTH_SHORT).show()
                     summaryVM.readDayInfo(curr_date_TV_manage.text.toString()) {di ->
                         dayInfo = di
                         arrayAdapterFilter(dayInfo.activitiesMade!!)
                     }
-                }
             }
         })
 

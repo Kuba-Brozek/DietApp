@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.usersummary
+package com.example.dietapp2.fragments.sport
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog

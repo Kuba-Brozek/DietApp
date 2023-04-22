@@ -46,6 +46,7 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
     private lateinit var save_changes_btn: AppCompatButton
     private lateinit var username_ET_CPI: EditText
     private lateinit var email_ET_CPI: EditText
+    private val uploading_profile_picture_state: Long = 5000
     private val userSettingsViewModel by viewModels<UserSettingsViewModel>()
     private val options = listOf("Your goal", "Weight loss", "Keep weight", "Gain weight")
     private var goal = "Your Goal"
@@ -82,7 +83,6 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 goal_spinner_settings.adapter =
                     ArrayAdapter(this, android.R.layout.simple_list_item_1, options)
             }
-
             userSettingsViewModel.loadProfileImage(
                 this, profile_image_IV_CPI
             )
@@ -102,17 +102,26 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                 .into(profile_image_IV_CPI)
             val uri = it
             profile_image_BTN_CPI.setOnClickListener {
-                loading_changes_TV.visibility = View.VISIBLE
-                loading_changes.visibility = View.VISIBLE
 
                 if (uri != null) {
+                    loading_changes_TV.visibility = View.VISIBLE
+                    loading_changes.visibility = View.VISIBLE
                     userSettingsViewModel.uploadProfileImage(uri)
+                    Handler().postDelayed({
+                        loading_changes.visibility = View.GONE
+                        loading_changes_TV.visibility = View.GONE
+                    }, uploading_profile_picture_state)
+                } else {
+                    Toast.makeText(this,
+                        "Please change picture before clicking this button",
+                        Toast.LENGTH_SHORT).show()
                 }
-                Handler().postDelayed({
-                    loading_changes.visibility = View.GONE
-                    loading_changes_TV.visibility = View.GONE
-                }, 5000)
+
             }
+        }
+
+        profile_image_IV_CPI.setOnClickListener {
+            loadImage.launch("image/*")
         }
 
         goal_spinner_settings.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -140,28 +149,16 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
         height_ET_CPI.inputType = InputType.TYPE_CLASS_NUMBER
 
         save_changes_btn.setOnClickListener {
-            if (goal_spinner_settings.selectedItem != "Your goal") {
                 userSettingsViewModel.readUserData {
 
                     val user = it
-                    if (username_ET_CPI.text.toString() != "") {
-                        user.username = username_ET_CPI.text.toString()
-                    }
-                    if (email_ET_CPI.text.toString() != "") {
-                        user.email = email_ET_CPI.text.toString()
-                    }
-                    if (age_ET_CPI.text.toString() != "") {
-                        user.age = age_ET_CPI.text.toString().toInt()
-                    }
-                    if (starting_weight_ET_CPI.text.toString() != "") {
-                        user.weight = starting_weight_ET_CPI.text.toString().toDouble()
-                    }
-                    if (height_ET_CPI.text.toString() != "") {
-                        user.height = height_ET_CPI.text.toString().toInt()
-                    }
-                    user.destination = goal_spinner_settings.selectedItem.toString()
-
-
+                    if (goal_spinner_settings.selectedItem != "Your goal")
+                        user.destination = goal_spinner_settings.selectedItem.toString()
+                    if (username_ET_CPI.text.toString() != "") user.username = username_ET_CPI.text.toString()
+                    if (email_ET_CPI.text.toString() != "") user.email = email_ET_CPI.text.toString()
+                    if (age_ET_CPI.text.toString() != "") user.age = age_ET_CPI.text.toString().toInt()
+                    if (starting_weight_ET_CPI.text.toString() != "") user.weight = starting_weight_ET_CPI.text.toString().toDouble()
+                    if (height_ET_CPI.text.toString() != "") user.height = height_ET_CPI.text.toString().toInt()
 
                     dataChangeConfirmation(this@ChangePersonalInfoActivity, user) {
                         username_TV_CPI.text = user.username
@@ -174,18 +171,9 @@ class ChangePersonalInfoActivity : AppCompatActivity() {
                         Handler().postDelayed({ loading_changes.visibility = View.GONE }, 2000)
                     }
                 }
-            } else {
-                Toast.makeText(
-                    this@ChangePersonalInfoActivity,
-                    "Choose your goal",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
         }
 
-        profile_image_IV_CPI.setOnClickListener {
-            loadImage.launch("image/*")
-        }
+
     }
 
     private fun dataChangeConfirmation(context: Context, user: User, callback: (User) -> Unit) {

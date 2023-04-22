@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.dayInfo.FoodFragment
+import com.example.dietapp2.fragments.food.FoodFragment
 import com.example.dietapp2.fragments.usersettings.UserSettingsFragment
-import com.example.dietapp2.fragments.usersummary.SportContainerFragment
+import com.example.dietapp2.fragments.sport.SportContainerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
