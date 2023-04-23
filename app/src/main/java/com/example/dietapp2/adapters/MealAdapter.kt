@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dietapp2.DTO.Meal
 import com.example.dietapp2.R
 
-typealias dr = R.drawable
 
 class MealAdapter(private val mealList: ArrayList<Meal>, private val listener: OnMealClickListener): RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 

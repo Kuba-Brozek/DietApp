@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.sport
+package com.example.dietapp2.main.sport
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.DayInfo
@@ -31,7 +32,7 @@ import java.util.Date
 
 class SportsFragment : Fragment() {
 
-    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
+    private val summaryVM by viewModels<SportsViewModel>()
     private var sportList = getSportsList()
     private lateinit var arrayAdapter: ArrayAdapter<*>
     private lateinit var sport_list_LV: ListView
@@ -178,19 +179,23 @@ class SportsFragment : Fragment() {
         })
 
         send_kcal_to_db_IV.setOnClickListener {
-            if (dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal =
-                summaryVM.kcalGoalCalc(user) + kcal_sport_TV.text.toString().toInt()
-            else dayInfo.kcalGoal = dayInfo.kcalGoal!! + kcal_sport_TV.text.toString().toInt()
-            dayInfo.dayIndex = userAccountAgeInDays.toInt()
-            if (dayInfo.kcalBurnt!! > 9998) dayInfo.kcalBurnt =
-                kcal_sport_TV.text.toString().toInt()
-            else dayInfo.kcalBurnt = dayInfo.kcalBurnt!! + kcal_sport_TV.text.toString().toInt()
-            if (dayInfo.weight!! > 9999) dayInfo.weight = user.weight
-            if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
-            val list = mutableListOf("${sport.name}, kcal Burnt: ${kcal_sport_TV.text}")
-            list.addAll(dayInfo.activitiesMade!!)
-            dayInfo.activitiesMade = list
-            summaryVM.updateDayInfo(curr_date_TV.text.toString(), dayInfo)
+            if(kcal_sport_TV.text.toString() == "Kcal/1h" || sport.name == "Sport Name") {
+               Toast.makeText(requireContext(), "Please choose activity you want to add", Toast.LENGTH_SHORT).show()
+            } else {
+                if (dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal =
+                    summaryVM.kcalGoalCalc(user) + kcal_sport_TV.text.toString().toInt()
+                else dayInfo.kcalGoal = dayInfo.kcalGoal!! + kcal_sport_TV.text.toString().toInt()
+                dayInfo.dayIndex = userAccountAgeInDays.toInt()
+                if (dayInfo.kcalBurnt!! > 9998) dayInfo.kcalBurnt =
+                    kcal_sport_TV.text.toString().toInt()
+                else dayInfo.kcalBurnt = dayInfo.kcalBurnt!! + kcal_sport_TV.text.toString().toInt()
+                if (dayInfo.weight!! > 9999) dayInfo.weight = user.weight
+                if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
+                val list = mutableListOf("${sport.name}, kcal Burnt: ${kcal_sport_TV.text}")
+                list.addAll(dayInfo.activitiesMade!!)
+                dayInfo.activitiesMade = list
+                summaryVM.updateDayInfo(curr_date_TV.text.toString(), dayInfo)
+            }
         }
 
         time_trained_ET.addTextChangedListener(object : TextWatcher {

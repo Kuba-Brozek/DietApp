@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.food.mealinfo
+package com.example.dietapp2.main.food
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,15 +11,14 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.DayInfo
 import com.example.dietapp2.DTO.Meal
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.food.FoodFragment
-import com.example.dietapp2.fragments.food.FoodFragmentViewModel
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
+import com.example.dietapp2.main.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -40,7 +39,7 @@ class MealInfoFragment : Fragment() {
     private lateinit var btn_exit: AppCompatButton
     private lateinit var btn_save: AppCompatButton
     private lateinit var btn_delete: AppCompatButton
-    private val foodFragmentViewModel by viewModels<FoodFragmentViewModel>()
+    private val foodViewModel by viewModels<FoodViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -71,13 +70,13 @@ class MealInfoFragment : Fragment() {
         val mealDate = args?.getString("MealDate")
         var dayInfo = DayInfo()
 
-        foodFragmentViewModel.dayInfoReader(mealDate.toString()) {
+        foodViewModel.dayInfoReader(mealDate.toString()) {
             dayInfo = it
         }
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
-        val jsonString = foodFragmentViewModel.getJsonDataFromAsset(requireContext(), "json.json")
-        val mealList = foodFragmentViewModel.dataClassFromJsonString(jsonString!!)
+        val jsonString = foodViewModel.getJsonDataFromAsset(requireContext(), "json.json")
+        val mealList = foodViewModel.dataClassFromJsonString(jsonString!!)
         val jsonElement = mealList.find { it.name == mealName }!!
 
         kcal_100g_TV.text = jsonElement.kcal.toString()
@@ -86,17 +85,17 @@ class MealInfoFragment : Fragment() {
         fat_100g_TV.text = jsonElement.fat.toString()
 
 
-        foodFragmentViewModel.showMealInfo(mealName.toString(), mealDate.toString()) {
+        foodViewModel.showMealInfo(mealName.toString(), mealDate.toString()) {
             meal = it
             val mealGrams = "${it.grams.toString()}g"
             xxg_TV.text = mealGrams
             meal_name.text = it.name.toString()
             meal_date.text = it.date.toString()
             meal_grams_ET.setText(it.grams.toString())
-            meal_kcal.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.kcal!!, it.grams!!.toInt()).toString()
-            meal_carbs.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.carbs!!.toInt(), it.grams!!.toInt()).toString()
-            meal_proteins.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.protein!!.toInt(), it.grams!!.toInt()).toString()
-            meal_fat.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.fat!!.toInt(), it.grams!!.toInt()).toString()
+            meal_kcal.text = foodViewModel.nutritionalValuesCalc(jsonElement.kcal!!, it.grams!!.toInt()).toString()
+            meal_carbs.text = foodViewModel.nutritionalValuesCalc(jsonElement.carbs!!.toInt(), it.grams!!.toInt()).toString()
+            meal_proteins.text = foodViewModel.nutritionalValuesCalc(jsonElement.protein!!.toInt(), it.grams!!.toInt()).toString()
+            meal_fat.text = foodViewModel.nutritionalValuesCalc(jsonElement.fat!!.toInt(), it.grams!!.toInt()).toString()
         }
 
         meal_grams_ET.addTextChangedListener(object: TextWatcher{
@@ -108,10 +107,10 @@ class MealInfoFragment : Fragment() {
                     xxg_TV.text = mealGrams
                     val grams = s.toString()
                     btn_save.isEnabled = true
-                    meal_kcal.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.kcal!!, grams.toInt()).toString()
-                    meal_carbs.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.carbs!!.toInt(), grams.toInt()).toString()
-                    meal_proteins.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.protein!!.toInt(), grams.toInt()).toString()
-                    meal_fat.text = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.fat!!.toInt(), grams.toInt()).toString()
+                    meal_kcal.text = foodViewModel.nutritionalValuesCalc(jsonElement.kcal!!, grams.toInt()).toString()
+                    meal_carbs.text = foodViewModel.nutritionalValuesCalc(jsonElement.carbs!!.toInt(), grams.toInt()).toString()
+                    meal_proteins.text = foodViewModel.nutritionalValuesCalc(jsonElement.protein!!.toInt(), grams.toInt()).toString()
+                    meal_fat.text = foodViewModel.nutritionalValuesCalc(jsonElement.fat!!.toInt(), grams.toInt()).toString()
                 } else {
                     btn_save.isEnabled = false
                 }
@@ -124,33 +123,37 @@ class MealInfoFragment : Fragment() {
                 .setMessage("Are you sure you want to delete?")
                 .setNegativeButton("No, I am fine"){ _, _ -> }
                 .setPositiveButton("Delete Meal!"){ _, _ ->
-                    foodFragmentViewModel.deleteMeal(meal) { }
+                    foodViewModel.deleteMeal(meal) { }
                     (activity as HomeActivity).fragmentsReplacement(FoodFragment(meal.date!!))
                 }.show()
         }
 
         btn_exit.setOnClickListener {
-            (activity as HomeActivity).fragmentsReplacement(FoodFragment())
+            (activity as HomeActivity).fragmentsReplacement(FoodFragment(mealDate!!))
         }
 
         btn_save.setOnClickListener {
-            val grams = meal_grams_ET.text.toString().toInt()
-            val caloriesFromMeal = foodFragmentViewModel.nutritionalValuesCalc(jsonElement.kcal!!, grams)
-            val mealModified = Meal(
-                meal_name.text.toString(),
-                meal_date.text.toString(),
-                grams,
-                caloriesFromMeal
-            )
-            foodFragmentViewModel.modifyMeal(meal, mealModified, dayInfo.kcalEaten!!)
-            foodFragmentViewModel.dayInfoReader(meal_date.text.toString()) {
-                dayInfo = it
+            if (meal_grams_ET.text.toString().isNotEmpty() || meal_grams_ET.text.toString() != "0"){
+                val grams = meal_grams_ET.text.toString().toInt()
+                val caloriesFromMeal = foodViewModel.nutritionalValuesCalc(jsonElement.kcal!!, grams)
+                val mealModified = Meal(
+                    meal_name.text.toString(),
+                    meal_date.text.toString(),
+                    grams,
+                    caloriesFromMeal
+                )
+                foodViewModel.modifyMeal(meal, mealModified, dayInfo.kcalEaten!!)
+                foodViewModel.dayInfoReader(meal_date.text.toString()) {
+                    dayInfo = it
+                }
+            } else {
+                Toast.makeText(requireContext(), "Choose delete option instead", Toast.LENGTH_SHORT).show()
             }
         }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                val foodFragment = FoodFragment()
+                val foodFragment = FoodFragment(mealDate!!)
                 (activity as HomeActivity).fragmentsReplacement(foodFragment)
             }
         })

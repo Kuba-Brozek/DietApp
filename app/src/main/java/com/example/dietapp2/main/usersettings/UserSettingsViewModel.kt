@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.usersettings
+package com.example.dietapp2.main.usersettings
 
 import android.content.Context
 import android.net.Uri

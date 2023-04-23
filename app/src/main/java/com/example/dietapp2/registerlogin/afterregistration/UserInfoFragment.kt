@@ -1,4 +1,4 @@
-package com.example.dietapp2.registerlogin.register.afterregistration.fragments
+package com.example.dietapp2.registerlogin.afterregistration
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
+import com.example.dietapp2.main.homeactivity.HomeActivity
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
 import kotlinx.coroutines.*
 

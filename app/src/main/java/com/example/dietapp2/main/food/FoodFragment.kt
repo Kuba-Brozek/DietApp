@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.food
+package com.example.dietapp2.main.food
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -31,8 +31,7 @@ import com.example.dietapp2.DTO.UserDetails
 import com.example.dietapp2.R
 import com.example.dietapp2.adapters.MealAdapter
 import com.example.dietapp2.adapters.OnMealClickListener
-import com.example.dietapp2.fragments.food.mealinfo.MealInfoFragment
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
+import com.example.dietapp2.main.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +50,7 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
     private lateinit var arrayAdapter: ArrayAdapter<*>
     private lateinit var mealAdapter: MealAdapter
     private lateinit var recyclerView: RecyclerView
-    private val foodFragmentViewModel by viewModels<FoodFragmentViewModel>()
+    private val foodViewModel by viewModels<FoodViewModel>()
     private val calendar = Calendar.getInstance()
     private val year = calendar.get(Calendar.YEAR)
     private val month = calendar.get(Calendar.MONTH)
@@ -118,8 +117,8 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
         mealArrayList = arrayListOf()
         mealAdapter = MealAdapter(mealArrayList, this@FoodFragment)
         recyclerView.adapter = mealAdapter
-        val jsonString = foodFragmentViewModel.getJsonDataFromAsset(this@FoodFragment.requireContext(), "json.json")
-        val mealList = foodFragmentViewModel.dataClassFromJsonString(jsonString!!)
+        val jsonString = foodViewModel.getJsonDataFromAsset(this@FoodFragment.requireContext(), "json.json")
+        val mealList = foodViewModel.dataClassFromJsonString(jsonString!!)
 
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
@@ -135,13 +134,13 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
                 current_meal_name_TV.text = jsonElement.name
                 meal_gramss_ET.setText("100")
                 wegle_in_meal_TV.text =
-                    foodFragmentViewModel.nutritionalValuesCalc(100, jsonElement.carbs!!.toInt()).toString()
+                    foodViewModel.nutritionalValuesCalc(100, jsonElement.carbs!!.toInt()).toString()
                 bialka_in_meal_TV.text =
-                    foodFragmentViewModel.nutritionalValuesCalc(100, jsonElement.protein!!.toInt()).toString()
+                    foodViewModel.nutritionalValuesCalc(100, jsonElement.protein!!.toInt()).toString()
                 tluszcz_in_meal_TV.text =
-                    foodFragmentViewModel.nutritionalValuesCalc(100, jsonElement.fat!!.toInt()).toString()
+                    foodViewModel.nutritionalValuesCalc(100, jsonElement.fat!!.toInt()).toString()
                 kcal_in_meal_TV.text =
-                    foodFragmentViewModel.nutritionalValuesCalc(100, jsonElement.kcal!!.toInt()).toString()
+                    foodViewModel.nutritionalValuesCalc(100, jsonElement.kcal!!.toInt()).toString()
             }
 
         activity?.onBackPressedDispatcher?.addCallback(
@@ -169,17 +168,17 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
 
 
 
-        foodFragmentViewModel.dayInfoReader(date_TV.text.toString()) { currentDayInfo ->
+        foodViewModel.dayInfoReader(date_TV.text.toString()) { currentDayInfo ->
             dayInfo = currentDayInfo
-            foodFragmentViewModel.readUserData {user ->
+            foodViewModel.readUserData { user ->
                 userInfo = user
-                foodFragmentViewModel.readUserDetails { userDetailsFromDB ->
+                foodViewModel.readUserDetails { userDetailsFromDB ->
                     userDetails = userDetailsFromDB
                     if (dayInfo.kcalEaten!! > 9998) dayInfo.kcalEaten = 0
-                    if (dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal = foodFragmentViewModel.kcalGoalCalc(userInfo)
-                    if (dayInfo.dayIndex!! > 9998) dayInfo.dayIndex = foodFragmentViewModel.dayIndexCalc(
-                        foodFragmentViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
-                        foodFragmentViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy"))
+                    if (dayInfo.kcalGoal!! > 9998) dayInfo.kcalGoal = foodViewModel.kcalGoalCalc(userInfo)
+                    if (dayInfo.dayIndex!! > 9998) dayInfo.dayIndex = foodViewModel.dayIndexCalc(
+                        foodViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                        foodViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy"))
                     current_day_kcal_TVV.text = dayInfo.kcalEaten.toString()
                     kcal_goal_TV.text = dayInfo.kcalGoal.toString()
                     day_index_TV.text = dayInfo.dayIndex.toString()
@@ -189,24 +188,24 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
             }
         }
 
-        foodFragmentViewModel.eventChangeListener(recyclerView, this, date_TV.text.toString())
+        foodViewModel.eventChangeListener(recyclerView, this, date_TV.text.toString())
 
         decrement_date_btn.setOnClickListener {
-            val result = foodFragmentViewModel.dataParserFromDate(date_TV.text.toString())
+            val result = foodViewModel.dataParserFromDate(date_TV.text.toString())
             val period = Period.of(0, 0, 1)
             val parsed = LocalDate.parse(result)
             val r = parsed.minus(period)
-            val final = foodFragmentViewModel.dataParserToDate(r.toString())
+            val final = foodViewModel.dataParserToDate(r.toString())
 
             date_TV.text = final
         }
 
         increment_date_btn.setOnClickListener {
-            val result = foodFragmentViewModel.dataParserFromDate(date_TV.text.toString())
+            val result = foodViewModel.dataParserFromDate(date_TV.text.toString())
             val period = Period.of(0, 0, 1)
             val parsed = LocalDate.parse(result)
             val r = parsed.plus(period)
-            val final = foodFragmentViewModel.dataParserToDate(r.toString())
+            val final = foodViewModel.dataParserToDate(r.toString())
             date_TV.text = final
         }
 
@@ -231,10 +230,10 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                foodFragmentViewModel.eventChangeListener(recyclerView, this@FoodFragment, date_TV.text.toString())
+                foodViewModel.eventChangeListener(recyclerView, this@FoodFragment, date_TV.text.toString())
                 mealAdapter.notifyDataSetChanged()
 
-                foodFragmentViewModel.dayInfoReader(date_TV.text.toString()) {
+                foodViewModel.dayInfoReader(date_TV.text.toString()) {
                     dayInfo = it
                     if (dayInfo.kcalEaten != 9999 ||
                         dayInfo.kcalGoal != 9999 ||
@@ -242,17 +241,17 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
                     ) {
                         current_day_kcal_TVV.text = dayInfo.kcalEaten.toString()
                         kcal_goal_TV.text = dayInfo.kcalGoal.toString()
-                        day_index_TV.text = foodFragmentViewModel.dayIndexCalc(
-                            foodFragmentViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
-                            foodFragmentViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy")
+                        day_index_TV.text = foodViewModel.dayIndexCalc(
+                            foodViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                            foodViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy")
                         ).toString()
 
                     } else {
                         current_day_kcal_TVV.text = "---"
                         kcal_goal_TV.text = "---"
-                        day_index_TV.text = foodFragmentViewModel.dayIndexCalc(
-                            foodFragmentViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
-                            foodFragmentViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy")
+                        day_index_TV.text = foodViewModel.dayIndexCalc(
+                            foodViewModel.getLocalDateFromString(userInfo.startingDate!!, "dd.MM.yyyy"),
+                            foodViewModel.getLocalDateFromString(date_TV.text.toString(), "dd.MM.yyyy")
                         ).toString()
                     }
                 }
@@ -266,19 +265,19 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
             override fun afterTextChanged(grams: Editable?) {
                 if (mealList.map { it.name }.contains(jsonElement.name) && grams.toString() != "") {
 
-                    wegle_in_meal_TV.text = foodFragmentViewModel.nutritionalValuesCalc(
+                    wegle_in_meal_TV.text = foodViewModel.nutritionalValuesCalc(
                         grams.toString().toInt(),
                         jsonElement.carbs!!.toInt()
                     ).toString()
-                    bialka_in_meal_TV.text = foodFragmentViewModel.nutritionalValuesCalc(
+                    bialka_in_meal_TV.text = foodViewModel.nutritionalValuesCalc(
                         grams.toString().toInt(),
                         jsonElement.protein!!.toInt()
                     ).toString()
-                    tluszcz_in_meal_TV.text = foodFragmentViewModel.nutritionalValuesCalc(
+                    tluszcz_in_meal_TV.text = foodViewModel.nutritionalValuesCalc(
                         grams.toString().toInt(),
                         jsonElement.fat!!.toInt()
                     ).toString()
-                    kcal_in_meal_TV.text = foodFragmentViewModel.nutritionalValuesCalc(
+                    kcal_in_meal_TV.text = foodViewModel.nutritionalValuesCalc(
                         grams.toString().toInt(),
                         jsonElement.kcal!!.toInt()
                     ).toString()
@@ -302,7 +301,7 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
 
                     val grams = meal_gramss_ET.text.toString().toInt()
                     val caloriesFromMeal =
-                        foodFragmentViewModel.nutritionalValuesCalc(grams, jsonElement.kcal!!.toInt())
+                        foodViewModel.nutritionalValuesCalc(grams, jsonElement.kcal!!.toInt())
 
                     val meal = Meal(
                         jsonElement.name.toString(),
@@ -315,7 +314,7 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
                             val kcalEaten =
                                 if (current_day_kcal_TVV.text.toString() == "---") 0 else current_day_kcal_TVV.text.toString()
                                     .toInt()
-                            foodFragmentViewModel.addMeal(meal, kcalEaten, meal.date!!) {
+                            foodViewModel.addMeal(meal, kcalEaten, meal.date!!) {
                                 dayInfo = it
                                 Log.i("added meal:", jsonElement.name.toString())
                                 (activity as HomeActivity).fragmentsReplacement(FoodFragment(meal.date!!))
@@ -348,7 +347,7 @@ class FoodFragment(private val dt: String = "") : Fragment(), OnMealClickListene
             .setMessage("Are you sure you want to delete meal?")
             .setNegativeButton("Keep it that way") { _, _ -> }
             .setPositiveButton("Delete meal") { _, _ ->
-                foodFragmentViewModel.deleteMeal(meal) {
+                foodViewModel.deleteMeal(meal) {
                     date_TV.text = it.date
                     current_day_kcal_TVV.text = it.kcalEaten.toString()
                 }

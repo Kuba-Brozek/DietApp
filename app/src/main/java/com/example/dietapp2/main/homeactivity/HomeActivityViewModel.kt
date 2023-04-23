@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.homeactivity
+package com.example.dietapp2.main.homeactivity
 
 import androidx.lifecycle.ViewModel
 

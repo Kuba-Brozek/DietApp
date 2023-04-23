@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.food
+package com.example.dietapp2.main.food
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken
 import java.io.IOException
 import java.time.LocalDate
 
-class FoodFragmentViewModel: ViewModel() {
+class FoodViewModel: ViewModel() {
     private val userRepo = UserRepository()
     private val repo = MealRepository()
 

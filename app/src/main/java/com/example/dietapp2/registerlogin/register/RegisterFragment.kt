@@ -51,13 +51,9 @@ class RegisterFragment : Fragment() {
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         auth = FirebaseAuth.getInstance()
+
         buttonRegister.setOnClickListener {
-            if (check_box_privacy_policy.isChecked) {
-                onClickSignUp()
-            } else {
-                Toast.makeText(this@RegisterFragment.requireContext(),
-                    "You must accept privacy policy before signing up.", Toast.LENGTH_LONG).show()
-            }
+            onClickSignUp()
         }
 
         privacy_policy_TV.setOnClickListener{
@@ -79,24 +75,39 @@ class RegisterFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun onClickSignUp() {
 
-        if (emailET.text.toString().isEmpty() ||
-            !Patterns.EMAIL_ADDRESS.matcher(emailET.text.toString()).matches()) {
-            error_msg.text = "Please enter email!"
+
+        if (emailET.text.toString().isEmpty()){
+            toast("Please enter all needed data")
+            emailET.requestFocus()
+            return
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailET.text.toString()).matches()) {
+            toast("Email address is not valid")
             emailET.requestFocus()
             return
         }
         if (passwordET.text.toString().isEmpty() || passwordET.text.toString().length < 8) {
-            error_msg.text = "Password is too short."
+            toast("Password is too short")
             passwordET.requestFocus()
             return
         }
         if (password_confirmET.text.toString() != passwordET.text.toString()) {
-            error_msg.text = "Passwords are not the same!"
+            toast("Passwords are not the same")
             password_confirmET.requestFocus()
+            return
+        }
+        if (!check_box_privacy_policy.isChecked) {
+            toast("You must accept privacy policy before signing up")
             return
         }
         (activity as LogRegActivity)
             .userCreation(emailET.text.toString(), passwordET.text.toString())
     }
+
+    private fun toast(message: String) {
+        Toast.makeText(this@RegisterFragment.requireContext(),
+            message, Toast.LENGTH_LONG).show()
+    }
+
 
 }

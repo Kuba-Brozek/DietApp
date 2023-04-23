@@ -1,4 +1,4 @@
-package com.example.dietapp2.registerlogin.register.afterregistration
+package com.example.dietapp2.registerlogin.afterregistration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.dietapp2.R
 import com.example.dietapp2.adapters.ViewPagerAdapter
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
-import com.example.dietapp2.registerlogin.register.afterregistration.fragments.IntroductionFragment
-import com.example.dietapp2.registerlogin.register.afterregistration.fragments.UserInfoFragment
 
 class AfterRegistrationActivity : AppCompatActivity() {
 

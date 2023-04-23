@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.sport
+package com.example.dietapp2.main.sport
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -43,7 +43,7 @@ class SportContainerFragment : Fragment() {
     private lateinit var change_weight_BTN: AppCompatButton
     private lateinit var buy_premium_BTN: AppCompatButton
     private lateinit var locked_content_IV: ImageView
-    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
+    private val summaryVM by viewModels<SportsViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(

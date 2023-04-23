@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.sport
+package com.example.dietapp2.main.sport
 
 import android.animation.ValueAnimator
 import android.widget.TextView
@@ -11,7 +11,7 @@ import com.example.dietapp2.repository.UserRepository
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
-class SportContainerFragmentViewModel: ViewModel() {
+class SportsViewModel: ViewModel() {
 
     private val userRepo = UserRepository()
     private val mealRepo = MealRepository()

@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.dietapp2.DTO.User
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
+import com.example.dietapp2.main.homeactivity.HomeActivity
 import com.example.dietapp2.registerlogin.login.LoginFragment
-import com.example.dietapp2.registerlogin.register.afterregistration.AfterRegistrationActivity
+import com.example.dietapp2.registerlogin.afterregistration.AfterRegistrationActivity
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.*

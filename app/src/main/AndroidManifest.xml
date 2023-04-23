@@ -14,16 +14,16 @@
         android:theme="@style/Theme.ScheduleApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".registerlogin.register.afterregistration.AfterRegistrationActivity"
+            android:name=".registerlogin.afterregistration.AfterRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".fragments.homeactivity.HomeActivity"
+            android:name=".main.homeactivity.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".registerlogin.activityreglog.LogRegActivity"
             android:exported="true" />
         <activity
-            android:name=".fragments.usersettings.ChangePersonalInfoActivity"
+            android:name=".main.usersettings.ChangePersonalInfoActivity"
             android:exported="true" />
         <activity
             android:name=".startingscreen.SplashScreen"

@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.sport
+package com.example.dietapp2.main.sport
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -31,7 +31,7 @@ import java.util.Date
 
 class ManageSportsFragment : Fragment() {
 
-    private val summaryVM by viewModels<SportContainerFragmentViewModel>()
+    private val summaryVM by viewModels<SportsViewModel>()
     private lateinit var increment_date_btn_manage: AppCompatButton
     private lateinit var decrement_date_btn_manage: AppCompatButton
     private lateinit var delete_sport_BTN: AppCompatButton

@@ -1,11 +1,10 @@
-package com.example.dietapp2.fragments.usersettings
+package com.example.dietapp2.main.usersettings
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.InputType
-import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.AdapterView
@@ -23,7 +22,7 @@ import androidx.appcompat.widget.AppCompatButton
 import com.bumptech.glide.Glide
 import com.example.dietapp2.DTO.User
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.homeactivity.HomeActivity
+import com.example.dietapp2.main.homeactivity.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.*
 

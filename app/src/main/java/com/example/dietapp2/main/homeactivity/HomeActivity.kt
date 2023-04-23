@@ -1,4 +1,4 @@
-package com.example.dietapp2.fragments.homeactivity
+package com.example.dietapp2.main.homeactivity
 
 
 import android.os.Bundle
@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.dietapp2.R
-import com.example.dietapp2.fragments.food.FoodFragment
-import com.example.dietapp2.fragments.usersettings.UserSettingsFragment
-import com.example.dietapp2.fragments.sport.SportContainerFragment
+import com.example.dietapp2.main.food.FoodFragment
+import com.example.dietapp2.main.usersettings.UserSettingsFragment
+import com.example.dietapp2.main.sport.SportContainerFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

@@ -1,4 +1,4 @@
-package com.example.dietapp2.registerlogin.register.afterregistration.fragments
+package com.example.dietapp2.registerlogin.afterregistration
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -19,7 +19,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.viewModels
 import com.example.dietapp2.R
 import com.example.dietapp2.registerlogin.register.ViewModelRegister
-import com.example.dietapp2.registerlogin.register.afterregistration.AfterRegistrationActivity
+import com.example.dietapp2.registerlogin.afterregistration.AfterRegistrationActivity
 import com.example.dietapp2.repository.UserRepository
 
 class IntroductionFragment : Fragment() {
